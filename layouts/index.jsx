@@ -1,7 +1,7 @@
 import styles from './index.module.scss'
 import Link from "next/link"
 
-export default function Hero() {
+export default function Hero({children}) {
     return(
     <>
     <div className={styles.hero}>

@@ -1,3 +1,5 @@
+@import "../../libs/variables.scss";
+
 .footerWrapper{
     display: flex;
     flex-direction: column;
@@ -5,7 +7,7 @@
     box-sizing: border-box;
     padding: 30px;
     width: 100%;
-    border: 1px solid black;
+    border: 1px solid $black;
     
     h2{
         margin:0;
@@ -52,4 +54,17 @@
     h3{
         padding-top: 20px;
     }
+}
+
+.icons{
+    width: 14px;   
+}
+
+.angleIcons{
+    width: 6px;   
+}
+
+.heart{
+    width: 16px; 
+    color: $primary;  
 }

@@ -1,5 +1,7 @@
-.hero{
-    color: #ffff;
+@import './../libs/variables.scss';
+
+.header{
+    color: $white;
     width: 100%;
     background-image: url("./../public/background.jpg");
 }
@@ -39,9 +41,8 @@
     border-radius: 25px;
     transition: all 0.5s ease-in-out;
     background-image: url("/SearchBar.png");
-    background-repeat: no-repeat;
+    color: $white;
     padding-right: 40px;
-    color:#fff;
     &::placeholder{
     color:rgba(255,255,255,.5);
     font-size: 18px;
@@ -63,7 +64,6 @@
     font-size: 10px;
     outline: none;
     border-radius: 50%;
-    color:#ffffff ;
     background-color:transparent;
   }.btnSearch:focus ~ .inputSearch{
     width: 300px;

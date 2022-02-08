@@ -1,0 +1,35 @@
+@import "../../libs/variables.scss";
+
+.wrapper_activities{
+    padding: $sectionsPadding;
+    display: flex;
+    flex-direction: column;
+
+    .wrapper_title_button{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+
+        .wrapper_title h2{
+            margin-bottom: 20px;
+        }
+
+        a {
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: $white;
+            background-color: $primary;
+            max-width: 160px;
+            text-align: right;
+        }
+    }
+    .wrapper_activities_cards{
+        padding: 50px 0;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: $cardsColumnGap;
+        
+    }
+}

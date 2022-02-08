@@ -1,7 +1,7 @@
 import styles from './index.module.scss'
 import Link from "next/link"
 
-export default function Hero({children}) {
+export default function Header({children}) {
     return(
     <>
     <div className={styles.header}>
@@ -28,9 +28,7 @@ export default function Hero({children}) {
                   </Link>
               </li>  
             </ul>
-            <div className={styles.searcg}>
-            <button className={styles.btnSearch}>
-            </button>
+            <div className={styles.search}>
             <input  type="text" placeholder="Type to Search..." className={styles.inputSearch}></input>
             </div>
         </nav>

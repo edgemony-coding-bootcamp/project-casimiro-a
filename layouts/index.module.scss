@@ -3,7 +3,7 @@
 .header{
     color: $white;
     width: 100%;
-    background-image: url("./../public/background.jpg");
+    background-color: $black;
 }
 
 .logo {
@@ -17,12 +17,12 @@
     column-gap: 5px;
     li {
     list-style-type: none;
-    margin: 20px 0 0 100px;
+    margin: 20px 0 0 80px;
     font-size: 1.3em;
     }
 }
 
-.btnSearch{
+.inputSearch{
     width: 50px;
     height: 50px;
     margin: 25px 0 0 10px;
@@ -31,43 +31,29 @@
     }
 }
 
-
 .inputSearch{
     height: 50px;
     width: 20px;
+    margin-left: 80px;
     border-style: none;
     padding: 10px;
     outline: none;
     border-radius: 25px;
     transition: all 0.5s ease-in-out;
     background-image: url("/SearchBar.png");
+    background-repeat: no-repeat;
     color: $white;
     padding-right: 40px;
     &::placeholder{
-    color:rgba(255,255,255,.5);
-    font-size: 18px;
-    letter-spacing: 2px;
-  } &:focus{
     background-image: none;
-    width: 230px;
+    color:rgba(255,255,255,.5);
+  } &:focus{
+    color: $black;
+    background-image: none;
+    width: 150px;
     border-radius: 10px;
-    background-color: rgba(255,255,255,.5);
+    background-color: rgba(255, 255, 255, 0.692);
     border-bottom:1px solid rgba(255,255,255,.5);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-  }
-}
-  .btnSearch{
-    width: 50px;
-    height: 50px;
-    margin: 10px 0 0 70px;
-    border-style: none;
-    font-size: 10px;
-    outline: none;
-    border-radius: 50%;
-    background-color:transparent;
-  }.btnSearch:focus ~ .inputSearch{
-    width: 300px;
-    background-color: transparent;
-    border-bottom:1px solid rgba(255,255,255,.5);
-    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+   }
   }

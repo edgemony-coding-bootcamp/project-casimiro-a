@@ -4,7 +4,7 @@ import Link from "next/link"
 export default function Header({children}) {
     return(
     <>
-    <div className={styles.header}>
+    <div className={styles.wrapper}>
         <nav className={styles.nav}>
             <img className={styles.logo} src="/logo.png" alt="logo"></img>
             <ul>

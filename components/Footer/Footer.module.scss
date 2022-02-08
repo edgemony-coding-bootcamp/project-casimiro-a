@@ -1,0 +1,55 @@
+.footerWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-sizing: border-box;
+    padding: 30px;
+    width: 100%;
+    border: 1px solid black;
+    
+    h2{
+        margin:0;
+    }
+
+    h3{
+        margin:0;
+    }
+    
+}
+
+.rowItemsWrapper{
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around;    
+    padding-bottom: 20px;
+    
+    ul{
+        list-style-type: none; 
+        padding:0;
+    }
+}
+
+.logoWrapper{
+    flex-grow: 2;    
+}
+
+.menùWrapper{
+    flex-grow: 1;   
+    list-style-type: none; 
+}
+
+.contattiWrapper{
+    flex-grow: 1;    
+}
+
+.AuthorsWrapper{
+    border-top:1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    
+    h3{
+        padding-top: 20px;
+    }
+}

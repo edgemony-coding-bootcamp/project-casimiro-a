@@ -1,5 +1,7 @@
 
-@mixin flexContainer ($direction: row, $content: center, $items: center, $gap: 15px)
+@use './variables.scss';
+
+@mixin flexContainer ($direction: row, $content: center, $items: center, $gap: variables.$cardsColumnGap)
 {
     display: flex;
     flex-direction: $direction;

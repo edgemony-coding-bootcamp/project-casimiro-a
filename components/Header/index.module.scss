@@ -1,0 +1,60 @@
+@import "./../../libs/variables.scss";
+
+
+.wrapper{
+    color: $white;
+    width: 100%;
+    background-color: $black;
+}
+
+.logo {
+    margin: 5px 0 0 15px;
+    width: 30%;  
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    li {
+    list-style-type: none;
+    margin: 20px 0 0 80px;
+    font-size: 1.3em;
+    }
+}
+
+.inputSearch{
+    width: 50px;
+    height: 50px;
+    margin: 25px 0 0 10px;
+    &:hover{
+    cursor: pointer;
+    }
+}
+
+.inputSearch{
+    height: 50px;
+    width: 20px;
+    margin-left: 80px;
+    border-style: none;
+    padding: 10px;
+    outline: none;
+    border-radius: 25px;
+    transition: all 0.5s ease-in-out;
+    background-image: url("/SearchBar.png");
+    background-repeat: no-repeat;
+    color: $white;
+    padding-right: 40px;
+    &::placeholder{
+    background-image: none;
+    color:rgba(255,255,255,.5);
+  } &:focus{
+    color: $black;
+    background-image: none;
+    width: 150px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.692);
+    border-bottom:1px solid rgba(255,255,255,.5);
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+   }
+  }

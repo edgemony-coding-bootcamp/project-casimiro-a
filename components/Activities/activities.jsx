@@ -1,5 +1,5 @@
-import styles from '../styles/Activities.module.scss'
-import ActivityCard from '../components/ActivityCard'
+import styles from './Activities.module.scss'
+import ActivityCard from '../ActivityCard'
 
 export default function Activities() {
     return(

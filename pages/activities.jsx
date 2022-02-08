@@ -9,10 +9,9 @@ export default function Activities() {
                     <h2>Esperienze popolari:</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                 </div>
-                <button>Visualizza tutte le esperienze</button>
+                <a href="#">Visualizza tutte le esperienze</a>
             </div>
             <div className={styles.wrapper_activities_cards}>
-                <ActivityCard />
                 <ActivityCard />
             </div>
         </section>

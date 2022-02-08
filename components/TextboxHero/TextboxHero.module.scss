@@ -1,0 +1,16 @@
+@import "./libs/variables.scss";
+.container{
+    //border: 1px solid red;
+    color: $white;
+    max-width: 600px;
+    h2{
+        font-size: 100px;
+        font-weight: 800;
+    }
+    p{
+    
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 400;
+    }
+}

@@ -1,0 +1,10 @@
+@import "./libs/variables.scss";
+
+.container{
+    border-radius: 50%;
+    background: $white;
+    position: relative;
+    transform: translate(-50%,0);
+    transition: all 0.5s;
+    opacity: 0.5;
+}

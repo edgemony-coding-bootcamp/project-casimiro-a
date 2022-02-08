@@ -1,0 +1,10 @@
+@import "./libs/variables.scss";
+
+.container{
+ height: 750px;
+ border-left: 1px solid $white;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-around;
+ opacity: 0.5;
+}

@@ -1,0 +1,34 @@
+@import "../../libs/variables.scss";
+
+.single_card{
+    
+    box-shadow: $shadow;
+    border-radius: $cardBorderRadius;
+    max-width: 300px;
+
+    .single_card_image{
+        height: 200px;
+
+        p{
+            display: inline-block;
+            margin: 15px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: $shadow;
+        }
+    }
+
+    .single_card_info{
+        padding: 30px;
+        box-shadow: $shadow;
+        border-radius: $cardBorderRadius;
+        display: flex;
+        flex-direction: column;
+
+        .single_card_info_price{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}

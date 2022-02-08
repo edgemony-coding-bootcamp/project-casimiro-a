@@ -1,0 +1,20 @@
+@import "../libs/variables.scss";
+
+.wrapper_activities{
+    padding: $sectionsPadding;
+    display: flex;
+    flex-direction: column;
+
+    .wrapper_title_button{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .wrapper_activities_cards{
+        padding: 30px 0;
+        display: flex;
+        column-gap: $cardsColumnGap;
+        flex-wrap: wrap;
+    }
+}

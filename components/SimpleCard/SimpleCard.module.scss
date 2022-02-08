@@ -1,0 +1,42 @@
+
+@use '../../libs/variables.scss';
+
+.wrapper
+{
+    height: 280px;
+    width: 250px;
+    position: relative;
+
+    border-radius: variables.$cardBorderRadius;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    transition: 0.4s;
+    cursor: pointer;
+
+    &.big
+    {
+        height: 400px;
+        width: 280px;
+    }
+
+    &:hover
+    {
+        transform: scale(1.05);
+        transition: 0.4s;
+    }
+
+    p
+    {
+        position: absolute;
+        bottom: 0;
+        margin: 0;
+        padding: 15px 20px;
+
+        // ! VARIABILI !
+        font-family: variables.$textFont;
+        font-weight: 600;
+        font-size: 0.9em;
+        color: variables.$white;
+    }
+}

@@ -1,3 +1,7 @@
+import { faPhoneAlt, faAngleRight, faHeart} from '@fortawesome/free-solid-svg-icons'
+import {  faEnvelope, } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import styles from './Footer.module.scss'
 
 function Footer() {
@@ -13,23 +17,26 @@ function Footer() {
             <div className={styles.menùWrapper}>
                 <h3>Menù</h3>
                 <ul>
-                    <li>Città</li>
-                    <li>Esperienze</li>
-                    <li>About</li>
+                    <li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Città</li>
+                    <li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Esperienze</li>
+                    <li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> About</li>
                 </ul>
             </div>
             <div className={styles.contattiWrapper}>
                 <h3>Contatti</h3>
                 <ul>
-                    <li>info@travelhub.com</li>
-                    <li>+39 123 456 7890</li>
-                    <li>Icone social</li>
+                    <li><FontAwesomeIcon className={styles.icons} icon={faEnvelope} /> info@travelhub.com</li>
+                    <li><FontAwesomeIcon className={styles.icons} icon={faPhoneAlt} /> +39 123 456 7890</li>
+                    <li>
+                       
+                    </li>
+                    
                 </ul>
             </div>
         </div>
        
         <div className={styles.AuthorsWrapper}>
-            <h3>Made with love & Next.JS</h3>
+            <h3>Made with <FontAwesomeIcon className={styles.heart} icon={faHeart} /> & Next.JS</h3>
             <p>by Agnese, Dario, Davide, Federica & Roberta</p>
             
         </div>

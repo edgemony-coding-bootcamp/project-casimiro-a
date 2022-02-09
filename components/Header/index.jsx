@@ -1,9 +1,37 @@
 import styles from './index.module.scss'
 import Link from "next/link"
+import { useEffect, useState } from 'react'
+
+
+
+
 
 export default function Header({ children }) {
+
+    function handleScroll(){
+        if (window.scrollY != 0){
+            setIsonTop(false)
+        } 
+        else{
+            setIsonTop(true)
+        }
+    }
+    
+    const [isonTop, setIsonTop] = useState(true)
+
+    useEffect(() => {
+     window.addEventListener("scroll", () => handleScroll())
+    }, []);
+    
+
+    
     return (
-        <div className={styles.wrapper_header}>
+
+        <div className={styles.wrapper_header}
+            style={ isonTop ? {background: ""} :{background: "#1b1b1b"} }
+        >
+
+
             <img src="/logo.png" alt="logo"></img>
             <nav className={styles.nav}>
                 <ul>

@@ -62,8 +62,8 @@ const data = [
   },
 ];
 
-export default function TextBoxHero() {
-  let swiperInst;
+export default function TextBoxHero({setSecondswiperInst, secondSwiperInst}) {
+
 
   return (
     <>
@@ -76,8 +76,7 @@ export default function TextBoxHero() {
           loop={true}
           slidesPerView={1}
           scrollbar={{ draggable: true }}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => (swiperInst = swiper)}
+          onSwiper={(swiper) => setSecondswiperInst(swiper)}
         >
           {data.map((slide, index) => (
             <SwiperSlide key={index}>

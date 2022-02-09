@@ -1,6 +1,5 @@
 import styles from "./SidebarHeroDot.module.scss";
 export default function SidebarHeroDot({ isChosen }) {
-  console.log(isChosen);
 
   let styled = {};
 

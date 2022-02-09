@@ -3,8 +3,9 @@
 
 .wrapper_header {
     width: 100%;
-    background-color: variables.$black;
-    padding: 20px 30px;
+    height: 120px;
+    background-color: transparent;
+    padding: 30px;
     @include mixins.flexContainer(row, space-between, center, 35px);
     img {
         margin: 5px 0 0 15px;

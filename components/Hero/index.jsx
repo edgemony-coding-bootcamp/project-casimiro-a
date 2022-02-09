@@ -9,7 +9,9 @@ export default function Hero() {
       <div className={styles.wrapper_hero}>
         <SidebarHero />
         <TextboxHero />
-        <CarouselHero />
+        <div className={styles.wrapper_carousel_hero}>
+          <CarouselHero />
+        </div>
       </div>
     </>
   );

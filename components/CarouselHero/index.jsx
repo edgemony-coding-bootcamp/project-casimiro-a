@@ -60,15 +60,15 @@ export default function CarouselHero({
   function handlePrev(){
     swiperInst.slidePrev(),
     secondswiperInst.slidePrev();
-    setsidebarState(prev => prev === 0 ? 6 : prev - 1  )
+    setsidebarState(swiperInst.realIndex)
    
   }
   function handleNext(){
     swiperInst.slideNext(),
     secondswiperInst.slideNext();
-    setsidebarState(prev => prev === 6 ? 0 : prev + 1  )
-    
+    setsidebarState(swiperInst.realIndex)
   }
+
   
   return (
     <>

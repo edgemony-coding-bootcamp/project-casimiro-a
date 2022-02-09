@@ -2,7 +2,7 @@ import { faPhoneAlt, faAngleRight, faHeart} from '@fortawesome/free-solid-svg-ic
 import {  faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import {  faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import Link from "next/link"
 import styles from './Footer.module.scss'
 
 export default function Footer() {
@@ -12,15 +12,25 @@ export default function Footer() {
 
         <div className={styles.rowItemsWrapper}>
             <div className={styles.logoWrapper}>
-                <img src="/logov.positiva.png" alt="logo"></img>
+            <Link href="/">
+                <a>
+                <img src="/logov.positiva.png" alt="logo"></img>             
+                </a>
+            </Link>
                 <p>Lorem Ipsum is simply dummy... </p>
             </div>
             <div className={styles.menùWrapper}>
                 <h3>Menù</h3>
                 <ul>
-                    <li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Città</li>
-                    <li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Esperienze</li>
-                    <li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> About</li>
+                <Link href="/città">   
+                    <a><li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Città</li></a>
+                </Link>
+                <Link href="/esperienze"> 
+                    <a><li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Esperienze</li></a>
+                </Link>
+                <Link href="/about">
+                    <a><li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> About</li></a>
+                </Link>
                 </ul>
             </div>
             <div className={styles.contattiWrapper}>

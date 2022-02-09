@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import styles from './Footer.module.scss'
 
-function Footer() {
+export default function Footer() {
   return (   
             
     <div className={styles.footerWrapper}>
@@ -45,5 +45,3 @@ function Footer() {
 
   );
 }
-
-export {Footer};

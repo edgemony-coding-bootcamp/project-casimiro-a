@@ -1,15 +1,14 @@
 import style from "./CarouselHero.module.scss";
 import ButtonHero from "../ButtonHero";
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { useDispatch } from "react-redux";
+import { setCarouselFirstInst, setCarouselIndex } from "../../store/actions";
 import { Navigation, Pagination, Scrollbar, A11y, Controller } from "swiper";
 import CardHero from "../CardHero";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-
 
 const data = [
   {
@@ -49,27 +48,20 @@ const data = [
   },
 ];
 
-export default function CarouselHero({
-  swiperInst,
-   setSwiperInst,
-    secondswiperInst,
-    setsidebarState,
-    sidebarState
-  }) {
-  
-  function handlePrev(){
-    swiperInst.slidePrev(),
-    secondswiperInst.slidePrev();
-    setsidebarState(swiperInst.realIndex)
-   
+export default function CarouselHero({ setsidebarState }) {
+  const dispatch = useDispatch();
+  const firstInst = useSelector((state) => state.carouselFirstInst);
+  const secondInst = useSelector((state) => state.carouselSecondInst);
+
+  function handlePrev() {
+    firstInst.slidePrev(), secondInst.slidePrev();
+    dispatch(setCarouselIndex(firstInst.realIndex));
   }
-  function handleNext(){
-    swiperInst.slideNext(),
-    secondswiperInst.slideNext();
-    setsidebarState(swiperInst.realIndex)
+  function handleNext() {
+    firstInst.slideNext(), secondInst.slideNext();
+    dispatch(setCarouselIndex(firstInst.realIndex));
   }
 
-  
   return (
     <>
       <div className={style.container}>
@@ -82,8 +74,7 @@ export default function CarouselHero({
           speed={800}
           slidesPerView={2}
           scrollbar={{ draggable: true }}
-          onSwiper={(swiper) => setSwiperInst(swiper)} 
-          
+          onSwiper={(swiper) => dispatch(setCarouselFirstInst(swiper))}
         >
           {data.map((slide, index) => (
             <SwiperSlide key={index}>

@@ -1,8 +1,8 @@
 import styles from "./TextboxHero.module.scss";
 
 import style from "./TextboxHero.module.scss";
-import ButtonHero from "../ButtonHero";
-
+import { useDispatch } from 'react-redux';
+import { setCarouselSecondInst } from "../../store/actions";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
@@ -62,8 +62,8 @@ const data = [
   },
 ];
 
-export default function TextBoxHero({setSecondswiperInst, secondSwiperInst}) {
-
+export default function TextBoxHero() {
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -78,7 +78,7 @@ export default function TextBoxHero({setSecondswiperInst, secondSwiperInst}) {
           scrollbar={{ draggable: true }}
           speed={800}
           allowTouchMove={false}
-          onSwiper={(swiper) => setSecondswiperInst(swiper)}
+          onSwiper={(swiper) => dispatch(setCarouselSecondInst(swiper))}
         >
           {data.map((slide, index) => (
             <SwiperSlide key={index}>

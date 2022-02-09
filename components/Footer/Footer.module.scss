@@ -8,6 +8,7 @@
     justify-content: space-around;
 
     padding: 30px;
+    line-height: 25px;
       
     background-color: $quaternary;
     color: $black;
@@ -21,6 +22,9 @@
         margin:0;
     }
     
+    img {        
+        width: 300px;
+    }
 }
 
 .rowItemsWrapper{
@@ -76,12 +80,19 @@
 .brandsIcons{    
     display: flex;       
     column-gap: 5px;
+    margin-top: 3px;
 }
 
 @media only screen and (max-width: 480px) {
     .footerWrapper{
         justify-content: center;
         text-align: center;
+
+        line-height: 35px;
+
+        img {        
+            width: 200px;
+        }
     }
    
     .rowItemsWrapper {
@@ -92,6 +103,6 @@
     }   
 
     .brandsIcons{
-        justify-content: center;
+        justify-content: center;        
     }
 }

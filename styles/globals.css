@@ -36,11 +36,3 @@ p{
   line-height: 1.4;
 }
 
-.container{
-  width: 100vw;
-  height: 100vh;
-  background: #1b1b1b;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}

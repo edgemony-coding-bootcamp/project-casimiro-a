@@ -1,8 +1,8 @@
-import style from "./TextboxHero.module.scss";
+import styles from "./TextboxHero.module.scss";
 
 export default function TextboxHero() {
   return (
-    <div className={style.container}>
+    <div className={styles.container}>
       <h2>TITOLO 1</h2>
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting

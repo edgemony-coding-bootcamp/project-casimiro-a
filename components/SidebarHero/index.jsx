@@ -1,19 +1,21 @@
 import SidebarHeroDot from "../SidebarHeroDot/SidebarHeroDot";
 import style from "./SidebarHero.module.scss";
-export default function SidebarHero() {
+export default function SidebarHero({sidebarState}) {
   const arr = [1, 2, 3, 4, 5, 6, 7];
 
   //fake storage è una variabile che verrà sostituita dall'index del carousel
   //quando avremo implementato lo state managment
 
-  const fakeStorage = 0;
+  
 
-  console.log(arr);
+  const fakestate =  sidebarState
   return (
     <div className={style.container}>
+    <div className={style.sidebar}>
       {arr.map((el, index) => (
-        <SidebarHeroDot isChosen={index === fakeStorage && true} />
+        <SidebarHeroDot key={index} isChosen={index === fakestate && true} />
       ))}
+    </div>
     </div>
   );
 }

@@ -1,14 +1,15 @@
 import style from "./CarouselHero.module.scss";
 import ButtonHero from "../ButtonHero";
-
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Pagination, Scrollbar, A11y, Controller } from "swiper";
 import CardHero from "../CardHero";
-import ActivityCard from "../ActivityCard";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
+
 
 const data = [
   {
@@ -48,20 +49,39 @@ const data = [
   },
 ];
 
-export default function CarouselHero() {
-  let swiperInst;
+export default function CarouselHero({
+  swiperInst,
+   setSwiperInst,
+    secondswiperInst,
+    setsidebarState,
+    sidebarState
+  }) {
+  
+  function handlePrev(){
+    swiperInst.slidePrev(),
+    secondswiperInst.slidePrev();
+    setsidebarState(prev => prev === 0 ? 6 : prev - 1  )
+   
+  }
+  function handleNext(){
+    swiperInst.slideNext(),
+    secondswiperInst.slideNext();
+    setsidebarState(prev => prev === 6 ? 0 : prev + 1  )
+    
+  }
+  
   return (
     <>
       <div className={style.container}>
         <Swiper
           className={style.carousel}
           modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={60}
+          spaceBetween={10}
           loop={true}
           slidesPerView={2}
           scrollbar={{ draggable: true }}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => (swiperInst = swiper)}
+          onSwiper={(swiper) => setSwiperInst(swiper)} 
+          
         >
           {data.map((slide, index) => (
             <SwiperSlide key={index}>
@@ -70,8 +90,8 @@ export default function CarouselHero() {
           ))}
         </Swiper>
         <div className={style.button}>
-          <ButtonHero dir="<" action={() => swiperInst.slidePrev()} />
-          <ButtonHero dir=">" action={() => swiperInst.slideNext()} />
+          <ButtonHero dir="<" action={() => handlePrev()} />
+          <ButtonHero dir=">" action={() => handleNext()} />
         </div>
       </div>
     </>

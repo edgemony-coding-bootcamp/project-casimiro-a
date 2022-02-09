@@ -1,10 +1,15 @@
 @import "./libs/variables.scss";
-
 .container{
- height: 750px;
- border-left: 1px solid $white;
- display: flex;
- flex-direction: column;
- justify-content: space-around;
- opacity: 0.5;
+    //border: 1px solid red;
+    color: aliceblue;
+    width: 80px;
+    .sidebar{
+     height: 750px;
+     border-left: 1px solid $white;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     opacity: 0.5;
+     //border: 1px solid red;
+    }
 }

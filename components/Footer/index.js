@@ -12,7 +12,7 @@ export default function Footer() {
 
         <div className={styles.rowItemsWrapper}>
             <div className={styles.logoWrapper}>
-                <h2>TravelHub</h2>
+                <img src="/logov.positiva.png" alt="logo"></img>
                 <p>Lorem Ipsum is simply dummy... </p>
             </div>
             <div className={styles.menùWrapper}>

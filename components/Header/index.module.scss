@@ -3,10 +3,8 @@
 
 .wrapper_header {
     width: 100%;
-    //background-color: variables.$black;
     padding: 20px 30px;
     @include mixins.flexContainer(row, space-between, center, 35px);
-    //border: 1px solid red;
     position: fixed;
     z-index: 10;
     top: 0;

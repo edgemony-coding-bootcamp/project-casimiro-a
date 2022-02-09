@@ -9,3 +9,7 @@
     align-items: $items;
     gap: $gap;
 }
+
+@mixin bg-overlay($url, $color, $opacity) {
+    background: linear-gradient(to right, rgba($color, $opacity), rgba($color, $opacity)), url($url);
+  }

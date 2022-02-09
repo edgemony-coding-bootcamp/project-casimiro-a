@@ -28,7 +28,7 @@ export default function Header({ children }) {
     return (
 
         <div className={styles.wrapper_header}
-            style={ isonTop ? {background: ""} :{background: "#1b1b1b"} }
+            style={ isonTop ? {background: ""} :{background: "#011627"} }
         >
 
 

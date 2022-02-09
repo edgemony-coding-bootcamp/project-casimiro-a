@@ -1,16 +1,24 @@
 @import "./libs/variables.scss";
 .container{
-    //border: 1px solid red;
-    color: $white;
+    overflow: hidden;
+    width:fit-content;
+    padding: 20px;
+    //border: 2px solid red;
+    //background: #000;
+    .carousel{
     max-width: 600px;
-    h2{
-        font-size: 100px;
-        font-weight: 800;
+    height: 250px;
     }
-    p{
-    
-    font-size: 16px;
-    line-height: 19px;
-    font-weight: 400;
+    .text{
+        color: $white;
+        h1{
+            font-size: 100px;
+        }
+        p{
+            font-size: 16px;
+            line-height: 19px;
+            margin-top: 15px;
+        }
+
     }
 }

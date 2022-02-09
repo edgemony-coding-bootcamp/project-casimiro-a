@@ -1,5 +1,6 @@
 import { faPhoneAlt, faAngleRight, faHeart} from '@fortawesome/free-solid-svg-icons'
-import {  faEnvelope, } from '@fortawesome/free-regular-svg-icons'
+import {  faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import {  faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import styles from './Footer.module.scss'
@@ -28,7 +29,11 @@ export default function Footer() {
                     <li><FontAwesomeIcon className={styles.icons} icon={faEnvelope} /> info@travelhub.com</li>
                     <li><FontAwesomeIcon className={styles.icons} icon={faPhoneAlt} /> +39 123 456 7890</li>
                     <li>
-                       
+                    <div className={styles.brandsIcons}>
+                    <FontAwesomeIcon className={styles.icons} icon={faInstagram}/>
+                    <FontAwesomeIcon className={styles.icons} icon={faFacebook}/>
+                    <FontAwesomeIcon className={styles.icons} icon={faTwitter}/>
+                    </div>   
                     </li>
                     
                 </ul>

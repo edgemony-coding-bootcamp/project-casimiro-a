@@ -1,14 +1,18 @@
 @import "../../libs/variables.scss";
 
 .footerWrapper{
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    box-sizing: border-box;
+
     padding: 30px;
-    width: 100%;
-    border: 1px solid $black;
-    
+      
+    background-color: $quaternary;
+    color: $black;
+
+     
     h2{
         margin:0;
     }
@@ -45,7 +49,7 @@
 }
 
 .AuthorsWrapper{
-    border-top:1px solid black;
+    border-top:1px solid $black;;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,4 +71,27 @@
 .heart{
     width: 16px; 
     color: $primary;  
+}
+
+.brandsIcons{    
+    display: flex;       
+    column-gap: 5px;
+}
+
+@media only screen and (max-width: 480px) {
+    .footerWrapper{
+        justify-content: center;
+        text-align: center;
+    }
+   
+    .rowItemsWrapper {
+        flex-direction: column;
+        justify-content: center;
+
+        div{margin: 10px 0;}
+    }   
+
+    .brandsIcons{
+        justify-content: center;
+    }
 }

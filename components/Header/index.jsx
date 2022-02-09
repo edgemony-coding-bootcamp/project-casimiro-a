@@ -31,8 +31,10 @@ export default function Header({ children }) {
             style={ isonTop ? {background: ""} :{background: "#011627"} }
         >
 
-
-            <img src="/logo.png" alt="logo"></img>
+            <Link href="/">
+              <a><img src="/logo.png" alt="logo"></img></a>      
+            </Link>
+            
             <nav className={styles.nav}>
                 <ul>
                     <li>

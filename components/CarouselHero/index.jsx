@@ -79,6 +79,7 @@ export default function CarouselHero({
           spaceBetween={10}
           allowTouchMove={false}
           loop={true}
+          speed={800}
           slidesPerView={2}
           scrollbar={{ draggable: true }}
           onSwiper={(swiper) => setSwiperInst(swiper)} 

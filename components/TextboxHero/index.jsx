@@ -76,6 +76,7 @@ export default function TextBoxHero({setSecondswiperInst, secondSwiperInst}) {
           loop={true}
           slidesPerView={1}
           scrollbar={{ draggable: true }}
+          speed={800}
           allowTouchMove={false}
           onSwiper={(swiper) => setSecondswiperInst(swiper)}
         >

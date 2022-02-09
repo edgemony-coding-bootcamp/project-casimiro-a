@@ -13,7 +13,7 @@ $height: 541px;
     border-radius: $cardBorderRadius;
     user-select: none;
     cursor: pointer;
-    
+    box-shadow: 4px 4px 10px #292929;
     img{
         width: auto ;
         height: $height;
@@ -24,7 +24,7 @@ $height: 541px;
         z-index: -1;
     }
     .layer{
-        background: rgba(0, 0, 0, 0.50);
+        background: rgba(0, 0, 0, 0.383);
         width: $width;
         height: $height;
     }

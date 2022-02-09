@@ -8,4 +8,8 @@
     background-color: #fdfffc69;
     cursor: pointer;
     display: block;
+    transition: all 0.2s ease;
+    &:hover{
+        transform: scale(1.10);
+    }
 }

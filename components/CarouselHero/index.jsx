@@ -77,6 +77,7 @@ export default function CarouselHero({
           className={style.carousel}
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={10}
+          allowTouchMove={false}
           loop={true}
           slidesPerView={2}
           scrollbar={{ draggable: true }}

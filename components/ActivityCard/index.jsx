@@ -1,4 +1,5 @@
 import styles from './Activitycard.module.scss'
+import Link from 'next/link'
 
 export default function ActivityCard(props) {
     return(
@@ -11,7 +12,7 @@ export default function ActivityCard(props) {
                 <p>{props.activitydesc || "Descrizione attività"}</p>
                 <div className={styles.single_card_info_price}>
                     <p>{props.activityprice || "€ XX,XX"}</p>
-                    <a href={props.activityurl || "#" } style={{color:`${props.categorycolor || '#000'}`}}>Scopri di più</a>
+                    <Link href={props.activityurl || "#" }style={{color:`${props.categorycolor || '#000'}`}}><a>Scopri di più</a></Link>
                 </div>
             </div>
         </div>

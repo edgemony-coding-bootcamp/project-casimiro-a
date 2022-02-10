@@ -4,7 +4,7 @@ import HeroIntern from "../../../components/HeroIntern";
 import Activities from '../../../components/Activities';
 import CitiesGrid from '../../../components/CitiesGrid';
 import Footer from '../../../components/Footer'
-
+import Layout from '../../../components/Layouts';
 //dati per esempio
 const data = {
     name: "Amsterdam",
@@ -15,12 +15,11 @@ const data = {
 export default function City() {
     return (
         <>
-            <Header />
+        <Layout>
             <HeroIntern cityName={data.name} cityDescription={data.content} cityImage={data.cover_image_url}/>
             <Activities />
             <CitiesGrid />
-            <Footer />
-
+        </Layout>
         </>
     )
 }

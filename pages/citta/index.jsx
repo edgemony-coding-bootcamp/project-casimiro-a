@@ -18,7 +18,7 @@ export default function CitiesArchive({ cities }) {
     <Layout>
       <HeroIntern
         title="città"
-        description="Sei indeciso sulla tua prossima destinazione? Sfoglia il catalogo completo delle città e lasciati ispirare da TravelHub!"
+        description="Sei indeciso sulla tua prossima esperienza? Sfoglia il catalogo completo delle attività e lasciati ispirare da TravelHub!"
       />
       <CitiesGrid data={cities} />
     </Layout>

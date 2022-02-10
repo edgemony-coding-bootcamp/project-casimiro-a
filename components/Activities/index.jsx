@@ -2,10 +2,13 @@ import styles from './Activities.module.scss'
 import ActivityCard from '../ActivityCard'
 import Link from 'next/link'
 
-export default function Activities() {
+export default function Activities(props) {
+
+    const activities = props.data || [];
+
     return(
         <section className={styles.wrapper_activities}>
-            <div className={styles.wrapper_title_button}>
+            {/* <div className={styles.wrapper_title_button}>
                 <div className={styles.wrapper_title}>
                     <h2>Esperienze popolari:</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -14,7 +17,16 @@ export default function Activities() {
             </div>
             <div className={styles.wrapper_activities_cards}>
                 <ActivityCard />
-            </div>
+            </div> */}
+            {activities.map((activity, index) =>
+                <Link href={`esperienze/${activity.uuid}`}>
+                    <a>
+                        <ActivityCard key={index} category={activity.verticals[1].name}/>
+                    </a>
+                </Link>
+            )}
+            
+
         </section>
-    )
-}
+    );
+};

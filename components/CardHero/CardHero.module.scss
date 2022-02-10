@@ -1,4 +1,5 @@
 @import "./libs/variables.scss";
+@import "./libs/mixins.scss";
 
 $width: 360px;
 $height: 541px;
@@ -14,9 +15,10 @@ $height: 541px;
     user-select: none;
     cursor: pointer;
     box-shadow: 4px 4px 10px #292929;
-    img{
+    
+    image{
         width: auto ;
-        height: $height;
+        height: 100%;
         display: block;
         position: absolute;
         left: 50%;
@@ -27,6 +29,10 @@ $height: 541px;
         background: rgba(0, 0, 0, 0.383);
         width: $width;
         height: $height;
+
+        img{
+            object-fit: cover;
+        }
     }
     p{
         position: absolute;

@@ -5,7 +5,7 @@ export default function CardHero({ image, text }) {
   return (
     <div className={style.container}>
       <div className={style.layer}>
-        <img src={image} alt="card image" />
+        <Image src={image} alt="card image" layout="fill" />
         <p>{text}</p>
       </div>
     </div>

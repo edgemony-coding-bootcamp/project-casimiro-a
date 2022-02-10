@@ -38,7 +38,7 @@ export default function Header({ children }) {
             <nav className={styles.nav}>
                 <ul>
                     <li>
-                        <Link href="/città">
+                        <Link href="/citta">
                             <a>Città</a>
                         </Link>
                     </li>

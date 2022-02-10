@@ -8,12 +8,13 @@ export async function getStaticProps() {
   
     return {
       props: {
-        activities: data.data,
+        activities: data,
       },
     };
   }
 
 export default function ExperiencesArchive({ activities }) {
+  console.log()
     return(
 
         <Layout>

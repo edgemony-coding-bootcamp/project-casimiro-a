@@ -16,7 +16,7 @@ const Activities = ({ data }) =>
     return (
 
         <section className={styles.wrapper_activities}>
-            {/* <div className={styles.wrapper_title_button}>
+             <div className={styles.wrapper_title_button}>
                 <div className={styles.wrapper_title}>
                     <h2>Esperienze popolari:</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>

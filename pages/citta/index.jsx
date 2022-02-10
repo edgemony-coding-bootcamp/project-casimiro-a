@@ -21,7 +21,7 @@ export default function CitiesArchive({ cities }) {
         description="Sei indeciso sulla tua prossima esperienza? Sfoglia il catalogo completo delle attività e lasciati ispirare da TravelHub!"
       />
 
-      <CitiesGrid big={true} data={cities} />
+      <Cities big={true} data={cities} />
 
     </Layout>
   );

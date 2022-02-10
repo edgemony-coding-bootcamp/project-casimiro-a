@@ -1,5 +1,6 @@
 
 import styles from './SimpleCard.module.scss';
+import Image from 'next/image';
 
 const SimpleCard = (props) =>
 {
@@ -10,8 +11,13 @@ const SimpleCard = (props) =>
     return (
         <div 
             className={`${styles.wrapper} ${bigSize ? styles.big : ''}`}
-            style={{ backgroundImage: `url(${image})` }}
+            
         >
+            <Image 
+                src={image}
+                layout="fill"
+                quality={2}
+            />
             <p>{text}</p>
         </div>
     );

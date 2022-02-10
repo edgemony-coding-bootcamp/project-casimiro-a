@@ -10,9 +10,13 @@
     border-radius: variables.$cardBorderRadius;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
 
     transition: 0.4s;
     cursor: pointer;
+    img{
+        object-fit: cover;
+    }
 
     &.big
     {

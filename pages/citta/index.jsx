@@ -3,7 +3,7 @@ import HeroIntern from "../../components/HeroIntern";
 import CitiesGrid from "../../components/CitiesGrid";
 
 export async function getStaticProps() {
-  const res = await fetch("https://sandbox.musement.com/api/v3/cities");
+  const res = await fetch('https://sandbox.musement.com/api/v3/cities?offset=0&limit=10&sort_by=weight&without_events=no');
   const data = await res.json();
 
   return {
@@ -20,7 +20,7 @@ export default function CitiesArchive({ cities }) {
         title="città"
         description="Sei indeciso sulla tua prossima destinazione? Sfoglia il catalogo completo delle città e lasciati ispirare da TravelHub!"
       />
-      <CitiesGrid data={cities} />
+      <CitiesGrid big={true} data={cities} />
     </Layout>
   );
 }

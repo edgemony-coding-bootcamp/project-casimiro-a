@@ -1,4 +1,6 @@
 
+riables.$sectionsPadding;
+=======
 @use '../../libs/variables.scss';
 @use '../../libs/mixins.scss';
 
@@ -37,4 +39,5 @@
         @include mixins.flexContainer(row, space-between, flex-start);
         flex-wrap: wrap;
     }
+
 }

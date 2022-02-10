@@ -3,6 +3,7 @@ import styles from './Activities.module.scss'
 import ActivityCard from '../ActivityCard'
 import Link from 'next/link'
 
+
 const Activities = ({ data }) => 
 {
     let activities = [];
@@ -13,8 +14,9 @@ const Activities = ({ data }) =>
     }
 
     return (
+
         <section className={styles.wrapper_activities}>
-            <div className={styles.wrapper_title_button}>
+            {/* <div className={styles.wrapper_title_button}>
                 <div className={styles.wrapper_title}>
                     <h2>Esperienze popolari:</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -22,6 +24,7 @@ const Activities = ({ data }) =>
                 <Link href="/esperienze"><a>Visualizza tutte le esperienze</a></Link>
             </div>
             <div className={styles.wrapper_activities_cards}>
+
                 {
                     activities.map((activity) => 
                         <ActivityCard key={activity.uuid} 
@@ -30,6 +33,7 @@ const Activities = ({ data }) =>
                             text={activity.description}
                             price={activity.retail_price.formatted_value}
                             category={activity.verticals[0]}
+                            activityurl={`esperienze/${activity.uuid}`} 
                         />    
                     )
                 }
@@ -39,3 +43,4 @@ const Activities = ({ data }) =>
 };
 
 export default Activities;
+

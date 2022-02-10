@@ -3,6 +3,7 @@ import styles from './Activitycard.module.scss'
 import Link from 'next/link'
 
 
+
 const colorByCategoryId = {
     2: '#E71D36',
     3: '#FF9F1C',
@@ -38,6 +39,7 @@ const ActivityCard = (props) =>
                     >
                             <a>Scopri di più</a>
                     </Link>
+
                 </div>
             </div>
         </div>

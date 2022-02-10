@@ -13,11 +13,13 @@ export default function Home({ activities, cities })
   console.log(`Activity: ${JSON.stringify(activities, null, 4)}`);
   console.log(`Cities: ${JSON.stringify(cities, null, 4)}`);
   return (
+
     <Layout>
       <Hero />     
       <Activities data={activities} />
       <Cities data={cities} />
     </Layout>
+
   )
 }
 

@@ -1,5 +1,7 @@
 
+
 @import "../../libs/variables.scss";
+@import "../../libs/mixins.scss";
 
 .single_card{
     
@@ -14,6 +16,7 @@
         transform: scale(1.05);
         transition: 0.4s;
     }
+
 
     .single_card_image{
         height: 200px;
@@ -37,12 +40,12 @@
         padding: 30px;
         box-shadow: $shadow;
         border-radius: $cardBorderRadius;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         margin-top: -30px;
         z-index: 1;
         background-color: $white;
+        min-height: 400px;
+        @include flexContainer(column, space-between, space-between);
+        
 
         h3{
             margin-bottom: 10px;
@@ -52,9 +55,7 @@
         }
 
         .single_card_info_price{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            @include flexContainer(row, space-between);
 
             p
             {

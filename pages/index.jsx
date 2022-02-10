@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_URL } from '../libs/variables';
 import Hero from "../components/Hero";
 import Activities from '../components/Activities';
-import Cities from '../components/Cities';
+import CitiesGrid from '../components/CitiesGrid';
 import Layout from '../components/Layouts';
 
 
@@ -12,6 +12,7 @@ export default function Home({ activities, cities })
 
   console.log(`Activity: ${JSON.stringify(activities, null, 4)}`);
   console.log(`Cities: ${JSON.stringify(cities, null, 4)}`);
+  
   return (
     <Layout>
       <Hero />     

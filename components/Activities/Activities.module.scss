@@ -1,6 +1,14 @@
 
-@use '../../libs/variables.scss';
-@use '../../libs/mixins.scss';
+@use "../../libs/variables.scss";
+@use "../../libs/mixins.scss";
+
+.wrapper_activities{
+    padding: variables.$sectionsPadding;
+    @include mixins.flexContainer(row, space-between);
+    flex-wrap: wrap;
+
+
+
 
 
 .wrapper_activities
@@ -31,11 +39,15 @@
         }
     }
 
+}
     .wrapper_activities_cards
     {
         width: 100%;
         padding: 50px 0;
+
         @include mixins.flexContainer(row, space-between, flex-start);
         flex-wrap: wrap;
+
     }
+
 }

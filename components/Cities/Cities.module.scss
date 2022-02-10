@@ -1,40 +1,21 @@
 
+
+
 @use '../../libs/variables.scss';
 @use '../../libs/mixins.scss';
 
-.wrapper_cities
+.wrapper
 {
-    padding: variables.$sectionsPadding;
-    @include mixins.flexContainer(column);
+    display: flex;
+    padding: 100px;
+    justify-content: center;
+    flex-wrap: wrap;
 
-    .wrapper_title_button
+    a
     {
-        @include mixins.flexContainer(row, space-between);
-        width: 100%;
-
-        .wrapper_title h2
-        {
-            margin-bottom: 20px;
-        }
-
-        a
-        {
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding: 10px 20px;
-            border-radius: 10px;
-            color: variables.$white;
-            background-color: variables.$secondary;
-            max-width: 160px;
-            text-align: right;
-        }
+        margin: 15px;
     }
+    
+   
 
-    .wrapper_cities_cards
-    {
-        width: 100%;
-        padding: 50px 0;
-        @include mixins.flexContainer(row, space-between, flex-start);
-        flex-wrap: wrap;
-    }
 }

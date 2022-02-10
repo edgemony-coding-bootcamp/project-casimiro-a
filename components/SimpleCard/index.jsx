@@ -21,6 +21,6 @@ const SimpleCard = (props) =>
             <p>{text}</p>
         </div>
     );
-};
+}; 
 
 export default SimpleCard;

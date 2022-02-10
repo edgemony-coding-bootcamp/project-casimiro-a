@@ -1,3 +1,4 @@
+
 import styles from './Activities.module.scss'
 import ActivityCard from '../ActivityCard'
 

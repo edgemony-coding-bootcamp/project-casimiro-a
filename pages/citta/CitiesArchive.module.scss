@@ -1,0 +1,21 @@
+@import '../../libs/variables.scss';
+.container{
+    background: $secondary;
+    //height: 110vh;
+    
+
+    main{
+
+        padding: 120px 10px 10px 10px;
+        display: flex;
+        justify-content:center;
+        display: flex;
+        flex-wrap: wrap;
+        a{
+            //border: 1px solid;
+            padding: 10px;
+        }
+
+
+    }
+}

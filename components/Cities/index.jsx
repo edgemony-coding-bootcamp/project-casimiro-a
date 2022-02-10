@@ -2,7 +2,6 @@
 import SimpleCard from '../SimpleCard';
 import styles from './Cities.module.scss';
 
-
 const Cities = ({ data }) =>
 {
     let cities = data || [];

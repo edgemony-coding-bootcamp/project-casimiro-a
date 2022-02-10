@@ -2,8 +2,7 @@
 @use '../../libs/variables.scss';
 @use '../../libs/mixins.scss';
 
-
-.wrapper_activities
+.wrapper_cities
 {
     padding: variables.$sectionsPadding;
     @include mixins.flexContainer(column);
@@ -25,13 +24,13 @@
             padding: 10px 20px;
             border-radius: 10px;
             color: variables.$white;
-            background-color: variables.$primary;
+            background-color: variables.$secondary;
             max-width: 160px;
             text-align: right;
         }
     }
 
-    .wrapper_activities_cards
+    .wrapper_cities_cards
     {
         width: 100%;
         padding: 50px 0;

@@ -59,4 +59,33 @@
             }
         }
     }
-}   
+}  
+
+.hamburger_menu{
+    height: 50px;
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+    .wrapper_header{
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px 20px;
+    img{
+        width: 150px;
+        height: 40px;
+    }
+    nav ul {
+        justify-content: space-around;
+        font-size: 8px;
+    }
+    .search{
+
+        .inputSearch:focus{
+        transform: translateX(50%);
+            }
+        }
+    } .hamburger_menu{
+        display: block;
+    }
+}

@@ -1,11 +1,10 @@
 
 import axios from 'axios';
 import { API_URL } from '../libs/variables';
-import Header from '../components/Header'
 import Hero from "../components/Hero";
 import Activities from '../components/Activities';
 import Cities from '../components/Cities';
-import Footer from '../components/Footer'
+import Layout from '../components/Layouts';
 
 
 export default function Home({ activities, cities }) 
@@ -14,13 +13,11 @@ export default function Home({ activities, cities })
   console.log(`Activity: ${JSON.stringify(activities, null, 4)}`);
   console.log(`Cities: ${JSON.stringify(cities, null, 4)}`);
   return (
-    <>   
-      <Header />
+    <Layout>
       <Hero />     
       <Activities data={activities} />
       <Cities data={cities} />
-      <Footer />
-    </>
+    </Layout>
   )
 }
 

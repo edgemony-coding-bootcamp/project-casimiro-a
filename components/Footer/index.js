@@ -22,7 +22,7 @@ export default function Footer() {
             <div className={styles.menùWrapper}>
                 <h3>Menù</h3>
                 <ul>
-                <Link href="/città">   
+                <Link href="/citta">   
                     <a><li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Città</li></a>
                 </Link>
                 <Link href="/esperienze"> 

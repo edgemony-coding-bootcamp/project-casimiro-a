@@ -16,7 +16,7 @@ export default function City() {
     return (
         <>
             <Header />
-            <HeroIntern cityName={data.name} cityDescription={data.content} cityImage={data.cover_image_url}/>
+            <HeroIntern title={data.name} description={data.content} bgImage={data.cover_image_url}/>
             <Activities />
             <CitiesGrid />
             <Footer />

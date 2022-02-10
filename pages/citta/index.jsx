@@ -1,6 +1,6 @@
 import Layout from "../../components/Layouts";
 import HeroIntern from "../../components/HeroIntern";
-import CitiesGrid from "../../components/CitiesGrid";
+import Cities from "../../components/Cities";
 
 export async function getStaticProps() {
   const res = await fetch("https://sandbox.musement.com/api/v3/cities");
@@ -20,7 +20,7 @@ export default function CitiesArchive({ cities }) {
         title="città"
         description="Sei indeciso sulla tua prossima esperienza? Sfoglia il catalogo completo delle attività e lasciati ispirare da TravelHub!"
       />
-      <CitiesGrid data={cities} />
+      <Cities data={cities} />
     </Layout>
   );
 }

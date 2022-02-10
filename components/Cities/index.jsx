@@ -1,10 +1,10 @@
 
 import SimpleCard from '../SimpleCard';
-import styles from './CitiesGrid.module.scss';
+import styles from './Cities.module.scss';
 import Link from 'next/link';
 
 
-const CitiesGrid = (props) =>
+const Cities = (props) =>
 {
     const cities = props.data || [];
 
@@ -25,4 +25,4 @@ const CitiesGrid = (props) =>
 };
 
 
-export default CitiesGrid;
+export default Cities;

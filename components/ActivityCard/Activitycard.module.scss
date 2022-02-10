@@ -1,10 +1,19 @@
+
 @import "../../libs/variables.scss";
 
 .single_card{
     
     box-shadow: $shadow;
     border-radius: $cardBorderRadius;
-    max-width: 300px;
+    max-width: 19vw;
+
+    transition: 0.4s;
+    
+    &:hover
+    {
+        transform: scale(1.05);
+        transition: 0.4s;
+    }
 
     .single_card_image{
         height: 200px;
@@ -20,7 +29,7 @@
             box-shadow: $shadow;
             color: $white;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 10px;
         }
     }
 
@@ -47,11 +56,16 @@
             justify-content: space-between;
             align-items: center;
 
-            p {
-                font-size: 1.6rem;
+            p
+            {
+                font-size: 1.4em;
+                margin: 0;
                 font-weight: 600;
             }
-            a{
+
+            a
+            {
+                font-size: 0.8rem;
                 font-weight: 600;
             }
         }

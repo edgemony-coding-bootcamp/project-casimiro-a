@@ -1,9 +1,0 @@
-
-@use '../../libs/mixins.scss';
-
-.wrapper
-{
-    width: 100%;
-    @include mixins.flexContainer(row, space-around, center, 30px);
-    flex-wrap: wrap;
-}

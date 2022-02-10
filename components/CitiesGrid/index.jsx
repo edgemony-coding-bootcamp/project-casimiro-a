@@ -15,7 +15,7 @@ const CitiesGrid = (props) =>
                { cities.map((city, index) => 
                 <Link key={index} href={`citta/${city.id}`}>
                     <a>
-                    <SimpleCard  text={city.name} image={city.cover_image_url} />
+                    <SimpleCard big={props.big} text={city.name} image={city.cover_image_url} />
                     </a>
                 </Link>
                 )}

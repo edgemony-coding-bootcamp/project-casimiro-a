@@ -1,11 +1,43 @@
 
-@use '../../libs/mixins.scss';
+riables.$sectionsPadding;
+=======
 @use '../../libs/variables.scss';
+@use '../../libs/mixins.scss';
 
-.wrapper
+.wrapper_cities
 {
-    width: 100%;
-    @include mixins.flexContainer(row, space-around, center, 30px);
-    flex-wrap: wrap;
     padding: variables.$sectionsPadding;
+    @include mixins.flexContainer(column);
+
+    .wrapper_title_button
+    {
+        @include mixins.flexContainer(row, space-between);
+        width: 100%;
+
+        .wrapper_title h2
+        {
+            margin-bottom: 20px;
+        }
+
+        a
+        {
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: variables.$white;
+            background-color: variables.$secondary;
+            max-width: 160px;
+            text-align: right;
+        }
+    }
+
+    .wrapper_cities_cards
+    {
+        width: 100%;
+        padding: 50px 0;
+        @include mixins.flexContainer(row, space-between, flex-start);
+        flex-wrap: wrap;
+    }
+
 }

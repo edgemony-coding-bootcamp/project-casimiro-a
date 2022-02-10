@@ -1,12 +1,21 @@
-@use "../../libs/variables.scss";
-@use "../../libs/mixins.scss";
+<
+
+@import "../../libs/variables.scss";
 
 .single_card{
     
-    box-shadow: variables.$shadow;
-    border-radius: variables.$cardBorderRadius;
-    max-width: 300px;
+    box-shadow: $shadow;
+    border-radius: $cardBorderRadius;
+    max-width: 19vw;
+
+    transition: 0.4s;
     
+    &:hover
+    {
+        transform: scale(1.05);
+        transition: 0.4s;
+    }
+
 
     .single_card_image{
         height: 200px;
@@ -22,7 +31,7 @@
             box-shadow: variables.$shadow;
             color: variables.$white;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 10px;
         }
     }
 
@@ -47,11 +56,16 @@
         .single_card_info_price{
             @include mixins.flexContainer(row, space-between);
 
-            p {
-                font-size: 1.6rem;
+            p
+            {
+                font-size: 1.4em;
+                margin: 0;
                 font-weight: 600;
             }
-            a{
+
+            a
+            {
+                font-size: 0.8rem;
                 font-weight: 600;
             }
         }

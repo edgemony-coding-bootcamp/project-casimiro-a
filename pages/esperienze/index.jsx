@@ -15,6 +15,7 @@ export async function getStaticProps() {
 
 export default function ExperiencesArchive({ activities }) {
     return(
+
         <Layout>
             <HeroIntern
                 title="Esperienze"
@@ -23,4 +24,5 @@ export default function ExperiencesArchive({ activities }) {
             <Activities data={activities} />
         </Layout>
     );
+
 }

@@ -1,12 +1,20 @@
+
 import styles from './Activities.module.scss'
 import ActivityCard from '../ActivityCard'
 import Link from 'next/link'
 
-export default function Activities(props) {
 
-    const activities = props.data || [];
+const Activities = ({ data }) => 
+{
+    let activities = [];
+    
+    if(data)
+    {
+        activities = data.data.filter((value) => value.retail_price.value > 0);
+    }
 
-    return(
+    return (
+
         <section className={styles.wrapper_activities}>
             {/* <div className={styles.wrapper_title_button}>
                 <div className={styles.wrapper_title}>
@@ -16,25 +24,23 @@ export default function Activities(props) {
                 <Link href="/esperienze"><a>Visualizza tutte le esperienze</a></Link>
             </div>
             <div className={styles.wrapper_activities_cards}>
-                <ActivityCard />
-            </div> */}
-            {activities.map((activity, index) =>
-                <Link href={`esperienze/${activity.uuid}`}>
-                    <a>
-                        <ActivityCard 
-                        key={index}
-                        category={activity.verticals[0].name} 
-                        activityname={activity.title}
-                        activitydesc={activity.description}
-                        activityimage={activity.cover_image_url}
-                        activityprice={activity.retail_price.formatted_value}
-                        activityurl={`esperienze/${activity.uuid}`}    
-                        />
-                    </a>
-                </Link>
-            )}
-            
 
+                {
+                    activities.map((activity) => 
+                        <ActivityCard key={activity.uuid} 
+                            image={activity.cover_image_url} 
+                            title={activity.title}
+                            text={activity.description}
+                            price={activity.retail_price.formatted_value}
+                            category={activity.verticals[0]}
+                            activityurl={`esperienze/${activity.uuid}`} 
+                        />    
+                    )
+                }
+            </div>
         </section>
     );
 };
+
+export default Activities;
+

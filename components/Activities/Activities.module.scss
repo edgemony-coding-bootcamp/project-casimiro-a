@@ -1,3 +1,4 @@
+
 @use "../../libs/variables.scss";
 @use "../../libs/mixins.scss";
 
@@ -6,18 +7,29 @@
     @include mixins.flexContainer(row, space-between);
     flex-wrap: wrap;
 
-    .wrapper_title_button{
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        align-items: center;
 
-        .wrapper_title h2{
+
+
+
+.wrapper_activities
+{
+    padding: variables.$sectionsPadding;
+    @include mixins.flexContainer(column);
+
+    .wrapper_title_button
+    {
+        @include mixins.flexContainer(row, space-between);
+        width: 100%;
+
+        .wrapper_title h2
+        {
             margin-bottom: 20px;
         }
 
-        a {
+        a
+        {
             font-weight: 600;
+            font-size: 0.9rem;
             padding: 10px 20px;
             border-radius: 10px;
             color: variables.$white;
@@ -26,11 +38,14 @@
             text-align: right;
         }
     }
-    .wrapper_activities_cards{
+
+    .wrapper_activities_cards
+    {
+        width: 100%;
         padding: 50px 0;
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: variables.$cardsColumnGap;
-        
+
+        @include mixins.flexContainer(row, space-between, flex-start);
+        flex-wrap: wrap;
+
     }
 }

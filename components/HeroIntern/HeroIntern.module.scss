@@ -1,8 +1,9 @@
+
 @use "../../libs/variables.scss";
 @use "../../libs/mixins.scss";
 
 .wrapper_hero_intern{
-    @include mixins.flexContainer(column, center, start);
+    @include mixins.flexContainer(column, center, flex-start);
     width: 100%;
     max-height: 120vh;
     padding: 150px 100px;

@@ -21,7 +21,15 @@ export default function Activities(props) {
             {activities.map((activity, index) =>
                 <Link href={`esperienze/${activity.uuid}`}>
                     <a>
-                        <ActivityCard key={index} category={activity.verticals[1].name}/>
+                        <ActivityCard 
+                        key={index}
+                        category={activity.verticals[0].name} 
+                        activityname={activity.title}
+                        activitydesc={activity.description}
+                        activityimage={activity.cover_image_url}
+                        activityprice={activity.retail_price.formatted_value}
+                        activityurl={`esperienze/${activity.uuid}`}    
+                        />
                     </a>
                 </Link>
             )}

@@ -3,12 +3,12 @@ import HeroIntern from "../../components/HeroIntern";
 import Activities from "../../components/Activities";
 
 export async function getStaticProps() {
-    const res = await fetch("https://sandbox.musement.com/api/v3/activities");
+    const res = await fetch("https://sandbox.musement.com/api/v3/activities", { headers: { 'Accept-Language': 'it-IT' } });
     const data = await res.json();
   
     return {
       props: {
-        activities: data,
+        activities: data.data,
       },
     };
   }

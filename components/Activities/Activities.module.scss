@@ -1,9 +1,10 @@
-@import "../../libs/variables.scss";
+@use "../../libs/variables.scss";
+@use "../../libs/mixins.scss";
 
 .wrapper_activities{
-    padding: $sectionsPadding;
-    display: flex;
-    flex-direction: column;
+    padding: variables.$sectionsPadding;
+    @include mixins.flexContainer(row, space-between);
+    flex-wrap: wrap;
 
     .wrapper_title_button{
         display: flex;
@@ -19,8 +20,8 @@
             font-weight: 600;
             padding: 10px 20px;
             border-radius: 10px;
-            color: $white;
-            background-color: $primary;
+            color: variables.$white;
+            background-color: variables.$primary;
             max-width: 160px;
             text-align: right;
         }
@@ -29,7 +30,7 @@
         padding: 50px 0;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: $cardsColumnGap;
+        gap: variables.$cardsColumnGap;
         
     }
 }

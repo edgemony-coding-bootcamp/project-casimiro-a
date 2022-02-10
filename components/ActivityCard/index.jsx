@@ -6,12 +6,13 @@ export default function ActivityCard(props) {
     const category = props.category || "Category";
     const activityname = props.activityname || "Attività";
     const activitydesc = props.activitydesc || "Descrizione attività";
+    const activityimage = props.activityimage || "https://images.unsplash.com/photo-1523867904486-8153c8afb94f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     const activityprice = props.activityprice || "€ XX,XX";
     const activityurl = props.activityurl || "#";
-    
+
     return(
         <div className={styles.single_card}>
-            <div className={styles.single_card_image} style={{backgroundImage: `url(${props.activityimage || "https://images.unsplash.com/photo-1523867904486-8153c8afb94f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"})`}}>
+            <div className={styles.single_card_image} style={{backgroundImage: `url(${activityimage})`}}>
                 <p style={{backgroundColor:`${categorycolor}`}}>
                     {category}
                 </p>

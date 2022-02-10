@@ -1,4 +1,4 @@
-import styles from './SingleCity.module.scss'
+import styles from './SingleExperience.module.scss'
 import Header from '../../../components/Header'
 import HeroIntern from "../../../components/HeroIntern";
 import Activities from '../../../components/Activities';

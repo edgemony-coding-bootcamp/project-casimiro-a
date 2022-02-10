@@ -10,8 +10,8 @@ const CitiesGrid = (props) =>
     return (
         <div className={styles.wrapper}>
             {
-                cities.map((city) => 
-                    <SimpleCard text={city.name} />
+                cities.map((city, index) => 
+                    <SimpleCard key={index} text={city.name} />
                 )
             }
         </div>

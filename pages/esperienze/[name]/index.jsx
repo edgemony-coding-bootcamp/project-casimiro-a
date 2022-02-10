@@ -1,10 +1,10 @@
-import styles from './SingleCity.module.scss'
+import styles from './SingleExperience.module.scss'
 import Header from '../../../components/Header'
 import HeroIntern from "../../../components/HeroIntern";
 import Activities from '../../../components/Activities';
 import CitiesGrid from '../../../components/CitiesGrid';
 import Footer from '../../../components/Footer'
-
+import Layout from '../../../components/Layouts';
 //dati per esempio
 const data = {
     name: "Amsterdam",
@@ -15,12 +15,16 @@ const data = {
 export default function City() {
     return (
         <>
+<<<<<<< HEAD:pages/citta/[name]/index.jsx
             <Header />
             <HeroIntern title={data.name} description={data.content} bgImage={data.cover_image_url}/>
+=======
+        <Layout>
+            <HeroIntern cityName={data.name} cityDescription={data.content} cityImage={data.cover_image_url}/>
+>>>>>>> e2ebb0dadd0cb793d9ea86282ef2db4a41a79b08:pages/esperienze/[name]/index.jsx
             <Activities />
             <CitiesGrid />
-            <Footer />
-
+        </Layout>
         </>
     )
 }

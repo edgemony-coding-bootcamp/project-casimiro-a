@@ -1,15 +1,16 @@
-import Header from '../../components/Header'
+
+import Layout from "../../components/Layouts"
 import HeroIntern from "../../components/HeroIntern";
 import CitiesGrid from '../../components/CitiesGrid';
-import Footer from '../../components/Footer'
+
 
 export default function CitiesArchive() {
     return(
-        <>
-            <Header />
+        <Layout>
+            
             <HeroIntern title="città" description="Sei indeciso sulla tua prossima destinazione? Sfoglia il catalogo completo delle città e lasciati ispirare da TravelHub!"/>
             <CitiesGrid data={[{},{},{},{},{},{}]}/>
-            <Footer />
-        </>
+            
+        </Layout>
     )
 }

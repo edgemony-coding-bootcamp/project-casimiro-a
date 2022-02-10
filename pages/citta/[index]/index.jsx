@@ -19,9 +19,9 @@ export default function City({ city }) {
         <>
         <Layout>
             <HeroIntern 
-                cityName={city.name} 
-                cityDescription={city.content} 
-                cityImage={city.cover_image_url}/>
+                title={city.name} 
+                description={city.content} 
+                bgImage={city.cover_image_url}/>
             <Activities />
             <CitiesGrid />
         </Layout>

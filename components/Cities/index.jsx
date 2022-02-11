@@ -1,22 +1,25 @@
-
+import SectionTitle from '../SectionTitle';
 import SimpleCard from '../SimpleCard';
 import styles from './Cities.module.scss';
 import Link from 'next/link';
 
 
-const Cities = ({ data }) =>
+const Cities = ({ data, showTitle = true }) =>
 {
     let cities = data || [];
 
     return (
         <section className={styles.wrapper_cities}>
-            <div className={styles.wrapper_title_button}>
-                <div className={styles.wrapper_title}>
-                    <h2>Città più visitate:</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                </div>
-                <a href="#">Visualizza tutte le città</a>
-            </div>
+            { showTitle &&
+                <SectionTitle
+                 
+                title = "Città più visitate:" 
+                description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                path = '/città'
+                btntext = 'Visualizza tutte le città'
+                btncolor = '#FF9F1C'
+                />
+            }
             <div className={styles.wrapper_cities_cards}>
                 {
                     cities.map((city) => 

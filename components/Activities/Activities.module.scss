@@ -8,29 +8,6 @@
     padding: variables.$sectionsPadding;
     @include mixins.flexContainer(column);
 
-    .wrapper_title_button
-    {
-        @include mixins.flexContainer(row, space-between);
-        width: 100%;
-
-        .wrapper_title h2
-        {
-            margin-bottom: 20px;
-        }
-
-        a
-        {
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding: 10px 20px;
-            border-radius: 10px;
-            color: variables.$white;
-            background-color: variables.$primary;
-            max-width: 160px;
-            text-align: right;
-        }
-    }
-
     .wrapper_activities_cards
     {
         width: 100%;

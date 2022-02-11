@@ -3,12 +3,14 @@ import Link from "next/link"
 import { useEffect, useState } from 'react'
 import { faBars, faSearch} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import SearchBar from '../SearchBar'
+import { useSelector } from 'react-redux'
 
 
 
 
 export default function NavBar() {
+    const isShow = useSelector(state => state.showResult )
 
     const [toggleMenu, setToggleMenu] = useState(false)
     
@@ -54,7 +56,7 @@ export default function NavBar() {
     
     return (
 
-        <div className={styles.wrapper_header} style={ isonTop ? {background: ""} :{background: "#011627"} }>
+        <div className={styles.wrapper_header} style={ !isonTop || isShow ? {background: "#011627"} :{background: ""} }>
 
             
             <div >
@@ -83,15 +85,11 @@ export default function NavBar() {
                                 <a>About</a>
                             </Link>
                         </li>
+                        <SearchBar />
                     </ul>
                     )}
-                    <button onClick={toggleNav} className={styles.btn}><FontAwesomeIcon className={styles.angleIcons} icon={faBars} /></button>
-                
-                    <div className={styles.search}>
-                        <input type="text" placeholder="Type to Search..." className={styles.inputSearch}></input>
-                    </div>
                     
-                    <Link href="/"><a><FontAwesomeIcon className={styles.searchIcons} icon={faSearch} /></a></Link>
+                
                 </nav>   
             
                        

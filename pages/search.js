@@ -1,16 +1,13 @@
-import { SearchBar } from "../components/SearchBar";
-import  NavBar  from "../components/NavBar";
+import  SearchBar  from "../components/SearchBar";
 
-import Hero from "../components/Hero"
 
 export default function Search() {
     return (  
-        <>             
-            <NavBar/>
-            <Hero/> 
+        <>      
+        <div className="wrap">
+            <SearchBar />
+        </div>       
             
         </>
     )
 };
-
-{/*<SearchBar/>*/}

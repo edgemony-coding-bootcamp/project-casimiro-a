@@ -14,9 +14,9 @@ export default function Home({ activities, cities })
   console.log(`Cities: ${JSON.stringify(cities, null, 4)}`);
   return (
     <Layout>
-      <Hero />     
+      <Hero data={cities} />     
       <Activities data={activities} />
-      <Cities data={cities} />
+      <Cities data={cities.slice(0,5)} />
     </Layout>
   )
 }
@@ -36,7 +36,7 @@ export const getStaticProps = async () =>
     );
 
     const citiesRes = await axios(
-      `${API_URL}cities?limit=5`,
+      `${API_URL}cities?limit=7`,
       {
         headers: 
         {

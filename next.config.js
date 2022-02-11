@@ -3,5 +3,6 @@ module.exports = {
   
   images: {
     domains: ["images-sandbox.musement.com","images.unsplash.com"]
-  }
+  },
+  
 }

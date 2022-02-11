@@ -19,6 +19,13 @@ export default function SearchBar() {
   const data = useSelector((state) => state.searchData);
   const isShow = useSelector((state) => state.showResult);
 
+  //console.log(router)
+
+  function handleRouting(res){
+    router.pathname != "/esperienze/[name]" ? router.push(`esperienze/${res.uuid}`)
+    : router.push(`${res.uuid}`)
+  }
+
   function hide() {
     dispatch(hideResult);
     
@@ -93,7 +100,7 @@ export default function SearchBar() {
       {data.data && (
         <div className={style.result} style={resultStyle} onMouseLeave={hide} >
           {data.data.map((res) => (
-            <div className={style.info} key={res.uuid} onClick={() => router.push(`esperienze/${res.uuid}`)}>
+            <div className={style.info} key={res.uuid} onClick={() => handleRouting(res)}>
               <div className={style.img}>
                 <Image 
                   src={res.cover_image_url}

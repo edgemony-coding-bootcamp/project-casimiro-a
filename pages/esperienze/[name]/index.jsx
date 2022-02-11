@@ -2,7 +2,7 @@ import styles from './SingleExperience.module.scss'
 
 import HeroIntern from "../../../components/HeroIntern";
 import Activities from '../../../components/Activities';
-import CitiesGrid from '../../../components/CitiesGrid';
+import Cities from '../../../components/Cities';
 
 import Layout from '../../../components/Layouts';
 //dati per esempio
@@ -17,9 +17,12 @@ export default function City() {
     return (
         <>
         <Layout>
-            <HeroIntern title={data.name} description={data.content} bgImage={data.cover_image_url}/>
-            <Activities />
-            <CitiesGrid />
+            <HeroIntern 
+                title={data.name} 
+                description={data.content} 
+                bgImage={data.cover_image_url}                    
+            />
+            <Cities />
         </Layout>
         </>
     )

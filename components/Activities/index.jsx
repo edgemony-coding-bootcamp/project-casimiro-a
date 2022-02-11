@@ -27,13 +27,19 @@ const Activities = ({ data, showTitle = true }) =>
             <div className={styles.wrapper_activities_cards}>
                 {
                     activities.map((activity) => 
-                        <ActivityCard key={activity.uuid} 
-                            image={activity.cover_image_url} 
-                            title={activity.title}
-                            text={activity.description}
-                            price={activity.retail_price.formatted_value}
-                            category={activity.verticals[0]}
-                        />    
+                        <Link href={`esperienze/${activity.uuid}`}>
+                            <a>
+                                <ActivityCard 
+                                    key={activity.uuid} 
+                                    image={activity.cover_image_url} 
+                                    title={activity.title}
+                                    text={activity.description}
+                                    price={activity.retail_price.formatted_value}
+                                    category={activity.verticals[0]}
+                                    url={`esperienze/${activity.uuid}`}
+                                />
+                            </a>
+                        </Link>    
                     )
                 }
             </div>

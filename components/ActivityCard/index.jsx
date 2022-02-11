@@ -33,10 +33,8 @@ const ActivityCard = (props) =>
                 <p>{text}</p>
                 <div className={styles.single_card_info_price}>
                     <p>{price}</p>
-                    <Link href={url} 
-                        style={{color: colorByCategoryId[props.category.id]}}
-                    >
-                            <a>Scopri di più</a>
+                    <Link href={url}>
+                            <a style={{color: colorByCategoryId[props.category.id]}}>Scopri di più</a>
                     </Link>
                 </div>
             </div>

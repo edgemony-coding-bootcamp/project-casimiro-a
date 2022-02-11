@@ -14,3 +14,22 @@
 {
     background: linear-gradient(to right, rgba($color, $opacity), rgba($color, $opacity)), url($url);
 }
+
+@mixin buttonCart()
+{
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: variables.$white;
+    background-color: variables.$primary;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: 0.4s ease;
+
+    &:hover{
+        color:variables.$primary;
+        background-color: variables.$white;
+    }
+}

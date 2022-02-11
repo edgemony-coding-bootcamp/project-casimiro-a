@@ -51,9 +51,24 @@ export default function Footer() {
         </div>
        
         <div className={styles.AuthorsWrapper}>
-            <h3>Made with <FontAwesomeIcon className={styles.heart} icon={faHeart} /> & Next.JS</h3>
-            <p>by Agnese, Dario, Davide, Federica & Roberta</p>
-            
+            <h3>Made with <FontAwesomeIcon className={styles.heart} icon={faHeart} /> & Next.JS by</h3>
+            <p>
+            <Link href="https://www.linkedin.com/in/agnese-spinella/">
+                <a target="_blank">Agnese</a>
+            </Link>
+            <Link href="https://www.linkedin.com/in/dario-castiglione/">
+                <a target="_blank">Dario</a>
+            </Link>
+            <Link href="https://www.linkedin.com/in/davide-missiato/">
+                <a target="_blank">Davide</a>
+            </Link>
+            <Link href="https://www.linkedin.com/in/federica-santoro-/">
+                <a target="_blank">Federica</a>
+            </Link>
+            <Link href="https://www.linkedin.com/in/roberta-pennisi/">
+                <a target="_blank">Roberta</a>
+            </Link>
+            </p>
         </div>
      
     </div>    

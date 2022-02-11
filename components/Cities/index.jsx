@@ -29,7 +29,8 @@ const Cities = ({ data, showTitle = true, exceptId = 0 }) =>
                     cities.map((city) => 
                     <Link key={city.id} href={`/citta/${city.id}`}>
                        <a>
-                        <SimpleCard text={city.name}
+                        <SimpleCard 
+                            text={city.name}
                             image={city.cover_image_url}
                         />
                        </a>

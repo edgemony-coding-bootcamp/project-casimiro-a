@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 
 const colorByCategoryId = {
+    1: '#011627',
     2: '#E71D36',
     3: '#FF9F1C',
     6: '#2EC4B6'

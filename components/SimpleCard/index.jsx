@@ -15,6 +15,7 @@ const SimpleCard = (props) =>
         >
             <Image 
                 src={image}
+                alt={text}
                 layout="fill"
                 quality={2}
             />

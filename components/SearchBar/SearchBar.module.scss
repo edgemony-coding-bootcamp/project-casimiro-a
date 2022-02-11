@@ -1,21 +1,70 @@
-@use "./../../libs/variables.scss";
-@use "./../../libs/mixins.scss";
+@import "./../../libs/variables.scss";
+@import "./../../libs/mixins.scss";
 .result{
     height: 500px;
     width: 400px;
-    border: 2px solid #1b1b1b;
     position: absolute;
-    background: #fff;
+    background: #011627;
     top: 92px;
     display: block;
     transition: all 1s;
     overflow-x: hidden;
     right: 50px;
+    border-bottom: 4px solid $black;
+    box-shadow: $shadow;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        transition: all 0.35s ease;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #000000;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #8f8f8f;
+    }
+
     cursor: pointer;
     .info{
-        border: 1px solid #cacaca;
         padding: 5px;
         margin: 5px;
+        display: flex;
+        padding-bottom: 10px;
+       
+    
+        
+        .img{
+
+            
+            height: 150px;
+            min-width: 150px;
+            border-radius: 15px;
+            box-shadow: $shadow;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+            }
+        }
+        .text{
+            padding: 10px;
+            color: $primary;
+            p{
+                margin-top: 5px;
+                color: $quaternary;
+            }
+        }
+        
     }
 }
 
@@ -51,51 +100,3 @@
     }
 }
 
-@keyframes disappear{
-    0%{
-        display: block;
-        opacity: 1;
-    }
-
-    90%{
-        display: none;
-    }
-
-    100%{
-        opacity: 0;
-    }
-}
-@keyframes appear{
-    0%{
-        display: none;
-        opacity: 0;
-    }
-
-    100%{
-        display: block;
-        opacity: 1;
-    }
-}
-
-@keyframes appearFromUp{
-    0%{
-        display: none;
-        height: 0px;
-    }
-
-    100%{
-        display: block;
-        height: 150px;
-    }
-}
-@keyframes disappearUp{
-    0%{
-        display: block;
-        height: 150px;
-    }
-
-    100%{
-        display: none;
-        height: 0px;
-    }
-}

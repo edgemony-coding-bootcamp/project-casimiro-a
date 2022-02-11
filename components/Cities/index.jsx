@@ -23,9 +23,9 @@ const Cities = ({ data, showTitle = true }) =>
             <div className={styles.wrapper_cities_cards}>
                 {
                     cities.map((city) => 
-                    <Link href={`citta/${city.id}`}>
+                    <Link href={`citta/${city.id}`} key={city.uuid}>
                        <a>
-                        <SimpleCard key={city.uuid}
+                        <SimpleCard 
                             text={city.name}
                             image={city.cover_image_url}
                         />

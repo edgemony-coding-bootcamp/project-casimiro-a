@@ -1,6 +1,7 @@
 
 import SimpleCard from '../SimpleCard';
 import styles from './Cities.module.scss';
+import Link from 'next/link';
 
 
 const Cities = ({ data }) =>
@@ -19,10 +20,14 @@ const Cities = ({ data }) =>
             <div className={styles.wrapper_cities_cards}>
                 {
                     cities.map((city) => 
+                    <Link href={`citta/${city.id}`}>
+                       <a>
                         <SimpleCard key={city.uuid}
                             text={city.name}
                             image={city.cover_image_url}
                         />
+                       </a>
+                    </Link>
                     )
                 }
             </div>

@@ -1,7 +1,7 @@
 import styles from "./SingleCity.module.scss";
 import HeroIntern from "../../../components/HeroIntern";
 import Activities from "../../../components/Activities";
-import CitiesGrid from "../../../components/CitiesGrid";
+import Cities from "../../../components/Cities";
 import { useRouter } from "next/router";
 import Layout from "../../../components/Layouts";
 
@@ -21,7 +21,7 @@ export default function City({ city }) {
           bgImage={city.cover_image_url}
         />
         <Activities />
-        <CitiesGrid />
+        <Cities />
       </Layout>
     </>
   );

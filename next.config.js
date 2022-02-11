@@ -1,8 +1,9 @@
 module.exports = {
   reactStrictMode: true,
-  
+
   images: {
-    domains: ["images-sandbox.musement.com","images.unsplash.com"]
+    loader: "akamai",
+    domains: ["images-sandbox.musement.com"],
+    path: "",
   },
-  
-}
+}; 

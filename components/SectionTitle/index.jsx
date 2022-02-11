@@ -6,8 +6,7 @@ export default function SectionTitle({
     description = "Lorem Ipsum",
     path = '/',
     btntext = 'Vai a',
-    btncolor = '#000'
-})
+    btncolor = '#000'})
 {
     
     return(
@@ -16,7 +15,9 @@ export default function SectionTitle({
                     <h2>{title}</h2>
                     <p>{description}</p>
                 </div>                
-                <Link href={path}><a style={{backgroundColor:`${btncolor}`}}>{btntext}</a></Link>
+                <Link href={path}>
+                    <a style={{backgroundColor:`${btncolor}`}}>{btntext}</a>
+                </Link>
         </div>
     )
 }

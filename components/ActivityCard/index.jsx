@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 
 const colorByCategoryId = {
+    1: '#011627',
     2: '#E71D36',
     3: '#FF9F1C',
     6: '#2EC4B6'
@@ -32,8 +33,8 @@ const ActivityCard = (props) =>
                 <p>{text}</p>
                 <div className={styles.single_card_info_price}>
                     <p>{price}</p>
-                    <Link href={url} >
-                            <a style={{color: colorByCategoryId[props.category.id]}}>Scopri di più </a>
+                    <Link href={url}>
+                            <a style={{color: colorByCategoryId[props.category.id]}}>Scopri di più</a>
                     </Link>
                 </div>
             </div>

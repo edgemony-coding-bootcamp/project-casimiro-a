@@ -11,8 +11,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SimpleCard from "../SimpleCard";
 
-export default function CarouselHero({ data }) {
-
+export default function CarouselHero({ data }) 
+{
   const dispatch = useDispatch();
   const firstInst = useSelector((state) => state.carouselFirstInst);
   const secondInst = useSelector((state) => state.carouselSecondInst);
@@ -42,7 +42,7 @@ export default function CarouselHero({ data }) {
         >
           {data.map((slide, index) => (
             <SwiperSlide key={index}>
-              <Link href={`citta/${slide.id}`}>
+              <Link href={`/citta/${slide.id}`}>
                 <a>
                   <SimpleCard
                     big={true}

@@ -3,7 +3,7 @@ import { faSearch, faTimesSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-
+import Image from "next/image";
 import {
   SearchBarAppear,
   SearchBarDisappear,
@@ -21,7 +21,7 @@ export default function SearchBar() {
 
   function hide() {
     dispatch(hideResult);
-    console.log(isShow);
+    
   }
 
   function handleSearch() {
@@ -94,8 +94,17 @@ export default function SearchBar() {
         <div className={style.result} style={resultStyle} onMouseLeave={hide} >
           {data.data.map((res) => (
             <div className={style.info} key={res.uuid} onClick={() => router.push(`esperienze/${res.uuid}`)}>
+              <div className={style.img}>
+                <Image 
+                  src={res.cover_image_url}
+                  width={150}
+                  height={150}
+                />
+              </div>
+              <div className={style.text}>
               <h3>{res.city.name}</h3>
               <p>{res.title}</p>
+              </div>
             </div>
           ))}
         </div>

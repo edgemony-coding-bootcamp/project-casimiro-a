@@ -12,7 +12,7 @@ import "swiper/css/pagination";
 import SimpleCard from "../SimpleCard";
 
 export default function CarouselHero({ data }) {
-  console.log(data);
+
   const dispatch = useDispatch();
   const firstInst = useSelector((state) => state.carouselFirstInst);
   const secondInst = useSelector((state) => state.carouselSecondInst);

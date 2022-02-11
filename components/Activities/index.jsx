@@ -2,8 +2,9 @@
 import styles from './Activities.module.scss'
 import ActivityCard from '../ActivityCard'
 import Link from 'next/link'
+import SectionTitle from '../SectionTitle';
 
-const Activities = ({ data }) => 
+const Activities = ({ data, showTitle = true }) => 
 {
     let activities = [];
     
@@ -14,13 +15,15 @@ const Activities = ({ data }) =>
 
     return (
         <section className={styles.wrapper_activities}>
-            <div className={styles.wrapper_title_button}>
-                <div className={styles.wrapper_title}>
-                    <h2>Esperienze popolari:</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                </div>                
-                <Link href="/esperienze"><a>Visualizza tutte le esperienze</a></Link>
-            </div>
+            {showTitle &&
+                <SectionTitle 
+                    title = "Esperienze popolari:" 
+                    description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                    path = '/esperienze'
+                    btntext = 'Visualizza tutte le esperienze'
+                    btncolor = '#E71D36'
+                />
+            }
             <div className={styles.wrapper_activities_cards}>
                 {
                     activities.map((activity) => 

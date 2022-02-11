@@ -3,6 +3,7 @@ import HeroIntern from "../../../components/HeroIntern";
 import Cities from '../../../components/Cities';
 import Layout from '../../../components/Layouts';
 import { useRouter } from "next/router";
+import ActivityDescription from '../../../components/ActivityDescription';
 
 
 export default function Activity({activity}) {
@@ -20,7 +21,11 @@ export default function Activity({activity}) {
                     description={activity.description} 
                     bgImage={activity.city.cover_image_url}                    
                 />
-                <h2>qui va la descrizione dell'esperienza</h2>
+                <ActivityDescription 
+                    image={activity.cover_image_url}
+                    description={activity.about}
+                    price={activity.retail_price.formatted_value}
+                />
                 <Cities />
             </Layout>
         </>

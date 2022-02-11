@@ -4,6 +4,7 @@ import Cities from '../../../components/Cities';
 import Layout from '../../../components/Layouts';
 import { useRouter } from "next/router";
 import ActivityDescription from '../../../components/ActivityDescription';
+import CityDescription from '../../../components/CityDescription';
 
 
 export default function Activity({activity}) {
@@ -23,8 +24,16 @@ export default function Activity({activity}) {
                 />
                 <ActivityDescription 
                     image={activity.cover_image_url}
+                    title={activity.title}
                     description={activity.about}
                     price={activity.retail_price.formatted_value}
+                />
+                <CityDescription 
+                    image={activity.city.cover_image_url}
+                    title={activity.city.name}
+                    description={activity.city.content}
+                    more={activity.city.more}
+                    id={activity.city.id}
                 />
                 <Cities />
             </Layout>

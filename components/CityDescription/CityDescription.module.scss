@@ -1,0 +1,25 @@
+@use "../../libs/mixins.scss";
+@use "../../libs/variables.scss";
+
+.wrapper_city_description{
+    @include mixins.flexContainer(row, space-between, center, 100px);
+    padding: variables.$sectionsPadding;
+    
+    .wrapper_city_image{
+        width: 600px;
+        height: auto;
+        img {
+            object-fit: cover;
+            border-radius: variables.$cardBorderRadius;
+        }
+    }
+
+    .wrapper_city_info{
+        @include mixins.flexContainer(column, flex-start, flex-start, 30px);
+        max-width: 50%;
+
+        a{
+            @include mixins.buttonCart();
+        }
+    }
+}

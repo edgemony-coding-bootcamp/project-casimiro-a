@@ -2,6 +2,7 @@ import style from "./SearchBar.module.scss";
 import { faSearch, faTimesSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 import {
   SearchBarAppear,
@@ -11,6 +12,8 @@ import {
 } from "../../store/actions";
 
 export default function SearchBar() {
+
+  const router = useRouter();  
   const dispatch = useDispatch();
   const isActive = useSelector((state) => state.searchBarActive);
   const data = useSelector((state) => state.searchData);
@@ -88,9 +91,9 @@ export default function SearchBar() {
       </div>
 
       {data.data && (
-        <div className={style.result} style={resultStyle} onMouseLeave={hide}>
+        <div className={style.result} style={resultStyle} onMouseLeave={hide} >
           {data.data.map((res) => (
-            <div className={style.info} key={res.uuid}>
+            <div className={style.info} key={res.uuid} onClick={() => router.push(`esperienze/${res.uuid}`)}>
               <h3>{res.city.name}</h3>
               <p>{res.title}</p>
             </div>

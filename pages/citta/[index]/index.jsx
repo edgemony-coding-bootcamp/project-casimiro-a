@@ -26,6 +26,7 @@ export default function City({ city }) {
     </>
   );
 }
+
 export async function getStaticProps({ params }) {
   const res = await fetch(
     `https://sandbox.musement.com/api/v3/cities/${params.index}`,

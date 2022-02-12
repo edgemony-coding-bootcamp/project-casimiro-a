@@ -5,6 +5,7 @@
     @include mixins.flexContainer(row, space-between, center, 100px);
     padding: variables.$sectionsPadding;
     
+    
     .wrapper_activity_image{
         
         img {

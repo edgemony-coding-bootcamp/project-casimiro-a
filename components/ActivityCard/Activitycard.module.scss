@@ -5,7 +5,7 @@
     
     box-shadow: variables.$shadow;
     border-radius: variables.$cardBorderRadius;
-    max-width: 19vw;
+    width: 400px;
 
     transition: 0.4s;
     
@@ -40,7 +40,7 @@
         margin-top: -30px;
         z-index: 1;
         background-color: variables.$white;
-        @include mixins.flexContainer(column, space-between,start);
+        @include mixins.flexContainer(column, space-between,flex-start);
         min-height: 320px;
 
         h3{
@@ -81,4 +81,11 @@
             }
         }
     }
+}
+
+@media only screen and (max-width: 675px){
+    
+    .single_card{
+       width: 300px;
+    } 
 }

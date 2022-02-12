@@ -20,7 +20,7 @@ export default function CitiesArchive({ cities }) {
         title="città"
         description="Sei indeciso sulla tua prossima destinazione? Sfoglia il catalogo completo delle città e lasciati ispirare da TravelHub!"
       />
-      <Cities big={true} data={cities} />
+      <Cities big={true} showTitle={false} data={cities} />
     </Layout>
   );
 }

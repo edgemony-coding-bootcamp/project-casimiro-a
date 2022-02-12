@@ -1,170 +1,88 @@
 
-@use "./../../libs/variables.scss";
-@use "./../../libs/mixins.scss";
+@import "./../../libs/variables.scss";
 
 
-.wrapper_header{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding: 20px 30px;
-    @include mixins.flexContainer(row, space-between, center, 35px);
+.container{
     position: fixed;
-    z-index: 10;
-    top: 0;
-    transition: all 0.35s ease-out;
-
-    img {
-        margin: 15px 0 0;
-        width: 300px;
-    }  
-
-}
-
-.nav {
-    position: fixed;
-    top: 50;
-    width: 100%;
-    height: 50px;
-}
-
-.list {
-    list-style-type: none;    
-    height: 100%;
     display: flex;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
-}
-
-.items {
-    margin-right: 20px;
-    font-size: 20px;
-    color: variables.$white;
-    cursor: pointer;
-}
-
-.btn {
-    display: none;
-    position: absolute;
-    left: 20px;
-    top: 7px;
-    padding: 5px;
-    color: variables.$white;
-    background: none;
-    border: none;
-    font-size: 30px;
-}
-
-
-.search{
-    width: 180px;    
-    position: fixed;
-    right:0;
-    top: 0;
-    margin-top: 40px;
-
-    .inputSearch {
-        height: 50px;
-        width: 20px;
-        margin-left: 80px;
-        border-style: none;
-        padding: 10px;
-        outline: none;
-        border-radius: 25px;
-        transition: all 0.5s ease-in-out;
-        background-image: url("/SearchBar.png");
-        background-repeat: no-repeat;
-        color: variables.$white;
-        padding-right: 40px;
+    padding: 20px 50px;
+    z-index: 10;
+    transition: all 1s ease;
+    .menu{
+        display: none;
+        color: #fff;
+    }
     
-            &::placeholder {
-            background-image: none;
-            color: rgba(255, 255, 255, 0.5);
-            }
-            
-            &:focus {
-            color: variables.$black;
-            background-image: none;
+    .flexed{
+      width: 30%;
+      //border: 1px solid blue;
+    }
+    
+    .logoDiv{
+        display: flex;
+        height: 50px;
+        align-items: flex-start;
+        .logo{
             width: 200px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.692);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-            transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
-            margin-left: -50px;            
-            }
-            
-            &:hover {
+            position: relative;
+            height: 100%;
             cursor: pointer;
+            
+            img{
+               
+                //transform: translate(0, 5%);
+                object-fit: contain;
+                display: block;
+                
+    
+            }
+        }
+    
+    }
+    .navbar{
+        color: $white;
+        ul{
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 20%;
+            font-weight: 600;
+            li{
+                margin: 0 5px;
             }
         }
     }
-
-    .searchIcons{
-        display: none; 
-        height: 50px;
-        width: 25px;
-        position:fixed;
-        right:0;
-        top: 0;
-        margin-right: 30px;
-        color: variables.$white;
-    }
-
-
-@media screen and (max-width: 480px){
-
-    .wrapper_header{
-        padding: 20px 0;
-
-        img{
-            position: fixed;
-            top: 0;           
-            margin: 5px;
-            width: 200px;
-            left: calc(50% - 100px);
-        }               
-    }
-
-
-    .list {
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: variables.$black;
-        flex-direction: column;
-        height: auto;  
-        width: 100%;     
-        
-        
-    }
-    .items:nth-child(1){
-        border-top: 1px solid rgba(255, 255, 255, 0.555);
-        margin-top: 50px;
-    }
-
-    .items {
-        width: 100%;
-        border-top: 1px solid rgba(255, 255, 255, 0.555);
-        text-align: left;                
-        margin-right: 0px;
-        padding: 20px 25px;
-    }
-
-    .btn {
-        display: block;
-    }
-
-    .search{
-        margin-top: 0;
-    }
-
-    .inputSearch{
-        display: none; 
+    .searchbar{
+        display: flex;
+        justify-content: flex-end;
     }
     
-    .searchIcons{
-        display: block; 
-    }
+}
+@media only screen and (max-width: 675px){
+    .container{
 
+        .menu{
+            display: block;
+            svg{
+                transform: scale(2);
+                transition: all 1s ease;
+                cursor: pointer;
+            }
+        }
+        .logoDiv{
+            //border: 1px solid red;
+            //min-height: 200px;
+            width: 50px;
+            overflow: hidden;
+            .logo{
+                min-width: 200px;
+            }
+        }
+        .navbar{
+            display: none;
+        }
+    }
 }

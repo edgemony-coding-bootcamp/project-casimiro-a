@@ -1,5 +1,5 @@
 import style from "./SearchBar.module.scss";
-import { faSearch, faTimesSquare } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
@@ -12,21 +12,14 @@ import {
 } from "../../store/actions";
 
 export default function SearchBar() {
-
-  const router = useRouter();  
+  const router = useRouter();
   const dispatch = useDispatch();
   const isActive = useSelector((state) => state.searchBarActive);
   const data = useSelector((state) => state.searchData);
   const isShow = useSelector((state) => state.showResult);
 
-  console.log(router)
-
-
-
-
   function hide() {
     dispatch(hideResult);
-    
   }
 
   function handleSearch() {
@@ -47,35 +40,22 @@ export default function SearchBar() {
       timer--;
       if (timer === 0) {
         e.target.value && dispatch(SearchFetch(e));
+
       }
     }, 1000);
   }
-
-  let inputStyle = {};
-  let imgStyle = {};
-  let resultStyle = {};
-
-  if (isShow) {
-    resultStyle = {
-      height: "300px",
-      display: "block",
-    };
-  } else {
-    resultStyle = {
-      height: "0px",
-      opacity: "0",
-    };
+  function handleRouting(res) {
+    router.push(`/esperienze/${res.uuid}`);
+    setTimeout(() => {
+      dispatch(hideResult);
+    }, 300);
   }
 
-  if (isActive)
-    (inputStyle = {
-      width: "100px",
-      opacity: 1,
-      animation: "appear 1s",
-      margin: "0 10px",
-      right: "12.5px",
-    }),
-      (imgStyle = { opacity: "0" });
+
+  let imgStyle = {};
+
+
+  if (isActive) imgStyle = { opacity: "0" };
 
   return (
     <>
@@ -89,26 +69,25 @@ export default function SearchBar() {
           <input
             type="text"
             onChange={handleInput}
-            style={inputStyle}
+            className={`${style.inputText} ${isActive && style.open}`}
             placeholder="Cerca..."
           />
         </button>
       </div>
 
       {data.data && (
-        <div className={style.result} style={resultStyle} onMouseLeave={hide} >
+        <div
+          className={`${style.result} ${isShow && style.open}`}
+          onMouseLeave={hide}
+        >
           {data.data.map((res) => (
-            <div className={style.info} key={res.uuid} onClick={() => router.push(`/esperienze/${res.uuid}`)}>
+            <div className={style.info} key={res.uuid} onClick={() => handleRouting(res)}>
               <div className={style.img}>
-                <Image 
-                  src={res.cover_image_url}
-                  width={150}
-                  height={150}
-                />
+                <Image src={res.cover_image_url} width={150} height={150} />
               </div>
               <div className={style.text}>
-              <h3>{res.city.name}</h3>
-              <p>{res.title}</p>
+                <h3>{res.city.name}</h3>
+                <p>{res.title}</p>
               </div>
             </div>
           ))}

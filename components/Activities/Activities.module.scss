@@ -7,6 +7,7 @@
 {
     padding: variables.$sectionsPadding;
     @include mixins.flexContainer(column);
+    //border: 1px solid red;
 
     .wrapper_activities_cards
     {
@@ -14,5 +15,12 @@
         padding: 50px 0;
         @include mixins.flexContainer(row,space-between,flex-start,50px);
         flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
     }
+}
+@media only screen and (max-width: 675px){
+    .wrapper_activities{
+        padding: 20px;
+    } 
 }

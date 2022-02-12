@@ -5,6 +5,9 @@
 {
     @include mixins.flexContainer(row, space-between);
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    
 
     .wrapper_title h2
     {
@@ -21,4 +24,15 @@
         max-width: 160px;
         text-align: right;
     }
+}
+@media only screen and (max-width: 675px){
+    .wrapper_title_button{
+        justify-content: center;
+        text-align: center;
+    .wrapper_title h2{
+        font-size: 30px;
+    }
+        
+    }
+
 }

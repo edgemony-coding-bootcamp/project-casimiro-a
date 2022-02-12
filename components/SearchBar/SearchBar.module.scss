@@ -5,7 +5,7 @@
     width: 400px;
     position: absolute;
     background: #011627;
-    top: 90px;
+    top: 80px;
     display: block;
     transition: all 1s;
     overflow-x: hidden;
@@ -13,6 +13,7 @@
     border-bottom: 4px solid $black;
     box-shadow: $shadow;
     border: none;
+    z-index: 9;
 
     &::-webkit-scrollbar {
         width: 5px;
@@ -68,7 +69,7 @@
         
     }
     &.open{
-        height: 300px;
+        height: $modaliheight;
     }
 }
 

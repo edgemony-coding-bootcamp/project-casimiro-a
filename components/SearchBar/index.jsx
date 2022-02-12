@@ -9,6 +9,7 @@ import {
   SearchBarDisappear,
   SearchFetch,
   hideResult,
+  toggleSideMenu
 } from "../../store/actions";
 
 export default function SearchBar() {
@@ -17,13 +18,16 @@ export default function SearchBar() {
   const isActive = useSelector((state) => state.searchBarActive);
   const data = useSelector((state) => state.searchData);
   const isShow = useSelector((state) => state.showResult);
-
+  const sideMenu = useSelector(state => state.showSideMenu)
   function hide() {
     dispatch(hideResult);
   }
 
   function handleSearch() {
     dispatch(SearchBarAppear);
+
+    sideMenu && dispatch(toggleSideMenu)
+
   }
 
   function handleLeave() {

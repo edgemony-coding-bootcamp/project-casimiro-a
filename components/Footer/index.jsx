@@ -3,6 +3,7 @@ import {  faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import {  faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from "next/link"
+import Image from 'next/image';
 import styles from './Footer.module.scss'
 
 export default function Footer() {
@@ -14,7 +15,7 @@ export default function Footer() {
             <div className={styles.logoWrapper}>
             <Link href="/">
                 <a>
-                <img src="/logov.positiva.png" alt="logo"></img>             
+                <Image src="/logov.positiva.png" alt="logo" width={300} height={74} /> 
                 </a>
             </Link>
                 <p>Lorem Ipsum is simply dummy... </p>

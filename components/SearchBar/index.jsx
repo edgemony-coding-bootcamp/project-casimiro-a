@@ -19,9 +19,7 @@ export default function SearchBar() {
   const data = useSelector((state) => state.searchData);
   const isShow = useSelector((state) => state.showResult);
 
-  console.log(router)
-
-
+  //console.log(router)
 
 
   function hide() {
@@ -102,6 +100,7 @@ export default function SearchBar() {
               <div className={style.img}>
                 <Image 
                   src={res.cover_image_url}
+                  alt={res.name}
                   width={150}
                   height={150}
                 />

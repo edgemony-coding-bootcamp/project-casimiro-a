@@ -1,10 +1,11 @@
 import styles from './Navbar.module.scss'
 import Link from "next/link"
 import { useEffect, useState } from 'react'
-import { faBars, faSearch} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import { faBars, faSearch} from '@fortawesome/free-solid-svg-icons'
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import SearchBar from '../SearchBar'
 import { useSelector } from 'react-redux'
+import Image from 'next/image'
 
 
 
@@ -61,7 +62,7 @@ export default function NavBar() {
             
             <div >
                 <Link href="/">
-                <a><img src="/logo.png" className={styles.logo} alt="logo"></img></a>      
+                <a><Image src="/logo.png" className={styles.logo} alt="logo" width={300} height={74} /></a>      
                 </Link>
             </div>
             

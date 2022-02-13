@@ -9,6 +9,7 @@ import CityDescription from '../../../components/CityDescription';
 
 export default function Activity({activity}) {
     const router = useRouter();
+    
 
     if(router.isFallback) {
         return <h1>loading</h1>;

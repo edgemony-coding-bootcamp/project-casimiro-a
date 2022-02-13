@@ -30,3 +30,16 @@ export const SearchFetch = (e) => {
 }
 
 export const toggleSideMenu = {type: "toggleSideMenu"};
+export const setAllActivities = (data) => ({type: "setAllActivities", payload: data});
+
+export const filterActivities = (filter) => {
+
+    return (dispatch) => {
+        
+        fetch(`https://sandbox.musement.com/api/v3/activities?text=${filter.category}&text_operator=AUTO&extend_other_languages=AUTO&extend_content_fields=AUTO&fuzziness_level=LEVEL-0&zero_terms_query=NONE&sort_by=relevance&category_in=&default_price_range=00.00%2C${filter.maxPrice}&limit=8&offset=${filter.pagination}`)
+            .then(res => res.json())
+            .then(data => dispatch(setAllActivities(data)))
+            
+
+    }
+}

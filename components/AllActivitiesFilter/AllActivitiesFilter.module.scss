@@ -1,0 +1,57 @@
+@import "../../libs/variables.scss";
+
+.container{
+    background:  #1b1b1ba1;
+    margin: 20px 20px;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    div{
+        
+        width: 25%;
+    }
+    .inputDiv{
+        display: flex;
+        align-items: center;
+        input{
+            margin-right:10px ;
+        }
+
+    }
+    .buttons{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        button{
+            margin: 0 10px;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+    }
+    .search{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+}
+.pagination{
+    background: #1b1b1ba1;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    button{
+        margin: 0 10px;
+        
+    }
+}
+.allactivities{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .singleActivity{
+        margin: 10px 15px;
+        cursor: pointer;
+    }
+}

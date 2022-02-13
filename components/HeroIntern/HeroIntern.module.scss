@@ -8,6 +8,7 @@
     max-height: 120vh;
     padding: 150px 100px;
     color: variables.$white;
+   
     
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,13 +17,24 @@
 
     h1{
       text-transform: uppercase;
-      max-width: 70%;
+      
+      
     }
 
     p{
-      max-width: 50%;
+      max-width: 700px;
+      
     }
 
   }
 
-  
+  @media only screen and (max-width: 675px){
+    
+    .wrapper_hero_intern{
+
+      padding: 100px 10px 20px 10px;
+      h1{
+        font-size: 40px;
+      }
+    } 
+}

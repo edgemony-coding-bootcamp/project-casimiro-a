@@ -5,7 +5,8 @@ const initState = {
     carouselIndex: 0,
     searchBarActive: false,
     searchData: [],
-    showResult: false
+    showResult: false,
+    showSideMenu: false
 }
 const reducer = (state = initState, action) => {
     switch (action.type) {
@@ -48,6 +49,11 @@ const reducer = (state = initState, action) => {
             return{
                 ...state,
                 showResult: false,
+            }
+        case "toggleSideMenu":
+            return{
+                ...state,
+                showSideMenu: !state.showSideMenu,
             }
         default :
             return state;   

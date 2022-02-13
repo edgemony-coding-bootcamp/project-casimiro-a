@@ -1,17 +1,20 @@
 @import "./../../libs/variables.scss";
 @import "./../../libs/mixins.scss";
 .result{
-    height: 500px;
+    height: 0px;
     width: 400px;
     position: absolute;
     background: #011627;
-    top: 92px;
+    top: 80px;
     display: block;
     transition: all 1s;
     overflow-x: hidden;
     right: 50px;
     border-bottom: 4px solid $black;
     box-shadow: $shadow;
+    border: none;
+    z-index: 9;
+
 
     &::-webkit-scrollbar {
         width: 5px;
@@ -59,12 +62,24 @@
         .text{
             padding: 10px;
             color: $primary;
+            transition: all 0.2s ease;
+            .cityName{
+                
+                &:hover{
+                    color: $alternative;
+                }
+            }
             p{
                 margin-top: 5px;
                 color: $quaternary;
+                height: 100%;
+                
             }
         }
         
+    }
+    &.open{
+        height: $modaliheight;
     }
 }
 
@@ -89,14 +104,29 @@
         width: 25px;  
         transition: all 0.5s;
     }
-    input{
+    .inputText{
         opacity: 0;
-        width: 0;
+        width: 0px;
         transition: all 1s;
         border: none;
         position: relative;
         font-size: 1.05rem;
         outline: none;
+
+        &.open{
+        width: 100px;
+        opacity: 1;
+        animation: appear 1s;
+        margin: 0 10px;
+        right: 12.5px;
+
+        }
     }
 }
 
+@media only screen and (max-width: 675px){
+    .result {
+        right: 0;
+        width: 100%;
+    }
+}

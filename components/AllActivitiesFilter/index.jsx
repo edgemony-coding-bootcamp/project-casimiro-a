@@ -92,7 +92,7 @@ export default function ActivitiesFilter() {
       <div className={style.allactivities}>
         {data.data &&
           data.data.map((el) => (
-            <div className={style.singleActivity} onClick={() => router.push(`/esperienze/${el.uuid}`)}>
+            <div className={style.singleActivity} key={el.uuid} onClick={() => router.push(`/esperienze/${el.uuid}`)}>
               <ActivityCard 
                 title={el.title}
                 image={el.cover_image_url}

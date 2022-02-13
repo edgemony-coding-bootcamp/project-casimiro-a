@@ -64,6 +64,7 @@
             color: $primary;
             transition: all 0.2s ease;
             .cityName{
+                
                 &:hover{
                     color: $alternative;
                 }
@@ -71,6 +72,8 @@
             p{
                 margin-top: 5px;
                 color: $quaternary;
+                height: 100%;
+                
             }
         }
         

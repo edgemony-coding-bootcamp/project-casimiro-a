@@ -16,6 +16,16 @@ const initialFilterState = {
 
 export default function City({ city, activities, cities }) 
 {
+  // State
+  const [filterActivitiesState, setFilterActivitiesState] = useState({data: []});
+  const [filterState, setFilterState] = useState(initialFilterState);
+  
+  useEffect(() =>
+  {
+    console.log(activities);
+    setFilterActivitiesState({ data: activities.slice(0, 8) });
+  }, [activities]);
+  
   // Router
   const router = useRouter();
 
@@ -23,16 +33,6 @@ export default function City({ city, activities, cities })
   {
     return <h1>loading</h1>;
   }
-  
-  
-  // State
-  const [filterActivitiesState, setFilterActivitiesState] = useState({data: []});
-  const [filterState, setFilterState] = useState(initialFilterState);
-
-  useEffect(() =>
-  {
-    setFilterActivitiesState({ data: activities.slice(0, 8) });
-  }, [activities]);
 
   // Events
   const handleFilter = (filters) =>
@@ -48,12 +48,12 @@ export default function City({ city, activities, cities })
               if(filters.category > 0)
               {
                 return (
-                  value.verticals[0].id === filters.category &&
+                  value.verticals.length && value.verticals[0].id === filters.category &&
                   value.retail_price.value <= filters.maxPrice
                 );
               }
               return (
-                value.verticals[0].id !== filters.category &&
+                value.verticals.length && value.verticals[0].id !== filters.category &&
                 value.retail_price.value <= filters.maxPrice 
               );
 

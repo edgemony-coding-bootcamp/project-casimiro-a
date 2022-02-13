@@ -88,7 +88,7 @@ export default function SearchBar() {
           {data.data.map((res) => (
             <div className={style.info} key={res.uuid}>
               <div className={style.img}  onClick={() => handleRouting(res.uuid,"esperienze")}>
-                <Image src={res.cover_image_url} width={150} height={150} />
+                <Image src={res.cover_image_url} alt={res.name} width={150} height={150} />
               </div>
               <div className={style.text}>
                 <h3 className={style.cityName} onClick={() => handleRouting(res.city.id,"citta")} >{res.city.name}</h3>

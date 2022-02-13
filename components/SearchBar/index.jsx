@@ -48,8 +48,9 @@ export default function SearchBar() {
       }
     }, 1000);
   }
-  function handleRouting(res) {
-    router.push(`/esperienze/${res.uuid}`);
+  function handleRouting(res, route) {
+    router.push(`/${route}/${res}`);
+    console.log(res)
     setTimeout(() => {
       dispatch(hideResult);
     }, 300);
@@ -85,13 +86,13 @@ export default function SearchBar() {
           onMouseLeave={hide}
         >
           {data.data.map((res) => (
-            <div className={style.info} key={res.uuid} onClick={() => handleRouting(res)}>
-              <div className={style.img}>
+            <div className={style.info} key={res.uuid}>
+              <div className={style.img}  onClick={() => handleRouting(res.uuid,"esperienze")}>
                 <Image src={res.cover_image_url} width={150} height={150} />
               </div>
               <div className={style.text}>
-                <h3>{res.city.name}</h3>
-                <p>{res.title}</p>
+                <h3 className={style.cityName} onClick={() => handleRouting(res.city.id,"citta")} >{res.city.name}</h3>
+                <p className={style.cityName} onClick={() => handleRouting(res.uuid,"esperienze")} >{res.title}</p>
               </div>
             </div>
           ))}

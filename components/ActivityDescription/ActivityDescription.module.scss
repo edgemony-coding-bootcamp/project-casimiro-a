@@ -1,0 +1,34 @@
+@use "../../libs/mixins.scss";
+@use "../../libs/variables.scss";
+
+.wrapper_activity_description{
+    @include mixins.flexContainer(row, space-between, center, 100px);
+    padding: variables.$sectionsPadding;
+    
+    
+    .wrapper_activity_image{
+        
+        img {
+            border-radius: variables.$cardBorderRadius;
+            object-fit: cover;
+        }
+    }
+
+    .wrapper_activity_info{
+        @include mixins.flexContainer(column, flex-start, flex-start, 30px);
+        max-width: 50%;
+
+        .wrapper_activity_shop{
+            @include mixins.flexContainer(row, flex-start, center, 20px);
+
+                .price{
+                        font-size: 1.4em;
+                        margin: 0;
+                        font-weight: 600;
+                    }
+                button{
+                    @include mixins.buttonCart();
+                }
+        }
+    }
+}

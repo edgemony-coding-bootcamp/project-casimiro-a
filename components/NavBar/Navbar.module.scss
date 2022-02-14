@@ -1,0 +1,88 @@
+
+@import "./../../libs/variables.scss";
+
+
+.container{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    z-index: 10;
+    transition: all 1s ease;
+    .menu{
+        display: none;
+        color: #fff;
+    }
+    
+    .flexed{
+      width: 30%;
+      //border: 1px solid blue;
+    }
+    
+    .logoDiv{
+        display: flex;
+        height: 50px;
+        align-items: flex-start;
+        .logo{
+            width: 200px;
+            position: relative;
+            height: 100%;
+            cursor: pointer;
+            
+            img{
+               
+                //transform: translate(0, 5%);
+                object-fit: contain;
+                display: block;
+                
+    
+            }
+        }
+    
+    }
+    .navbar{
+        color: $white;
+        ul{
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 20%;
+            font-weight: 600;
+            li{
+                margin: 0 5px;
+            }
+        }
+    }
+    .searchbar{
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+}
+@media only screen and (max-width: 675px){
+    .container{
+
+        .menu{
+            display: block;
+            svg{
+                transform: scale(2);
+                transition: all 1s ease;
+                cursor: pointer;
+            }
+        }
+        .logoDiv{
+            //border: 1px solid red;
+            //min-height: 200px;
+            width: 50px;
+            overflow: hidden;
+            .logo{
+                min-width: 200px;
+            }
+        }
+        .navbar{
+            display: none;
+        }
+    }
+}

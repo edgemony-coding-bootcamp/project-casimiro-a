@@ -1,0 +1,16 @@
+.container{
+    overflow: hidden;
+    width:fit-content;
+    padding: 20px;
+    padding: 15px 10px;
+    .carousel{
+    width: 800px;
+    padding: 15px 10px;
+    }
+    .button{
+        margin-top: 50px;
+        display: flex;
+        width: 150px;
+        justify-content: space-between;
+    }
+}

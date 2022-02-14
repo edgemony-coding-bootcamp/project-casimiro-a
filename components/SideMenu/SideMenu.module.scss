@@ -1,0 +1,25 @@
+@import "../../libs/variables.scss";
+
+.container{
+    width: 0px;
+    display: flex;
+    align-items: center;
+    background: #011627;
+    position: fixed;
+    height: calc($modaliheight + 80px);
+    z-index: 9;
+    color: aliceblue;
+    font-size: 20px;
+    overflow: hidden;
+    transition: all 0.5s;
+    ul{
+        
+        li{
+            margin: 20px 10px;
+            list-style: none;
+        }
+    }
+    &.open{
+        width: 100%;
+    }
+}

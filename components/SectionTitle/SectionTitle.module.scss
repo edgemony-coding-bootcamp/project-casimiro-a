@@ -1,0 +1,38 @@
+@use '../../libs/variables.scss';
+@use '../../libs/mixins.scss';
+
+.wrapper_title_button
+{
+    @include mixins.flexContainer(row, space-between);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    
+
+    .wrapper_title h2
+    {
+        margin-bottom: 20px;
+    }
+
+    a
+    {
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: variables.$white;
+        max-width: 160px;
+        text-align: right;
+    }
+}
+@media only screen and (max-width: 675px){
+    .wrapper_title_button{
+        justify-content: center;
+        text-align: center;
+    .wrapper_title h2{
+        font-size: 30px;
+    }
+        
+    }
+
+}

@@ -1,0 +1,45 @@
+
+@import "./libs/variables.scss";
+@import "./libs/mixins.scss";
+
+$width: 360px;
+$height: 541px;
+
+.container{
+    max-width: $width;
+    height: $height;
+    overflow: hidden;
+    box-sizing: content-box;
+    z-index: 10;
+    position: relative;
+    border-radius: $cardBorderRadius;
+    user-select: none;
+    cursor: pointer;
+    box-shadow: 4px 4px 10px #292929;
+    
+    image{
+        width: auto ;
+        height: 100%;
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: -1;
+    }
+    .layer{
+        background: rgba(0, 0, 0, 0.383);
+        width: $width;
+        height: $height;
+
+        img{
+            object-fit: cover;
+        }
+    }
+    p{
+        position: absolute;
+        bottom: 0;
+        margin: 20px 15px;
+        color: $white;
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,132 @@
+@import "./../../libs/variables.scss";
+@import "./../../libs/mixins.scss";
+.result{
+    height: 0px;
+    width: 400px;
+    position: absolute;
+    background: #011627;
+    top: 80px;
+    display: block;
+    transition: all 1s;
+    overflow-x: hidden;
+    right: 50px;
+    border-bottom: 4px solid $black;
+    box-shadow: $shadow;
+    border: none;
+    z-index: 9;
+
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        transition: all 0.35s ease;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #000000;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #8f8f8f;
+    }
+
+    cursor: pointer;
+    .info{
+        padding: 5px;
+        margin: 5px;
+        display: flex;
+        padding-bottom: 10px;
+       
+    
+        
+        .img{
+
+            
+            height: 150px;
+            min-width: 150px;
+            border-radius: 15px;
+            box-shadow: $shadow;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+            }
+        }
+        .text{
+            padding: 10px;
+            color: $primary;
+            transition: all 0.2s ease;
+            .cityName{
+                
+                &:hover{
+                    color: $alternative;
+                }
+            }
+            p{
+                margin-top: 5px;
+                color: $quaternary;
+                height: 100%;
+                
+            }
+        }
+        
+    }
+    &.open{
+        height: $modaliheight;
+    }
+}
+
+.container{
+    
+    button{
+        border: none;
+        background: #fff;
+        min-width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        cursor: pointer;
+        
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .searchIcons{
+        height: 50px;
+        width: 25px;  
+        transition: all 0.5s;
+    }
+    .inputText{
+        opacity: 0;
+        width: 0px;
+        transition: all 1s;
+        border: none;
+        position: relative;
+        font-size: 1.05rem;
+        outline: none;
+
+        &.open{
+        width: 100px;
+        opacity: 1;
+        animation: appear 1s;
+        margin: 0 10px;
+        right: 12.5px;
+
+        }
+    }
+}
+
+@media only screen and (max-width: 675px){
+    .result {
+        right: 0;
+        width: 100%;
+    }
+}

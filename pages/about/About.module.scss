@@ -1,3 +1,35 @@
-.page{
-    text-align: center;
+@use '../../libs/variables.scss';
+@use '../../libs/mixins.scss';
+
+
+.aboutWrapper{
+    @include mixins.flexContainer(column);
+    row-gap: 200px; 
+    margin: 100px;     
+        
+    h3{
+        align-self: flex-start;
+        margin-bottom: 30px;
+    }
+}
+
+.teamCardsWrapper{    
+    @include mixins.flexContainer;
+    list-style-type: none;
+}
+
+@media only screen and (max-width: 480px) {
+    .aboutWrapper{
+        text-align: center;
+        margin: 50px;         
+    }
+
+    .aboutTravelHub{
+        
+            text-align: left;
+        
+    }
+    .teamCardsWrapper{ 
+        @include mixins.flexContainer(column);
+    }
 }

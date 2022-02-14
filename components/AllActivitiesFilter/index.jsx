@@ -9,18 +9,17 @@ import ActivityCard from "../ActivityCard";
 import { useEffect } from "react";
 import { Router, useRouter } from "next/router";
 
-//https://sandbox.musement.com/api/v3/activities?text_operator=AUTO&extend_other_languages=AUTO&extend_content_fields=AUTO&fuzziness_level=LEVEL-0&zero_terms_query=NONE&category_in=CATEGORIA&default_price_range=00.00%2CMAXPREX&limit=10&offset=0
-
 export default function ActivitiesFilter() {
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
   const data = useSelector((state) => state.allActivities);
   const [state, setState] = useState({
     maxPrice: 200,
     category: "Palermo",
     pagination: 0,
+    up: false,
   });
-  const [input, setInput] = useState(100);
+  const [input, setInput] = useState(200);
 
   let counter = 0;
   useEffect(() => {
@@ -39,18 +38,49 @@ export default function ActivitiesFilter() {
     setInput(e.target.value);
 
     setTimeout(() => {
-      setState({ ...state, maxPrice: e.target.value });
+      setState({ ...state, maxPrice: e.target.value, up: false });
     }, 1000);
   }
 
   function handleCategory(category) {
-    setState({ ...state, category: category, pagination: 0 });
+    setState({ ...state, category: category, pagination: 0, up: false });
   }
 
+  const category = [
+    {
+      name: "Arte e musei",
+      color: "#011627",
+    },
+    {
+      name: "Tour e attrazioni",
+      color: "#E71D36",
+    },
+    {
+      name: "Spettacoli e concerti",
+      color: "red",
+    },
+    {
+      name: "Food & wine",
+      color: "#FF9F1C",
+    },
+    {
+      name: "Avventura",
+      color: "#2EC4B6",
+    },
+    {
+      name: "Eventi Sportivi",
+      color: "red",
+    },
+    {
+      name: "Nightlife",
+      color: "red",
+    },
+  ];
   return (
     <>
-      <div className={style.container}>
-        <div className={style.inputDiv}>
+      <div id="up" className={style.container}>
+        <div  className={style.inputDiv}>
+          <p>€ 0</p>
           <input
             type="range"
             min="1"
@@ -60,40 +90,32 @@ export default function ActivitiesFilter() {
             onChange={handleChange}
           />
           <p>
-            Prezzo massimo: <span>{input}</span>
+            € <span>{input}</span>
           </p>
         </div>
 
         <div className={style.buttons}>
-          <button onClick={() => handleCategory("arte e musei")}>
-            Arte e musei
-          </button>
-          <button onClick={() => handleCategory("tour e attrazioni")}>
-            Tour e attrazioni
-          </button>
-          <button onClick={() => handleCategory("Spettacoli e concerti")}>
-            Spettacoli e concerti
-          </button>
-          <button onClick={() => handleCategory("cibo e vino")}>
-            Food & wine
-          </button>
-          <button onClick={() => handleCategory("avventura")}>avventura</button>
-          <button onClick={() => handleCategory("eventi sportivi")}>
-            Eventi Sportivi
-          </button>
-          <button onClick={() => handleCategory("nightlife")}>Nightlife</button>
-        </div>
-
-        <div className={style.search}>
-        
+          {category.map((category, id) => (
+            <button
+              key={id}
+              style={{ background: category.color }}
+              onClick={() => handleCategory(category.name)}
+            >
+              {category.name}
+            </button>
+          ))}
         </div>
       </div>
 
       <div className={style.allactivities}>
         {data.data &&
           data.data.map((el) => (
-            <div className={style.singleActivity} key={el.uuid} onClick={() => router.push(`/esperienze/${el.uuid}`)}>
-              <ActivityCard 
+            <div
+              className={style.singleActivity}
+              key={el.uuid}
+              onClick={() => router.push(`/esperienze/${el.uuid}`)}
+            >
+              <ActivityCard
                 title={el.title}
                 image={el.cover_image_url}
                 price={el.retail_price.formatted_iso_value}
@@ -106,15 +128,18 @@ export default function ActivitiesFilter() {
 
       <div className={style.pagination}>
         <ButtonHero
+        forActivities = {true}
+
           action={() =>
             state.pagination > 0 &&
-            setState({ ...state, pagination: state.pagination - 8 })
+            setState({ ...state, pagination: state.pagination - 8, up: true })
           }
         />
         <ButtonHero
           dir=">"
+          forActivities = {true}
           action={() =>
-            setState({ ...state, pagination: state.pagination + 8 })
+            setState({ ...state, pagination: state.pagination + 8, up: true })
           }
         />
       </div>

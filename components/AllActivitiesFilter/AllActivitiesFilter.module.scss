@@ -1,12 +1,13 @@
 @import "../../libs/variables.scss";
-
+$paddingSide : 70px;
 .container{
-    background:  #1b1b1ba1;
-    margin: 20px 20px;
-    padding: 20px 40px;
+    
+    margin: 50px 100px;
+    padding: 30px 0 30px $paddingSide;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    background-color: #eee;
     div{
         
         width: 25%;
@@ -14,20 +15,49 @@
     .inputDiv{
         display: flex;
         align-items: center;
-        input{
-            margin-right:10px ;
-        }
+        width: 25%;
+        
+            input[type=range]
+            {
+                margin:0 10px ;
+                -webkit-appearance: none;
+                width: 200px; 
+                height: 8px;
+                border-radius: 4px;
+                background-color: #333;
+                outline: none;
+                -webkit-transition: .2s;
+                transition: opacity .2s;
+    
+                &::-webkit-slider-thumb
+                {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 50%;
+                    background-color: $primary;
+                    cursor: pointer;
+                }
+            }
+        
 
     }
     .buttons{
-        width: 50%;
+        width: 75%;
         display: flex;
-        justify-content: center;
+        justify-content:flex-end;
+        padding-right: $paddingSide;
         button{
+            width: 300px;
             margin: 0 10px;
             border: none;
             padding: 5px;
             cursor: pointer;
+            color: $white;
+            border-radius: 15px;
+            padding: 5px 10px;
+            font-weight: 600;
         }
     }
     .search{
@@ -37,12 +67,12 @@
 
 }
 .pagination{
-    background: #1b1b1ba1;
+    //background: #1b1b1ba1;
     display: flex;
     justify-content: center;
     padding: 10px;
     button{
-        margin: 0 10px;
+        margin: 10px 10px;
         
     }
 }

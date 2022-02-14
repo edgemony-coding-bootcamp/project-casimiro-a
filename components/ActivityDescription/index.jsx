@@ -24,7 +24,7 @@ export default function ActivityDescription({
                 />
             </div>
             <div className={styles.wrapper_activity_info}>
-                <h2>Descrizione:</h2>
+                <h2>Descrizione</h2>
                 <p>{description}</p>
                 <div className={styles.wrapper_activity_shop}>
                     <p className={styles.price}>{price}</p>

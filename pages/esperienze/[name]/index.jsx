@@ -1,4 +1,3 @@
-import styles from './SingleExperience.module.scss';
 import HeroIntern from "../../../components/HeroIntern";
 import Cities from '../../../components/Cities';
 import Layout from '../../../components/Layouts';
@@ -6,9 +5,11 @@ import { useRouter } from "next/router";
 import ActivityDescription from '../../../components/ActivityDescription';
 import CityDescription from '../../../components/CityDescription';
 import Reviews from '../../../components/Reviews';
+import { API_URL, FETCH_HEADERS } from "../../../libs/variables";
+import axios from 'axios';
 
 
-export default function Activity({activity}) {
+export default function Activity({activity, cities}) {
     const router = useRouter();
 
     if(router.isFallback) {
@@ -41,26 +42,31 @@ export default function Activity({activity}) {
                     more={activity.city.more}
                     id={activity.city.id}
                 />
-                <Cities />
+                <Cities data={cities}/>
             </Layout>
         </>
     );
 }
 
-export async function getStaticProps({params}) {
-    const res = await fetch(
-        `https://sandbox.musement.com/api/v3/activities/${params.name}`,
+
+
+export async function getStaticProps({params}) 
+{
+    const activity = await axios(
+        `${API_URL}activities/${params.name}`,
         {
-            headers: {
-              Accept: "application/json",
-              "X-Musement-Version": "3.4.0",
-              "Accept-Language": "it-IT",
-            },
+          headers: FETCH_HEADERS
         }
     );
-    const data = await res.json();
 
-    if(!data) {
+    const cities = await axios(
+        `${API_URL}cities?limit=5&without_events=yes`,
+        {
+          headers: FETCH_HEADERS
+        }
+    );
+
+    if(!activity) {
         return {
             notFound: true,
         };
@@ -68,7 +74,8 @@ export async function getStaticProps({params}) {
 
     return {
         props:{
-            activity: data,
+            activity: activity.data,
+            cities: cities.data,
         },
         revalidate: 10,
     };

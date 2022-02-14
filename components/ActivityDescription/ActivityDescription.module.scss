@@ -7,7 +7,7 @@
     
     
     .wrapper_activity_image{
-        
+        border-radius: variables.$cardBorderRadius;
         img {
             border-radius: variables.$cardBorderRadius;
             object-fit: cover;

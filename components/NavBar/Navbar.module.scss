@@ -1,16 +1,15 @@
-
-@import "./../../libs/variables.scss";
+@use "../../libs/mixins.scss";
+@use "../../libs/variables.scss";
 
 
 .container{
+    @include mixins.flexContainer(row, space-between, center);
     position: fixed;
-    display: flex;
     width: 100%;
-    justify-content: space-between;
-    align-items: center;
     padding: 20px 50px;
     z-index: 10;
     transition: all 1s ease;
+    
     .menu{
         display: none;
         color: #fff;
@@ -18,41 +17,33 @@
     
     .flexed{
       width: 30%;
-      //border: 1px solid blue;
     }
     
     .logoDiv{
-        display: flex;
-        height: 50px;
-        align-items: flex-start;
+        @include mixins.flexContainer(row, flex-start, flex-start);
+        height: 80px;
+        
         .logo{
-            width: 200px;
+            width: 300px;
             position: relative;
             height: 100%;
             cursor: pointer;
             
-            img{
-               
-                //transform: translate(0, 5%);
+            img{               
                 object-fit: contain;
-                display: block;
-                
-    
+                display: block;               
             }
         }
     
     }
     .navbar{
-        color: $white;
+        color: variables.$white;
+
         ul{
+            @include mixins.flexContainer(row, space-between, center);
             list-style: none;
-            display: flex;
-            justify-content: space-around;
             padding: 0 20%;
             font-weight: 600;
-            li{
-                margin: 0 5px;
-            }
         }
     }
     .searchbar{
@@ -61,9 +52,9 @@
     }
     
 }
-@media only screen and (max-width: 675px){
+@media only screen and (max-width: 768px){
     .container{
-
+        padding: 20px;
         .menu{
             display: block;
             svg{
@@ -73,8 +64,6 @@
             }
         }
         .logoDiv{
-            //border: 1px solid red;
-            //min-height: 200px;
             width: 50px;
             overflow: hidden;
             .logo{

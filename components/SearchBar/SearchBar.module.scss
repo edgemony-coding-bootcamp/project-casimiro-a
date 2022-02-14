@@ -1,17 +1,18 @@
-@import "./../../libs/variables.scss";
-@import "./../../libs/mixins.scss";
+@use "./../../libs/variables.scss";
+@use "./../../libs/mixins.scss";
+
 .result{
     height: 0px;
     width: 400px;
     position: absolute;
-    background: #011627;
+    background: variables.$black;
     top: 80px;
     display: block;
     transition: all 1s;
     overflow-x: hidden;
     right: 50px;
-    border-bottom: 4px solid $black;
-    box-shadow: $shadow;
+    border-bottom: 4px solid variables.$black;
+    box-shadow: variables.$shadow;
     border: none;
     z-index: 9;
 
@@ -53,7 +54,7 @@
             height: 150px;
             min-width: 150px;
             border-radius: 15px;
-            box-shadow: $shadow;
+            box-shadow: variables.$shadow;
             overflow: hidden;
             img{
                 object-fit: cover;
@@ -61,17 +62,17 @@
         }
         .text{
             padding: 10px;
-            color: $primary;
+            color: variables.$primary;
             transition: all 0.2s ease;
             .cityName{
                 
                 &:hover{
-                    color: $alternative;
+                    color: variables.$alternative;
                 }
             }
             p{
                 margin-top: 5px;
-                color: $quaternary;
+                color: variables.$quaternary;
                 height: 100%;
                 
             }
@@ -79,7 +80,7 @@
         
     }
     &.open{
-        height: $modaliheight;
+        height: variables.$modaliheight;
     }
 }
 
@@ -87,21 +88,17 @@
     
     button{
         border: none;
-        background: #fff;
+        background: rgba(255, 255, 255, 0.397);
         min-width: 50px;
         height: 50px;
         border-radius: 50px;
         cursor: pointer;
-        
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        font-size: 1.1rem;
+        color: variables.$white;
+        @include mixins.flexContainer(row, center, center, 0px);
     }
     
-    .searchIcons{
-        height: 50px;
-        width: 25px;  
+    .searchIcons{  
         transition: all 0.5s;
     }
     .inputText{
@@ -112,6 +109,11 @@
         position: relative;
         font-size: 1.05rem;
         outline: none;
+        background: transparent;
+        
+        &::placeholder{
+            color: variables.$white;
+        }
 
         &.open{
         width: 100px;
@@ -119,7 +121,6 @@
         animation: appear 1s;
         margin: 0 10px;
         right: 12.5px;
-
         }
     }
 }

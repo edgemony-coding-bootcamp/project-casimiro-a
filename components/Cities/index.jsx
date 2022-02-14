@@ -19,7 +19,7 @@ const Cities = ({ data, showTitle = true, exceptId = 0 }) =>
                 <SectionTitle
                     title = "Città più visitate:" 
                     description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-                    path = '/città'
+                    path = '/citta'
                     btntext = 'Visualizza tutte le città'
                     btncolor = '#FF9F1C'
                 />

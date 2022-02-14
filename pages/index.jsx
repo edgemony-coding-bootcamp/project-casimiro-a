@@ -1,17 +1,26 @@
 
 import axios from 'axios';
 import { API_URL, FETCH_HEADERS } from '../libs/variables';
-import Hero from "../components/Hero";
-import Activities from '../components/Activities';
-import Cities from '../components/Cities';
 import Layout from '../components/Layouts';
+import Hero from '../components/Hero';
+import dynamic from 'next/dynamic';
+
+const Activities = dynamic(
+  () => import('../components/Activities'), 
+  { ssr: false, loading: () => <div>Loading...</div> }
+);
+
+const Cities = dynamic(
+  () => import('../components/Cities'), 
+  { ssr: false, loading: () => <div>Loading...</div> }
+);
 
 
 export default function Home({ activities, cities }) 
 {
   return (
     <Layout>
-      <Hero data={cities} />     
+      <Hero data={cities} />
       <Activities data={activities} />
       <Cities data={cities.slice(0,5)} />
     </Layout>

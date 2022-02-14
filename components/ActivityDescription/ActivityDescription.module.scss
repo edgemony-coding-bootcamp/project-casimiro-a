@@ -30,5 +30,9 @@
                     @include mixins.buttonCart();
                 }
         }
+
+        .wrapper_activity_services{
+            @include mixins.flexContainer(row, flex-start, center, 20px);
+        }
     }
 }

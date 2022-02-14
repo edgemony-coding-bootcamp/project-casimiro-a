@@ -28,6 +28,10 @@ export default function Activity({activity}) {
                     title={activity.title}
                     description={activity.about}
                     price={activity.retail_price.formatted_value}
+                    showService1 = {activity.giftable}
+                    showService2 = {activity.special_offer}
+                    showService3 = {activity.free_cancellation}
+                    showService4 = {activity.is_available_today}
                 />
                 <Reviews />
                 <CityDescription 

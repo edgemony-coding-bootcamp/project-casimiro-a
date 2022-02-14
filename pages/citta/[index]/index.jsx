@@ -1,6 +1,4 @@
 import HeroIntern from "../../../components/HeroIntern";
-import Activities from "../../../components/Activities";
-import Cities from "../../../components/Cities";
 import { useRouter } from "next/router";
 import Layout from "../../../components/Layouts";
 import { API_URL, FETCH_HEADERS } from "../../../libs/variables";
@@ -8,6 +6,18 @@ import axios from 'axios';
 import stylesTitle from "../../../components/SectionTitle/SectionTitle.module.scss";
 import { useState, useEffect } from "react";
 import FilterActivities from '../../../components/FilterActivities';
+import dynamic from 'next/dynamic';
+
+const Activities = dynamic(
+  () => import('../../../components/Activities'), 
+  { ssr: false, loading: () => <div>Loading...</div> }
+);
+
+const Cities = dynamic(
+  () => import('../../../components/Cities'), 
+  { ssr: false, loading: () => <div>Loading...</div> }
+);
+
 
 const initialFilterState = {
   maxPrice: 100,
@@ -22,7 +32,6 @@ export default function City({ city, activities, cities })
   
   useEffect(() =>
   {
-    console.log(activities);
     setFilterActivitiesState({ data: activities.slice(0, 8) });
   }, [activities]);
   
@@ -98,7 +107,7 @@ export async function getStaticProps({ params })
   );
 
   const activities = await axios(
-    `${API_URL}cities/${params.index}/activities?sort_by=city-relevance&limit=20`,
+    `${API_URL}cities/${params.index}/activities?sort_by=city-relevance&limit=100`,
     {
       headers: FETCH_HEADERS
     }

@@ -11,7 +11,13 @@
     cursor: pointer;
     display: block;
     transition: all 0.2s ease;
+    
     &:hover{
         transform: scale(1.10);
     }
+}
+.forActivities{
+    background: #011627;
+    box-shadow: $shadow;
+    color: $white;
 }

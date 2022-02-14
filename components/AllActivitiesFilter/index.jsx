@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import ActivityCard from "../ActivityCard";
 import { useEffect } from "react";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 export default function ActivitiesFilter() {
   const dispatch = useDispatch();
@@ -21,13 +21,8 @@ export default function ActivitiesFilter() {
   });
   const [input, setInput] = useState(200);
 
-  let counter = 0;
   useEffect(() => {
-    counter++;
-    setTimeout(() => {
-      counter--;
-      counter === 0 && dispatch(filterActivities(state));
-    }, 1000);
+    dispatch(filterActivities(state));
   }, [state]);
 
   useEffect(() => {
@@ -37,9 +32,7 @@ export default function ActivitiesFilter() {
   function handleChange(e) {
     setInput(e.target.value);
 
-    setTimeout(() => {
-      setState({ ...state, maxPrice: e.target.value, up: false });
-    }, 1000);
+    setState({ ...state, maxPrice: e.target.value, up: false });
   }
 
   function handleCategory(category) {
@@ -55,7 +48,7 @@ export default function ActivitiesFilter() {
     {
       name: "Tour e attrazioni",
       color: "#E71D36",
-      category: "sightseeing"
+      category: "sightseeing",
     },
     {
       name: "Spettacoli e concerti",
@@ -75,19 +68,47 @@ export default function ActivitiesFilter() {
     {
       name: "Eventi sportivi",
       color: "red",
-      category: "sports"
+      category: "sports",
     },
     {
       name: "Nightlife",
       color: "red",
-      category: "nightlife"
+      category: "nightlife",
     },
   ];
-  console.log(data)
+
+  let pagineTot = data.meta ? Math.ceil(data.meta.count / 8) : 0;
+
+
+  let paginationDyn = state.pagination - 6;
+
+
+  function addButton() {
+    paginationDyn++;
+    const clickon = paginationDyn;
+    return (
+      <ButtonHero
+        key={clickon}
+        active={state.pagination === clickon && true}
+        forActivities={true}
+        dir={
+          (pagineTot >= paginationDyn + 1) & (paginationDyn >= 0)
+            ? paginationDyn + 1
+            : ""
+        }
+        action={
+          (pagineTot >= paginationDyn) & (paginationDyn >= 0)
+            ? () => setState({ ...state, pagination: clickon, up: true })
+            : () => console.log("")
+        }
+      />
+    );
+  }
+
   return (
     <>
       <div id="up" className={style.container}>
-        <div  className={style.inputDiv}>
+        <div className={style.inputDiv}>
           <p>€ 0</p>
           <input
             type="range"
@@ -125,7 +146,7 @@ export default function ActivitiesFilter() {
             >
               <ActivityCard
                 title={el.title}
-                image={el.cover_image_url || el.city.cover_image_url} 
+                image={el.cover_image_url || el.city.cover_image_url}
                 price={el.retail_price.formatted_iso_value}
                 category=""
                 text={el.description || el.operational_days}
@@ -136,18 +157,35 @@ export default function ActivitiesFilter() {
 
       <div className={style.pagination}>
         <ButtonHero
-        forActivities = {true}
-
+          forActivities={true}
+          dir={"<<"}
           action={() =>
             state.pagination > 0 &&
-            setState({ ...state, pagination: state.pagination - 8, up: true })
+            setState({ ...state, pagination: 0, up: true })
           }
         />
         <ButtonHero
-          dir=">"
-          forActivities = {true}
+          forActivities={true}
           action={() =>
-            setState({ ...state, pagination: state.pagination + 8, up: true })
+            state.pagination > 0 &&
+            setState({ ...state, pagination: state.pagination - 1, up: true })
+          }
+        />
+        {data.meta && [...Array(11)].map((index) => addButton())}
+
+        <ButtonHero
+          dir=">"
+          forActivities={true}
+          action={() =>
+            
+            setState({ ...state, pagination:state.pagination < pagineTot -1 ? state.pagination + 1 : state.pagination, up: true })
+          }
+        />
+        <ButtonHero
+          dir=">>"
+          forActivities={true}
+          action={() =>
+            setState({ ...state, pagination: pagineTot - 1, up: true })
           }
         />
       </div>

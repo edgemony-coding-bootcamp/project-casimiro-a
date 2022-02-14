@@ -46,7 +46,7 @@ export const filterActivities = (filter) => {
         }
 
 
-        fetch(`https://sandbox.musement.com/api/v3/activities?text_operator=AUTO&extend_other_languages=AUTO&extend_content_fields=AUTO&fuzziness_level=LEVEL-0&zero_terms_query=NONE&vertical_in=${filter.category}&sort_by=rating&category_in=&default_price_range=00.00%2C${filter.maxPrice}&limit=8&offset=${filter.pagination}`)
+        fetch(`https://sandbox.musement.com/api/v3/activities?text_operator=AUTO&extend_other_languages=AUTO&extend_content_fields=AUTO&fuzziness_level=LEVEL-0&zero_terms_query=NONE&vertical_in=${filter.category}&sort_by=rating&category_in=&default_price_range=00.00%2C${filter.maxPrice}&limit=8&offset=${filter.pagination * 8}`)
             .then(res => res.json())
             .then(data => dispatch(setAllActivities(data)))
             .then(handleHash)

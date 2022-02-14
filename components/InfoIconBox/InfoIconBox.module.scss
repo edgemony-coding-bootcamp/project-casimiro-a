@@ -1,0 +1,12 @@
+@use "../../libs/mixins.scss";
+@use "../../libs/variables.scss";
+
+.wrapper_icon_box{
+    @include mixins.flexContainer(row, space-between, center, 20px);
+    background-color: variables.$quaternary;
+    padding: 30px;
+    border-radius: variables.$cardBorderRadius;
+    max-width: 200px;
+    font-size: 2rem;
+    color: variables.$black;
+}

@@ -7,7 +7,7 @@
     
     
     .wrapper_activity_image{
-        
+        border-radius: variables.$cardBorderRadius;
         img {
             border-radius: variables.$cardBorderRadius;
             object-fit: cover;
@@ -29,6 +29,10 @@
                 button{
                     @include mixins.buttonCart();
                 }
+        }
+
+        .wrapper_activity_services{
+            @include mixins.flexContainer(row, flex-start, center, 20px);
         }
     }
 }

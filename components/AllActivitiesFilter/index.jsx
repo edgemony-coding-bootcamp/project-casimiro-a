@@ -21,6 +21,9 @@ export default function ActivitiesFilter() {
   });
   const [input, setInput] = useState(200);
 
+
+  
+
   useEffect(() => {
     dispatch(filterActivities(state));
   }, [state]);
@@ -29,9 +32,12 @@ export default function ActivitiesFilter() {
     dispatch(filterActivities(state));
   }, []);
 
+  
+
   function handleChange(e) {
     setInput(e.target.value);
-
+  }
+  function handleMouseUp(e){
     setState({ ...state, maxPrice: e.target.value, up: false });
   }
 
@@ -117,6 +123,7 @@ export default function ActivitiesFilter() {
             value={input}
             step="1"
             onChange={handleChange}
+            onMouseUp={handleMouseUp}
           />
           <p>
             € <span>{input}</span>

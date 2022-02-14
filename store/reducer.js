@@ -6,7 +6,8 @@ const initState = {
     searchBarActive: false,
     searchData: [],
     showResult: false,
-    showSideMenu: false
+    showSideMenu: false,
+    allActivities: []
 }
 const reducer = (state = initState, action) => {
     switch (action.type) {
@@ -54,6 +55,11 @@ const reducer = (state = initState, action) => {
             return{
                 ...state,
                 showSideMenu: !state.showSideMenu,
+            }
+        case "setAllActivities":
+            return{
+                ...state,
+                allActivities: action.payload,
             }
         default :
             return state;   

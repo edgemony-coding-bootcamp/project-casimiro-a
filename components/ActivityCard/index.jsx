@@ -17,6 +17,7 @@ const ActivityCard = (props) =>
     const price = props.price || '€ 0.00'; 
     const category = props.category.name;
     
+    
     // ?
     const url = props.url || ``;
 

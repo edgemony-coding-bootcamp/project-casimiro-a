@@ -17,8 +17,8 @@ const Cities = ({ data, showTitle = true, exceptId = 0 }) =>
         <section className={styles.wrapper_cities}>
             { showTitle &&
                 <SectionTitle
-                    title = "Città più visitate:" 
-                    description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                    title = "Città più visitate" 
+                    description = "Scopri le mete più ambite su TravelHub"
                     path = '/citta'
                     btntext = 'Visualizza tutte le città'
                     btncolor = '#FF9F1C'

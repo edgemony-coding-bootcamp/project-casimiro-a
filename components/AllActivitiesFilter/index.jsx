@@ -14,13 +14,14 @@ export default function ActivitiesFilter() {
   const router = useRouter();
   const data = useSelector((state) => state.allActivities);
   const [state, setState] = useState({
+    id:"2",
     maxPrice: 200,
     category: "sightseeing",
     pagination: 0,
     up: false,
+    categoria: "Tour e Attrazioni"
   });
   const [input, setInput] = useState(200);
-
 
   
 
@@ -42,7 +43,14 @@ export default function ActivitiesFilter() {
   }
 
   function handleCategory(category) {
-    setState({ ...state, category: category, pagination: 0, up: false });
+    setState({ 
+      ...state, 
+      category: category.category, 
+      pagination: 0, 
+      up: false,
+      categoria: category.name,
+      id: category.id
+    });
   }
 
   const category = [
@@ -50,36 +58,44 @@ export default function ActivitiesFilter() {
       name: "Arte e musei",
       color: "#011627",
       category: "arts-culture",
+      categoria:"Arte e Musei",
+      id:"1"
     },
     {
       name: "Tour e attrazioni",
       color: "#E71D36",
       category: "sightseeing",
+      id:"7"
     },
     {
       name: "Spettacoli e concerti",
       color: "red",
       category: "entertainment",
+      id:"2"
     },
     {
       name: "Food & wine",
       color: "#FF9F1C",
       category: "food-wine",
+      id:"3"
     },
     {
       name: "Sport e avventura",
       color: "#2EC4B6",
       category: "adventure",
+      id:"6"
     },
     {
       name: "Eventi sportivi",
-      color: "red",
+      color: "#21005D",
       category: "sports",
+      id:"8"
     },
     {
       name: "Nightlife",
-      color: "red",
+      color: "#410E0B",
       category: "nightlife",
+      id:"9"
     },
   ];
 
@@ -135,7 +151,7 @@ export default function ActivitiesFilter() {
             <button
               key={id}
               style={{ background: category.color }}
-              onClick={() => handleCategory(category.category)}
+              onClick={() => handleCategory(category)}
             >
               {category.name}
             </button>
@@ -155,7 +171,7 @@ export default function ActivitiesFilter() {
                 title={el.title}
                 image={el.cover_image_url || el.city.cover_image_url}
                 price={el.retail_price.formatted_iso_value}
-                category=""
+                category={{name : state.categoria, id: state.id}}
                 text={el.description || el.operational_days}
               />
             </div>

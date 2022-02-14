@@ -15,7 +15,7 @@ export default function ActivitiesFilter() {
   const data = useSelector((state) => state.allActivities);
   const [state, setState] = useState({
     maxPrice: 200,
-    category: "Palermo",
+    category: "sightseeing",
     pagination: 0,
     up: false,
   });
@@ -50,32 +50,40 @@ export default function ActivitiesFilter() {
     {
       name: "Arte e musei",
       color: "#011627",
+      category: "arts-culture",
     },
     {
       name: "Tour e attrazioni",
       color: "#E71D36",
+      category: "sightseeing"
     },
     {
       name: "Spettacoli e concerti",
       color: "red",
+      category: "entertainment",
     },
     {
       name: "Food & wine",
       color: "#FF9F1C",
+      category: "food-wine",
     },
     {
-      name: "Avventura",
+      name: "Sport e avventura",
       color: "#2EC4B6",
+      category: "adventure",
     },
     {
-      name: "Eventi Sportivi",
+      name: "Eventi sportivi",
       color: "red",
+      category: "sports"
     },
     {
       name: "Nightlife",
       color: "red",
+      category: "nightlife"
     },
   ];
+  console.log(data)
   return (
     <>
       <div id="up" className={style.container}>
@@ -99,7 +107,7 @@ export default function ActivitiesFilter() {
             <button
               key={id}
               style={{ background: category.color }}
-              onClick={() => handleCategory(category.name)}
+              onClick={() => handleCategory(category.category)}
             >
               {category.name}
             </button>
@@ -117,10 +125,10 @@ export default function ActivitiesFilter() {
             >
               <ActivityCard
                 title={el.title}
-                image={el.cover_image_url}
+                image={el.cover_image_url || el.city.cover_image_url} 
                 price={el.retail_price.formatted_iso_value}
                 category=""
-                text={el.description}
+                text={el.description || el.operational_days}
               />
             </div>
           ))}

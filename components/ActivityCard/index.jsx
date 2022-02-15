@@ -19,9 +19,8 @@ const ActivityCard = (props) =>
     const title = props.title || 'Attività';
     const text = props.text || 'Descrizione attività...';
     const price = props.price || '€ 0.00'; 
-    const category = props.category.name || "";
-    
-    
+    const category =  props.category ? props.category.name : "";
+
     // ?
     const url = props.url || ``;
 
@@ -31,7 +30,7 @@ const ActivityCard = (props) =>
                 className={styles.single_card_image} 
                 style={{backgroundImage: `url(${image})`}}
             >
-                <p style={{backgroundColor: colorByCategoryId[props.category.id]}}>{category}</p>
+                <p style={{backgroundColor: colorByCategoryId[props.category ? props.category.id : 1]}}>{category}</p>
             </div>
             <div className={styles.single_card_info}>
                 <h3>{title}</h3>
@@ -39,7 +38,7 @@ const ActivityCard = (props) =>
                 <div className={styles.single_card_info_price}>
                     <p>{price}</p>
                     <Link href={url}>
-                            <a style={{color: colorByCategoryId[props.category.id]}}>Scopri di più</a>
+                           <a style={{color: colorByCategoryId[props.category ? props.category.id : 1]}}>Scopri di più</a>
                     </Link>
                 </div>
             </div>

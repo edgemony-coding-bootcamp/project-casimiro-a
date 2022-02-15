@@ -35,7 +35,7 @@ const Activities = ({ data, showTitle = true }) =>
                                     text={activity.description}
                                     price={activity.retail_price.formatted_value}
                                     category={activity.verticals[0]}
-                                    url={`esperienze/${activity.uuid}`}
+                                    url={`/esperienze/${activity.uuid}`}
                                 />
                             </a>
                         </Link>    

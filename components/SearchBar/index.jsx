@@ -44,9 +44,8 @@ export default function SearchBar() {
       timer--;
       if (timer === 0) {
         e.target.value && dispatch(SearchFetch(e));
-
       }
-    }, 1000);
+    }, 500);
   }
   function handleRouting(res, route) {
     router.push(`/${route}/${res}`);

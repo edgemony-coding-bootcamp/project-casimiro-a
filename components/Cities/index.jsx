@@ -1,10 +1,11 @@
+
 import SectionTitle from '../SectionTitle';
 import SimpleCard from '../SimpleCard';
 import styles from './Cities.module.scss';
 import Link from 'next/link';
 
 
-const Cities = ({ data, showTitle = true, exceptId = 0 }) =>
+const Cities = ({ data, showTitle = true, newTitle = false, showBtn = true, exceptId = 0, maxCities = 5 }) =>
 {
     let cities = data || [];
 
@@ -13,16 +14,23 @@ const Cities = ({ data, showTitle = true, exceptId = 0 }) =>
         cities = cities.filter((city) => parseInt(city.id) !== exceptId);
     }
 
+    if(maxCities && cities.length > maxCities)
+    {
+        cities = cities.slice(0, maxCities);
+    }
+
     return (
         <section className={styles.wrapper_cities}>
-            { showTitle &&
-                <SectionTitle
-                    title = "Città più visitate" 
-                    description = "Scopri le mete più ambite su TravelHub"
-                    path = '/citta'
-                    btntext = 'Visualizza tutte le città'
-                    btncolor = '#FF9F1C'
-                />
+            {
+                showTitle &&
+                    <SectionTitle
+                        title = {newTitle ? newTitle : "Città più visitate"}
+                        description = "Scopri le mete più ambite su TravelHub"
+                        path = '/citta'
+                        btntext = 'Visualizza tutte le città'
+                        btncolor = '#FF9F1C'
+                        showBtn = {showBtn}
+                    />            
             }
             <div className={styles.wrapper_cities_cards}>
                 {

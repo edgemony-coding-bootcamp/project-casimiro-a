@@ -2,7 +2,6 @@ import styles from './About.module.scss'
 import Layout from "../../components/Layouts";
 import HeroIntern from "../../components/HeroIntern";
 import TeamCard from '../../components/TeamCard';
-import { loadGetInitialProps } from 'next/dist/shared/lib/utils';
 
 const team = [
     {   id: '1', 
@@ -46,7 +45,7 @@ export default function About() {
     return (
         <Layout>
         <HeroIntern
-        bgImage="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?cs=srgb&dl=pexels-fauxels-3184418.jpg&fm=jpg"
+        bgImage="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg"
         title="About"
         description="Uno sguardo su TravelHub"
       />

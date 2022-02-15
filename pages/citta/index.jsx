@@ -1,12 +1,13 @@
 
+import dynamic from 'next/dynamic';
 import Layout from "../../components/Layouts";
 import HeroIntern from "../../components/HeroIntern";
 import stylesTitle from "../../components/SectionTitle/SectionTitle.module.scss";
-import dynamic from 'next/dynamic';
+import CitiesSkeleton from "../../components/CitiesSkeleton";
 
 const Cities = dynamic(
   () => import('../../components/Cities'),
-  { ssr: false, loading: () => <div>Loading...</div>}
+  { ssr: false, loading: () => <CitiesSkeleton />}
 );
 
 export async function getStaticProps() {
@@ -27,16 +28,7 @@ export default function CitiesArchive({ cities }) {
         title="città"
         description="Sei indeciso sulla tua prossima destinazione? Sfoglia il catalogo completo delle città e lasciati ispirare da TravelHub!"
       />
-      <div 
-        className={stylesTitle.wrapper_title_button}
-        style={{ padding: '100px 100px 0', marginBottom: '-50px' }}
-      >
-        <div className={stylesTitle.wrapper_title}>
-          <h2>Scopri le città popolari</h2>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-        </div>
-      </div>
-      <Cities big={true} showTitle={false} data={cities} />
+      <Cities newTitle="Scopri le città popolari" showBtn={false} data={cities} />
     </Layout>
   );
 }

@@ -15,7 +15,7 @@ export default function Footer() {
             <div className={styles.logoWrapper}>
             <Link href="/">
                 <a>
-                <Image src="/logov.positiva.png" alt="logo" width={300} height={74} /> 
+                <Image src="\logov.positiva.png" alt="logo" width={300} height={74} /> 
                 </a>
             </Link>
                 <p>Lorem Ipsum is simply dummy... </p>

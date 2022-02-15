@@ -1,3 +1,4 @@
+
 @use '../../libs/variables.scss';
 @use '../../libs/mixins.scss';
 
@@ -9,9 +10,27 @@
     flex-wrap: wrap;
     
 
-    .wrapper_title h2
+    .wrapper_title
     {
-        margin-bottom: 20px;
+        h2
+        {
+            margin-bottom: 20px;
+        }
+
+        .wrapper_title_skeleton
+        {
+            height: 50px;
+            width: 50vw;
+            margin-bottom: 25px;
+            background-color: variables.$skeleton;
+        }
+
+        .wrapper_text_skeleton
+        {
+            height: 15px;
+            width: 30vw;
+            background-color: variables.$skeleton;
+        }
     }
 
     a
@@ -25,14 +44,17 @@
         text-align: right;
     }
 }
-@media only screen and (max-width: 675px){
-    .wrapper_title_button{
+
+@media only screen and (max-width: 675px)
+{
+    .wrapper_title_button
+    {
         justify-content: center;
         text-align: center;
-    .wrapper_title h2{
-        font-size: 30px;
-    }
-        
-    }
 
+        .wrapper_title h2
+        {
+            font-size: 30px;
+        }       
+    }
 }

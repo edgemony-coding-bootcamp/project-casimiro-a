@@ -1,10 +1,11 @@
+
 import Image from 'next/image'
 import InfoIconBox from '../InfoIconBox'
 import styles from './ActivityDescription.module.scss'
 
 
 export default function ActivityDescription({
-    image = 'https://images.unsplash.com/photo-1510253687831-0f982d7862fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1167&q=80',
+    image = 'https://images.unsplash.com/photo-1510253687831-0f982d7862fc',
     title = 'immagine attività',
     description = 'Descrizione Lorem Ipsum',
     price = '€',
@@ -17,7 +18,7 @@ export default function ActivityDescription({
         <section className={styles.wrapper_activity_description}>
             <div className={styles.wrapper_activity_image}>
                 <Image 
-                    src={image}
+                    src={image.replace('?w=540', '') + '?h=400&w'}
                     alt={title}
                     width='600px'
                     height='400px'

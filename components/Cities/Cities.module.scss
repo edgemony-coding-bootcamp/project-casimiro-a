@@ -14,14 +14,17 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        a{
+
+        a
+        {
             margin: 20px 10px;
         }
 
     }
 }
 
-@media only screen and (max-width: 675px){
+@media only screen and (max-width: 675px)
+{
     
     .wrapper_cities{
         padding: 20px;

@@ -6,19 +6,22 @@ const SimpleCard = (props) =>
 {
     const bigSize = props.big || false;
     const text = props.text || 'Example city/experience';
-    const image = props.image || 'https://images.unsplash.com/photo-1563693267403-111c5d856e49?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80';
+    const image = props.image || 'https://images.unsplash.com/photo-1563693267403-111c5d856e49';
+    const isSkeleton = props.skeleton || false;
+
+    let content =   <>
+                        <Image 
+                            src={image + (bigSize ? '?h=541&w=360&fit=crop&q' : '?h=403&w=310&fit=crop&q')}
+                            alt={text}
+                            layout="fill"
+                        />
+                        <p>{text}</p>
+                    </>;
+    if(isSkeleton) content = '';
 
     return (
-        <div 
-            className={`${styles.wrapper} ${bigSize ? styles.big : ''}`}
-            
-        >
-            <Image 
-                src={`${image}?h=500&q=70`}
-                alt={text}
-                layout="fill"
-            />
-            <p>{text}</p>
+        <div className={`${styles.wrapper} ${bigSize ? styles.big : ''}`}>
+            {content}
         </div>
     );
 };

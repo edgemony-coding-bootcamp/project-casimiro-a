@@ -1,33 +1,72 @@
+
 @use "../../libs/mixins.scss";
 @use "../../libs/variables.scss";
 
-.wrapper_activity_description{
+.wrapper_activity_description
+{
     @include mixins.flexContainer(row, space-between, center, 100px);
     padding: variables.$sectionsPadding;
     
     
-    .wrapper_activity_image{
+    .wrapper_activity_image
+    {
         border-radius: variables.$cardBorderRadius;
-        img {
+
+        img 
+        {
             border-radius: variables.$cardBorderRadius;
             object-fit: cover;
         }
     }
 
-    .wrapper_activity_info{
+    .wrapper_activity_image_skeleton
+    {
+        height: 400px;
+        width: 600px;
+        background-color: variables.$skeleton;
+        border-radius: variables.$cardBorderRadius;
+    }
+
+    .wrapper_activity_info
+    {
         @include mixins.flexContainer(column, flex-start, flex-start, 30px);
         max-width: 50%;
 
-        .wrapper_activity_shop{
+        .wrapper_activity_info_title_skeleton
+        {
+            height: 50px;
+            width: 30vw;
+            background-color: variables.$skeleton;
+        }
+        
+        .wrapper_activity_info_text_skeleton
+        {
+            height: 10px;
+            width: 45vw;
+            background-color: variables.$skeleton;
+        }
+
+        .wrapper_activity_shop
+        {
             @include mixins.flexContainer(row, flex-start, center, 20px);
 
-                .price{
-                        font-size: 1.4em;
-                        margin: 0;
-                        font-weight: 600;
-                    }
-                button{
+                .price
+                {
+                    font-size: 1.4em;
+                    margin: 0;
+                    font-weight: 600;
+                }
+
+                button
+                {
                     @include mixins.buttonCart();
+                }
+
+                .wrapper_activity_shop_skeleton
+                {
+                    height: 30px;
+                    width: 5vw;
+                    background-color: variables.$skeleton;
                 }
         }
 

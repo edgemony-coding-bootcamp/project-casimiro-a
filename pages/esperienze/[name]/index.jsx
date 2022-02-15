@@ -1,15 +1,32 @@
-import HeroIntern from "../../../components/HeroIntern";
-import Cities from '../../../components/Cities';
-import Layout from '../../../components/Layouts';
+
 import { useRouter } from "next/router";
-import ActivityDescription from '../../../components/ActivityDescription';
-import CityDescription from '../../../components/CityDescription';
-import Reviews from '../../../components/Reviews';
 import { API_URL, FETCH_HEADERS } from "../../../libs/variables";
 import axios from 'axios';
+import dynamic from "next/dynamic";
+import Layout from '../../../components/Layouts';
+import HeroIntern from "../../../components/HeroIntern";
+import Reviews from '../../../components/Reviews';
+import CitiesSkeleton from "../../../components/CitiesSkeleton";
+import DescriptionSkeleton from "../../../components/DescriptionSkeleton";
+
+const ActivityDescription = dynamic(
+    () => import('../../../components/ActivityDescription'),
+    { ssr: false, loading: () => <DescriptionSkeleton /> }
+);
+
+const CityDescription = dynamic(
+    () => import('../../../components/CityDescription'),
+    { ssr: false, loading: () => <DescriptionSkeleton imageRight={true} /> }
+);
+
+const Cities = dynamic(
+    () => import('../../../components/Cities'),
+    { ssr: false, loading: () => <CitiesSkeleton /> }
+);
 
 
-export default function Activity({activity, cities}) {
+export default function Activity({ activity, cities }) 
+{
     const router = useRouter();
     
 
@@ -43,7 +60,7 @@ export default function Activity({activity, cities}) {
                     more={activity.city.more}
                     id={activity.city.id}
                 />
-                <Cities data={cities}/>
+                <Cities data={cities} exceptId={activity.city.id}/>
             </Layout>
         </>
     );
@@ -61,7 +78,7 @@ export async function getStaticProps({params})
     );
 
     const cities = await axios(
-        `${API_URL}cities?limit=5&without_events=yes`,
+        `${API_URL}cities?limit=6&without_events=yes`,
         {
           headers: FETCH_HEADERS
         }
@@ -74,19 +91,23 @@ export async function getStaticProps({params})
     }
 
     return {
-        props:{
+        props: {
             activity: activity.data,
             cities: cities.data,
-        },
-        revalidate: 10,
+        }
     };
 }
 
-export async function getStaticPaths() {
-    const res = await fetch("https://sandbox.musement.com/api/v3/activities");
-    const data = await res.json();
+export async function getStaticPaths() 
+{
+    const activities = await axios(
+        `${API_URL}activities`,
+        {
+            headers: FETCH_HEADERS
+        }
+    ); 
 
-    const paths = data.data.map((activity) => {
+    const paths = activities.data.data.map((activity) => {
         return {
             params: {
                 name: `${activity.uuid}`,

@@ -27,13 +27,23 @@
 
   }
 
-  @media only screen and (max-width: 675px){
+@media only screen and (max-width: 1400px){
     
     .wrapper_hero_intern{
-
-      padding: 100px 10px 20px 10px;
       h1{
-        font-size: 40px;
+        max-width: 100%;
       }
     } 
+}
+@media only screen and (max-width: 768px){
+    
+  .wrapper_hero_intern{
+    @include mixins.flexContainer(column, center, center);
+    text-align: center;
+    padding: 130px 30px 50px 30px;
+    h1{
+      font-size: 40px;
+      max-width: 100%;
+    }
+  } 
 }

@@ -18,7 +18,9 @@ export default function Footer() {
                         <Image src="/logov.positiva.png" alt="logo" width={300} height={74} /> 
                     </a>
                 </Link>
-                <p>Lorem Ipsum is simply dummy... </p>
+                <p>La web app per pianificare i tuoi viaggi 
+                ed esplorare il mondo
+                </p>
             </div>
             <div className={styles.menùWrapper}>
                 <h3>Menù</h3>

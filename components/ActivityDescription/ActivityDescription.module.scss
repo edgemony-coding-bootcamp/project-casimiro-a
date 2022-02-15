@@ -33,6 +33,45 @@
 
         .wrapper_activity_services{
             @include mixins.flexContainer(row, flex-start, center, 20px);
+            flex-wrap: wrap;
+        }
+    }
+}
+
+@media screen and (max-width:1400px){
+    .wrapper_activity_description{
+        @include mixins.flexContainer(row, space-between, flex-start, 50px);
+        padding: 50px;
+    }
+}
+
+@media screen and (max-width:768px){
+    .wrapper_activity_description{
+        @include mixins.flexContainer(column-reverse, space-between, center, 50px);
+        padding: 50px;
+        .wrapper_activity_info{
+            max-width: 100%;
+
+            .wrapper_activity_services{
+                @include mixins.flexContainer(row, center, center, 20px);
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:400px){
+    .wrapper_activity_description{
+        padding: 50px 20px;
+        .wrapper_activity_info{
+            h2{
+                font-size: 40px;
+            }
+
+            .wrapper_activity_shop{
+                @include mixins.flexContainer(column, center, center, 20px);
+                width: 100%;
+            }
         }
     }
 }

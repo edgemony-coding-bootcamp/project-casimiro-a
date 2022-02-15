@@ -20,7 +20,7 @@ const Cities = ({ data, showTitle = true, exceptId = 0 }) =>
                     title = "Città più visitate" 
                     description = "Scopri le mete più ambite su TravelHub"
                     path = '/citta'
-                    btntext = 'Visualizza tutte le città'
+                    btntext = 'Visualizza tutte le città →'
                     btncolor = '#FF9F1C'
                 />
             }

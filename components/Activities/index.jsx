@@ -18,9 +18,9 @@ const Activities = ({ data, showTitle = true }) =>
             {showTitle &&
                 <SectionTitle 
                     title = "Esperienze popolari" 
-                    description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                    description = "Hai deciso di girare il mondo in cerca di nuove emozionanti avventure? Sfoglia il catalogo completo delle esperienze offerte da TravelHub!"
                     path = '/esperienze'
-                    btntext = 'Visualizza tutte le esperienze'
+                    btntext = 'Visualizza tutte le esperienze →'
                     btncolor = '#E71D36'
                 />
             }

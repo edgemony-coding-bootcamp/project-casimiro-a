@@ -6,8 +6,6 @@
     padding: variables.$sectionsPadding;
     
     .wrapper_city_image{
-        width: 600px;
-        height: auto;
         img {
             object-fit: cover;
             border-radius: variables.$cardBorderRadius;
@@ -20,6 +18,37 @@
 
         a{
             @include mixins.buttonCart();
+        }
+    }
+}
+
+@media screen and (max-width:1400px){
+    .wrapper_city_description{
+        @include mixins.flexContainer(row, space-between, flex-start, 50px);
+        padding: 50px;
+    }
+}
+
+@media screen and (max-width:768px){
+    .wrapper_city_description{
+        @include mixins.flexContainer(column, space-between, center, 50px);
+        padding: 50px;
+        .wrapper_city_info{
+            max-width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width:400px){
+    .wrapper_city_description{
+        padding: 50px 20px;
+        .wrapper_city_info{
+            h2{
+                font-size: 40px;
+            }
+            a{
+                align-self: center;
+            }
         }
     }
 }

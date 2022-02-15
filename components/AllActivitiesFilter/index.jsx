@@ -15,17 +15,15 @@ export default function ActivitiesFilter() {
   const router = useRouter();
   const data = useSelector((state) => state.allActivities);
   const [state, setState] = useState({
-    id:"2",
     maxPrice: 200,
-    category: "sightseeing",
+    category: "",
     pagination: 0,
     up: false,
-    categoria: "Tour e Attrazioni",
-    city: ""
+    categoria: "",
+    city: "",
   });
   const [input, setInput] = useState(200);
-  
-  
+
   useEffect(() => {
     dispatch(filterActivities(state));
   }, [state]);
@@ -34,23 +32,22 @@ export default function ActivitiesFilter() {
     dispatch(filterActivities(state));
   }, []);
 
-  
   function handleChange(e) {
     setInput(e.target.value);
   }
-  function handleMouseUp(e){
+  function handleMouseUp(e) {
     setState({ ...state, maxPrice: e.target.value, up: false });
   }
 
   function handleCategory(category) {
-    console.log(category)
-    setState({ 
-      ...state, 
-      category: category.category, 
-      pagination: 0, 
+    console.log(category);
+    setState({
+      ...state,
+      category: category.category,
+      pagination: 0,
       up: false,
       categoria: category.name,
-      id: category.id
+      id: category.id,
     });
   }
 
@@ -74,13 +71,11 @@ export default function ActivitiesFilter() {
       name: "Spettacoli e concerti",
       color: "red",
       category: "entertainment",
-
     },
     {
       name: "Food & wine",
       color: "#FF9F1C",
       category: "food-wine",
-
     },
     {
       name: "Sport e avventura",
@@ -98,7 +93,6 @@ export default function ActivitiesFilter() {
       category: "nightlife",
     },
   ];
-
 
   let pagineTot = data.meta ? Math.ceil(data.meta.count / 8) : 0;
   let paginationDyn = state.pagination - 4;
@@ -125,25 +119,19 @@ export default function ActivitiesFilter() {
     );
   }
 
-function categorie(el){
-  if ( el.verticals[1] ){
-    if (state.categoria === el.verticals[1].name) 
-    return el.verticals[1] 
-    else 
-    return  el.verticals[0]
+  function categorie(el) {
+    if (el.verticals[1]) {
+      if (state.categoria === el.verticals[1].name) return el.verticals[1];
+      else return el.verticals[0];
+    } else return el.verticals[0];
   }
-  else 
-   return el.verticals[0] 
- 
-}
+  console.log(data);
   return (
     <>
       <div id="up" className={style.container}>
-
         <div className={style.citySearch}>
-         <FilterCity setter={setState} />
+          <FilterCity setter={setState} />
         </div>
-
 
         <div className={style.buttons}>
           {category.map((category, id) => (
@@ -155,10 +143,7 @@ function categorie(el){
               {category.name}
             </button>
           ))}
-          
         </div>
-
-
 
         <div className={style.inputDiv}>
           <p>€ 0</p>
@@ -176,8 +161,14 @@ function categorie(el){
           </p>
         </div>
       </div>
-            
+
       <div className={style.allactivities}>
+        {data.meta && data.meta.count === 0 && (
+          <div className={style.noResult}>
+            <h3>Ops.. Sembra che non ci siano risultati</h3>
+            <p>prova a cambiare parametri</p>
+          </div>
+        )}
         {data.data &&
           data.data.map((el) => (
             <div
@@ -218,8 +209,14 @@ function categorie(el){
           dir=">"
           forActivities={true}
           action={() =>
-            
-            setState({ ...state, pagination:state.pagination < pagineTot -1 ? state.pagination + 1 : state.pagination, up: true })
+            setState({
+              ...state,
+              pagination:
+                state.pagination < pagineTot - 1
+                  ? state.pagination + 1
+                  : state.pagination,
+              up: true,
+            })
           }
         />
         <ButtonHero

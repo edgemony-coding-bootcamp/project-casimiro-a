@@ -86,11 +86,23 @@ $paddingSide : 70px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    .noResult{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 50vh;
+        h3{
+            margin-bottom: 10px;
+        }
+
+    }
     .singleActivity{
         margin: 10px 15px;
         cursor: pointer;
     }
 }
+
 @media  (max-width: 855px){
     .container{
         margin: 10px 10px;

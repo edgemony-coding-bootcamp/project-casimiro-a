@@ -29,6 +29,7 @@ export function FilterCity({ setter }) {
       }
     }, 300);
   }
+  
 
   function handleClick(e) {
     setter((prev) => ({ ...prev, city: e.target.id, category: ""}));

@@ -25,32 +25,33 @@ export const SearchFetch = (e) => {
             .then(data => dispatch(setSearchData(data)))
             .then(dispatch(showResult))
             .then(e.target.value = "")
-
     }
 }
-
-export const toggleSideMenu = {type: "toggleSideMenu"};
-export const setAllActivities = (data) => ({type: "setAllActivities", payload: data});
+export const toggleSideMenu = { type: "toggleSideMenu" };
+export const setAllActivities = (data) => ({ type: "setAllActivities", payload: data });
 
 export const filterActivities = (filter) => {
-
     return (dispatch) => {
-
-        function handleHash(){
-            if (filter.up === true)  {window.location.hash = "up" 
-            setTimeout(() => {
-                window.location.hash = "/"
-            }, 100)}
-        
-
+        function handleHash() {
+            if (filter.up === true) {
+                window.location.hash = "up"
+                setTimeout(() => {
+                    window.location.hash = "/"
+                }, 100)
+            }
         }
-
-
-        fetch(`https://sandbox.musement.com/api/v3/activities?text_operator=AUTO&extend_other_languages=AUTO&extend_content_fields=AUTO&fuzziness_level=LEVEL-0&zero_terms_query=NONE&vertical_in=${filter.category}&sort_by=rating&category_in=&default_price_range=00.00%2C${filter.maxPrice}&limit=8&offset=${filter.pagination * 8}`)
+        fetch(`https://sandbox.musement.com/api/v3/activities?text_operator=AUTO&extend_other_languages=AUTO&extend_content_fields=AUTO&fuzziness_level=LEVEL-0&zero_terms_query=NONE&city_in=${filter.city}&vertical_in=${filter.category}&sort_by=rating&category_in=&default_price_range=00.00%2C${filter.maxPrice}&limit=8&offset=${filter.pagination * 8}`)
             .then(res => res.json())
             .then(data => dispatch(setAllActivities(data)))
             .then(handleHash)
-            
+    }
+}
+const setSearchCity = (data) => ({ type: "setSearchCity", payload: data })
+export const searchCity = (e) => {
 
+    return (dispatch) => {
+        fetch(`https://sandbox.musement.com/api/v3/autocomplete?sort_by=&text=${e.target.value}&city_limit=5`)
+            .then(res => res.json())
+            .then(data => dispatch(setSearchCity(data)))
     }
 }

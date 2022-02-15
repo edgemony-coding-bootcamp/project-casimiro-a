@@ -134,9 +134,8 @@ export default function ActivitiesFilter() {
 
         <div className={style.buttons}>
           {category.map((category, id) => (
-            <div className={`${style.buttonDiv} ${state.category === category.category && style.buttonDivOpen}`}>
+            <div key={id} className={`${style.buttonDiv} ${state.category === category.category && style.buttonDivOpen}`}>
             <button
-              key={id}
               style={{ background: category.color }}
               onClick={() => handleCategory(category)}
             >

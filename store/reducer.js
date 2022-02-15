@@ -7,7 +7,8 @@ const initState = {
     searchData: [],
     showResult: false,
     showSideMenu: false,
-    allActivities: []
+    allActivities: [],
+    searchCity: ""
 }
 const reducer = (state = initState, action) => {
     switch (action.type) {
@@ -40,6 +41,11 @@ const reducer = (state = initState, action) => {
             return{
                 ...state,
                 searchData: action.payload,
+            }
+        case "setSearchCity":
+            return{
+                ...state,
+                searchCity: action.payload,
             }
         case "showResult":
             return{

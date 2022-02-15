@@ -14,7 +14,6 @@ export default function ExperiencesArchive() {
 
       <AllActivitiesFilter/>
 
-      <Activities data={""} showTitle={false} />
     </Layout>
   );
 }

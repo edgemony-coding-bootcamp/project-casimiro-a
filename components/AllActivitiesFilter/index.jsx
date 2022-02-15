@@ -8,22 +8,21 @@ import { useSelector } from "react-redux";
 import ActivityCard from "../ActivityCard";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { FilterCity } from "./FilterCity";
 
 export default function ActivitiesFilter() {
   const dispatch = useDispatch();
   const router = useRouter();
   const data = useSelector((state) => state.allActivities);
   const [state, setState] = useState({
-    id:"2",
     maxPrice: 200,
-    category: "sightseeing",
+    category: "",
     pagination: 0,
     up: false,
-    categoria: "Tour e Attrazioni"
+    categoria: "",
+    city: "",
   });
   const [input, setInput] = useState(200);
-
-  
 
   useEffect(() => {
     dispatch(filterActivities(state));
@@ -33,77 +32,70 @@ export default function ActivitiesFilter() {
     dispatch(filterActivities(state));
   }, []);
 
-  
-
   function handleChange(e) {
     setInput(e.target.value);
   }
-  function handleMouseUp(e){
+  function handleMouseUp(e) {
     setState({ ...state, maxPrice: e.target.value, up: false });
   }
 
   function handleCategory(category) {
-    setState({ 
-      ...state, 
-      category: category.category, 
-      pagination: 0, 
+    console.log(category);
+    setState({
+      ...state,
+      category: category.category,
+      pagination: 0,
       up: false,
       categoria: category.name,
-      id: category.id
+      id: category.id,
     });
   }
 
   const category = [
     {
+      name: "Tutto",
+      color: "#000",
+      category: "",
+    },
+    {
       name: "Arte e musei",
       color: "#011627",
       category: "arts-culture",
-      categoria:"Arte e Musei",
-      id:"1"
     },
     {
       name: "Tour e attrazioni",
       color: "#E71D36",
       category: "sightseeing",
-      id:"7"
     },
     {
       name: "Spettacoli e concerti",
       color: "red",
       category: "entertainment",
-      id:"2"
     },
     {
       name: "Food & wine",
       color: "#FF9F1C",
       category: "food-wine",
-      id:"3"
     },
     {
       name: "Sport e avventura",
       color: "#2EC4B6",
       category: "adventure",
-      id:"6"
     },
     {
       name: "Eventi sportivi",
       color: "#21005D",
       category: "sports",
-      id:"8"
     },
     {
       name: "Nightlife",
       color: "#410E0B",
       category: "nightlife",
-      id:"9"
     },
   ];
 
   let pagineTot = data.meta ? Math.ceil(data.meta.count / 8) : 0;
-
-
-  let paginationDyn = state.pagination - 6;
-
+  let paginationDyn = state.pagination - 4;
 
   function addButton() {
     paginationDyn++;
@@ -127,9 +119,32 @@ export default function ActivitiesFilter() {
     );
   }
 
+  function categorie(el) {
+    if (el.verticals[1]) {
+      if (state.categoria === el.verticals[1].name) return el.verticals[1];
+      else return el.verticals[0];
+    } else return el.verticals[0];
+  }
+  console.log(data);
   return (
     <>
       <div id="up" className={style.container}>
+        <div className={style.citySearch}>
+          <FilterCity setter={setState} />
+        </div>
+
+        <div className={style.buttons}>
+          {category.map((category, id) => (
+            <button
+              key={id}
+              style={{ background: category.color }}
+              onClick={() => handleCategory(category)}
+            >
+              {category.name}
+            </button>
+          ))}
+        </div>
+
         <div className={style.inputDiv}>
           <p>€ 0</p>
           <input
@@ -145,21 +160,15 @@ export default function ActivitiesFilter() {
             € <span>{input}</span>
           </p>
         </div>
-
-        <div className={style.buttons}>
-          {category.map((category, id) => (
-            <button
-              key={id}
-              style={{ background: category.color }}
-              onClick={() => handleCategory(category)}
-            >
-              {category.name}
-            </button>
-          ))}
-        </div>
       </div>
 
       <div className={style.allactivities}>
+        {data.meta && data.meta.count === 0 && (
+          <div className={style.noResult}>
+            <h3>Ops.. Sembra che non ci siano risultati</h3>
+            <p>prova a cambiare parametri</p>
+          </div>
+        )}
         {data.data &&
           data.data.map((el) => (
             <div
@@ -171,7 +180,7 @@ export default function ActivitiesFilter() {
                 title={el.title}
                 image={el.cover_image_url || el.city.cover_image_url}
                 price={el.retail_price.formatted_iso_value}
-                category={{name : state.categoria, id: state.id}}
+                category={categorie(el)}
                 text={el.description || el.operational_days}
               />
             </div>
@@ -194,14 +203,20 @@ export default function ActivitiesFilter() {
             setState({ ...state, pagination: state.pagination - 1, up: true })
           }
         />
-        {data.meta && [...Array(11)].map((index) => addButton())}
+        {data.meta && [...Array(7)].map((index) => addButton())}
 
         <ButtonHero
           dir=">"
           forActivities={true}
           action={() =>
-            
-            setState({ ...state, pagination:state.pagination < pagineTot -1 ? state.pagination + 1 : state.pagination, up: true })
+            setState({
+              ...state,
+              pagination:
+                state.pagination < pagineTot - 1
+                  ? state.pagination + 1
+                  : state.pagination,
+              up: true,
+            })
           }
         />
         <ButtonHero

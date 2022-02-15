@@ -3,7 +3,7 @@
 @use "../../libs/mixins.scss";
 
 .wrapper_hero{
-    @include mixins.flexContainer(row, space-evenly, center);
+    @include mixins.flexContainer(row, space-between, center);
     width: 100%;
     max-height: 120vh;
     padding: 150px 50px;
@@ -13,12 +13,25 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
+    .wrapper_text_hero{
+      max-width: 100%;
+    }
     
 
     .wrapper_carousel_hero{
       margin-right: -300px;
-      margin-left: 300px;
+    }
+}
+
+@media screen and (max-width: 1050px){
+  .wrapper_hero{
+    @include mixins.flexContainer(column, space-between, center,0px);
+    max-height: 130vh;
+    
+    .wrapper_carousel_hero{
+      margin: 0px;
     }
   }
-
+}
   

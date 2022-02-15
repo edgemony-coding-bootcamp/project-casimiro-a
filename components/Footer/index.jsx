@@ -13,14 +13,15 @@ export default function Footer() {
 
         <div className={styles.rowItemsWrapper}>
             <div className={styles.logoWrapper}>
-                <Link href="/">
-                    <a>
-                        <Image src="/logov.positiva.png" alt="logo" width={300} height={74} /> 
-                    </a>
-                </Link>
+
+            <Link href="/">
+                <a>
+                <Image src="\logov.positiva.png" alt="logo" width={300} height={74} /> 
+                </a>
+            </Link>
                 <p>La web app per pianificare i tuoi viaggi 
-                ed esplorare il mondo
-                </p>
+                ed esplorare il mondo</p>
+
             </div>
             <div className={styles.menùWrapper}>
                 <h3>Menù</h3>

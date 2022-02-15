@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import ActivityCard from "../ActivityCard";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { FilterCity } from "./FilterCity";
 
 export default function ActivitiesFilter() {
   const dispatch = useDispatch();
@@ -15,9 +16,11 @@ export default function ActivitiesFilter() {
   const data = useSelector((state) => state.allActivities);
   const [state, setState] = useState({
     maxPrice: 200,
-    category: "sightseeing",
+    category: "",
     pagination: 0,
     up: false,
+    categoria: "",
+    city: "",
   });
   const [input, setInput] = useState(200);
 
@@ -31,15 +34,29 @@ export default function ActivitiesFilter() {
 
   function handleChange(e) {
     setInput(e.target.value);
-
+  }
+  function handleMouseUp(e) {
     setState({ ...state, maxPrice: e.target.value, up: false });
   }
 
   function handleCategory(category) {
-    setState({ ...state, category: category, pagination: 0, up: false });
+    console.log(category);
+    setState({
+      ...state,
+      category: category.category,
+      pagination: 0,
+      up: false,
+      categoria: category.name,
+      id: category.id,
+    });
   }
 
   const category = [
+    {
+      name: "Tutto",
+      color: "#000",
+      category: "",
+    },
     {
       name: "Arte e musei",
       color: "#011627",
@@ -67,47 +84,67 @@ export default function ActivitiesFilter() {
     },
     {
       name: "Eventi sportivi",
-      color: "red",
+      color: "#21005D",
       category: "sports",
     },
     {
       name: "Nightlife",
-      color: "red",
+      color: "#410E0B",
       category: "nightlife",
     },
   ];
 
   let pagineTot = data.meta ? Math.ceil(data.meta.count / 8) : 0;
-
-
-  let paginationDyn = state.pagination - 6;
-
+  let paginationDyn = state.pagination - 4;
 
   function addButton() {
     paginationDyn++;
     const clickon = paginationDyn;
     return (
-      <ButtonHero
-        key={clickon}
-        active={state.pagination === clickon && true}
-        forActivities={true}
-        dir={
-          (pagineTot >= paginationDyn + 1) & (paginationDyn >= 0)
-            ? paginationDyn + 1
-            : ""
-        }
-        action={
-          (pagineTot >= paginationDyn) & (paginationDyn >= 0)
-            ? () => setState({ ...state, pagination: clickon, up: true })
-            : () => console.log("")
-        }
+        <ButtonHero
+          key={clickon}
+          active={state.pagination === clickon && true}
+          forActivities={true}
+          dir={
+            (pagineTot >= paginationDyn + 1) & (paginationDyn >= 0)
+              ? paginationDyn + 1
+              : ""
+          }
+          action={
+            (pagineTot >= paginationDyn) & (paginationDyn >= 0)
+              ? () => setState({ ...state, pagination: clickon, up: true })
+              : () => console.log("")
+          }
       />
     );
   }
 
+  function categorie(el) {
+    if (el.verticals[1]) {
+      if (state.categoria === el.verticals[1].name) return el.verticals[1];
+      else return el.verticals[0];
+    } else return el.verticals[0];
+  }
   return (
     <>
       <div id="up" className={style.container}>
+        <div className={style.citySearch}>
+          <FilterCity setter={setState} />
+        </div>
+
+        <div className={style.buttons}>
+          {category.map((category, id) => (
+            <div key={id} className={`${style.buttonDiv} ${state.category === category.category && style.buttonDivOpen}`}>
+            <button
+              style={{ background: category.color }}
+              onClick={() => handleCategory(category)}
+            >
+              {category.name}
+            </button>
+            </div>
+          ))}
+        </div>
+
         <div className={style.inputDiv}>
           <p>€ 0</p>
           <input
@@ -117,26 +154,21 @@ export default function ActivitiesFilter() {
             value={input}
             step="1"
             onChange={handleChange}
+            onMouseUp={handleMouseUp}
           />
           <p>
             € <span>{input}</span>
           </p>
         </div>
-
-        <div className={style.buttons}>
-          {category.map((category, id) => (
-            <button
-              key={id}
-              style={{ background: category.color }}
-              onClick={() => handleCategory(category.category)}
-            >
-              {category.name}
-            </button>
-          ))}
-        </div>
       </div>
 
       <div className={style.allactivities}>
+        {data.meta && data.meta.count === 0 && (
+          <div className={style.noResult}>
+            <h3>Ops.. Sembra che non ci siano risultati</h3>
+            <p>prova a cambiare parametri</p>
+          </div>
+        )}
         {data.data &&
           data.data.map((el) => (
             <div
@@ -148,7 +180,7 @@ export default function ActivitiesFilter() {
                 title={el.title}
                 image={el.cover_image_url || el.city.cover_image_url}
                 price={el.retail_price.formatted_iso_value}
-                category=""
+                category={categorie(el)}
                 text={el.description || el.operational_days}
               />
             </div>
@@ -171,14 +203,20 @@ export default function ActivitiesFilter() {
             setState({ ...state, pagination: state.pagination - 1, up: true })
           }
         />
-        {data.meta && [...Array(11)].map((index) => addButton())}
+        {data.meta && [...Array(7)].map((index) => addButton())}
 
         <ButtonHero
           dir=">"
           forActivities={true}
           action={() =>
-            
-            setState({ ...state, pagination:state.pagination < pagineTot -1 ? state.pagination + 1 : state.pagination, up: true })
+            setState({
+              ...state,
+              pagination:
+                state.pagination < pagineTot - 1
+                  ? state.pagination + 1
+                  : state.pagination,
+              up: true,
+            })
           }
         />
         <ButtonHero

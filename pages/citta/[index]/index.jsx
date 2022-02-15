@@ -1,21 +1,30 @@
-import HeroIntern from "../../../components/HeroIntern";
+
 import { useRouter } from "next/router";
-import Layout from "../../../components/Layouts";
 import { API_URL, FETCH_HEADERS } from "../../../libs/variables";
 import axios from 'axios';
-import stylesTitle from "../../../components/SectionTitle/SectionTitle.module.scss";
 import { useState, useEffect } from "react";
-import FilterActivities from '../../../components/FilterActivities';
 import dynamic from 'next/dynamic';
+import Layout from "../../../components/Layouts";
+import HeroIntern from "../../../components/HeroIntern";
+import stylesTitle from "../../../components/SectionTitle/SectionTitle.module.scss";
+import FilterActivities from '../../../components/FilterActivities';
+import SectionTitleSkeleton from "../../../components/SectionTitle";
+import ActivitiesSkeleton from "../../../components/ActivitiesSkeleton";
+import CitiesSkeleton from "../../../components/CitiesSkeleton";
+
+const SectionTitle = dynamic(
+  import("../../../components/SectionTitle"),
+  { ssr: false, loading: () => <SectionTitleSkeleton skeleton />}
+);
 
 const Activities = dynamic(
   () => import('../../../components/Activities'), 
-  { ssr: false, loading: () => <div>Loading...</div> }
+  { ssr: false, loading: () => <ActivitiesSkeleton />}
 );
 
 const Cities = dynamic(
   () => import('../../../components/Cities'), 
-  { ssr: false, loading: () => <div>Loading...</div> }
+  { ssr: false, loading: () => <CitiesSkeleton />}
 );
 
 
@@ -83,13 +92,15 @@ export default function City({ city, activities, cities })
           className={stylesTitle.wrapper_title_button}
           style={{ padding: '100px 100px 0' }}
         >
-          <div className={stylesTitle.wrapper_title}>
-            <h2>Scopri cosa puoi fare a {city.name}</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
+          <SectionTitle 
+            title={`Scopri cosa puoi fare a ${city.name}`} 
+            description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'}
+            showBtn={false}
+          />
         </div>
         <FilterActivities callback={handleFilter} />
-        <Activities data={filterActivitiesState} showTitle={false} />
+        <Activities data={filterActivitiesState} showTitle={false}>
+        </Activities>
         <Cities data={cities} exceptId={city.id} />
       </Layout>
     </>
@@ -107,7 +118,7 @@ export async function getStaticProps({ params })
   );
 
   const activities = await axios(
-    `${API_URL}cities/${params.index}/activities?sort_by=city-relevance&limit=100`,
+    `${API_URL}cities/${params.index}/activities?sort_by=rating&limit=20`,
     {
       headers: FETCH_HEADERS
     }

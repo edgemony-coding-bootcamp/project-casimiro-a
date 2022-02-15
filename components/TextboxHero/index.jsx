@@ -1,5 +1,3 @@
-import styles from "./TextboxHero.module.scss";
-
 import style from "./TextboxHero.module.scss";
 import { useDispatch } from 'react-redux';
 import { setCarouselSecondInst } from "../../store/actions";

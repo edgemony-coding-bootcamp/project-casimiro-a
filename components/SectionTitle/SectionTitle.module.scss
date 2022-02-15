@@ -7,8 +7,7 @@
     @include mixins.flexContainer(row, space-between);
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap;  
 
     .wrapper_title
     {
@@ -45,12 +44,15 @@
     }
 }
 
-@media only screen and (max-width: 675px)
-{
-    .wrapper_title_button
-    {
-        justify-content: center;
+@media only screen and (max-width: 870px){
+    .wrapper_title_button{
+        @include mixins.flexContainer(column, center, center, 20px);
         text-align: center;
+        a{
+            max-width: 100%;
+            text-align: center;
+        }    
+    }
 
         .wrapper_title h2
         {

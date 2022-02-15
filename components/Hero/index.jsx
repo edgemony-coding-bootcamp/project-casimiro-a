@@ -8,14 +8,12 @@ export default function Hero({ data }) {
   return (
     <>
       <div className={styles.wrapper_hero}>
-
         <SidebarHero />
-        <TextboxHero data={data} />
-
+        <div className={styles.wrapper_text_hero}>
+          <TextboxHero data={data} />
+        </div>
         <div className={styles.wrapper_carousel_hero}>
-
           <CarouselHero data={data} />
-
         </div>
       </div>
     </>

@@ -21,16 +21,18 @@ const Cities = ({ data, showTitle = true, newTitle = false, showBtn = true, exce
 
     return (
         <section className={styles.wrapper_cities}>
+
             {
                 showTitle &&
                     <SectionTitle
                         title = {newTitle ? newTitle : "Città più visitate"}
                         description = "Scopri le mete più ambite su TravelHub"
                         path = '/citta'
-                        btntext = 'Visualizza tutte le città'
+                        btntext = 'Visualizza tutte le città →'
                         btncolor = '#FF9F1C'
                         showBtn = {showBtn}
                     />            
+
             }
             <div className={styles.wrapper_cities_cards}>
                 {

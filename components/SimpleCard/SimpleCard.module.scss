@@ -63,3 +63,23 @@ $widthCard: 310px;
         color: variables.$white;
     }
 }
+
+@media screen and (max-width: 1250px){
+ .wrapper{
+     &.big
+    {
+        height: 400px;
+        width: 300px;
+    }
+ }
+}
+
+@media screen and (max-width: 1050px){
+    .wrapper{
+        &.big
+       {
+           height: 200px;
+           width: 200px;
+       }
+    }
+   }

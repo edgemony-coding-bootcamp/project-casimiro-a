@@ -11,8 +11,9 @@
     {
         width: 100%;
         padding: 50px 0;
-        display: flex;
-        justify-content: space-between;
+        @include mixins.flexContainer(row, space-between,center, 0px);
+        // display: flex;
+        // justify-content: space-between;
         flex-wrap: wrap;
 
         a
@@ -23,10 +24,12 @@
     }
 }
 
-@media only screen and (max-width: 675px)
-{
-    
+
+@media only screen and (max-width: 1480px){
     .wrapper_cities{
-        padding: 20px;
+        padding: 50px;
+        .wrapper_cities_cards{
+            justify-content: center;
+        }
     } 
 }

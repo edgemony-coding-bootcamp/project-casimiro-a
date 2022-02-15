@@ -33,10 +33,17 @@ export default function CarouselHero({ data })
           className={style.carousel}
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={10}
-          allowTouchMove={false}
+          allowTouchMove={true}
           loop={true}
           speed={800}
-          slidesPerView={2}
+          slidesPerView={1}
+          breakpoints={{
+          550: {
+            slidesPerView: 2,
+            spaceBetween:10,
+            allowTouchMove:false
+          }
+          }}
           scrollbar={{ draggable: true }}
           onSwiper={(swiper) => dispatch(setCarouselFirstInst(swiper))}
         >

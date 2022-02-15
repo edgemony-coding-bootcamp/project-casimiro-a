@@ -1,111 +1,119 @@
-
-@import "../../libs/variables.scss";
+@use '../../libs/variables.scss';
+@use '../../libs/mixins.scss';
 
 .footerWrapper{
     width: 100%;
+    @include mixins.flexContainer(column, space-between, space-around,25px);
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    padding: 50px; 
+    background-color: variables.$quaternary;
+    color: variables.$black;
 
-    padding: 30px;
-    line-height: 25px;
-      
-    background-color: $quaternary;
-    color: $black;
+        .rowItemsWrapper{
+            @include mixins.flexContainer(row, space-between, start);
+            flex-wrap: wrap;
+            .logoWrapper{
+                flex-grow:2;
 
-     
-    h2{
-        margin:0;
+                p { 
+                    margin-left: 85px;
+                    max-width: 300px;
+                };
+            };
+
+            .menùWrapper, .contattiWrapper{
+                flex-grow: 1;
+                
+                ul{
+                    list-style-type: none; 
+                    li{
+                        margin-bottom: 15px;
+                        cursor: pointer;
+                        &:hover{
+                            color: variables.$primary;
+                            text-decoration: underline;
+                        };
+                    };
+                };
+                
+                h3{
+                    margin-bottom: 30px;
+                };
+
+                .brandsIcons{    
+                    display: flex;       
+                    column-gap: 15px;
+                };
+            };    
+        };   
+        
+        .AuthorsWrapper{
+            @include mixins.flexContainer(column, center, center,15px);
+            border-top:1px solid variables.$black;;
+            
+            h3{
+                padding-top: 30px;
+            }
+            a {
+                margin: 5px;
+                &:hover{
+                    color: variables.$primary;
+                }
+            }
+        }
+
+        .icons{
+            width: 15px;
+            margin-right: 5px;   
+        }
+        
+        .angleIcons{
+            width: 6px;
+            margin-right: 5px;   
+        }
+        
+        .heart{
+            width: 16px; 
+            color: variables.$primary;  
+        }
+        
+        
+}
+
+
+
+
+@media only screen and (max-width: 768px){
+    .footerWrapper{
+        .rowItemsWrapper{
+            .logoWrapper{
+                width: 100%;
+                text-align: center;
+                p { 
+                    margin: 20px 0px 0px 0px;
+                };
+            }
+        }
     }
-
-    h3{
-        margin:0;
-    }
-    
-    img {        
-        width: 300px;
-    }
 }
 
-.rowItemsWrapper{
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-around;    
-    padding-bottom: 20px;
-    
-    ul{
-        list-style-type: none; 
-        padding:0;
-    }
-}
 
-.logoWrapper{
-    flex-grow: 2;    
-}
-
-.menùWrapper{
-    flex-grow: 1;   
-    list-style-type: none; 
-}
-
-.contattiWrapper{
-    flex-grow: 1;    
-}
-
-.AuthorsWrapper{
-    border-top:1px solid $black;;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   
-    
-    h3{
-        padding: 20px 0 10px 0;
-    }
-    a {
-        margin: 5px;
-    }
-}
-.icons{
-    width: 14px;   
-}
-
-.angleIcons{
-    width: 6px;   
-}
-
-.heart{
-    width: 16px; 
-    color: $primary;  
-}
-
-.brandsIcons{    
-    display: flex;       
-    column-gap: 5px;
-    margin-top: 3px;
-}
 
 @media only screen and (max-width: 480px) {
     .footerWrapper{
-        justify-content: center;
-        text-align: center;
-
-        line-height: 35px;
-
-        img {        
-            width: 200px;
+        .rowItemsWrapper {
+            @include mixins.flexContainer(column, space-between, center);
+            text-align: center;
+            .brandsIcons{
+                justify-content: center;        
+            }    
+        }   
+        .AuthorsWrapper{
+            div{
+                @include mixins.flexContainer(row, center, center,0px);
+                flex-wrap: wrap;
+            }
         }
     }
    
-    .rowItemsWrapper {
-        flex-direction: column;
-        justify-content: center;
-
-        div{margin: 10px 0;}
-    }   
-
-    .brandsIcons{
-        justify-content: center;        
-    }
 }

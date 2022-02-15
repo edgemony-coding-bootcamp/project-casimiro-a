@@ -101,20 +101,20 @@ export default function ActivitiesFilter() {
     paginationDyn++;
     const clickon = paginationDyn;
     return (
-      <ButtonHero
-        key={clickon}
-        active={state.pagination === clickon && true}
-        forActivities={true}
-        dir={
-          (pagineTot >= paginationDyn + 1) & (paginationDyn >= 0)
-            ? paginationDyn + 1
-            : ""
-        }
-        action={
-          (pagineTot >= paginationDyn) & (paginationDyn >= 0)
-            ? () => setState({ ...state, pagination: clickon, up: true })
-            : () => console.log("")
-        }
+        <ButtonHero
+          key={clickon}
+          active={state.pagination === clickon && true}
+          forActivities={true}
+          dir={
+            (pagineTot >= paginationDyn + 1) & (paginationDyn >= 0)
+              ? paginationDyn + 1
+              : ""
+          }
+          action={
+            (pagineTot >= paginationDyn) & (paginationDyn >= 0)
+              ? () => setState({ ...state, pagination: clickon, up: true })
+              : () => console.log("")
+          }
       />
     );
   }
@@ -125,7 +125,6 @@ export default function ActivitiesFilter() {
       else return el.verticals[0];
     } else return el.verticals[0];
   }
-  console.log(data);
   return (
     <>
       <div id="up" className={style.container}>
@@ -135,6 +134,7 @@ export default function ActivitiesFilter() {
 
         <div className={style.buttons}>
           {category.map((category, id) => (
+            <div className={`${style.buttonDiv} ${state.category === category.category && style.buttonDivOpen}`}>
             <button
               key={id}
               style={{ background: category.color }}
@@ -142,6 +142,7 @@ export default function ActivitiesFilter() {
             >
               {category.name}
             </button>
+            </div>
           ))}
         </div>
 

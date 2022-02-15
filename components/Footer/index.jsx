@@ -13,11 +13,11 @@ export default function Footer() {
 
         <div className={styles.rowItemsWrapper}>
             <div className={styles.logoWrapper}>
-            <Link href="/">
-                <a>
-                <Image src="/logov.positiva.png" alt="logo" width={300} height={74} /> 
-                </a>
-            </Link>
+                <Link href="/">
+                    <a>
+                        <Image src="/logov.positiva.png" alt="logo" width={300} height={74} /> 
+                    </a>
+                </Link>
                 <p>Lorem Ipsum is simply dummy... </p>
             </div>
             <div className={styles.menùWrapper}>
@@ -40,11 +40,11 @@ export default function Footer() {
                     <li><FontAwesomeIcon className={styles.icons} icon={faEnvelope} /> info@travelhub.com</li>
                     <li><FontAwesomeIcon className={styles.icons} icon={faPhoneAlt} /> +39 123 456 7890</li>
                     <li>
-                    <div className={styles.brandsIcons}>
-                    <FontAwesomeIcon className={styles.icons} icon={faInstagram}/>
-                    <FontAwesomeIcon className={styles.icons} icon={faFacebook}/>
-                    <FontAwesomeIcon className={styles.icons} icon={faTwitter}/>
-                    </div>   
+                        <div className={styles.brandsIcons}>
+                        <FontAwesomeIcon className={styles.icons} icon={faInstagram}/>
+                        <FontAwesomeIcon className={styles.icons} icon={faFacebook}/>
+                        <FontAwesomeIcon className={styles.icons} icon={faTwitter}/>
+                        </div>   
                     </li>
                     
                 </ul>
@@ -53,7 +53,7 @@ export default function Footer() {
        
         <div className={styles.AuthorsWrapper}>
             <h3>Made with <FontAwesomeIcon className={styles.heart} icon={faHeart} /> & Next.JS by</h3>
-            <p>
+            <div>
             <Link href="https://www.linkedin.com/in/agnese-spinella/">
                 <a target="_blank">Agnese</a>
             </Link>
@@ -69,7 +69,7 @@ export default function Footer() {
             <Link href="https://www.linkedin.com/in/roberta-pennisi/">
                 <a target="_blank">Roberta</a>
             </Link>
-            </p>
+            </div>
         </div>
      
     </div>    

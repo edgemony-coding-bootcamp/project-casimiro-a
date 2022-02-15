@@ -17,7 +17,7 @@ const Activities = ({ data, showTitle = true }) =>
         <section className={styles.wrapper_activities}>
             {showTitle &&
                 <SectionTitle 
-                    title = "Esperienze popolari:" 
+                    title = "Esperienze popolari" 
                     description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
                     path = '/esperienze'
                     btntext = 'Visualizza tutte le esperienze'

@@ -5,8 +5,7 @@
     
     box-shadow: variables.$shadow;
     border-radius: variables.$cardBorderRadius;
-    width: 400px;
-
+    max-width: 380px;
     transition: 0.4s;
     
     &:hover
@@ -83,9 +82,14 @@
     }
 }
 
-@media only screen and (max-width: 675px){
+@media only screen and (max-width: 1810px){
     
     .single_card{
        width: 300px;
+
+       .single_card_info{
+           min-height: 350px;
+       }
     } 
+
 }

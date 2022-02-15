@@ -24,7 +24,6 @@ export const SearchFetch = (e) => {
             .then(res => res.json())
             .then(data => dispatch(setSearchData(data)))
             .then(dispatch(showResult))
-            .then(e.target.value = "")
     }
 }
 export const toggleSideMenu = { type: "toggleSideMenu" };

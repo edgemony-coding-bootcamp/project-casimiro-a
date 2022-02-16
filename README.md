@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./public/logo.png" alt="travelhub" width=350/>
+  <img src="./public/logo.png" alt="logo-travelhub" width=350/>
 </p>
 <h2 align="center">La web app per pianificare i tuoi viaggi ed esplorare il mondo</h2>
 
@@ -49,12 +49,15 @@
  <h3>Team</h3>
  <hr height:"2"/>
 
- <ul>
-    <li>Agnese Spinella</li>
-    <li>Dario Castiglione </li>
-    <li>Davide Missiato </li>
-    <li>Federica Santoro </li>
-    <li>Roberta Pennisi </li>
- </ul>
 
- <p> Team guidato da Casimiro P. Ciancimino </p>
+   -[**Agnese Spinella**](https://github.com/AgneseSpinella)
+   <br>
+   -[**Dario Castiglione**](https://github.com/Dario-Castiglione)
+   <br>
+   -[**Davide Missiato**](https://github.com/DMissiato)
+   <br>
+   -[**Federica Santoro**](https://github.com/federicasantoro93)
+   <br>
+   -[**Roberta Pennisi**](https://github.com/RobertaPennisi)
+
+  Team guidato da [**Casimiro P. Ciancimino**](https://github.com/casiimir)

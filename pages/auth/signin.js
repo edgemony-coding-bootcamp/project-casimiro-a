@@ -1,6 +1,7 @@
 import { getProviders, signIn, useSession } from "next-auth/react"
 import Layout from "../../components/Layouts";
 import style from "./signin.module.scss"
+import Image from 'next/image';
 
 export default function SignIn({ providers }) {
     const {data : session} = useSession();
@@ -12,10 +13,22 @@ export default function SignIn({ providers }) {
             <div className={style.container}>
                {Object.values(providers).map((provider) => (
             <div key={provider.name}>
-              <button onClick={() => signIn(provider.id)}>
-                Sign in with {provider.name}
+              {session ? 
+              <div className={style.log}>
+              <h3>Bentornato {session.user.name}!</h3>   
+              <p>Siamo felici di rivederti!</p>           
+              </div>
+               : 
+               <div className={style.noLog}>
+               <h3>Bentornato!</h3>
+               <p>Prosegui per accedere con {provider.name}</p>
+               <button className={style.btn} onClick={() => signIn(provider.id)}>
+                <Image className={style.img} src="\Google__G__Logo.svg" alt="google logo" width={24} height={24} />
               </button>
-              {session ? <p>`ciao {session.user.name} sei loggato`</p> : <p>non sei loggato</p>}
+              </div>}
+
+              {/*{session ? <p>Bentornato {session.user.name}!</p> : <p>Bentornato!</p>}*/}              
+              
             </div>
           ))}
             </div>

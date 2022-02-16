@@ -33,3 +33,19 @@
         background-color: variables.$white;
     }
 }
+
+@mixin login()
+{
+    position: fixed;
+    z-index: 11;
+    top: 140px;
+    left: calc(50% - 155px);
+    padding: 35px 60px;
+    width: 450;
+    height: 200px;
+    text-align: center;
+    border-radius: 10px; 
+    color: variables.$white;
+    background-color: variables.$black;     
+    
+}

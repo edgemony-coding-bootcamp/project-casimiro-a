@@ -40,7 +40,8 @@
 
  <h3>Performance</h3>
  <hr height:"2"/>
- Ottimizzazione validata tramite **Lighthouse**
+ 
+ Ottimizzazione tramite **Lighthouse**
 
     
     *

@@ -1,6 +1,6 @@
 
 import { useRouter } from "next/router";
-import { API_URL, FETCH_HEADERS } from "../../../libs/variables";
+import { API_URL } from "../../../libs/variables";
 import axios from 'axios';
 import dynamic from "next/dynamic";
 import Layout from '../../../components/Layouts';
@@ -70,19 +70,9 @@ export default function Activity({ activity, cities })
 
 export async function getStaticProps({params}) 
 {
-    const activity = await axios(
-        `${API_URL}activities/${params.name}`,
-        {
-          headers: FETCH_HEADERS
-        }
-    );
+    const activity = await axios(`${API_URL}activities/${params.name}`);
 
-    const cities = await axios(
-        `${API_URL}cities?limit=6&without_events=yes`,
-        {
-          headers: FETCH_HEADERS
-        }
-    );
+    const cities = await axios(`${API_URL}cities?limit=6&without_events=yes`);
 
     if(!activity) {
         return {
@@ -100,12 +90,7 @@ export async function getStaticProps({params})
 
 export async function getStaticPaths() 
 {
-    const activities = await axios(
-        `${API_URL}activities`,
-        {
-            headers: FETCH_HEADERS
-        }
-    ); 
+    const activities = await axios(`${API_URL}activities`); 
 
     const paths = activities.data.data.map((activity) => {
         return {

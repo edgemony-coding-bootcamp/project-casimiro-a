@@ -1,8 +1,11 @@
 
 import { useRouter } from "next/router";
-import { API_URL, FETCH_HEADERS } from "../../../libs/variables";
+import { API_URL } from "../../../libs/variables";
 import axios from 'axios';
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { filterActivities } from "../../../store/actions";
+import { useSelector } from "react-redux";
 import dynamic from 'next/dynamic';
 import Layout from "../../../components/Layouts";
 import HeroIntern from "../../../components/HeroIntern";
@@ -29,53 +32,54 @@ const Cities = dynamic(
 
 
 const initialFilterState = {
+  city: 0,
   maxPrice: 100,
-  category: 0
+  category: '',
+  pagination: 0,
+  up: false
 };
 
-export default function City({ city, activities, cities }) 
+export default function City({ city, cities }) 
 {
-  // State
-  const [filterActivitiesState, setFilterActivitiesState] = useState({data: []});
-  const [filterState, setFilterState] = useState(initialFilterState);
-  
-  useEffect(() =>
-  {
-    setFilterActivitiesState({ data: activities.slice(0, 8) });
-  }, [activities]);
-  
   // Router
   const router = useRouter();
-
+  
   if (router.isFallback) 
   {
     return <h1>loading</h1>;
   }
 
+  const dispatch = useDispatch();
+  const filterActivitiesState = useSelector((state) => {
+    if(Object.keys(state.allActivities).length !== 0)
+    {
+      return state.allActivities;
+    }
+  }); 
+
+
+  // State
+  const [filterState, setFilterState] = useState({...initialFilterState, city: city.id});
+  
+  useEffect(() =>
+  {
+    setFilterState({...filterState, city: city.id});
+  }, [city]);
+
+  useEffect(() =>
+  {
+    dispatch(filterActivities(filterState));
+  }, [filterState]);
+
+
   // Events
   const handleFilter = (filters) =>
   {
       if(filters &&
-          (filterState.maxPrice != filters.maxPrice ||
-          filterState.category != filters.category))
+        (filterState.maxPrice != filters.maxPrice ||
+        filterState.category != filters.category))
       {
-          setFilterState(filters);
-
-          setFilterActivitiesState({ data: activities.filter((value) =>
-          {
-              if(filters.category > 0)
-              {
-                return (
-                  value.verticals.length && value.verticals[0].id === filters.category &&
-                  value.retail_price.value <= filters.maxPrice
-                );
-              }
-              return (
-                value.verticals.length && value.verticals[0].id !== filters.category &&
-                value.retail_price.value <= filters.maxPrice 
-              );
-
-          }).slice(0, 8)}); 
+          setFilterState({...filterState, ...filters});
       }
   }; 
   
@@ -99,8 +103,7 @@ export default function City({ city, activities, cities })
           />
         </div>
         <FilterActivities callback={handleFilter} />
-        <Activities data={filterActivitiesState} showTitle={false}>
-        </Activities>
+        <Activities data={filterActivitiesState} showTitle={false} />
         <Cities data={cities} exceptId={city.id} />
       </Layout>
     </>
@@ -110,26 +113,9 @@ export default function City({ city, activities, cities })
 
 export async function getStaticProps({ params }) 
 {
-  const city = await axios(
-    `${API_URL}cities/${params.index}`,
-    {
-      headers: FETCH_HEADERS
-    }
-  );
+  const city = await axios(`${API_URL}cities/${params.index}`);
 
-  const activities = await axios(
-    `${API_URL}cities/${params.index}/activities?sort_by=rating&limit=20`,
-    {
-      headers: FETCH_HEADERS
-    }
-  );
-
-  const cities = await axios(
-    `${API_URL}cities?limit=6&without_events=yes`,
-    {
-      headers: FETCH_HEADERS
-    }
-  );
+  const cities = await axios(`${API_URL}cities?limit=6&without_events=yes`);
 
   if (!city) {
     return {
@@ -140,7 +126,6 @@ export async function getStaticProps({ params })
   return {
     props: {
       city: city.data,
-      activities: activities.data,
       cities: cities.data,
     }
   };
@@ -149,12 +134,7 @@ export async function getStaticProps({ params })
 
 export async function getStaticPaths() 
 {
-  const cities = await axios(
-    `${API_URL}cities`,
-    {
-      headers: FETCH_HEADERS
-    }
-  );
+  const cities = await axios(`${API_URL}cities`);
 
   const paths = cities.data.map((city) => {
     return {

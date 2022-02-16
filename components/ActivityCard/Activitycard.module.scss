@@ -50,7 +50,7 @@
         margin-top: -30px;
         z-index: 1;
         background-color: variables.$white;
-        @include mixins.flexContainer(column, space-between, flex-start);
+        @include mixins.flexContainer(column, space-between, flex-start,20px);
         min-height: 320px;
 
         h3

@@ -6,6 +6,7 @@ import Layout from '../components/Layouts';
 import Hero from '../components/Hero';
 import ActivitiesSkeleton from '../components/ActivitiesSkeleton';
 import CitiesSkeleton from '../components/CitiesSkeleton';
+import Advantages from '../components/Advantages';
 
 const Activities = dynamic(
   () => import('../components/Activities'), 
@@ -18,12 +19,12 @@ const Cities = dynamic(
 );
 
 
-export default function Home({ activities, cities }) 
-{
+export default function Home({ activities, cities }){
   return (
     <Layout>
       <Hero data={cities} />
       <Activities data={activities} />
+      <Advantages />
       <Cities data={cities} />
     </Layout>
   )

@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import dynamic from 'next/dynamic';
 import Layout from "../../../components/Layouts";
 import HeroIntern from "../../../components/HeroIntern";
-import stylesTitle from "../../../components/SectionTitle/SectionTitle.module.scss";
+import styles from "./SingleCity.module.scss";
 import FilterActivities from '../../../components/FilterActivities';
 import SectionTitleSkeleton from "../../../components/SectionTitle";
 import ActivitiesSkeleton from "../../../components/ActivitiesSkeleton";
@@ -92,15 +92,12 @@ export default function City({ city, cities })
           description={city.content}
           bgImage={city.cover_image_url}
         />
-        <div 
-          className={stylesTitle.wrapper_title_button}
-          style={{ padding: '100px 100px 0' }}
-        >
+        <div className={styles.wrapper_title}>
           <SectionTitle 
             title={`Scopri cosa puoi fare a ${city.name}`} 
             description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'}
             showBtn={false}
-          />
+        />
         </div>
         <FilterActivities callback={handleFilter} />
         <Activities data={filterActivitiesState} showTitle={false} />

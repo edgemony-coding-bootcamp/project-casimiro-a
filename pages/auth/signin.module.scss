@@ -1,0 +1,45 @@
+
+@use '../../libs/variables.scss';
+@use '../../libs/mixins.scss';
+
+.container{
+    height: 70vh;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(141, 141, 141);
+
+   
+}
+
+.noLog, .log {
+    @include mixins.login(); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    align-content: center;
+}
+
+
+.noLog p {       
+        margin: 15px 0;
+}
+
+.btn{
+    padding: 5px 30px;
+    border-radius: 10px;    
+    background-color: variables.$white;
+    border: none;
+    cursor: pointer; 
+    
+    &:hover{
+        background-color: variables.$black;
+        border: 2px solid variables.$white;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .noLog, .log {
+        width: 310px;
+    }
+}

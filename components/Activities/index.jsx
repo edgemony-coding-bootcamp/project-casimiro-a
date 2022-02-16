@@ -17,7 +17,7 @@ const Activities = ({ data, showTitle = true }) =>
         <section className={styles.wrapper_activities}>
             {showTitle &&
                 <SectionTitle 
-                    title = "Esperienze popolari" 
+                    title = "Scopri le esperienze popolari su TravelHub" 
                     description = "Hai deciso di girare il mondo in cerca di nuove emozionanti avventure? Sfoglia il catalogo completo delle esperienze offerte da TravelHub!"
                     path = '/esperienze'
                     btntext = 'Visualizza tutte le esperienze →'

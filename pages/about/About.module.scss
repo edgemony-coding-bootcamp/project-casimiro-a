@@ -3,33 +3,47 @@
 
 
 .aboutWrapper{
-    @include mixins.flexContainer(column);
-    row-gap: 200px; 
-    margin: 100px;     
-        
-    h3{
-        align-self: flex-start;
-        margin-bottom: 30px;
-    }
-}
-
-.teamCardsWrapper{    
-    @include mixins.flexContainer;
-    list-style-type: none;
-}
-
-@media only screen and (max-width: 480px) {
-    .aboutWrapper{
-        text-align: center;
-        margin: 50px;         
-    }
-
+    @include mixins.flexContainer(column, center, center, 100px); 
+    padding: variables.$sectionsPadding;
     .aboutTravelHub{
-        
-            text-align: left;
-        
+        @include mixins.flexContainer(column, center, flex-start);
     }
-    .teamCardsWrapper{ 
-        @include mixins.flexContainer(column);
+    
+    .aboutTeam{
+        @include mixins.flexContainer(column, center, space-between, 50px);
+        width: 100%;
+        text-align: center;
+        ul.teamCardsWrapper{
+            max-width: 100%;
+            @include mixins.flexContainer(row, space-between);
+            list-style-type: none;
+            flex-wrap: wrap;
+        }
+    }
+        
+}
+
+@media only screen and (max-width: 870px) {
+    .aboutWrapper{
+        padding: 50px;
+        .aboutTeam{
+            @include mixins.flexContainer(column, center, center, 50px);
+            ul.teamCardsWrapper{
+                @include mixins.flexContainer(row, center);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .aboutWrapper{
+        padding: 50px 20px;
+        h2{
+            text-align: center;
+            font-size: 40px;
+        }
+        .aboutTravelHub{
+            @include mixins.flexContainer(column, center, center);
+        }   
     }
 }

@@ -1,12 +1,11 @@
 @use '../../libs/mixins.scss';
 @use '../../libs/variables.scss';
 
-.wrapper
-{
+.wrapper{
     margin: 50px 100px -50px;
     padding: 15px;
-    background-color: #eee;
-    border-radius: 5px;
+    background-color: variables.$quaternary;
+    border-radius: variables.$cardBorderRadius;
     @include mixins.flexContainer(row, space-around);
 
     .wrapper_price
@@ -14,14 +13,15 @@
         @include mixins.flexContainer();
         padding: 15px 0;
         font-size: 1.3rem;
-
+        font-weight: 600;
         input[type=range]
         {
             -webkit-appearance: none;
             width: 200px; 
             height: 8px;
+            max-width: 100%;
             border-radius: 4px;
-            background-color: #333;
+            background-color: variables.$black;
             outline: none;
             -webkit-transition: .2s;
             transition: opacity .2s;
@@ -48,24 +48,41 @@
         button
         {
             padding: 10px 15px;
-            border-radius: 15px;
+            border-radius: 5px;
             border: 0;
             background-color: variables.$black;
             color: #fff;
             font-weight: 600;
             cursor: pointer;
         }
-    }
+    }    
+}
 
-
-    @media (max-width: 1080px)
-    {
-        @include mixins.flexContainer(column);
-
-        .wrapper_price
-        {
-            padding-bottom: 0;
+@media only screen and (max-width: 1450px){
+    .wrapper{
+        @include mixins.flexContainer(column-reverse, center, center);
+        margin: 50px 50px -50px;
+        .wrapper_category{
+            width: 100%;
+            @include mixins.flexContainer(row, center, center);
         }
     }
-   
+}
+
+@media only screen and (max-width: 768px){
+    .wrapper{   
+        margin: 50px 20px -50px;
+        .wrapper_category{
+            width: 100%;
+            @include mixins.flexContainer(row, center, center);
+        }
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .wrapper{   
+        .wrapper_price{
+            @include mixins.flexContainer(column,center,center,15px);
+        }
+    }
 }

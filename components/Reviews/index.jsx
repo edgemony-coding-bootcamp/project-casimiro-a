@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Reviews() {
     const score = () => {
-        return Math.random() * (5.1 - 4.0) + 4.0
+        return Math.random() * (5.0 - 4.0) + 4.0
     };
 
     return (

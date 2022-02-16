@@ -7,7 +7,7 @@
     .sidebar{
      height: 750px;
      border-left: 1px solid variables.$white;
-     @include mixins.flexContainer(column, space-around, start, 0px);
+     @include mixins.flexContainer(column, space-around, flex-start, 0px);
      opacity: 0.5;
     }
 }

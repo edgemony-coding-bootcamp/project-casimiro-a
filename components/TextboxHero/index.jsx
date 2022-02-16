@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { setCarouselSecondInst } from "../../store/actions";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -18,7 +17,6 @@ export default function TextBoxHero({data}) {
         <Swiper
           direction="vertical"
           className={style.carousel}
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={60}
           loop={true}
           slidesPerView={1}

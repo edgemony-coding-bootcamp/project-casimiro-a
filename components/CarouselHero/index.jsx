@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch } from "react-redux";
 import { setCarouselFirstInst, setCarouselIndex } from "../../store/actions";
-import { Navigation, Pagination, Scrollbar, A11y, Controller } from "swiper";
 import Link from "next/link";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -31,7 +30,6 @@ export default function CarouselHero({ data })
       <div className={style.container}>
         <Swiper
           className={style.carousel}
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={10}
           allowTouchMove={true}
           loop={true}
@@ -44,7 +42,6 @@ export default function CarouselHero({ data })
             allowTouchMove:false
           }
           }}
-          scrollbar={{ draggable: true }}
           onSwiper={(swiper) => dispatch(setCarouselFirstInst(swiper))}
         >
           {data.map((slide, index) => (

@@ -19,8 +19,7 @@ const Cities = dynamic(
 );
 
 
-export default function Home({ activities, cities }) 
-{
+export default function Home({ activities, cities }){
   return (
     <Layout>
       <Hero data={cities} />

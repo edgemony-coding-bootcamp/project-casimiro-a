@@ -6,7 +6,16 @@
     background-color: variables.$quaternary;
     padding: 30px;
     border-radius: variables.$cardBorderRadius;
-    max-width: 200px;
+    max-width: 300px;
     font-size: 2rem;
     color: variables.$black;
+    transition: 0.4s;
+    
+    &:hover
+    {
+        transform: scale(1.1);
+        transition: 0.4s;
+        background-color: variables.$black;
+        color: variables.$white;
+    }
 }

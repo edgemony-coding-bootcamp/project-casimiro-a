@@ -1,0 +1,17 @@
+@use './../../libs/mixins.scss';
+@use './../../libs/variables.scss';
+
+.wrapper_advantages{
+    @include mixins.flexContainer(column, center, center, 50px);
+    padding: 0 100px;
+    .wrapper_advantages_iconbox{
+        @include mixins.flexContainer(row, center, center,50px);
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and(max-width:1400px){
+    .wrapper_advantages{
+        padding: 0 20px;        
+    }
+}

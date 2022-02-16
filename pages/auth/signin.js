@@ -5,6 +5,7 @@ import style from "./signin.module.scss"
 export default function SignIn({ providers }) {
     const {data : session} = useSession();
 
+
     return(
         <Layout>
 

@@ -1,0 +1,12 @@
+@use '../../../libs/variables.scss';
+@use '../../../libs/mixins.scss';
+
+.wrapper_title{
+    padding: 100px 100px 0;
+}
+
+@media only screen and (max-width: 870px){
+    .wrapper_title{
+        padding: 50px 20px 0;
+    }  
+}

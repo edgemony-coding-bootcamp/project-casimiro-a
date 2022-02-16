@@ -10,7 +10,7 @@
     color: variables.$black;
 
         .rowItemsWrapper{
-            @include mixins.flexContainer(row, space-between, start);
+            @include mixins.flexContainer(row, space-between, flex-start);
             flex-wrap: wrap;
             .logoWrapper{
                 flex-grow:2;

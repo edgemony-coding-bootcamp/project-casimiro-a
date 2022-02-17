@@ -1,6 +1,7 @@
 
 <p align="center">
-  <img src="./public/logov.positiva.png" alt="logo-travelhub" width=350/>
+  <img src="./public/logov.positiva.png#gh-light-mode-only" alt="logo-travelhub" width=350/>
+    <img src="./public/logo.png#gh-dark-mode-only" alt="logo-travelhub" width=350/>
 </p>
 <h2 align="center" >La web app per pianificare i tuoi viaggi ed esplorare il mondo</h2>
 

@@ -36,8 +36,13 @@
  
  Ottimizzazione tramite **Lighthouse**
 
+<<<<<<< HEAD
 <p align:"center"><img src="./readme/LH_V_DARK.svg#gh-dark-mode-only" alt="lighthouse" width=350/></p>
 <p align:"center"><img src="./readme/LH_V_LIGHT.svg#gh-light-mode-only" alt="lighthouse" width=350/></p>
+=======
+<p align:"left"><img src="./readme/LH_V_DARK.svg#gh-dark-mode-only" alt="logo-travelhub" width=750 height=350/></p>
+<p align:"left"><img src="./readme/LH_V_LIGHT.svg#gh-light-mode-only" alt="logo-travelhub" width=350/></p>
+>>>>>>> a26bf6907e56a1e446e327a87d93a8ac7c482aba
 
  <h3>Come avviare il progetto</h3>
  <hr height:"2"/>

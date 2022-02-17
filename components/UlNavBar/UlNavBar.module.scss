@@ -1,0 +1,7 @@
+
+        ul{
+            @include mixins.flexContainer(row, space-between, center);
+            list-style: none;
+            padding: 0 20%;
+            font-weight: 600;
+        }

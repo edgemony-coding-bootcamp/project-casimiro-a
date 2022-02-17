@@ -19,14 +19,13 @@ export default function SearchBar() {
   const data = useSelector((state) => state.searchData);
   const isShow = useSelector((state) => state.showResult);
   const sideMenu = useSelector(state => state.showSideMenu)
+  
   function hide() {
     dispatch(hideResult);
   }
 
   function handleSearch() {
     dispatch(SearchBarAppear);
-
-    sideMenu && dispatch(toggleSideMenu)
 
   }
 
@@ -47,18 +46,17 @@ export default function SearchBar() {
       }
     }, 500);
   }
+
   function handleRouting(res, route) {
     router.push(`/${route}/${res}`);
     console.log(res)
     setTimeout(() => {
       dispatch(hideResult);
+      sideMenu && dispatch(toggleSideMenu)
     }, 300);
   }
 
-
   let imgStyle = {};
-
-
   if (isActive) imgStyle = { opacity: "0" };
 
   return (

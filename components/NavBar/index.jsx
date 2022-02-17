@@ -1,5 +1,4 @@
 import styles from "./Navbar.module.scss";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import SearchBar from "../SearchBar";
@@ -8,11 +7,12 @@ import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { toggleSideMenu } from "../../store/actions";
-import { signOut, useSession } from "next-auth/react";
+import UlNavBar from "../UlNavBar";
 
 export default function NavBar() {
   const router = useRouter();
   const dispatch = useDispatch();
+
   const isShow = useSelector((state) => state.showResult);
   const [isonTop, setIsonTop] = useState(true);
 
@@ -23,6 +23,7 @@ export default function NavBar() {
       setIsonTop(true);
     }
   }
+
   function handleMenu() {
     dispatch(toggleSideMenu);
   }
@@ -30,8 +31,6 @@ export default function NavBar() {
   useEffect(() => {
     window.addEventListener("scroll", () => handleScroll());
   }, []);
-
-  const { data: session } = useSession();
 
   return (
     <div
@@ -51,34 +50,7 @@ export default function NavBar() {
       </div>
 
       <nav className={`${styles.navbar} ${styles.flexed}`}>
-        <ul>
-          <li>
-            <Link href={"/citta"}>
-              <a>Città</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={"/esperienze"}>
-              <a>Esperienze</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={"/about"}>
-              <a>About</a>
-            </Link>
-          </li>
-          <li>
-            {session ? (
-             
-                <a onClick={signOut} style={{cursor:"pointer"}}>Sing Out</a>
-              
-            ) : (
-              <Link href={"/auth/signin"}>
-                <a>Login</a>
-              </Link>
-            )}
-          </li>
-        </ul>
+        <UlNavBar />
       </nav>
 
       <div className={`${styles.searchbar} ${styles.flexed}`}>

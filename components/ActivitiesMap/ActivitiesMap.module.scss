@@ -4,7 +4,7 @@
     padding: $sectionsPadding;
     .wrapper{
         position: relative;
-        height: 600px;
+        height: 700px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -15,16 +15,24 @@
             height: 30px;
             width: 30px;
             transform: rotate(135deg);
+            transition: all 0.3s ease;
+
+            &:hover{
+                transform: rotate(135deg) scale(1.2);
+            }
         }
         .modale{
             position: absolute;
-            border: 1px solid #1b1b1b;
-            width: 300px;
-            height: 400px;
+            width: fit-content;
+            height: fit-content;
             top: 20px;
             left: 20px;
-            background: #011627;
-            color: #fff;
+            .closeBtn{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+
         }
     }
 }

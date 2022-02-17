@@ -5,6 +5,7 @@ import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchMapData } from "../../store/actions";
+import ActivityCard from "../ActivityCard";
 
 export default function ActivitiesMap() {
   const dispatch = useDispatch();
@@ -111,8 +112,14 @@ export default function ActivitiesMap() {
               </Map>
               {showModale && act &&
               <div className={style.modale}>
-                <h3>{act[0].title}</h3>
-                  <button onClick={() => setShowModale(false)}>chiudi</button>
+               <ActivityCard
+               image = {act[0].cover_image_url}
+                title = {act[0].title} 
+               text ={act[0].description} 
+                price ={act[0].retail_price.formatted_value}    
+                url={`/esperienze/${act[0].uuid}`}    
+                  />
+                  <button className={style.closeBtn} onClick={() => setShowModale(false)}>chiudi</button>
                 </div>}
             </>
           )

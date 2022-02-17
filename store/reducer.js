@@ -2,7 +2,7 @@ const initState = {
     data: [],
     carouselFirstInst: {},
     carouselSecondInst: {},
-    carouselIndex: 1,
+    carouselIndex: 0,
     searchBarActive: false,
     searchData: [],
     showResult: false,

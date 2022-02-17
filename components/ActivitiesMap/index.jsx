@@ -9,7 +9,8 @@ import { SearchMapData } from "../../store/actions";
 export default function ActivitiesMap() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.mapData);
-  const [showPopup, setShowPopup] = useState(true);
+  const [act, setAct] = useState(null);
+  const [showModale, setShowModale] = useState(false)
 
   const [coor, setCoor] = useState({
     latitude: null,
@@ -50,6 +51,14 @@ export default function ActivitiesMap() {
   useEffect(() => {
     getLocation();
   }, []);
+  
+  function handleClick(e){
+    console.log("sd")
+    console.log(e.target.id)
+    setAct(data.data.filter(data => data.uuid === e.target.id))
+    setShowModale(true)
+   console.log(act)
+  }
 
   return (
     <div className={style.container}>
@@ -62,8 +71,7 @@ export default function ActivitiesMap() {
       <div className={style.wrapper}>
         {status != "located" ? (
           <>
-            <button onClick={getLocation}>CLICCAMI</button>
-            <p>Clicca Qui e consenti La Geolocalizzazione</p>
+            <p>{status}</p>
           </>
         ) : (
           coor.latitude && (
@@ -80,27 +88,32 @@ export default function ActivitiesMap() {
               >
                 {data &&
                   data.data.map((activity) => (
-                    <>
+                    
                       <Marker
                         key={activity.uuid}
                         longitude={activity.longitude}
                         latitude={activity.latitude}
                         index={activity.uuid}
-                        onClick={() => console.log("s")}
-                      >
+                        >
                         <img
+                          id={activity.uuid}
                           width={30}
- 
+                          onClick={(e) => handleClick(e)}
                           className={style.marker}
                           src="../../logo-airplane.png"
                         />
                       </Marker>
 
-                    </>
+                    
                   ))}
                 )
           
               </Map>
+              {showModale && act &&
+              <div className={style.modale}>
+                <h3>{act[0].title}</h3>
+                  <button onClick={() => setShowModale(false)}>chiudi</button>
+                </div>}
             </>
           )
         )}

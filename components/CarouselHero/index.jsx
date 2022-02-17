@@ -18,11 +18,11 @@ export default function CarouselHero({ data })
 
   function handlePrev() {
     firstInst.slidePrev(), secondInst.slidePrev();
-    dispatch(setCarouselIndex(firstInst.realIndex));
+    dispatch(setCarouselIndex(secondInst.realIndex));
   }
   function handleNext() {
     firstInst.slideNext(), secondInst.slideNext();
-    dispatch(setCarouselIndex(firstInst.realIndex));
+    dispatch(setCarouselIndex(secondInst.realIndex));
   }
 
   return (

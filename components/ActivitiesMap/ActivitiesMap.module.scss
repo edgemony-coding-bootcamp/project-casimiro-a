@@ -11,14 +11,14 @@
         border: 2px solid #cacaca;
         .marker{
             cursor: pointer;
-            background: #000;
-            height: 30px;
-            width: 30px;
-            transform: rotate(135deg);
+            //background: #000;
+            height: 60px;
+            width: 60px;
+            transform: rotate(100deg);
             transition: all 0.3s ease;
 
             &:hover{
-                transform: rotate(135deg) scale(1.2);
+                transform: rotate(100deg) scale(1.2);
             }
         }
         .modale{

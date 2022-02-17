@@ -13,8 +13,6 @@
  <p >Il progetto, sviluppato nell'arco di tre settimane, consiste nella creazione di una piattaforma che permetta all'utente di scegliere una città da visitare e sfogliare il catalogo di tutte le esperienze e le attività correlate a quella città.
  Il progetto è stato svolto da un team di 5 sviluppatori junior coordinati da uno sviluppatore senior. Il team, che ha utilizzato Next.JS per la costruzione della web app, ha organizzato il lavoro seguendo i principi della metodologia Agile e adottando il framework Kanban.</p>
 
-<p><img src="./readme/LH_V_DARK.svg#gh-dark-mode-only" alt="logo-travelhub" width=350/></p>
-<p><img src="./readme/LH_V_LIGHT.svg#gh-light-mode-only" alt="logo-travelhub" width=350/></p>
 
  <h3 >Tecnologie</h3>
  <hr height:"2"/>
@@ -39,9 +37,8 @@
  
  Ottimizzazione tramite **Lighthouse**
 
-    
-    *
-    *
+<p align:"center"><img src="./readme/LH_V_DARK.svg#gh-dark-mode-only" alt="logo-travelhub" width=350/></p>
+<p align:"center"><img src="./readme/LH_V_LIGHT.svg#gh-light-mode-only" alt="logo-travelhub" width=350/></p>
 
  <h3>Come avviare il progetto</h3>
  <hr height:"2"/>

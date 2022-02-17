@@ -57,3 +57,13 @@ export const searchCity = (e) => {
             .then(data => dispatch(setSearchCity(data)))
     }
 }
+const SetMapData = (data) => ({ type: "SetMapData", payload: data })
+export const SearchMapData = (position) => {
+
+    return (dispatch) => {
+        fetch(`${API_URL}activities?text_operator=AUTO&extend_other_languages=AUTO&extend_content_fields=AUTO&fuzziness_level=LEVEL-0&zero_terms_query=NONE&coordinates=${position.latitude}%2C${position.longitude}&distance=50KM&limit=50&offset=0`)
+        .then(res => res.json())
+        .then(data => data && dispatch(SetMapData(data)))
+        
+    }
+}

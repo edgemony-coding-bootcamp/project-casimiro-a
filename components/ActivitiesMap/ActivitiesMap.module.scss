@@ -1,0 +1,19 @@
+@import "../../libs/variables.scss";
+
+.container{
+    padding: $sectionsPadding;
+    .wrapper{
+        height: 600px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #cacaca;
+        .marker{
+            cursor: pointer;
+            background: #000;
+            height: 30px;
+            width: 30px;
+            transform: rotate(135deg);
+        }
+    }
+}

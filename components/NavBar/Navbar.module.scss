@@ -10,6 +10,7 @@
     z-index: 10;
     transition: all 1s ease;
     
+    
     .menu{
         display: none;
         color: #fff;
@@ -38,13 +39,13 @@
     }
     .navbar{
         color: variables.$white;
-
         ul{
             @include mixins.flexContainer(row, space-between, center);
             list-style: none;
             padding: 0 20%;
             font-weight: 600;
-        }
+                    }
+
     }
     .searchbar{
         display: flex;

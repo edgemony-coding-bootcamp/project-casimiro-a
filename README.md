@@ -5,7 +5,7 @@
 </p>
 <h2 align="center" >La web app per pianificare i tuoi viaggi ed esplorare il mondo</h2>
 
-<p><img src="./readme/img.svg" alt="logo-travelhub" width=350/></p>
+
 
 
  <h3>Descrizione del progetto</h3>

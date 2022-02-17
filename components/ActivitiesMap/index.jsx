@@ -11,12 +11,15 @@ export default function ActivitiesMap() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.mapData);
   const [act, setAct] = useState(null);
-  const [showModale, setShowModale] = useState(false)
+  const [range, setRange] = useState(50);
+  const [showModale, setShowModale] = useState(false);
 
   const [coor, setCoor] = useState({
     latitude: null,
     longitude: null,
+    range: 50,
   });
+  console.log(data);
 
   const [status, setStatus] = useState("");
 
@@ -29,6 +32,7 @@ export default function ActivitiesMap() {
         (position) => {
           setStatus("located");
           setCoor({
+            ...coor,
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
           });
@@ -52,13 +56,19 @@ export default function ActivitiesMap() {
   useEffect(() => {
     getLocation();
   }, []);
-  
-  function handleClick(e){
-    console.log("sd")
-    console.log(e.target.id)
-    setAct(data.data.filter(data => data.uuid === e.target.id))
-    setShowModale(true)
-   console.log(act)
+
+  function handleClick(e) {
+    console.log("sd");
+    console.log(e.target.id);
+    setAct(data.data.filter((data) => data.uuid === e.target.id));
+    setShowModale(true);
+    console.log(act);
+  }
+  function handleChange(e) {
+    setRange(e.target.value);
+  }
+  function handleRange(e) {
+    setCoor({...coor, range: e.target.value});
   }
 
   return (
@@ -89,41 +99,54 @@ export default function ActivitiesMap() {
               >
                 {data &&
                   data.data.map((activity) => (
-                    
-                      <Marker
-                        key={activity.uuid}
-                        longitude={activity.longitude}
-                        latitude={activity.latitude}
-                        index={activity.uuid}
-                        >
-                        <img
-                          id={activity.uuid}
-                          width={30}
-                          onClick={(e) => handleClick(e)}
-                          className={style.marker}
-                          src="../../logo-airplane.png"
-                        />
-                      </Marker>
-
-                    
+                    <Marker
+                      key={activity.uuid}
+                      longitude={activity.longitude}
+                      latitude={activity.latitude}
+                      index={activity.uuid}
+                    >
+                      <img
+                        id={activity.uuid}
+                        width={30}
+                        onClick={(e) => handleClick(e)}
+                        className={style.marker}
+                        src="../../logo-airplane.png"
+                      />
+                    </Marker>
                   ))}
                 )
-          
               </Map>
-              {showModale && act &&
-              <div className={style.modale}>
-               <ActivityCard
-               image = {act[0].cover_image_url}
-                title = {act[0].title} 
-               text ={act[0].description} 
-                price ={act[0].retail_price.formatted_value}    
-                url={`/esperienze/${act[0].uuid}`}    
+              {showModale && act && (
+                <div className={style.modale}>
+                  <ActivityCard
+                    image={act[0].cover_image_url}
+                    title={act[0].title}
+                    text={act[0].description}
+                    price={act[0].retail_price.formatted_value}
+                    url={`/esperienze/${act[0].uuid}`}
                   />
-                  <button className={style.closeBtn} onClick={() => setShowModale(false)}>chiudi</button>
-                </div>}
+                  <button
+                    className={style.closeBtn}
+                    onClick={() => setShowModale(false)}
+                  >
+                    chiudi
+                  </button>
+                </div>
+              )}
             </>
           )
         )}
+        <div className={style.inputRaggio}>
+          raggio di ricerca: <span>{range}</span> Km{" "}
+          <input
+            type="range"
+            value={range}
+            min="1"
+            max="200"
+            onChange={handleChange}
+            onMouseUp={handleRange}
+          />
+        </div>
       </div>
     </div>
   );

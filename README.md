@@ -76,5 +76,5 @@ Puoi modificare direttamente `pages/index.js` e la pagina si aggiornerà automat
 
   Team guidato da [**Casimiro P. Ciancimino**](https://github.com/casiimir)
   
-<br>
-Si ringrazia tutto il team di [Edgemony](https://github.com/edgemony-coding-bootcamp) e le aziende per averci permesso di prendere parte per questo percorso!
+
+Si ringrazia tutto il team di [**Edgemony**](https://github.com/edgemony-coding-bootcamp) e le aziende per averci permesso di prendere parte a questo percorso!

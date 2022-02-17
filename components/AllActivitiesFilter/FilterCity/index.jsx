@@ -1,12 +1,14 @@
 import style from "./FilterCity.module.scss";
-import { useState } from "react";
-import { dispatch } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { searchCity, setSearchCity } from "../../../store/actions";
+import { searchCity } from "../../../store/actions";
 import { useSelector } from "react-redux";
 
 let counter = 0;
 export function FilterCity({ setter }) {
+  useEffect(() => {
+    setCloseSearch(true)
+  }, []);
   const dispatch = useDispatch();
 
   const [closeSearch, setCloseSearch] = useState(false);

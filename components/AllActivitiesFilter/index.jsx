@@ -14,6 +14,7 @@ export default function ActivitiesFilter() {
   const dispatch = useDispatch();
   const router = useRouter();
   const data = useSelector((state) => state.allActivities);
+
   const [state, setState] = useState({
     maxPrice: 200,
     category: "",
@@ -40,7 +41,6 @@ export default function ActivitiesFilter() {
   }
 
   function handleCategory(category) {
-    console.log(category);
     setState({
       ...state,
       category: category.category,
@@ -97,28 +97,27 @@ export default function ActivitiesFilter() {
   let pagineTot = data.meta ? Math.ceil(data.meta.count / 8) : 0;
   let paginationDyn = state.pagination - 4;
 
-  function addButton() {
+  function addPaginationButton() {
     paginationDyn++;
     const clickon = paginationDyn;
     return (
-        <ButtonHero
-          key={clickon}
-          active={state.pagination === clickon && true}
-          forActivities={true}
-          dir={
-            (pagineTot >= paginationDyn + 1) & (paginationDyn >= 0)
-              ? paginationDyn + 1
-              : ""
-          }
-          action={
-            (pagineTot >= paginationDyn) & (paginationDyn >= 0)
-              ? () => setState({ ...state, pagination: clickon, up: true })
-              : () => console.log("")
-          }
+      <ButtonHero
+        key={clickon}
+        active={state.pagination === clickon && true}
+        forActivities={true}
+        dir={
+          (pagineTot >= paginationDyn + 1) & (paginationDyn >= 0)
+            ? paginationDyn + 1
+            : ""
+        }
+        action={
+          (pagineTot >= paginationDyn) & (paginationDyn >= 0)
+            ? () => setState({ ...state, pagination: clickon, up: true })
+            : () => console.log("")
+        }
       />
     );
   }
-
   function categorie(el) {
     if (el.verticals[1]) {
       if (state.categoria === el.verticals[1].name) return el.verticals[1];
@@ -134,13 +133,18 @@ export default function ActivitiesFilter() {
 
         <div className={style.buttons}>
           {category.map((category, id) => (
-            <div key={id} className={`${style.buttonDiv} ${state.category === category.category && style.buttonDivOpen}`}>
-            <button
-              style={{ background: category.color }}
-              onClick={() => handleCategory(category)}
+            <div
+              key={id}
+              className={`${style.buttonDiv} ${
+                state.category === category.category && style.buttonDivOpen
+              }`}
             >
-              {category.name}
-            </button>
+              <button
+                style={{ background: category.color }}
+                onClick={() => handleCategory(category)}
+              >
+                {category.name}
+              </button>
             </div>
           ))}
         </div>
@@ -169,8 +173,7 @@ export default function ActivitiesFilter() {
             <p>prova a cambiare parametri</p>
           </div>
         )}
-        {data.data &&
-          data.data.map((el) => (
+         {data.data && data.data.map((el) => (
             <div
               className={style.singleActivity}
               key={el.uuid}
@@ -203,7 +206,7 @@ export default function ActivitiesFilter() {
             setState({ ...state, pagination: state.pagination - 1, up: true })
           }
         />
-        {data.meta && [...Array(7)].map((index) => addButton())}
+        {data.meta && [...Array(7)].map((index) => addPaginationButton())}
 
         <ButtonHero
           dir=">"

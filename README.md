@@ -15,9 +15,9 @@
 
  <h3 >Tecnologie</h3>
  <hr height:"2"/>
-    
-    *
-    *
+   <p><img src="./readme/Btn_dm.svg#gh-dark-mode-only" alt="tag" width=350/></p>
+   <p><img src="./readme/Btn_lm.svg#gh-ligth-mode-only" alt="tag" width=350/></p>
+
 
  <h3>Funzionalità</h3>
  <hr height:"2"/>
@@ -36,13 +36,8 @@
  
  Ottimizzazione tramite **Lighthouse**
 
-<<<<<<< HEAD
-<p align:"center"><img src="./readme/LH_V_DARK.svg#gh-dark-mode-only" alt="lighthouse" width=350/></p>
-<p align:"center"><img src="./readme/LH_V_LIGHT.svg#gh-light-mode-only" alt="lighthouse" width=350/></p>
-=======
-<p align:"left"><img src="./readme/LH_V_DARK.svg#gh-dark-mode-only" alt="logo-travelhub" width=750 height=350/></p>
-<p align:"left"><img src="./readme/LH_V_LIGHT.svg#gh-light-mode-only" alt="logo-travelhub" width=350/></p>
->>>>>>> a26bf6907e56a1e446e327a87d93a8ac7c482aba
+<p><img src="./readme/Lighthouse_dm.svg#gh-dark-mode-only" alt="lighthouse" width=350/></p>
+<p><img src="./readme/Lighthouse_lm.svg#gh-ligth-mode-only" alt="lighthouse" width=350/></p>
 
  <h3>Come avviare il progetto</h3>
  <hr height:"2"/>

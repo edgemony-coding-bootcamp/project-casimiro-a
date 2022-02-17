@@ -5,8 +5,7 @@
 </p>
 <h2 align="center" >La web app per pianificare i tuoi viaggi ed esplorare il mondo</h2>
 
-
-
+<p align="center"><img src="./readme/img.jpg" alt="mockup"/></p>
 
  <h3>Descrizione del progetto</h3>
  <hr height:"2"/>
@@ -37,8 +36,8 @@
  
  Ottimizzazione tramite **Lighthouse**
 
-<p align:"center"><img src="./readme/LH_V_DARK.svg#gh-dark-mode-only" alt="logo-travelhub" width=350/></p>
-<p align:"center"><img src="./readme/LH_V_LIGHT.svg#gh-light-mode-only" alt="logo-travelhub" width=350/></p>
+<p align:"center"><img src="./readme/LH_V_DARK.svg#gh-dark-mode-only" alt="lighthouse" width=350/></p>
+<p align:"center"><img src="./readme/LH_V_LIGHT.svg#gh-light-mode-only" alt="lighthouse" width=350/></p>
 
  <h3>Come avviare il progetto</h3>
  <hr height:"2"/>

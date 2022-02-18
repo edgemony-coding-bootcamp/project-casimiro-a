@@ -1,7 +1,7 @@
 @import "../../libs/variables.scss";
 
 .container{
-    padding: $sectionsPadding;
+    padding: 0 $sectionsPadding;
     .wrapper{
         position: relative;
         height: 700px;
@@ -9,16 +9,17 @@
         justify-content: center;
         align-items: center;
         border: 2px solid #cacaca;
+        overflow: hidden;
         .marker{
             cursor: pointer;
             //background: #000;
             height: 60px;
             width: 60px;
-            transform: rotate(100deg);
+            
             transition: all 0.3s ease;
 
             &:hover{
-                transform: rotate(100deg) scale(1.2);
+                transform:scale(1.2);
             }
         }
         .modale{
@@ -26,13 +27,32 @@
             width: fit-content;
             height: fit-content;
             top: 20px;
-            left: 20px;
+            left: -600px;
+            transition: all 0.5s ease;
+            &:hover{
+                transform: scale(1);
+            }
+            &.open{
+                left: 20px;
+                animation: appear 0.5s ease;
+            }
             .closeBtn{
                 position: absolute;
                 top: 10px;
                 right: 10px;
+                border: 1px solid #011627;
+                background: #cacaca;
+                padding: 2px 3px;
             }
 
+        }
+        @keyframes appear {
+            0%{
+                left: -600px;
+            }
+            100%{
+                left: 20px;
+            }
         }
         .inputRaggio{
             position: absolute;
@@ -58,6 +78,24 @@
                     background-color: $primary;
                     cursor: pointer;
                 }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 768px){
+    .container{
+        padding: 0px 0px 0px 0px;
+        .wrapper{
+            height: 60vh;
+            .modale{
+                transform: scale(0.5);
+                top: calc(20px * -3 ) ;
+                &:hover{
+                    transform: scale(0.5);
+                }
+             &.open{
+                 left: calc(20px * -3);
+             }
             }
         }
     }

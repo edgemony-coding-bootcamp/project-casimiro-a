@@ -104,20 +104,21 @@ export default function ActivitiesMap() {
                       longitude={activity.longitude}
                       latitude={activity.latitude}
                       index={activity.uuid}
+                      anchor="top-right"
                     >
                       <img
                         id={activity.uuid}
                         width={30}
                         onClick={(e) => handleClick(e)}
                         className={style.marker}
-                        src="../../logo-airplane.png"
+                        src="../../Pittogramma.svg"
                       />
                     </Marker>
                   ))}
                 )
               </Map>
-              {showModale && act && (
-                <div className={style.modale}>
+              { act && (
+                <div className={`${style.modale} ${showModale && style.open}`}>
                   <ActivityCard
                     image={act[0].cover_image_url}
                     title={act[0].title}

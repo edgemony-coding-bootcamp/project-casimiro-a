@@ -95,7 +95,7 @@ export default function City({ city, cities })
         <div className={styles.wrapper_title}>
           <SectionTitle 
             title={`Scopri cosa puoi fare a ${city.name}`} 
-            description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'}
+            description={'Rendi il tuo viaggio indimenticabile'}
             showBtn={false}
         />
         </div>

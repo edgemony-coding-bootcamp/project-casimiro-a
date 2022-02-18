@@ -106,7 +106,7 @@ export default function ActivitiesMap() {
                       longitude={activity.longitude}
                       latitude={activity.latitude}
                       index={activity.uuid}
-                      anchor="top-right"
+                      anchor="bottom"
                     >
                       <img
                         id={activity.uuid}

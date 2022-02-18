@@ -5,6 +5,7 @@
 .aboutWrapper{
     @include mixins.flexContainer(column, center, center, 100px); 
     padding: variables.$sectionsPadding;
+    padding-bottom: 0;
     .aboutTravelHub{
         @include mixins.flexContainer(column, center, flex-start);
     }
@@ -25,7 +26,7 @@
 
 @media only screen and (max-width: 870px) {
     .aboutWrapper{
-        padding: 50px;
+        padding: 50px 50px 0px 50px;
         .aboutTeam{
             @include mixins.flexContainer(column, center, center, 50px);
             ul.teamCardsWrapper{
@@ -37,7 +38,7 @@
 
 @media only screen and (max-width: 400px) {
     .aboutWrapper{
-        padding: 50px 20px;
+        padding: 50px 20px 0px 20px;
         h2{
             text-align: center;
             font-size: 40px;

@@ -2,6 +2,7 @@ import styles from './About.module.scss'
 import Layout from "../../components/Layouts";
 import HeroIntern from "../../components/HeroIntern";
 import TeamCard from '../../components/TeamCard';
+import Contacts from '../../components/Contacts';
 
 const team = [
     {   id: '1', 
@@ -70,6 +71,7 @@ export default function About() {
             </div> 
 
         </div>
+        <Contacts showBtn={false}/>
         </Layout>
     )
 }

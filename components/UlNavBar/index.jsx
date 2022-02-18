@@ -25,7 +25,7 @@ export default function UlNavBar(){
         <li>
           {session.data != null ? (
             <a onClick={signOut} style={{ cursor: "pointer" }}>
-              Sing Out
+            Sign out
             </a>
           ) : (
             <Link href={"/auth/signin"}>

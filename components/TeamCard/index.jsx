@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const TeamCard = (props) =>
 {   
     const name = props.name || 'Agnese Spinella';
-    const description = props.text || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+    const description = props.text || 'Front-end Devolper';
     const image = props.image || 'https://media-exp1.licdn.com/dms/image/C4E03AQHHTY6LjP_v_Q/profile-displayphoto-shrink_800_800/0/1644597619382?e=1650499200&v=beta&t=8TcZGTmkeCSIX0cCWJlh3AWHrxZBP3Pzdj406D5Sqtg';
     const linkedin = props.linkedin || 'https://www.linkedin.com/in/agnese-spinella/';
     const github = props.github || 'https://github.com/AgneseSpinella';

@@ -1,0 +1,103 @@
+@import "../../libs/variables.scss";
+
+.container{
+    padding:  $sectionsPadding;
+    padding-top: 0;
+    .wrapper{
+        position: relative;
+        height: 700px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #cacaca;
+        overflow: hidden;
+        .marker{
+            cursor: pointer;
+            //background: #000;
+            height: 60px;
+            width: 60px;
+            
+            transition: all 0.3s ease;
+
+            &:hover{
+                transform:scale(1.2);
+            }
+        }
+        .modale{
+            position: absolute;
+            width: fit-content;
+            height: fit-content;
+            top: 20px;
+            left: -600px;
+            transition: all 0.5s ease;
+            &:hover{
+                transform: scale(1);
+            }
+            &.open{
+                left: 20px;
+                animation: appear 0.5s ease;
+            }
+            .closeBtn{
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                border: 1px solid #011627;
+                background: #cacaca;
+                padding: 2px 3px;
+            }
+
+        }
+        @keyframes appear {
+            0%{
+                left: -600px;
+            }
+            100%{
+                left: 20px;
+            }
+        }
+        .inputRaggio{
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            input[type=range]{
+                margin:0 10px ;
+                -webkit-appearance: none;
+                width: 200px; 
+                height: 8px;
+                border-radius: 4px;
+                background-color: #333;
+                outline: none;
+                -webkit-transition: .2s;
+                transition: opacity .2s;
+    
+                &::-webkit-slider-thumb{
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 50%;
+                    background-color: $primary;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 768px){
+    .container{
+        padding: 0px 0px 0px 0px;
+        .wrapper{
+            height: 60vh;
+            .modale{
+                transform: scale(0.5);
+                top: calc(20px * -3 ) ;
+                &:hover{
+                    transform: scale(0.5);
+                }
+             &.open{
+                 left: calc(20px * -3);
+             }
+            }
+        }
+    }
+}

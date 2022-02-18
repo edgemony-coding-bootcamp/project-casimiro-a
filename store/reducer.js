@@ -8,7 +8,8 @@ const initState = {
     showResult: false,
     showSideMenu: false,
     allActivities: [],
-    searchCity: ""
+    searchCity: "",
+    mapData:"",
 }
 const reducer = (state = initState, action) => {
     switch (action.type) {
@@ -66,6 +67,11 @@ const reducer = (state = initState, action) => {
             return{
                 ...state,
                 allActivities: action.payload,
+            }
+        case "SetMapData":
+            return{
+                ...state,
+                mapData: action.payload,
             }
         default :
             return state;   

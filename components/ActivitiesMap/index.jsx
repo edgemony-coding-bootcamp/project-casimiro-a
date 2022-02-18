@@ -73,11 +73,13 @@ export default function ActivitiesMap() {
 
   return (
     <div className={style.container}>
-      <SectionTitle
-        title="Eventi nelle vicinanze"
-        showBtn={false}
-        description=""
-      />
+      <div className={style.title}>
+        <SectionTitle
+            title="Eventi nelle vicinanze"
+            showBtn={false}
+            description="Attiva la geolocalizzazione per scroprire gli eventi più vicini a te"
+          />
+      </div>
 
       <div className={style.wrapper}>
         {status != "located" ? (
@@ -111,7 +113,7 @@ export default function ActivitiesMap() {
                         width={30}
                         onClick={(e) => handleClick(e)}
                         className={style.marker}
-                        src="../../Pittogramma.svg"
+                        src="../../map-pin.png"
                       />
                     </Marker>
                   ))}

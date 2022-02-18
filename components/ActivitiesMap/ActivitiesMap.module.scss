@@ -1,7 +1,8 @@
 @import "../../libs/variables.scss";
 
 .container{
-    padding: 0 $sectionsPadding;
+    padding:  $sectionsPadding;
+    padding-top: 0;
     .wrapper{
         position: relative;
         height: 700px;

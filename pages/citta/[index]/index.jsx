@@ -95,7 +95,7 @@ export default function City({ city, cities })
         <div className={styles.wrapper_title}>
           <SectionTitle 
             title={`Scopri cosa puoi fare a ${city.name}`} 
-            description={'Rendi il tuo viaggio indimenticabile'}
+            description={''}
             showBtn={false}
         />
         </div>

@@ -1,4 +1,3 @@
-
 import { useRouter } from "next/router";
 import { API_URL } from "../../../libs/variables";
 import axios from 'axios';
@@ -14,6 +13,8 @@ import FilterActivities from '../../../components/FilterActivities';
 import SectionTitleSkeleton from "../../../components/SectionTitle";
 import ActivitiesSkeleton from "../../../components/ActivitiesSkeleton";
 import CitiesSkeleton from "../../../components/CitiesSkeleton";
+import LottieLoader from "../../../components/LottieLoader";
+
 
 const SectionTitle = dynamic(
   import("../../../components/SectionTitle"),
@@ -46,7 +47,7 @@ export default function City({ city, cities })
   
   if (router.isFallback) 
   {
-    return <h1>loading</h1>;
+    return <LottieLoader />;
   }
 
   const dispatch = useDispatch();

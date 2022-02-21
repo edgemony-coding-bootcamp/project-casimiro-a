@@ -105,6 +105,7 @@ export default function ActivitiesFilter() {
     return (
       <div className={`
         ${clickon < 0 && style.btn} 
+        ${clickon > pagineTot -1 && style.btn} 
         ${clickon > state.pagination +1 && style.none}
         ${clickon < state.pagination -1 && style.none}
           

@@ -8,6 +8,11 @@ export default function UlNavBar(){
     return(
     <ul>
         <li>
+          <Link href={"/"}>
+            <a>Home</a>
+          </Link>
+        </li>
+        <li>
           <Link href={"/citta"}>
             <a>Città</a>
           </Link>

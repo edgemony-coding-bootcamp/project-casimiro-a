@@ -10,20 +10,63 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { FilterCity } from "./FilterCity";
 
+const category = [
+  {
+    name: "Tutto",
+    color: "#000",
+    category: "",
+  },
+  {
+    name: "Arte e musei",
+    color: "#011627",
+    category: "arts-culture",
+  },
+  {
+    name: "Tour e attrazioni",
+    color: "#E71D36",
+    category: "sightseeing",
+  },
+  {
+    name: "Spettacoli e concerti",
+    color: "red",
+    category: "entertainment",
+  },
+  {
+    name: "Food & wine",
+    color: "#FF9F1C",
+    category: "food-wine",
+  },
+  {
+    name: "Sport e avventura",
+    color: "#2EC4B6",
+    category: "adventure",
+  },
+  {
+    name: "Eventi sportivi",
+    color: "#21005D",
+    category: "sports",
+  },
+  {
+    name: "Nightlife",
+    color: "#410E0B",
+    category: "nightlife",
+  },
+];
+
 export default function ActivitiesFilter() {
   const dispatch = useDispatch();
   const router = useRouter();
   const data = useSelector((state) => state.allActivities);
 
   const [state, setState] = useState({
-    maxPrice: 200,
+    maxPrice: 500,
     category: "",
     pagination: 0,
     up: false,
     categoria: "",
     city: "",
   });
-  const [input, setInput] = useState(200);
+  const [input, setInput] = useState(500);
 
   useEffect(() => {
     dispatch(filterActivities(state));
@@ -51,48 +94,7 @@ export default function ActivitiesFilter() {
     });
   }
 
-  const category = [
-    {
-      name: "Tutto",
-      color: "#000",
-      category: "",
-    },
-    {
-      name: "Arte e musei",
-      color: "#011627",
-      category: "arts-culture",
-    },
-    {
-      name: "Tour e attrazioni",
-      color: "#E71D36",
-      category: "sightseeing",
-    },
-    {
-      name: "Spettacoli e concerti",
-      color: "red",
-      category: "entertainment",
-    },
-    {
-      name: "Food & wine",
-      color: "#FF9F1C",
-      category: "food-wine",
-    },
-    {
-      name: "Sport e avventura",
-      color: "#2EC4B6",
-      category: "adventure",
-    },
-    {
-      name: "Eventi sportivi",
-      color: "#21005D",
-      category: "sports",
-    },
-    {
-      name: "Nightlife",
-      color: "#410E0B",
-      category: "nightlife",
-    },
-  ];
+  
 
   let pagineTot = data.meta ? Math.ceil(data.meta.count / 8) : 0;
   let paginationDyn = state.pagination - 4;
@@ -101,21 +103,29 @@ export default function ActivitiesFilter() {
     paginationDyn++;
     const clickon = paginationDyn;
     return (
-      <ButtonHero
-        key={clickon}
-        active={state.pagination === clickon && true}
-        forActivities={true}
-        dir={
-          (pagineTot >= paginationDyn + 1) & (paginationDyn >= 0)
-            ? paginationDyn + 1
-            : ""
-        }
-        action={
-          (pagineTot >= paginationDyn) & (paginationDyn >= 0)
-            ? () => setState({ ...state, pagination: clickon, up: true })
-            : () => console.log("")
-        }
-      />
+      <div className={`
+        ${clickon < 0 && style.btn} 
+        ${clickon > state.pagination +1 && style.none}
+        ${clickon < state.pagination -1 && style.none}
+          
+      `}>
+        
+        <ButtonHero
+          key={clickon}
+          active={state.pagination === clickon && true}
+          forActivities={true}
+          dir={
+            (pagineTot >= paginationDyn + 1) & (paginationDyn >= 0)
+              ? paginationDyn + 1
+              : ""
+          }
+          action={
+            (pagineTot >= paginationDyn) & (paginationDyn >= 0)
+              ? () => setState({ ...state, pagination: clickon, up: true })
+              : () => console.log("")
+          }
+        />
+      </div>
     );
   }
   function categorie(el) {
@@ -127,9 +137,27 @@ export default function ActivitiesFilter() {
   return (
     <>
       <div id="up" className={style.container}>
+        <div className={style.inputDiv}>
+          <p>€ 0</p>
+          <p className={style.price}>
+            € <span>{input}</span>
+          </p>
+          <input
+            type="range"
+            min="1"
+            max="500"
+            value={input}
+            step="1"
+            onChange={handleChange}
+            onMouseUp={handleMouseUp}
+          />
+
+        </div>
+
         <div className={style.citySearch}>
           <FilterCity setter={setState} />
         </div>
+
 
         <div className={style.buttons}>
           {category.map((category, id) => (
@@ -149,21 +177,7 @@ export default function ActivitiesFilter() {
           ))}
         </div>
 
-        <div className={style.inputDiv}>
-          <p>€ 0</p>
-          <input
-            type="range"
-            min="1"
-            max="200"
-            value={input}
-            step="1"
-            onChange={handleChange}
-            onMouseUp={handleMouseUp}
-          />
-          <p>
-            € <span>{input}</span>
-          </p>
-        </div>
+        
       </div>
 
       <div className={style.allactivities}>

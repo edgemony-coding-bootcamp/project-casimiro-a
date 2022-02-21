@@ -3,7 +3,7 @@ import Footer from "../Footer";
 import NavBar from "../NavBar";
 import SideMenu from "../SideMenu";
 import CookiesModal from '../CookiesModal'; 
-
+import BackToTop from "../BackToTop";
 
 export default function Layout({ children }) {
 
@@ -19,6 +19,7 @@ export default function Layout({ children }) {
         <NavBar />
         <SideMenu />
         {children}
+        <BackToTop/>
         <Footer />
       </>
     )

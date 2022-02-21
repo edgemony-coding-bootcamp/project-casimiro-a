@@ -1,3 +1,4 @@
+import BackToTop from "../BackToTop";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import SideMenu from "../SideMenu";
@@ -7,6 +8,7 @@ export default function Layout({ children }) {
         <NavBar />
         <SideMenu />
         {children}
+        <BackToTop />
         <Footer />
       </>
     )

@@ -1,4 +1,3 @@
-
 import { useRouter } from "next/router";
 import { API_URL } from "../../../libs/variables";
 import axios from 'axios';
@@ -8,6 +7,7 @@ import HeroIntern from "../../../components/HeroIntern";
 import Reviews from '../../../components/Reviews';
 import CitiesSkeleton from "../../../components/CitiesSkeleton";
 import DescriptionSkeleton from "../../../components/DescriptionSkeleton";
+import LottieLoader from "../../../components/LottieLoader";
 
 const ActivityDescription = dynamic(
     () => import('../../../components/ActivityDescription'),
@@ -31,7 +31,7 @@ export default function Activity({ activity, cities })
     
 
     if(router.isFallback) {
-        return <h1>loading</h1>;
+        return <LottieLoader />
     }
 
     return (

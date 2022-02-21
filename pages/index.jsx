@@ -10,6 +10,7 @@ import Advantages from '../components/Advantages';
 import ActivitiesMap from "../components/ActivitiesMap"
 import Contacts from '../components/Contacts';
 
+
 const Activities = dynamic(
   () => import('../components/Activities'), 
   { ssr: false, loading: () => <ActivitiesSkeleton /> }

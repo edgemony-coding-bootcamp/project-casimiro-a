@@ -8,8 +8,7 @@ export default function SignIn({ providers }) {
 
     return(
         <Layout>
-
-            <div className={style.container}>
+            <div className={style.container} >
                {Object.values(providers).map((provider) => (
             <div key={provider.name}>
                 </div>

@@ -2,33 +2,49 @@
 import { useSession } from "next-auth/react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getCartItems, editCartItem, deleteCartItem } from "../../store/actions";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layouts";
 import SectionTitle from "../../components/SectionTitle";
 import Image from 'next/image';
 import styles from './Cart.module.scss';
+import {onSnapshot, collection, deleteDoc,doc, setDoc } from 'firebase/firestore';
+import { database as db } from "../../firebase"
 
-const Cart = () =>
-{
-    
+const Cart = () =>{
+
+    const [dataCart, setDataCart] = useState({})
     const { data: session } = useSession();
     const dispatch = useDispatch();
     const cartState = useSelector((state) => state.cart);
     const totalCart = 0;
 
-    useEffect(() => 
-    {
-        if(session)
-            dispatch(getCartItems(session.user.email));
-        else if(session === null)
-            router.push("/auth/signin");
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [session]);
-
+    useEffect(
+        () =>
+        session &&
+        onSnapshot(
+          collection(db, `cart/${session.user.email}/items`),
+          (snapshot) => {
+            setDataCart(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
+          }
+        ),[session]);
+    
+    const handleDelete = async (item) => {
+        const docRef = doc(db, `cart/${session.user.email}/items`, item.id)
+        await deleteDoc(docRef)
+    }    
+    const handleIncrement = async (item) => {
+        const docRef = doc(db, `cart/${session.user.email}/items`, item.id);
+        const payload = { ...item, quantity: item.quantity + 1 };
+        setDoc(docRef, payload);
+    }
+    const handleDecrement = async (item) => {
+        const docRef = doc(db, `cart/${session.user.email}/items`, item.id);
+        const payload = { ...item, quantity: item.quantity > 0 && item.quantity - 1 };
+        setDoc(docRef, payload);
+    }
     const router = useRouter();
-
     return (
         session ? (
             <Layout>
@@ -36,11 +52,11 @@ const Cart = () =>
                     <div className={styles.hero}></div>
                     <div className={styles.cart}>
                         {
-                            (cartState && cartState.length &&
+                            (dataCart.length &&
                                 <>
                                     <SectionTitle title="Riepilogo dell'ordine" description="" showBtn={false} />
                                     <ul>
-                                        {cartState.map((item) => 
+                                        {dataCart.map((item) => 
                                         {
                                             totalCart += (item.quantity * item.price);
                                             return (
@@ -58,10 +74,7 @@ const Cart = () =>
                                                             <span>
                                                                 <button
                                                                     className={styles.minus}
-                                                                    onClick={() => {
-                                                                        dispatch(editCartItem(session.user.email, item.id, (item.quantity - 1)));
-                                                                        setTimeout(() => window.location.reload(), 200);
-                                                                    }}
+                                                                        onClick={() => handleDecrement(item)}
                                                                 >
                                                                     -
                                                                 </button>
@@ -70,20 +83,17 @@ const Cart = () =>
                                                                     min="1" 
                                                                     max="100"
                                                                     step="1" 
-                                                                    defaultValue={item.quantity}
+                                                                    value={item.quantity}
                                                                     />
                                                                 <button
                                                                     className={styles.plus}
-                                                                    onClick={() => {
-                                                                        dispatch(editCartItem(session.user.email, item.id, (item.quantity + 1)));
-                                                                        setTimeout(() => window.location.reload(), 200);
-                                                                    }}
+                                                                    onClick={() => handleIncrement(item)}
                                                                 >
                                                                     +
                                                                 </button>
                                                                 <button 
                                                                     className={styles.delete}
-                                                                    onClick={() => dispatch(deleteCartItem(session.user.email, item.id))} 
+                                                                    onClick={() => handleDelete(item)} 
                                                                     >
                                                                     Elimina
                                                                 </button>

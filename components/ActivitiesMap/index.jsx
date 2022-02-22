@@ -1,4 +1,5 @@
 import SectionTitle from "../SectionTitle";
+import Image from 'next/image';
 import style from "./ActivitiesMap.module.scss";
 import { useState, useEffect, useRef } from "react";
 import Map, { Marker, Popup } from "react-map-gl";
@@ -46,6 +47,7 @@ export default function ActivitiesMap() {
 
   useEffect(() => {
     coor.latitude != null && dispatch(SearchMapData(coor));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coor]);
   /*
   useEffect(() => {
@@ -53,8 +55,10 @@ export default function ActivitiesMap() {
   }, [data]);
   */
 
-  useEffect(() => {
+  useEffect(() => 
+  {
     getLocation();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleClick(e) {
@@ -108,9 +112,11 @@ export default function ActivitiesMap() {
                       index={activity.uuid}
                       anchor="bottom"
                     >
-                      <img
+                      <Image
                         id={activity.uuid}
-                        width={30}
+                        alt={activity.title}
+                        width={42}
+                        height={60}
                         onClick={(e) => handleClick(e)}
                         className={style.marker}
                         src="../../map-pin.png"

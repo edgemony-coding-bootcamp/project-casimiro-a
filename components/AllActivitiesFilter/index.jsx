@@ -68,12 +68,15 @@ export default function ActivitiesFilter() {
   });
   const [input, setInput] = useState(500);
 
-  useEffect(() => {
+  useEffect(() => 
+  {
     dispatch(filterActivities(state));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   useEffect(() => {
     dispatch(filterActivities(state));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleChange(e) {

@@ -42,14 +42,6 @@ const initialFilterState = {
 
 export default function City({ city, cities }) 
 {
-  // Router
-  const router = useRouter();
-  
-  if (router.isFallback) 
-  {
-    return <LottieLoader />;
-  }
-
   const dispatch = useDispatch();
   const filterActivitiesState = useSelector((state) => {
     if(Object.keys(state.allActivities).length !== 0)
@@ -57,21 +49,30 @@ export default function City({ city, cities })
       return state.allActivities;
     }
   }); 
-
-
+  
+  
   // State
-  const [filterState, setFilterState] = useState({...initialFilterState, city: city.id});
+  const [filterState, setFilterState] = useState(city ? { ...initialFilterState, city: city.id } : initialFilterState);
   
   useEffect(() =>
   {
-    setFilterState({...filterState, city: city.id});
+    setFilterState( (value) => ({...value, city: city.id}));
   }, [city]);
 
   useEffect(() =>
   {
     dispatch(filterActivities(filterState));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterState]);
+  
 
+  // Router
+  const router = useRouter();
+  
+  if (router.isFallback) 
+  {
+    return <LottieLoader />;
+  }
 
   // Events
   const handleFilter = (filters) =>

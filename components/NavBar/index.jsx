@@ -50,7 +50,7 @@ export default function NavBar()
       <Head>
         <title>TravelHub</title>
         <link rel="icon" type="image/png" href="/favicon.png/"/>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta name="description" content="La web app per pianificare i tuoi viaggi ed esplorare il mondo" />
         <meta name="keywords" content="viaggi, attività, esperienze, città, turismo, travelhub, viaggiare, esplorare" />
         <meta name="author" content="TravelHub" />

@@ -24,6 +24,7 @@ const Cart = () =>
             dispatch(getCartItems(session.user.email));
         else if(session === null)
             router.push("/auth/signin");
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [session]);
 
     const router = useRouter();

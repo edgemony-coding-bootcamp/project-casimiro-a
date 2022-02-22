@@ -39,6 +39,7 @@
     }
     .navbar{
         color: variables.$white;
+        z-index: 1;
       
         ul{
             @include mixins.flexContainer(row, space-between, center);

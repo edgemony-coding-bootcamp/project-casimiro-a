@@ -7,15 +7,18 @@ import BackToTop from "../BackToTop";
 
 export default function Layout({ children }) {
 
-    const [cookies, setCookies] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
 
-    useEffect(() => {
-      window.addEventListener("load", () => setCookies(false));
-    }, []);
-
+  useEffect(()=>{
+    const isRead = localStorage.getItem("value");
+    if (isRead){
+  setIsOpen(false)
+    }
+  },[])
+  
     return (
       <>
-        {cookies ? null :  <CookiesModal changeShowModal={() => setCookies(true)}/>} 
+        {isOpen && <CookiesModal changeShowModal={()=>{ setIsOpen(false) || localStorage.setItem("value", true)}} />} 
         <NavBar />
         <SideMenu />
         {children}

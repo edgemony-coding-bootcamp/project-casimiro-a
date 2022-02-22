@@ -95,7 +95,7 @@ export default function Activity({ activity, cities })
                     more={activity.city.more}
                     id={activity.city.id}
                 />
-                <Cities data={cities} exceptId={activity.city.id}/>
+                <Cities data={cities} exceptId={activity.city.id} showTitle={true} maxCities={5}/>
             </Layout>
         </>
     );

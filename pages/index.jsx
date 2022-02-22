@@ -7,6 +7,9 @@ import Hero from '../components/Hero';
 import ActivitiesSkeleton from '../components/ActivitiesSkeleton';
 import CitiesSkeleton from '../components/CitiesSkeleton';
 import Advantages from '../components/Advantages';
+import ActivitiesMap from "../components/ActivitiesMap"
+import Contacts from '../components/Contacts';
+
 
 const Activities = dynamic(
   () => import('../components/Activities'), 
@@ -26,6 +29,8 @@ export default function Home({ activities, cities }){
       <Activities data={activities} />
       <Advantages />
       <Cities data={cities} />
+      <ActivitiesMap />
+      <Contacts showBtn={true}/>
     </Layout>
   )
 }

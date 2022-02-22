@@ -11,7 +11,8 @@ const initState =
     showSideMenu: false,
     allActivities: [],
     searchCity: "",
-    cart: []
+    cart: [],
+    mapData:"",
 }
 
 const reducer = (state = initState, action) => 
@@ -75,7 +76,12 @@ const reducer = (state = initState, action) =>
         case "setCart":
             return {
                 ...state,
-                cart: action.payload
+                cart: action.payload,
+            }
+        case "SetMapData":
+            return{
+                ...state,
+                mapData: action.payload,
             }
         default :
             return state;   

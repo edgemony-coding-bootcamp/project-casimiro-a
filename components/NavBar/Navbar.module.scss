@@ -10,6 +10,7 @@
     z-index: 10;
     transition: all 1s ease;
     
+    
     .menu{
         display: none;
         color: #fff;
@@ -38,14 +39,14 @@
     }
     .navbar{
         color: variables.$white;
-        z-index: 1;
-
+      
         ul{
             @include mixins.flexContainer(row, space-between, center);
             list-style: none;
             padding: 0 20%;
             font-weight: 600;
-        }
+                    }
+
     }
     .searchbar{
         display: flex;
@@ -63,6 +64,9 @@
 @media only screen and (max-width: 768px){
     .container{
         padding: 20px;
+        .searchbar{
+            display: none;
+        }
         .menu{
             display: block;
             svg{
@@ -72,10 +76,9 @@
             }
         }
         .logoDiv{
-            width: 50px;
-            overflow: hidden;
+            width: 100%;
             .logo{
-                min-width: 200px;
+                
             }
         }
         .navbar{
@@ -90,4 +93,5 @@
             }
         }
     }
+
 }

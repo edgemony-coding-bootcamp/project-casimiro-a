@@ -1,5 +1,5 @@
+import Head from 'next/head'
 import styles from "./Navbar.module.scss";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import SearchBar from "../SearchBar";
@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { toggleSideMenu } from "../../store/actions";
-import { signOut, useSession } from "next-auth/react";
+import UlNavBar from "../UlNavBar";
 
 export default function NavBar() 
 {
@@ -20,6 +20,7 @@ export default function NavBar()
 
   const router = useRouter();
   const dispatch = useDispatch();
+
   const isShow = useSelector((state) => state.showResult);
 
   function handleScroll() {
@@ -29,12 +30,11 @@ export default function NavBar()
       setIsonTop(true);
     }
   }
+
   function handleMenu() {
     dispatch(toggleSideMenu);
   }
 
-
-  const { data: session } = useSession();
 
   return (
     <div
@@ -43,6 +43,15 @@ export default function NavBar()
         !isonTop || isShow ? { background: "#011627" } : { background: "" }
       }
     >
+      <Head>
+        <title>TravelHub</title>
+        <link rel="icon" type="image/png" href="/favicon.png/"/>
+        <meta charset="utf-8" />
+        <meta name="description" content="La web app per pianificare i tuoi viaggi ed esplorare il mondo" />
+        <meta name="keywords" content="viaggi, attività, esperienze, città, turismo, travelhub, viaggiare, esplorare" />
+        <meta name="author" content="TravelHub" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
       <div className={`${styles.menu} ${styles.flexed}`} onClick={handleMenu}>
         <FontAwesomeIcon className={styles.searchIcons} icon={faBars} />
       </div>
@@ -54,36 +63,7 @@ export default function NavBar()
       </div>
 
       <nav className={`${styles.navbar} ${styles.flexed}`}>
-        <ul>
-          <li>
-            <Link href={"/citta"}>
-              <a>Città</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={"/esperienze"}>
-              <a>Esperienze</a>
-            </Link>
-          </li>
-          <li>
-            <Link href={"/about"}>
-              <a>About</a>
-            </Link>
-          </li>
-            {session ? (
-              <>
-                <li onClick={signOut} style={{cursor:"pointer"}}>
-                  <a>Signout</a>
-                </li>
-              </>
-            ) : (
-              <li>
-                <Link href={"/auth/signin"}>
-                  <a>Login</a>
-                </Link>
-              </li>
-            )}
-        </ul>
+        <UlNavBar />
       </nav>
 
       <div className={`${styles.searchbar} ${styles.flexed}`}>
@@ -91,7 +71,9 @@ export default function NavBar()
         {
           session &&
             <Link href={"/cart"}>
-              <FontAwesomeIcon className={styles.cart} icon={faCartShopping} />
+              <a>
+                <FontAwesomeIcon className={styles.cart} icon={faCartShopping} />
+              </a>
             </Link>
         }
       </div>

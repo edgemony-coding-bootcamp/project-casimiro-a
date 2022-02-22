@@ -4,6 +4,7 @@ import Layout from "../../components/Layouts";
 import HeroIntern from "../../components/HeroIntern";
 import ActivitiesSkeleton from "../../components/ActivitiesSkeleton";
 
+
 const AllActivitiesFilter = dynamic(
   () => import('../../components/AllActivitiesFilter'),
   { ssr: false, loading: () => <ActivitiesSkeleton /> }
@@ -19,6 +20,7 @@ export default function ExperiencesArchive() {
         bgImage="https://images.unsplash.com/photo-1510253687831-0f982d7862fc"
       />
       <AllActivitiesFilter/>
+
     </Layout>
   );
 }

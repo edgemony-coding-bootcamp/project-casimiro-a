@@ -31,7 +31,10 @@
     {
         @include mixins.flexContainer(column, flex-start, flex-start, 30px);
         max-width: 50%;
-
+        p {
+            font-size: variables.$descFontSize;
+            line-height: variables.$descLineHeight;
+        }
         .wrapper_activity_info_title_skeleton
         {
             height: 50px;

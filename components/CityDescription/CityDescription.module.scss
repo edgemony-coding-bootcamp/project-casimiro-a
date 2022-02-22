@@ -15,7 +15,10 @@
     .wrapper_city_info{
         @include mixins.flexContainer(column, flex-start, flex-start, 30px);
         max-width: 50%;
-
+        p {
+            font-size: variables.$descFontSize;
+            line-height: variables.$descLineHeight;
+        }
         a{
             @include mixins.buttonCart();
         }

@@ -1,5 +1,4 @@
 import style from "./SideMenu.module.scss"
-import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSideMenu, hideResult } from "../../store/actions";
 import { useSession } from 'next-auth/react';
@@ -24,7 +23,7 @@ export default function SideMenu(){
 
     return(
         <div className={`${style.container} ${ openMenu && style.open}`}>
-          <UlNavBar />
+          <UlNavBar mobile />
           <SearchBar />
         </div>
     );

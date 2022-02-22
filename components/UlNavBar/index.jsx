@@ -1,7 +1,7 @@
 import { useSession,signOut } from "next-auth/react"
 import Link from "next/link"
 
-export default function UlNavBar(){
+export default function UlNavBar({ mobile = false }){
 
     const session = useSession();
 
@@ -27,10 +27,18 @@ export default function UlNavBar(){
             <a>About</a>
           </Link>
         </li>
+        {
+          mobile && session.data &&
+            <li>
+              <Link href={'/cart'}>
+                <a>Carrello</a>
+              </Link>
+            </li>
+        }
         <li>
           {session.data != null ? (
             <a onClick={signOut} style={{ cursor: "pointer" }}>
-            Sign out
+            Signout
             </a>
           ) : (
             <Link href={"/auth/signin"}>

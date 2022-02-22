@@ -51,7 +51,7 @@
         z-index: 1;
         background-color: variables.$white;
         @include mixins.flexContainer(column, space-between, flex-start,20px);
-        min-height: 320px;
+        min-height: 390px;
 
         h3
         {

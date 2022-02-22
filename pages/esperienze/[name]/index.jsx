@@ -13,6 +13,8 @@ import Reviews from '../../../components/Reviews';
 import CitiesSkeleton from "../../../components/CitiesSkeleton";
 import DescriptionSkeleton from "../../../components/DescriptionSkeleton";
 import LottieLoader from "../../../components/LottieLoader";
+import {collection, addDoc, onSnapshot, serverTimestamp} from "firebase/firestore";
+import { database as db } from "../../../firebase"
 
 const ActivityDescription = dynamic(
     () => import('../../../components/ActivityDescription'),
@@ -30,38 +32,56 @@ const Cities = dynamic(
 );
 
 
-export default function Activity({ activity, cities }) 
-{
+export default function Activity({ activity, cities }){
 
     const { data: session } = useSession();
-    const dispatch = useDispatch();
-    const cartState = useSelector(state => state.cart);
+
     
-    const [isAdded, setIsAdded] = useState(false);
+    const [isAdded, setIsAdded] = useState(null);
 
-    useEffect(() => 
-    {
-        if(session)
-            dispatch(getCartItems(session.user.email));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [session]);
 
-    useEffect(() => 
-    {
-        if(session && cartState.length)
-        {
-            if(cartState.filter((item) => item.id == activity.uuid).length)
-                setIsAdded(true);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [activity]);
+
+    useEffect(
+      () =>
+        session  &&   
+            activity &&        
+            onSnapshot(
+              collection(db, `cart/${session.user.email}/items`),
+              (snapshot) => {
+                snapshot.docs.map((doc) => {
+                  doc.data().uuid === activity.uuid && setIsAdded(true)
+    
+                });
+              } 
+            ),
+   
+      [() => onSnapshot()]
+    );
+  
 
     const router = useRouter();
 
     if(router.isFallback) {
         return <LottieLoader />
     }
+    
 
+    const  handleAddToCart = async(data) => {
+        if (session){
+        const collectionRef = collection(db, `cart/${session.user.email}/items`);
+        const payload = {
+          price: data.retail_price.value,
+          quantity: 1,
+          title: data.title,
+          url: data.cover_image_url,
+          uuid: data.uuid     
+        };
+       await addDoc(collectionRef, payload);
+    }   
+        else{
+            alert("devi fare il login per aggiungere qualcosa al carrello")
+        }
+}
 
     return (
         <>
@@ -81,11 +101,7 @@ export default function Activity({ activity, cities })
                     showService3 = {activity.free_cancellation}
                     showService4 = {activity.is_available_today}
                     btnActive={isAdded}
-                    btnAction={session ? 
-                        () => { 
-                            dispatch(addCartItem(session.user.email, activity.uuid, activity.title, activity.cover_image_url, activity.retail_price.value));
-                            setTimeout(() => window.location.reload(), 200);
-                        } : undefined}
+                    btnAction={() => handleAddToCart(activity)}
                 />
                 <Reviews />
                 <CityDescription 

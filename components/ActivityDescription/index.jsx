@@ -12,9 +12,12 @@ export default function ActivityDescription({
     showService1 = false,
     showService2 = false,
     showService3 = false,
-    showService4 = false
+    showService4 = false,
+    btnActive = false,
+    btnAction = undefined
     }) {
-    return(
+
+    return (
         <section className={styles.wrapper_activity_description}>
             <div className={styles.wrapper_activity_image}>
                 <Image 
@@ -29,7 +32,13 @@ export default function ActivityDescription({
                 <p>{description}</p>
                 <div className={styles.wrapper_activity_shop}>
                     <p className={styles.price}>{price}</p>
-                    <button>Aggiungi al carrello</button>
+                    {
+                        (
+                            btnActive &&
+                            <button className={styles.active}>Aggiunto</button>
+                        ) ||
+                        <button onClick={btnAction}>Aggiungi al carrello</button>
+                    }
                 </div>
                 <div className={styles.wrapper_activity_services}>
                     {showService1 && <InfoIconBox icon={1} title='Offerta Regalabile'/>}

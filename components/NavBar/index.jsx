@@ -6,16 +6,22 @@ import SearchBar from "../SearchBar";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { toggleSideMenu } from "../../store/actions";
 import UlNavBar from "../UlNavBar";
 
-export default function NavBar() {
+export default function NavBar() 
+{
+  const [isonTop, setIsonTop] = useState(true);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => handleScroll());
+  }, []);
+
   const router = useRouter();
   const dispatch = useDispatch();
 
   const isShow = useSelector((state) => state.showResult);
-  const [isonTop, setIsonTop] = useState(true);
 
   function handleScroll() {
     if (window.scrollY != 0) {
@@ -29,9 +35,6 @@ export default function NavBar() {
     dispatch(toggleSideMenu);
   }
 
-  useEffect(() => {
-    window.addEventListener("scroll", () => handleScroll());
-  }, []);
 
   return (
     <div
@@ -65,6 +68,14 @@ export default function NavBar() {
 
       <div className={`${styles.searchbar} ${styles.flexed}`}>
         <SearchBar />
+        {
+          session &&
+            <Link href={"/cart"}>
+              <a>
+                <FontAwesomeIcon className={styles.cart} icon={faCartShopping} />
+              </a>
+            </Link>
+        }
       </div>
     </div>
   );

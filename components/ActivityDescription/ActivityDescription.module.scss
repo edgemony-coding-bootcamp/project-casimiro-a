@@ -60,6 +60,14 @@
                 button
                 {
                     @include mixins.buttonCart();
+
+                }
+                
+                button.active
+                {
+                    color: variables.$primary;
+                    background-color: variables.$white;
+                    cursor: auto;
                 }
 
                 .wrapper_activity_shop_skeleton

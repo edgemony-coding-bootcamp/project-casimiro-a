@@ -1,5 +1,8 @@
 
 import { API_URL } from '../libs/variables';
+import { collection, doc, setDoc, getDocs, updateDoc, deleteDoc } from 'firebase/firestore';
+import { database } from '../firebase';
+
 
 export const setCarouselFirstInst = (data) => ({
     type: "setCarouselFirstInst",
@@ -57,6 +60,72 @@ export const searchCity = (e) => {
             .then(data => dispatch(setSearchCity(data)))
     }
 }
+
+
+// Cart
+export const setCart = (data) => ({ 
+    type: 'setCart', 
+    payload: data 
+});
+
+export const addCartItem = (idUser, uuid, title, url, price) =>
+{
+    return dispatch =>
+    {
+        const collectionByUser = doc(database, `cart/${idUser}/items`, uuid);
+        setDoc(collectionByUser, { title: title, url: url, price: price, quantity: 1 })
+            .then(() => {
+                dispatch(getCartItems(idUser));
+            })
+    }
+}
+
+export const getCartItems = (idUser) => 
+{
+    return dispatch =>
+    {
+        const collectionByUser = collection(database, `cart/${idUser}/items`);
+        getDocs(collectionByUser)
+            .then((data) => {
+                dispatch(setCart(data.docs.map((item) => {
+                    return { ...item.data(), id: item.id }
+                })));
+            })
+    }
+}
+
+export const editCartItem = (idUser, uuid, quantity) =>
+{ 
+    return dispatch =>
+    {
+        if(quantity)
+        {
+            const collectionById = doc(database, `cart/${idUser}/items`, uuid);
+            updateDoc(collectionById, { quantity: quantity })
+                .then(() => {
+                    dispatch(getCartItems(idUser));
+                })
+        }
+        else
+        {
+            dispatch(deleteCartItem(idUser, uuid));
+        }
+    }
+}
+
+export const deleteCartItem = (idUser, uuid) =>
+{
+    return dispatch =>
+    {
+        const collectionById = doc(database, `cart/${idUser}/items`, uuid);
+        deleteDoc(collectionById)
+            .then(() => {
+                dispatch(getCartItems(idUser));
+            })
+    }
+}
+
+
 const SetMapData = (data) => ({ type: "SetMapData", payload: data })
 export const SearchMapData = (coor) => {
     console.log(coor)

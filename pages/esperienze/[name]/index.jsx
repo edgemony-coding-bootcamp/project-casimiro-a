@@ -1,5 +1,10 @@
 import { useRouter } from "next/router";
 import { API_URL } from "../../../libs/variables";
+import { useSession } from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { addCartItem, getCartItems } from "../../../store/actions";
 import axios from 'axios';
 import dynamic from "next/dynamic";
 import Layout from '../../../components/Layouts';
@@ -27,12 +32,33 @@ const Cities = dynamic(
 
 export default function Activity({ activity, cities }) 
 {
-    const router = useRouter();
+
+    const { data: session } = useSession();
+    const dispatch = useDispatch();
+    const cartState = useSelector(state => state.cart);
     
+    const [isAdded, setIsAdded] = useState(false);
+
+    useEffect(() => 
+    {
+        if(session)
+            dispatch(getCartItems(session.user.email));
+    }, [session]);
+
+    useEffect(() => {
+        if(session && cartState.length)
+        {
+            if(cartState.filter((item) => item.id == activity.uuid).length)
+                setIsAdded(true);
+        }
+    }, [activity]);
+
+    const router = useRouter();
 
     if(router.isFallback) {
         return <LottieLoader />
     }
+
 
     return (
         <>
@@ -51,6 +77,12 @@ export default function Activity({ activity, cities })
                     showService2 = {activity.special_offer}
                     showService3 = {activity.free_cancellation}
                     showService4 = {activity.is_available_today}
+                    btnActive={isAdded}
+                    btnAction={session ? 
+                        () => { 
+                            dispatch(addCartItem(session.user.email, activity.uuid, activity.title, activity.cover_image_url, activity.retail_price.value));
+                            setTimeout(() => window.location.reload(), 200);
+                        } : undefined}
                 />
                 <Reviews />
                 <CityDescription 

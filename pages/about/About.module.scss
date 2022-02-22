@@ -6,6 +6,10 @@
     @include mixins.flexContainer(column, center, center, 100px); 
     padding: variables.$sectionsPadding;
     padding-bottom: 0;
+    p {
+        font-size: variables.$descFontSize;
+        line-height: variables.$descLineHeight;
+    }
     .aboutTravelHub{
         @include mixins.flexContainer(column, center, flex-start);
     }

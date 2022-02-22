@@ -53,9 +53,9 @@ export default function About() {
         <div className={styles.aboutWrapper}>   
             <div className={styles.aboutTravelHub}>
             <h2>A proposito di TravelHub</h2>
-            TravelHub accompagna i viaggiatori nella pianificazione dei loro viaggi, offrendo una vasta gamma di esperienze esclusive e tour guidati. La nostra missione è quella di guidarti, con chiarezza e semplicità, nella scelta dello stile di vacanza che più si addice alle tue esigenze. Grazie all’ampio catalogo di attività offerte da TravelHub e alla cura che dedichiamo ad ogni dettaglio, potrai goderti la tua vacanza in assoluta serenità e rendere il tuo viaggio indimenticabile. 
-            Controlla il nostro catalogo per restare sempre aggiornato sulle offerte più convenienti che possiamo proporti. Ricorda inoltre che, per restare vicini alle tue esigenze permetterti di sognare il tuo viaggio senza dover pensare a eventuali imprevisti, TravelHub ti permette di cancellare gratuitamente e in qualsiasi momento qualsiasi prenotazione. 
-            Buon viaggio!            
+                <p>TravelHub accompagna i viaggiatori nella pianificazione dei loro viaggi, offrendo una vasta gamma di esperienze esclusive e tour guidati. La nostra missione è quella di guidarti, con chiarezza e semplicità, nella scelta dello stile di vacanza che più si addice alle tue esigenze. Grazie all’ampio catalogo di attività offerte da TravelHub e alla cura che dedichiamo ad ogni dettaglio, potrai goderti la tua vacanza in assoluta serenità e rendere il tuo viaggio indimenticabile. 
+                Controlla il nostro catalogo per restare sempre aggiornato sulle offerte più convenienti che possiamo proporti. Ricorda inoltre che, per restare vicini alle tue esigenze permetterti di sognare il tuo viaggio senza dover pensare a eventuali imprevisti, TravelHub ti permette di cancellare gratuitamente e in qualsiasi momento qualsiasi prenotazione. 
+                Buon viaggio!</p>          
             </div>  
             <div className={styles.aboutTeam}>                
                 <h2>Il nostro team</h2>

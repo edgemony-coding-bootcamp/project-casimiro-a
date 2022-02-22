@@ -6,15 +6,21 @@ import SearchBar from "../SearchBar";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { toggleSideMenu } from "../../store/actions";
 import { signOut, useSession } from "next-auth/react";
 
-export default function NavBar() {
+export default function NavBar() 
+{
+  const [isonTop, setIsonTop] = useState(true);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => handleScroll());
+  }, []);
+
   const router = useRouter();
   const dispatch = useDispatch();
   const isShow = useSelector((state) => state.showResult);
-  const [isonTop, setIsonTop] = useState(true);
 
   function handleScroll() {
     if (window.scrollY != 0) {
@@ -27,9 +33,6 @@ export default function NavBar() {
     dispatch(toggleSideMenu);
   }
 
-  useEffect(() => {
-    window.addEventListener("scroll", () => handleScroll());
-  }, []);
 
   const { data: session } = useSession();
 
@@ -67,22 +70,30 @@ export default function NavBar() {
               <a>About</a>
             </Link>
           </li>
-          <li>
             {session ? (
-             
-                <a onClick={signOut} style={{cursor:"pointer"}}>Sing Out</a>
-              
+              <>
+                <li onClick={signOut} style={{cursor:"pointer"}}>
+                  <a>Signout</a>
+                </li>
+              </>
             ) : (
-              <Link href={"/auth/signin"}>
-                <a>Login</a>
-              </Link>
+              <li>
+                <Link href={"/auth/signin"}>
+                  <a>Login</a>
+                </Link>
+              </li>
             )}
-          </li>
         </ul>
       </nav>
 
       <div className={`${styles.searchbar} ${styles.flexed}`}>
         <SearchBar />
+        {
+          session &&
+            <Link href={"/cart"}>
+              <FontAwesomeIcon className={styles.cart} icon={faCartShopping} />
+            </Link>
+        }
       </div>
     </div>
   );

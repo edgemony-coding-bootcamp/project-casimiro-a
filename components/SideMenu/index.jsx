@@ -2,6 +2,7 @@ import style from "./SideMenu.module.scss"
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSideMenu, hideResult } from "../../store/actions";
+import { useSession } from 'next-auth/react';
 
 export default function SideMenu(){
     
@@ -13,9 +14,11 @@ export default function SideMenu(){
       }, 200);
     }
     
-  const openMenu = useSelector(state => state.showSideMenu)
+    const openMenu = useSelector(state => state.showSideMenu)
 
-  openMenu && dispatch(hideResult)
+    openMenu && dispatch(hideResult)
+
+    const { data: session } = useSession();
 
     return(
         <div className={`${style.container} ${ openMenu && style.open}`}>
@@ -40,6 +43,17 @@ export default function SideMenu(){
               <a>About</a>
             </Link>
           </li>
+          {
+            session ? (
+              <li>
+                <Link href={"/cart"}>
+                  <a>Carrello</a>
+                </Link>
+              </li>
+            ) : (
+              <></>
+            )
+          }
         </ul>
         </div>
     );

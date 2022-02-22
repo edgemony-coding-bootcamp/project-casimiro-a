@@ -38,6 +38,7 @@
     }
     .navbar{
         color: variables.$white;
+        z-index: 1;
 
         ul{
             @include mixins.flexContainer(row, space-between, center);
@@ -49,6 +50,13 @@
     .searchbar{
         display: flex;
         justify-content: flex-end;
+
+        .cart
+        {
+            color: variables.$white;
+            padding: 18px 40px;
+            cursor: pointer;
+        }
     }
     
 }
@@ -72,6 +80,14 @@
         }
         .navbar{
             display: none;
+        }
+
+        .searchbar
+        {
+            .cart
+            {
+                display: none;
+            }
         }
     }
 }

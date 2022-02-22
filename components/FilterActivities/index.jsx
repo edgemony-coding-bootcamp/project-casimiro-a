@@ -4,7 +4,7 @@ import styles from './FilterActivities.module.scss';
 
 const FilterActivities = ({ callback }) =>
 {
-
+    const [price, setPrice] = useState(200);
     const [maxPrice, setMaxPrice] = useState(200);
     const [category, setCategory] = useState('');
 
@@ -17,8 +17,16 @@ const FilterActivities = ({ callback }) =>
         <div className={styles.wrapper}>
             <div className={styles.wrapper_price}>
                 € 0
-                <input type="range" min="1" max="200" step="1" value={maxPrice} onChange={(e) => setMaxPrice(parseInt(e.target.value))} />
-                € {maxPrice}
+                <input 
+                    type="range" 
+                    min="1" 
+                    max="200" 
+                    step="1" 
+                    value={price} 
+                    onChange={(e) => setPrice(parseInt(e.target.value))} 
+                    onMouseUp={() => setMaxPrice(price)}
+                />
+                € {price}
             </div>
             <div className={styles.wrapper_category}>
                 <button value="arts-culture" onClick={(e) => setCategory(e.target.value)} >Arte e Musei</button>

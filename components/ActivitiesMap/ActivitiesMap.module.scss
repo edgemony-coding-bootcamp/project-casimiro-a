@@ -13,14 +13,17 @@
         
         width: 100%;
         overflow: hidden;
-        .marker{
+        .marker
+        {
             cursor: pointer;
             height: 50px;
             width: 100%;            
+            transform: scale(0.8);
             transition: all 0.3s ease;
 
-            &:hover{
-                transform:scale(1.2);
+            &:hover
+            {
+                transform: scale(1);
             }
         }
         .modale{

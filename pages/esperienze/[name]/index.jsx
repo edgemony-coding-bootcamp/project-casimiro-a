@@ -43,14 +43,17 @@ export default function Activity({ activity, cities })
     {
         if(session)
             dispatch(getCartItems(session.user.email));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [session]);
 
-    useEffect(() => {
+    useEffect(() => 
+    {
         if(session && cartState.length)
         {
             if(cartState.filter((item) => item.id == activity.uuid).length)
                 setIsAdded(true);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activity]);
 
     const router = useRouter();

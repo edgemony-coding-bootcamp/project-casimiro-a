@@ -1,14 +1,17 @@
-import Head from 'next/head'
+
 import styles from "./Navbar.module.scss";
-import { useEffect, useState } from "react";
+import Head from 'next/head'
 import Image from "next/image";
+import Link from 'next/link';
 import SearchBar from "../SearchBar";
+import UlNavBar from "../UlNavBar";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import { useSession } from 'next-auth/react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { toggleSideMenu } from "../../store/actions";
-import UlNavBar from "../UlNavBar";
 
 export default function NavBar() 
 {
@@ -20,6 +23,7 @@ export default function NavBar()
 
   const router = useRouter();
   const dispatch = useDispatch();
+  const { data: session } = useSession();
 
   const isShow = useSelector((state) => state.showResult);
 

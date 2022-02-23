@@ -23,6 +23,8 @@
             list-style: none;
             padding: 0 70px 20px;
             border-bottom: 1px solid variables.$white;
+            display: flex;
+            justify-content: center;
         }
     }
     &.open{

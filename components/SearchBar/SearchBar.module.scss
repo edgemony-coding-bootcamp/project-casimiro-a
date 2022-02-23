@@ -129,15 +129,13 @@
     .result {
         right: 0;
         width: 100%;
-        top:380px;
+        top:550px;
         min-height: 70vh;
+        text-align: left;
         .info{
             .img{
                 display: none;
             }
-        }
-        .inputText{
-            border: 1px solid red;
         }
     }
 }

@@ -1,4 +1,4 @@
-@import "../../libs/variables.scss";
+@use  "../../libs/variables.scss";
 
 .container{
     width: 0px;
@@ -12,6 +12,8 @@
     font-size: 20px;
     overflow: hidden;
     transition: all 0.5s;
+    text-align: center;
+    align-items: center;
     ul{
         padding-top: 120px;
 
@@ -19,6 +21,8 @@
         li{
             margin: 20px 10px;
             list-style: none;
+            padding: 0 70px 20px;
+            border-bottom: 1px solid variables.$white;
         }
     }
     &.open{

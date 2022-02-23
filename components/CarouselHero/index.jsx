@@ -31,7 +31,7 @@ export default function CarouselHero({ data })
         <Swiper
           className={style.carousel}
           spaceBetween={10}
-          allowTouchMove={true}
+          allowTouchMove={false}
           loop={true}
           speed={800}
           slidesPerView={1}

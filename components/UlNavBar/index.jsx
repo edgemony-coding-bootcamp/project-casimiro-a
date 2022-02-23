@@ -8,7 +8,10 @@ export default function UlNavBar({ mobile = false }) {
   const session = useSession();
   const dispatch = useDispatch();
   function hide(){
-    mobile && dispatch(toggleSideMenu)
+    mobile && 
+    setTimeout(() => {
+       dispatch(toggleSideMenu)
+    }, 20);
   }
   return (
     <ul>

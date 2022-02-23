@@ -88,7 +88,7 @@
     
     button{
         border: none;
-        background: rgba(255, 255, 255, 0.397);
+        background: #f1f1f1;
         min-width: 50px;
         height: 50px;
         border-radius: 50px;
@@ -96,6 +96,7 @@
         font-size: 1.1rem;
         color: variables.$white;
         @include mixins.flexContainer(row, center, center, 0px);
+        box-shadow: variables.$shadow;
     }
     
     .searchIcons{  
@@ -112,7 +113,7 @@
         background: transparent;
         
         &::placeholder{
-            color: variables.$white;
+            color: #000;
         }
 
         &.open{
@@ -124,18 +125,35 @@
         }
     }
 }
+.closeBtn{
+    display: none;
 
-@media only screen and (max-width: 675px){
+}
+
+@media only screen and (max-width: 768px){
     .result {
         right: 0;
         width: 100%;
-        top:550px;
-        min-height: 70vh;
+        top: 220px;
+        height: 0vh;
         text-align: left;
+        padding:  0 15px;
+        &.open{
+            min-height: 70vh;
+        }
         .info{
+            border-bottom: 1px solid variables.$white;
             .img{
                 display: none;
             }
         }
+    }
+
+    .closeBtn{
+        display: block;
+        position: sticky;
+        top: 10px;
+        margin: 0 0 0 70vw;
+        @include mixins.buttonCart();
     }
 }

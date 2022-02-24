@@ -5,7 +5,6 @@ const FETCH_HEADERS =
 {
   'Accept': 'application/json',
   'X-Musement-Version': '3.4.0',
-  'Accept-Language': 'it-IT'
 };
 
 export {

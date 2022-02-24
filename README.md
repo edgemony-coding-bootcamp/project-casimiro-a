@@ -29,7 +29,6 @@
         <li>Redux per lo state management</li>
         <li>Middleware thunk</li>
         <li>Lazy loading</li>
-        <li>Test dei componenti con JEST</li>
     </ul>
  <br>
  

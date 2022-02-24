@@ -139,9 +139,13 @@ export default function ActivitiesMap() {
           )
         )}
         <div className={style.inputRaggio}>
-          raggio di ricerca: <span>{range}</span> Km{" "}
+          <label htmlFor="search-range">
+            raggio di ricerca: <span>{range}</span> Km{" "}
+          </label>
           <input
             type="range"
+            name="search-range"
+            id="search-range"
             value={range}
             min="1"
             max="200"

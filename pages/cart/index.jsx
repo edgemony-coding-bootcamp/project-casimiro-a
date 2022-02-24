@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layouts";
 import SectionTitle from "../../components/SectionTitle";
 import Image from 'next/image';
+import Link from "next/link";
 import styles from './Cart.module.scss';
 import {onSnapshot, collection, deleteDoc,doc, setDoc } from 'firebase/firestore';
 import { database as db } from "../../firebase"
@@ -20,39 +21,24 @@ const Cart = () =>{
     const cartState = useSelector((state) => state.cart);
     const totalCart = 0;
 
-    useEffect(
-        () =>
-        session &&
-        onSnapshot(
-          collection(db, `cart/${session.user.email}/items`),
-          (snapshot) => {
-            setDataCart(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
-          }
-        ),[session]);
-    
-    const handleDelete = async (item) => {
-        const docRef = doc(db, `cart/${session.user.email}/items`, item.id)
-        await deleteDoc(docRef)
-    }    
-    const handleIncrement = async (item) => {
-        const docRef = doc(db, `cart/${session.user.email}/items`, item.id);
-        const payload = { ...item, quantity: item.quantity + 1 };
-        setDoc(docRef, payload);
-    }
-    const handleDecrement = async (item) => {
-        const docRef = doc(db, `cart/${session.user.email}/items`, item.id);
-        const payload = { ...item, quantity: item.quantity > 0 && item.quantity - 1 };
-        setDoc(docRef, payload);
-    }
+    useEffect(() => 
+    {
+        if(session)
+            dispatch(getCartItems(session.user.email));
+        else if(session === null)
+            router.push('/auth/signin');
+    }, [session]);
+
     const router = useRouter();
+  
     return (
         session ? (
             <Layout>
-                <section className={styles.wrapper}>
+                <div>
                     <div className={styles.hero}></div>
-                    <div className={styles.cart}>
+                    <section className={styles.cart}>
                         {
-                            (dataCart.length &&
+                            cartState && cartState.length ?
                                 <>
                                     <SectionTitle title="Riepilogo dell'ordine" description="" showBtn={false} />
                                     <ul>
@@ -74,20 +60,20 @@ const Cart = () =>{
                                                             <span>
                                                                 <button
                                                                     className={styles.minus}
-                                                                        onClick={() => handleDecrement(item)}
+                                                                    onClick={() => dispatch(editCartItem(session.user.email, item.id, (item.quantity - 1)))}
                                                                 >
                                                                     -
-                                                                </button>
+                                                                </button>   
                                                                 <input 
                                                                     type="number" 
                                                                     min="1" 
                                                                     max="100"
                                                                     step="1" 
                                                                     value={item.quantity}
-                                                                    />
+                                                                    readOnly/>
                                                                 <button
                                                                     className={styles.plus}
-                                                                    onClick={() => handleIncrement(item)}
+                                                                    onClick={() => dispatch(editCartItem(session.user.email, item.id, (item.quantity + 1)))}
                                                                 >
                                                                     +
                                                                 </button>
@@ -113,13 +99,17 @@ const Cart = () =>{
                                             <h2>Totale</h2>
                                             <p className={styles.totalPrice}>€ {parseFloat(totalCart).toFixed(2)}</p>
                                     </div>
-                                    <button className={styles.checkoutBtn}>Vai al checkout</button>
+                                    <Link href="/cart/checkout">
+                                        <a>
+                                            <button className={styles.checkoutBtn}>Vai al checkout</button>
+                                        </a>
+                                    </Link>
                                 </>
-                            ) || 
-                        <SectionTitle title="Riepilogo dell'ordine" description="Il carrello è vuoto." showBtn={false} />
+                            :
+                                <SectionTitle title="Riepilogo dell'ordine" description="Il carrello è vuoto." showBtn={false} />
                         }
-                    </div>
-                </section>
+                    </section>
+                </div>
                 </Layout>
         ) : (<></>)
     );

@@ -36,28 +36,24 @@ export default function Activity({ activity, cities }){
 
     const { data: session } = useSession();
 
-    
-    const [isAdded, setIsAdded] = useState(null);
+    const [isAdded, setIsAdded] = useState(false);
 
+    useEffect(() => 
+    {
+        if(session)
+            dispatch(getCartItems(session.user.email));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [session]);
 
-
-    useEffect(
-      () =>
-        session  &&   
-            activity &&        
-            onSnapshot(
-              collection(db, `cart/${session.user.email}/items`),
-              (snapshot) => {
-                snapshot.docs.map((doc) => {
-                  doc.data().uuid === activity.uuid && setIsAdded(true)
-    
-                });
-              } 
-            ),
-   
-      [() => onSnapshot()]
-    );
-  
+    useEffect(() => 
+    {
+        if(session && activity && cartState.length)
+        {
+            if(cartState.filter((item) => item.id == activity.uuid).length)
+                setIsAdded(true);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [activity, cartState]);
 
     const router = useRouter();
 
@@ -66,22 +62,17 @@ export default function Activity({ activity, cities }){
     }
     
 
-    const  handleAddToCart = async(data) => {
-        if (session){
-        const collectionRef = collection(db, `cart/${session.user.email}/items`);
-        const payload = {
-          price: data.retail_price.value,
-          quantity: 1,
-          title: data.title,
-          url: data.cover_image_url,
-          uuid: data.uuid     
-        };
-       await addDoc(collectionRef, payload);
-    }   
-        else{
-            alert("devi fare il login per aggiungere qualcosa al carrello")
+    const handleAddToCart = (data) =>
+    {
+        if(session)
+        {
+            dispatch(addCartItem(session.user.email, data.uuid, data.title, data.cover_image_url, data.retail_price.value));
+        } 
+        else
+        {
+            alert('Devi essere loggato per aggiungere qualcosa al carrello.');
         }
-}
+    }
 
     return (
         <>

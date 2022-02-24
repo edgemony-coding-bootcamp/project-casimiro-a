@@ -1,0 +1,271 @@
+
+@use '../../../libs/variables.scss';
+@use '../../../libs/mixins.scss';
+
+.hero
+{
+    height: 120px;
+    width: 100vw;
+    background-color: variables.$primary;
+}
+
+.wrapper
+{
+    padding: variables.$sectionsPadding;
+    
+    .summary
+    {
+        @include mixins.flexContainer(row, center, flex-start);
+        box-shadow: variables.$shadow;
+        border-radius: variables.$cardBorderRadius;
+        margin: 50px 0 100px;
+
+        background: linear-gradient(to right,  variables.$white 50%, variables.$black 50%);
+        background: -webkit-linear-gradient(left,  variables.$white 50%, variables.$black 50%);
+        background: -moz-linear-gradient(left,  variables.$white 50%, variables.$black 50%);
+
+
+        h3
+        {
+            font-size: 1.8rem;
+        }
+        
+        .details
+        {
+            width: 50%;
+            padding: 30px;
+            color: variables.$black;
+
+            ul
+            {
+                @include mixins.flexContainer(column, flex-start);
+                width: 100%;
+                margin-top: 50px;
+                list-style: none;
+
+                li
+                {
+                    width: 100%;
+
+                    span
+                    {
+                        @include mixins.flexContainer(row, space-between);
+
+                        h4
+                        {
+                            font-size: 1.3rem;
+                        }
+        
+                        .price
+                        {
+                            text-align: right;
+                            font-weight: 700;
+                            white-space: nowrap;
+        
+                            p
+                            {
+                                font-size: 1.8rem;
+                                margin-bottom: -10px;
+                            }
+                        }
+                    }
+
+    
+                    .hr
+                    {
+                        margin-top: 10px;
+                        width: 100%;
+                        height: 2px;
+                        background-color: variables.$black;
+                    }
+    
+                }
+            }
+
+            .totalCart
+            {
+                @include mixins.flexContainer(row, space-between);
+                margin-top: 50px;
+                
+                .totalPrice
+                {
+                    font-size: 2.2rem;
+                    font-weight: 700;
+                }
+            }
+
+        }
+
+        .payment
+        {
+            width: 50%;
+            padding: 30px;
+            color: variables.$white;
+         
+            ul
+            {
+                @include mixins.flexContainer(column, flex-start);
+                width: 100%;
+                margin-top: 50px;
+                list-style: none;
+
+                li
+                {
+                    width: 100%;
+
+                    label
+                    {
+                        font-size: 1.2rem;
+                        display: block;
+                    }
+
+                    input
+                    {
+                        width: 80%;
+                        padding: 5px 0;
+                        color: variables.$white;
+                        background-color: transparent;
+                        border: none;
+                        border-bottom: 2px solid variables.$white;
+                        font-size: 1.5rem;
+                        font-family: variables.$textFont;
+                        font-weight: 600;
+                        outline: none;
+
+                        &[type=number]
+                        {
+                            &::-webkit-inner-spin-button,
+                            &::-webkit-outer-spin-button
+                            {
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+        
+    }
+
+    .payBtn
+    {
+        @include mixins.buttonCart(1.5rem, 20px 30px, variables.$alternative);
+        display: block;
+        margin: auto;
+    }
+
+}
+
+@media only screen and (max-width: 1000px)
+{
+    .wrapper
+    {
+        padding: 80px 30px;
+
+        .summary
+        {
+            @include mixins.flexContainer(column, center, flex-start);
+            background: variables.$white;
+
+            h3
+            {
+                text-align: center;
+                font-size: 1.5rem;
+            }
+
+            .details
+            {
+                width: 100%;
+
+                ul li span 
+                {
+                    h4
+                    {
+                        font-size: 1.2rem;
+                    }
+
+                    .price
+                    {
+                        font-size: 0.9rem;
+                        p
+                        {
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
+
+                .totalCart .totalPrice
+                {
+                    font-size: 2rem;
+                }
+
+            }
+
+            .payment
+            {
+                width: 100%;
+                background-color: variables.$black;
+                border-bottom-left-radius: variables.$cardBorderRadius;
+                border-bottom-right-radius: variables.$cardBorderRadius;
+                padding-bottom: 60px;
+
+                ul li 
+                {
+
+                    label
+                    {
+                        font-size: 1rem;
+                    }
+
+                    input
+                    {
+                        width: 100%;
+                        font-size: 1.3rem;
+                    }
+                }
+
+            }
+
+        }
+    }
+}
+
+@media only screen and (max-width: 420px)
+{
+    .wrapper
+    {
+        padding: 60px 15px;
+
+        .summary
+        {
+            h3
+            {
+                text-align: center;
+                font-size: 1.2rem;
+            }
+
+            .details
+            {
+                padding: 30px 15px;
+
+                ul li span h4
+                {
+                    font-size: 0.9rem;
+                }
+
+                .totalCart .totalPrice
+                {
+                    font-size: 1.8rem;
+                }
+
+            }
+
+        }
+
+    }
+}

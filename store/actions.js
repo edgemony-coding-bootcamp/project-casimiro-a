@@ -1,6 +1,6 @@
 
 import { API_URL } from '../libs/variables';
-import { collection, doc, setDoc, getDocs, updateDoc, deleteDoc } from 'firebase/firestore';
+import { collection, doc, onSnapshot, setDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { database } from '../firebase';
 
 
@@ -58,6 +58,60 @@ export const searchCity = (e) => {
         fetch(`${API_URL}autocomplete?sort_by=&text=${e.target.value}&city_limit=5`)
             .then(res => res.json())
             .then(data => dispatch(setSearchCity(data)))
+    }
+}
+
+
+// Cart
+export const setCart = (data) => ({ 
+    type: 'setCart', 
+    payload: data 
+});
+
+export const addCartItem = (idUser, uuid, title, url, price) =>
+{
+    return dispatch =>
+    {
+        const collectionByUser = doc(database, `cart/${idUser}/items`, uuid);
+        setDoc(collectionByUser, { title: title, url: url, price: price, quantity: 1 })
+    }
+}
+
+export const getCartItems = (idUser) => 
+{
+    return dispatch =>
+    {
+        const collectionByUser = collection(database, `cart/${idUser}/items`);
+        onSnapshot(collectionByUser, (data) => {
+            dispatch(setCart(data.docs.map((item) => {
+                return { ...item.data(), id: item.id }
+            })));
+        });
+    }
+}
+
+export const editCartItem = (idUser, uuid, quantity) =>
+{ 
+    return dispatch =>
+    {
+        if(quantity)
+        {
+            const collectionById = doc(database, `cart/${idUser}/items`, uuid);
+            updateDoc(collectionById, { quantity: quantity })
+        }
+        else
+        {
+            dispatch(deleteCartItem(idUser, uuid));
+        }
+    }
+}
+
+export const deleteCartItem = (idUser, uuid) =>
+{
+    return dispatch =>
+    {
+        const collectionById = doc(database, `cart/${idUser}/items`, uuid);
+        deleteDoc(collectionById)
     }
 }
 

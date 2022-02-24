@@ -12,8 +12,28 @@ export default function SignIn({ providers })
     if(session)
     {
         logged =   <div className={styles.log}>
-                        <h3>Bentornato {session.user.name}!</h3>
-                        <p>Siamo felici di rivederti!</p>
+                        <h1>Bentornato <br /> {session.user.name}!</h1>
+                        <div className={styles.img}>
+                            <Image className={styles.img} src={session.user.image} alt={session.user.name} height={96} width={96} />
+                        </div>
+                        <ul>
+                            <li>
+                                <label for="email">Email</label>
+                                <input id="email" value={session.user.email} readOnly/>
+                            </li>
+                            <li>
+                                <label for="password">Password</label>
+                                <input id="password" value="●●●●●●●●" readOnly/>
+                            </li>
+                            <li>
+                                <label for="birth">Data di nascita</label>
+                                <input id="birth" value="01/01/1990" readOnly/>
+                            </li>
+                            <li>
+                                <label for="pan">La tua carta</label>
+                                <input id="pan" value="●●●● ●●●● ●●●● ●●●●" readOnly/>
+                            </li>
+                        </ul>
                     </div>;
     }
 
@@ -30,7 +50,7 @@ export default function SignIn({ providers })
                                     <h3>Bentornato!</h3>
                                     <p>Prosegui per accedere con {provider.name}</p>
                                     <button className={styles.btn} onClick={() => signIn(provider.id)}>
-                                        <Image className={styles.img} src="\Google__G__Logo.svg" alt="google logo" width={24} height={24} />
+                                        <Image src="\Google__G__Logo.svg" alt="google logo" width={24} height={24} />
                                     </button>
                                 </div>
                             </div>

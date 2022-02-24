@@ -33,10 +33,10 @@ export default function ActivityDescription({
                 <div className={styles.wrapper_activity_shop}>
                     <p className={styles.price}>{price}</p>
                     {
-                        (
-                            btnActive &&
+                        
+                        btnActive ?
                             <button className={styles.active}>Aggiunto</button>
-                        ) ||
+                        :
                         <button onClick={btnAction}>Aggiungi al carrello</button>
                     }
                 </div>

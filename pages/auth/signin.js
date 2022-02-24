@@ -61,8 +61,8 @@ export default function SignIn({ providers })
         )
     }
 
-export async function getServerSideProps()
-{
+export async function getServerSideProps(){
+    
     const providers = await getProviders();
 
     return {

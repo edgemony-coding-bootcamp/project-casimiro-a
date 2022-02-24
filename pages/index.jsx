@@ -28,7 +28,7 @@ export default function Home({ activities, cities }){
       <Hero data={cities} />
       <Activities data={activities} />
       <Advantages />
-      <Cities data={cities} />
+      <Cities data={cities} showTitle={true} maxCities={5}/>
       <ActivitiesMap />
       <Contacts showBtn={true}/>
     </Layout>

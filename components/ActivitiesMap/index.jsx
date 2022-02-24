@@ -20,7 +20,7 @@ export default function ActivitiesMap() {
     longitude: null,
     range: 50,
   });
-  console.log(data);
+
 
   const [status, setStatus] = useState("");
 
@@ -49,24 +49,17 @@ export default function ActivitiesMap() {
     coor.latitude != null && dispatch(SearchMapData(coor));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coor]);
-  /*
-  useEffect(() => {
-   console.log(data.data)
-  }, [data]);
-  */
 
-  useEffect(() => 
-  {
+
+  useEffect(() => {
     getLocation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleClick(e) {
-    console.log("sd");
-    console.log(e.target.id);
     setAct(data.data.filter((data) => data.uuid === e.target.id));
     setShowModale(true);
-    console.log(act);
+
   }
   function handleChange(e) {
     setRange(e.target.value);

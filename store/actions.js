@@ -118,7 +118,6 @@ export const deleteCartItem = (idUser, uuid) =>
 
 const SetMapData = (data) => ({ type: "SetMapData", payload: data })
 export const SearchMapData = (coor) => {
-    console.log(coor)
     return (dispatch) => {
         fetch(`${API_URL}activities?text_operator=AUTO&extend_other_languages=AUTO&extend_content_fields=AUTO&fuzziness_level=LEVEL-0&zero_terms_query=NONE&coordinates=${coor.latitude}%2C${coor.longitude}&distance=${coor.range}KM&limit=100&offset=0`)
         .then(res => res.json())

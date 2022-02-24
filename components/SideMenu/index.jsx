@@ -24,7 +24,6 @@ export default function SideMenu(){
     return(
         <div className={`${style.container} ${ openMenu && style.open}`}>
           <UlNavBar mobile />
-          <SearchBar />
         </div>
     );
 }

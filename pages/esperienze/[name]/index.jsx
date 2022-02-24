@@ -13,6 +13,8 @@ import Reviews from '../../../components/Reviews';
 import CitiesSkeleton from "../../../components/CitiesSkeleton";
 import DescriptionSkeleton from "../../../components/DescriptionSkeleton";
 import LottieLoader from "../../../components/LottieLoader";
+import {collection, addDoc, onSnapshot, serverTimestamp} from "firebase/firestore";
+import { database as db } from "../../../firebase"
 
 const ActivityDescription = dynamic(
     () => import('../../../components/ActivityDescription'),
@@ -30,13 +32,10 @@ const Cities = dynamic(
 );
 
 
-export default function Activity({ activity, cities }) 
-{
+export default function Activity({ activity, cities }){
 
     const { data: session } = useSession();
-    const dispatch = useDispatch();
-    const cartState = useSelector(state => state.cart);
-    
+
     const [isAdded, setIsAdded] = useState(false);
 
     useEffect(() => 
@@ -61,6 +60,7 @@ export default function Activity({ activity, cities })
     if(router.isFallback) {
         return <LottieLoader />
     }
+    
 
     const handleAddToCart = (data) =>
     {
@@ -102,7 +102,7 @@ export default function Activity({ activity, cities })
                     more={activity.city.more}
                     id={activity.city.id}
                 />
-                <Cities data={cities} exceptId={activity.city.id}/>
+                <Cities data={cities} exceptId={activity.city.id} showTitle={true} maxCities={5}/>
             </Layout>
         </>
     );

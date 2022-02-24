@@ -2,7 +2,7 @@
 import { useSession } from "next-auth/react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getCartItems, editCartItem, deleteCartItem } from "../../store/actions";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layouts";
@@ -10,10 +10,12 @@ import SectionTitle from "../../components/SectionTitle";
 import Image from 'next/image';
 import Link from "next/link";
 import styles from './Cart.module.scss';
+import {onSnapshot, collection, deleteDoc,doc, setDoc } from 'firebase/firestore';
+import { database as db } from "../../firebase"
 
-const Cart = () =>
-{
-    
+const Cart = () =>{
+
+    const [dataCart, setDataCart] = useState({})
     const { data: session } = useSession();
     const dispatch = useDispatch();
     const cartState = useSelector((state) => state.cart);
@@ -28,7 +30,7 @@ const Cart = () =>
     }, [session]);
 
     const router = useRouter();
-
+  
     return (
         session ? (
             <Layout>
@@ -40,7 +42,7 @@ const Cart = () =>
                                 <>
                                     <SectionTitle title="Riepilogo dell'ordine" description="" showBtn={false} />
                                     <ul>
-                                        {cartState.map((item) => 
+                                        {dataCart.map((item) => 
                                         {
                                             totalCart += (item.quantity * item.price);
                                             return (
@@ -77,7 +79,7 @@ const Cart = () =>
                                                                 </button>
                                                                 <button 
                                                                     className={styles.delete}
-                                                                    onClick={() => dispatch(deleteCartItem(session.user.email, item.id))} 
+                                                                    onClick={() => handleDelete(item)} 
                                                                     >
                                                                     Elimina
                                                                 </button>

@@ -103,7 +103,7 @@ export default function City({ city, cities })
         </div>
         <FilterActivities callback={handleFilter} />
         <Activities data={filterActivitiesState} showTitle={false} />
-        <Cities data={cities} exceptId={city.id} />
+        <Cities data={cities} exceptId={city.id} showTitle={true} maxCities={5}/>
       </Layout>
     </>
   );

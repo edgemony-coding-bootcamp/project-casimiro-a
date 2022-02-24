@@ -5,7 +5,7 @@ import styles from './Cities.module.scss';
 import Link from 'next/link';
 
 
-const Cities = ({ data, showTitle = true, newTitle = false, showBtn = true, exceptId = 0, maxCities = 5 }) =>
+const Cities = ({ data, showTitle = false, newTitle = false, showBtn = true, exceptId = 0, maxCities = 10 }) =>
 {
     let cities = data || [];
 

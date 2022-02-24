@@ -72,6 +72,11 @@ const reducer = (state = initState, action) =>
                 ...state,
                 allActivities: action.payload,
             }
+        case "setCart":
+            return {
+                ...state,
+                cart: action.payload,
+            }
         case "SetMapData":
             return{
                 ...state,

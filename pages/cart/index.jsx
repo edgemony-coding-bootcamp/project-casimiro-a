@@ -42,7 +42,7 @@ const Cart = () =>{
                                 <>
                                     <SectionTitle title="Riepilogo dell'ordine" description="" showBtn={false} />
                                     <ul>
-                                        {dataCart.map((item) => 
+                                        {cartState.map((item) => 
                                         {
                                             totalCart += (item.quantity * item.price);
                                             return (
@@ -79,8 +79,8 @@ const Cart = () =>{
                                                                 </button>
                                                                 <button 
                                                                     className={styles.delete}
-                                                                    onClick={() => handleDelete(item)} 
-                                                                    >
+                                                                    onClick={() => dispatch(deleteCartItem(session.user.email, item.id))}
+                                                                >
                                                                     Elimina
                                                                 </button>
                                                             </span>

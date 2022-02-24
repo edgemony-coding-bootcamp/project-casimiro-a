@@ -35,6 +35,8 @@ const Cities = dynamic(
 export default function Activity({ activity, cities }){
 
     const { data: session } = useSession();
+    const dispatch = useDispatch();
+    const cartState = useSelector(state => state.cart);
 
     const [isAdded, setIsAdded] = useState(false);
 

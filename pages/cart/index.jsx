@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import Layout from "../../components/Layouts";
 import SectionTitle from "../../components/SectionTitle";
 import Image from 'next/image';
+import Link from "next/link";
 import styles from './Cart.module.scss';
 
 const Cart = () =>
@@ -23,8 +24,7 @@ const Cart = () =>
         if(session)
             dispatch(getCartItems(session.user.email));
         else if(session === null)
-            router.push("/auth/signin");
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+            router.push('/auth/signin');
     }, [session]);
 
     const router = useRouter();
@@ -32,11 +32,11 @@ const Cart = () =>
     return (
         session ? (
             <Layout>
-                <section className={styles.wrapper}>
+                <div>
                     <div className={styles.hero}></div>
-                    <div className={styles.cart}>
+                    <section className={styles.cart}>
                         {
-                            (cartState && cartState.length &&
+                            cartState && cartState.length ?
                                 <>
                                     <SectionTitle title="Riepilogo dell'ordine" description="" showBtn={false} />
                                     <ul>
@@ -58,26 +58,20 @@ const Cart = () =>
                                                             <span>
                                                                 <button
                                                                     className={styles.minus}
-                                                                    onClick={() => {
-                                                                        dispatch(editCartItem(session.user.email, item.id, (item.quantity - 1)));
-                                                                        setTimeout(() => window.location.reload(), 200);
-                                                                    }}
+                                                                    onClick={() => dispatch(editCartItem(session.user.email, item.id, (item.quantity - 1)))}
                                                                 >
                                                                     -
-                                                                </button>
+                                                                </button>   
                                                                 <input 
                                                                     type="number" 
                                                                     min="1" 
                                                                     max="100"
                                                                     step="1" 
-                                                                    defaultValue={item.quantity}
-                                                                    />
+                                                                    value={item.quantity}
+                                                                    readOnly/>
                                                                 <button
                                                                     className={styles.plus}
-                                                                    onClick={() => {
-                                                                        dispatch(editCartItem(session.user.email, item.id, (item.quantity + 1)));
-                                                                        setTimeout(() => window.location.reload(), 200);
-                                                                    }}
+                                                                    onClick={() => dispatch(editCartItem(session.user.email, item.id, (item.quantity + 1)))}
                                                                 >
                                                                     +
                                                                 </button>
@@ -103,13 +97,17 @@ const Cart = () =>
                                             <h2>Totale</h2>
                                             <p className={styles.totalPrice}>€ {parseFloat(totalCart).toFixed(2)}</p>
                                     </div>
-                                    <button className={styles.checkoutBtn}>Vai al checkout</button>
+                                    <Link href="/cart/checkout">
+                                        <a>
+                                            <button className={styles.checkoutBtn}>Vai al checkout</button>
+                                        </a>
+                                    </Link>
                                 </>
-                            ) || 
-                        <SectionTitle title="Riepilogo dell'ordine" description="Il carrello è vuoto." showBtn={false} />
+                            :
+                                <SectionTitle title="Riepilogo dell'ordine" description="Il carrello è vuoto." showBtn={false} />
                         }
-                    </div>
-                </section>
+                    </section>
+                </div>
                 </Layout>
         ) : (<></>)
     );

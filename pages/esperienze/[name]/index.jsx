@@ -48,13 +48,13 @@ export default function Activity({ activity, cities })
 
     useEffect(() => 
     {
-        if(session && cartState.length)
+        if(session && activity && cartState.length)
         {
             if(cartState.filter((item) => item.id == activity.uuid).length)
                 setIsAdded(true);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [activity]);
+    }, [activity, cartState]);
 
     const router = useRouter();
 
@@ -62,6 +62,17 @@ export default function Activity({ activity, cities })
         return <LottieLoader />
     }
 
+    const handleAddToCart = (data) =>
+    {
+        if(session)
+        {
+            dispatch(addCartItem(session.user.email, data.uuid, data.title, data.cover_image_url, data.retail_price.value));
+        } 
+        else
+        {
+            alert('Devi essere loggato per aggiungere qualcosa al carrello.');
+        }
+    }
 
     return (
         <>
@@ -81,11 +92,7 @@ export default function Activity({ activity, cities })
                     showService3 = {activity.free_cancellation}
                     showService4 = {activity.is_available_today}
                     btnActive={isAdded}
-                    btnAction={session ? 
-                        () => { 
-                            dispatch(addCartItem(session.user.email, activity.uuid, activity.title, activity.cover_image_url, activity.retail_price.value));
-                            setTimeout(() => window.location.reload(), 200);
-                        } : undefined}
+                    btnAction={() => handleAddToCart(activity)}
                 />
                 <Reviews />
                 <CityDescription 

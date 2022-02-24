@@ -21,6 +21,7 @@ const Checkout = () =>
             dispatch(getCartItems(session.user.email));
         else if(session === null)
             router.push('/auth/signin');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [session]);
 
     const router = useRouter();
@@ -37,7 +38,7 @@ const Checkout = () =>
                                     <SectionTitle title={`Ordine N. ${Math.round((Math.random() + 1) * 723652)}`} description="" path="/cart" btntext="Torna al carrello" btncolor="#FF9F1C" />
                                     <div className={styles.summary}>
                                         <div className={styles.details}>
-                                            <h3>Riepilogo dell'ordine</h3>
+                                            <h3>Riepilogo dell&apos;ordine</h3>
                                             <ul>
                                             {
                                                 cartState.map((item) => 
@@ -67,19 +68,19 @@ const Checkout = () =>
                                             <h3>Dettagli pagamento</h3>
                                             <ul>
                                                 <li>
-                                                    <label for="name">Nome sulla carta</label>
+                                                    <label htmlFor="name">Nome sulla carta</label>
                                                     <input id="name" placeholder="Nome e cognome" autoComplete="off" />
                                                 </li>
                                                 <li>
-                                                    <label for="pan">Numero carta</label>
+                                                    <label htmlFor="pan">Numero carta</label>
                                                     <input id="pan" type="number" placeholder="●●●● ●●●● ●●●● ●●●●" autoComplete="off" />
                                                 </li>
                                                 <li>
-                                                    <label for="expiration">Scadenza</label>
+                                                    <label htmlFor="expiration">Scadenza</label>
                                                     <input id="expiration" type="date" autoComplete="off" />
                                                 </li>
                                                 <li>
-                                                    <label for="cvv">CVV</label>
+                                                    <label htmlFor="cvv">CVV</label>
                                                     <input id="cvv" type="number" placeholder="XXX" autoComplete="off" />
                                                 </li>
                                             </ul>

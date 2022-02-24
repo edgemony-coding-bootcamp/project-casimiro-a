@@ -18,19 +18,19 @@ export default function SignIn({ providers })
                         </div>
                         <ul>
                             <li>
-                                <label for="email">Email</label>
+                                <label htmlFor="email">Email</label>
                                 <input id="email" value={session.user.email} readOnly/>
                             </li>
                             <li>
-                                <label for="password">Password</label>
+                                <label htmlFor="password">Password</label>
                                 <input id="password" value="●●●●●●●●" readOnly/>
                             </li>
                             <li>
-                                <label for="birth">Data di nascita</label>
+                                <label htmlFor="birth">Data di nascita</label>
                                 <input id="birth" value="01/01/1990" readOnly/>
                             </li>
                             <li>
-                                <label for="pan">La tua carta</label>
+                                <label htmlFor="pan">La tua carta</label>
                                 <input id="pan" value="●●●● ●●●● ●●●● ●●●●" readOnly/>
                             </li>
                         </ul>

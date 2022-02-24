@@ -52,12 +52,34 @@ export default function UlNavBar({ mobile = false }) {
       )}
       <li onClick={hide}>
         {session.data != null ? (
-          <a onClick={signOut} style={{ cursor: "pointer" }}>
+          <button 
+            onClick={signOut} 
+            style={{
+              cursor: "pointer", 
+              color:"#fff",
+              background:"transparent",
+              fontWeight:"600",
+              border:"none",
+              fontFamily: 'Raleway',
+              fontSize:'16px'
+               }}
+          >
             Logout
-          </a>
+          </button>
         ) : (
           <Link href={"/auth/signin"}>
-            <a>Login</a>
+            <button 
+              style={{
+              cursor: "pointer", 
+              color:"#fff",
+              background:"transparent",
+              fontWeight:"600",
+              border:"none",
+              fontFamily: 'Raleway',
+              fontSize:'16px'
+            }}>
+                Login
+            </button>
           </Link>
         )}
       </li>

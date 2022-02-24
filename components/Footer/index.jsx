@@ -15,7 +15,7 @@ export default function Footer() {
             <div className={styles.logoWrapper}>
 
             <Link href="/">
-                <Image src="\logov.positiva.png" alt="logo" width="300px" height="74px" /> 
+                <Image src="\logov.positiva.png" alt="logo" width="300" height="74" /> 
             </Link>
                 <p>La web app per pianificare i tuoi viaggi 
                 ed esplorare il mondo</p>
@@ -24,30 +24,39 @@ export default function Footer() {
             <div className={styles.menùWrapper}>
                 <h3>Menù</h3>
                 <ul>
-                <Link href="/citta">   
-                    <a><li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Città</li></a>
-                </Link>
-                <Link href="/esperienze"> 
-                    <a><li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Esperienze</li></a>
-                </Link>
-                <Link href="/about">
-                    <a><li><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> About</li></a>
-                </Link>
+                    <li>
+                        <Link href="/citta">   
+                            <a><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Città</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/esperienze"> 
+                            <a><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Esperienze</a>
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/about">
+                            <a><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> About</a>
+                        </Link>
+                    </li>
                 </ul>
             </div>
             <div className={styles.contattiWrapper}>
                 <h3>Contatti</h3>
                 <ul>
-                    <li><FontAwesomeIcon className={styles.icons} icon={faEnvelope} /> info@travelhub.com</li>
-                    <li><FontAwesomeIcon className={styles.icons} icon={faPhoneAlt} /> +39 123 456 7890</li>
+                    <li>
+                        <FontAwesomeIcon className={styles.icons} icon={faEnvelope} /> info@travelhub.com
+                    </li>
+                    <li>
+                        <FontAwesomeIcon className={styles.icons} icon={faPhoneAlt} /> +39 123 456 7890
+                    </li>
                     <li>
                         <div className={styles.brandsIcons}>
                         <FontAwesomeIcon className={styles.icons} icon={faInstagram}/>
                         <FontAwesomeIcon className={styles.icons} icon={faFacebook}/>
                         <FontAwesomeIcon className={styles.icons} icon={faTwitter}/>
                         </div>   
-                    </li>
-                    
+                    </li>            
                 </ul>
             </div>
         </div>

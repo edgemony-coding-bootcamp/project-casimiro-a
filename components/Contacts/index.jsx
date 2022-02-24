@@ -68,7 +68,7 @@ export default function Contacts({showBtn}) {
                         <label htmlFor="testoForm">Scrivi qui il tuo commento</label>
                         <textarea name="testoForm" id="testoForm" placeholder="Scrivi qui il tuo commento" required></textarea>
                         <div>
-                            <input type='checkbox' name='privacy' required/>
+                            <input type='checkbox' name='privacy' id='privacy' required/>
                             <label htmlFor='privacy'> Autorizzo il trattamento dei miei dati personali in base all’art. 13 del D. Lgs. 196/2003
                             e all’art. 13 GDPR 679/16.*</label>
                         </div>

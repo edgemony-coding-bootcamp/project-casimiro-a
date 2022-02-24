@@ -76,7 +76,7 @@ export default function NavBar()
           session &&
             <Link href={"/cart"}>
               <a>
-                <FontAwesomeIcon className={styles.cart} icon={faCartShopping} />
+                <FontAwesomeIcon className={styles.cart} icon={faCartShopping} title='cart'/>
               </a>
             </Link>
         }

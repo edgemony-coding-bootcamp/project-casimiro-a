@@ -1,9 +1,6 @@
-
-        ul{
-            @include mixins.flexContainer(row, space-between, center);
-            list-style: none;
-            padding: 0 20%;
-            font-weight: 600;
-        
-        }
-
+@use "../../libs/variables.scss";
+                    
+.active{
+        color: variables.$alternative;
+        font-weight: 700;
+}

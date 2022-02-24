@@ -1,10 +1,13 @@
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from 'next/router';
 import { useDispatch } from "react-redux";
 import SearchBar from "../SearchBar";
 import { toggleSideMenu } from "../../store/actions";
+import styles from './UlNavBar.module.scss'
 
 export default function UlNavBar({ mobile = false }) {
+  const router = useRouter();
   const session = useSession();
   const dispatch = useDispatch();
   function hide(){
@@ -22,22 +25,22 @@ export default function UlNavBar({ mobile = false }) {
       )}
       <li onClick={hide}>
         <Link href={"/"}>
-          <a>Home</a>
+          <a className={router.pathname == "/" ? styles.active : ""}>Home</a>
         </Link>
       </li>
       <li onClick={hide}>
         <Link href={"/citta"}>
-          <a>Città</a>
+          <a className={router.pathname.startsWith("/citta") ? styles.active : ""}>Città</a>
         </Link>
       </li>
       <li onClick={hide}>
         <Link href={"/esperienze"}>
-          <a>Esperienze</a>
+          <a className={router.pathname.startsWith("/esperienze") ? styles.active : ""}>Esperienze</a>
         </Link>
       </li>
       <li onClick={hide}>
         <Link href={"/about"}>
-          <a>About</a>
+          <a className={router.pathname == "/about" ? styles.active : ""}>About</a>
         </Link>
       </li>
       {mobile && session.data && (

@@ -2,11 +2,13 @@ import { faPhoneAlt, faAngleRight, faHeart} from '@fortawesome/free-solid-svg-ic
 import {  faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import {  faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useRouter } from "next/router";
 import Link from "next/link"
 import Image from 'next/image';
 import styles from './Footer.module.scss'
 
 export default function Footer() {
+    const router = useRouter();
   return (   
             
     <div className={styles.footerWrapper}>
@@ -14,9 +16,9 @@ export default function Footer() {
         <div className={styles.rowItemsWrapper}>
             <div className={styles.logoWrapper}>
 
-            <Link href="/">
-                <Image src="\logov.positiva.png" alt="logo" width="300" height="74" /> 
-            </Link>
+            <div className={styles.logo} onClick={() => router.push("/")}>
+                <Image src="\logov.positiva.png" alt="logo" layout="fill" /> 
+            </div>
                 <p>La web app per pianificare i tuoi viaggi 
                 ed esplorare il mondo</p>
 

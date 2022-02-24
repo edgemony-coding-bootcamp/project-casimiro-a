@@ -16,7 +16,7 @@ export default function Footer() {
 
             <Link href="/">
                 <a>
-                <Image src="\logov.positiva.png" alt="logo" width={300} height={74} /> 
+                <Image src="\logov.positiva.png" alt="logo" width="300px" height="74px" /> 
                 </a>
             </Link>
                 <p>La web app per pianificare i tuoi viaggi 

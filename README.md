@@ -1,3 +1,4 @@
+QA: https://ancient-sands-73880.herokuapp.com/
 
 <p align="center">
   <img src="./public/logov.positiva.png#gh-light-mode-only" alt="logo-travelhub" width=350/>

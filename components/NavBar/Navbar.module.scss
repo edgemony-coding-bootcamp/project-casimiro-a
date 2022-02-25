@@ -52,7 +52,7 @@
     .searchbar{
         display: flex;
         justify-content: flex-end;
-
+        align-items: center;
         .cart
         {
             color: variables.$white;

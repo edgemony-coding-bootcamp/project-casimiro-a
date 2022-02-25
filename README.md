@@ -37,8 +37,8 @@
  
  Ottimizzazione tramite **Lighthouse**
 
-<p><img src="./readme/Lighthouse_dm.svg#gh-dark-mode-only" alt="lighthouse" width=400 height=auto/></p>
-<p><img src="./readme/Lighthouse_lm.svg#gh-light-mode-only" alt="lighthouse" width=400/></p>
+<p><img src="./readme/LHdark.svg#gh-dark-mode-only" alt="lighthouse" width=400 height=auto/></p>
+<p><img src="./readme/LHlight.svg#gh-light-mode-only" alt="lighthouse" width=400/></p>
 <br>
  
  <h3>Come avviare il progetto</h3>

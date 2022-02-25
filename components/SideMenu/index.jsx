@@ -1,6 +1,7 @@
 
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSideMenu, hideResult } from "../../store/actions";
+import ToggleLang from "../ToggleLang";
 import UlNavBar from "../UlNavBar";
 import style from "./SideMenu.module.scss"
 
@@ -21,6 +22,7 @@ export default function SideMenu(){
     return(
         <div className={`${style.container} ${ openMenu && style.open}`}>
           <UlNavBar mobile />
+          <ToggleLang/>
         </div>
     );
 }

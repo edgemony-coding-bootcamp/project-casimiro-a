@@ -7,14 +7,14 @@ import { useState, useEffect } from "react";
 import { addCartItem, getCartItems } from "../../../store/actions";
 import axios from 'axios';
 import dynamic from "next/dynamic";
+import { useTranslation } from "react-i18next";
+import '../../../translations/i18n';
 import Layout from '../../../components/Layouts';
 import HeroIntern from "../../../components/HeroIntern";
 import Reviews from '../../../components/Reviews';
 import CitiesSkeleton from "../../../components/CitiesSkeleton";
 import DescriptionSkeleton from "../../../components/DescriptionSkeleton";
 import LottieLoader from "../../../components/LottieLoader";
-import {collection, addDoc, onSnapshot, serverTimestamp} from "firebase/firestore";
-import { database as db } from "../../../firebase"
 
 const ActivityDescription = dynamic(
     () => import('../../../components/ActivityDescription'),
@@ -32,8 +32,9 @@ const Cities = dynamic(
 );
 
 
-export default function Activity({ activity, cities }){
-
+export default function Activity({ activity, cities })
+{
+    const { t } = useTranslation();
     const { data: session } = useSession();
     const dispatch = useDispatch();
     const cartState = useSelector(state => state.cart);
@@ -49,7 +50,7 @@ export default function Activity({ activity, cities }){
 
     useEffect(() => 
     {
-        if(session && activity && cartState.length)
+        if(session && activity && cartState)
         {
             if(cartState.filter((item) => item.id == activity.uuid).length)
                 setIsAdded(true);
@@ -72,7 +73,7 @@ export default function Activity({ activity, cities }){
         } 
         else
         {
-            alert('Devi essere loggato per aggiungere qualcosa al carrello.');
+            alert(t('experiences__addCart_noLogin'));
         }
     }
 

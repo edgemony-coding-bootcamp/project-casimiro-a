@@ -1,4 +1,6 @@
 
+import { useTranslation } from 'react-i18next';
+import '../../translations/i18n';
 import Image from 'next/image'
 import InfoIconBox from '../InfoIconBox'
 import styles from './ActivityDescription.module.scss'
@@ -17,6 +19,8 @@ export default function ActivityDescription({
     btnAction = undefined
     }) {
 
+        const { t } = useTranslation();
+
     return (
         <section className={styles.wrapper_activity_description}>
             <div className={styles.wrapper_activity_image}>
@@ -28,7 +32,7 @@ export default function ActivityDescription({
                 />
             </div>
             <div className={styles.wrapper_activity_info}>
-                <h2>Descrizione</h2>
+                <h2>{t('activityDescription_title')}</h2>
                 <p>{description}</p>
                 <div className={styles.wrapper_activity_shop}>
                     <p className={styles.price}>{price}</p>
@@ -41,10 +45,10 @@ export default function ActivityDescription({
                     }
                 </div>
                 <div className={styles.wrapper_activity_services}>
-                    {showService1 && <InfoIconBox icon={1} title='Offerta Regalabile'/>}
-                    {showService2 && <InfoIconBox icon={2} title='Offerta Speciale' />}
-                    {showService3 && <InfoIconBox icon={3} title='Cancellazione Gratuita'/>}
-                    {showService4 && <InfoIconBox icon={4} title='Disponibile Oggi'/>}
+                    {showService1 && <InfoIconBox icon={1} title={t('activityDescription_service1')} />}
+                    {showService2 && <InfoIconBox icon={2} title={t('activityDescription_service2')} />}
+                    {showService3 && <InfoIconBox icon={3} title={t('activityDescription_service3')} />}
+                    {showService4 && <InfoIconBox icon={4} title={t('activityDescription_service4')} />}
                 </div>
             </div>
         </section>

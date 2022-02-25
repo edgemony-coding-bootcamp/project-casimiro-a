@@ -1,7 +1,13 @@
+
+import { useTranslation } from 'react-i18next';
+import '../../translations/i18n';
 import styles from './Reviews.module.scss'
 import Image from "next/image";
 
-export default function Reviews() {
+export default function Reviews() 
+{
+    const { t } = useTranslation();
+
     const score = () => {
         return Math.random() * (5.0 - 4.0) + 4.0
     };
@@ -9,8 +15,8 @@ export default function Reviews() {
     return (
         <section className={styles.wrapper_reviews}>
             <div className={styles.wrapper_reviews_info}>
-                <h3>Recensioni:</h3>
-                <p>{score().toFixed(1)} su 5.0</p>
+                <h3>{t('reviews_title')}:</h3>
+                <p>{score().toFixed(1)} {t('reviews_score')} 5.0</p>
                 <Image 
                     src="../../reviews-score.png" 
                     alt="stars" 

@@ -1,5 +1,7 @@
 
 import dynamic from 'next/dynamic';
+import { useTranslation } from 'react-i18next';
+import '../../translations/i18n';
 import Layout from "../../components/Layouts";
 import HeroIntern from "../../components/HeroIntern";
 import ActivitiesSkeleton from "../../components/ActivitiesSkeleton";
@@ -11,12 +13,15 @@ const AllActivitiesFilter = dynamic(
 );
 
 
-export default function ExperiencesArchive() {
+export default function ExperiencesArchive() 
+{
+  const { t } = useTranslation();
+
   return (
     <Layout>
       <HeroIntern
-        title="Esperienze"
-        description="Hai deciso di girare il mondo in cerca di nuove emozionanti avventure? Sfoglia il catalogo completo delle esperienze offerte da TravelHub!"
+        title={t('experience_title')}
+        description={t('experience_description')}
         bgImage="https://images.unsplash.com/photo-1510253687831-0f982d7862fc"
       />
       <AllActivitiesFilter/>

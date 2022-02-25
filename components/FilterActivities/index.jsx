@@ -1,9 +1,12 @@
 
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import '../../translations/i18n';
 import styles from './FilterActivities.module.scss';
 
 const FilterActivities = ({ callback }) =>
 {
+    const { t } = useTranslation();
     const [price, setPrice] = useState(200);
     const [maxPrice, setMaxPrice] = useState(200);
     const [category, setCategory] = useState('');
@@ -16,7 +19,7 @@ const FilterActivities = ({ callback }) =>
     return (
         <div className={styles.wrapper}>
             <div className={styles.wrapper_price}>
-                € 0
+                {t('currency')} 0
                 <input 
                     type="range" 
                     min="1" 
@@ -26,15 +29,15 @@ const FilterActivities = ({ callback }) =>
                     onChange={(e) => setPrice(parseInt(e.target.value))} 
                     onMouseUp={() => setMaxPrice(price)}
                 />
-                € {price}
+                {t('currency')} {price}
             </div>
             <div className={styles.wrapper_category}>
-                <button value="arts-culture" onClick={(e) => setCategory(e.target.value)} >Arte e Musei</button>
+                <button value="arts-culture" onClick={(e) => setCategory(e.target.value)} >{t('filterActivities_arts')}</button>
                 <button 
                     value="sightseeing" 
                     onClick={(e) => setCategory(e.target.value)} 
                     style={{ backgroundColor: '#E71D36'}}
-                >Tour e Attrazioni</button>
+                >{t('filterActivities_sightseeing')}</button>
                 <button 
                     value="food-wine" 
                     onClick={(e) => setCategory(e.target.value)} 
@@ -44,7 +47,7 @@ const FilterActivities = ({ callback }) =>
                     value="entertainment"  
                     onClick={(e) => setCategory(e.target.value)}
                     style={{ backgroundColor: '#FF0000'}}
-                >Spettacoli e Concerti</button>
+                >{t('filterActivities_entertainment')}</button>
             </div>
         </div>
     );

@@ -1,3 +1,6 @@
+
+import { useTranslation } from 'react-i18next';
+import '../../translations/i18n';
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './CityDescription.module.scss'
@@ -9,14 +12,17 @@ export default function CityDescription({
     more = '',
     id = ''
     }) {
+
+        const { t } = useTranslation();
+
     return(
         <section className={styles.wrapper_city_description}>
             <div className={styles.wrapper_city_info}>
-                <h2>Scopri di più su {title}</h2>
+                <h2>{t('cityDescription_title')} {title}</h2>
                 <p>{description}</p>
                 <p>{more}</p>
                 <Link href={`/citta/${id}`}>
-                    <a>Visita la città</a>
+                    <a>{t('cityDescription_title')}</a>
                 </Link>
             </div>
             <div className={styles.wrapper_city_image}>

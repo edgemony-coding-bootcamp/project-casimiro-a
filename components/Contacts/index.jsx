@@ -28,7 +28,7 @@ export default function Contacts({showBtn})
             />
             <div className={styles.wrapper_container_contacts}>
                 <div className={styles.contacts_info}>
-                    <h3>Contatti</h3>
+                    <h3>{t('contacts_newsletter_title')}</h3>
                     <ul>
                         <li><FontAwesomeIcon className={styles.icons} icon={faEnvelope} /> info@travelhub.com</li>
                         <li><FontAwesomeIcon className={styles.icons} icon={faPhoneAlt} /> +39 123 456 7890</li>
@@ -44,9 +44,9 @@ export default function Contacts({showBtn})
                     <p>{t('contacts_newsletter_text')}</p>   
                     <div className={styles.newsletter}>
                         <input type="radio" name="newsletter" id="newsletter-si" value="si" />
-                        <label htmlFor="newsletter-si">Voglio iscrivermi!</label>
+                        <label htmlFor="newsletter-si">{t('contacts_newsletter_yesText')}</label>
                         <input type="radio" name="newsletter" id="newsletter-no" value="no" /> 
-                        <label htmlFor="newsletter-no">No, grazie.</label>
+                        <label htmlFor="newsletter-no">{t('contacts_newsletter_noText')}</label>
                     </div>
                 </div>
                 <div className={styles.contacts_form}>

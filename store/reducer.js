@@ -12,6 +12,7 @@ const initState =
     allActivities: [],
     searchCity: "",
     mapData:"",
+    lang:"it",
 }
 
 const reducer = (state = initState, action) => 
@@ -81,6 +82,11 @@ const reducer = (state = initState, action) =>
             return{
                 ...state,
                 mapData: action.payload,
+            }
+        case "setLang":
+            return {
+                ...state,
+                lang: action.payload,
             }
         default :
             return state;   

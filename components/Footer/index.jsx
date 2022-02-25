@@ -5,26 +5,28 @@ import { faPhoneAlt, faAngleRight, faHeart} from '@fortawesome/free-solid-svg-ic
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useRouter } from "next/router";
 import Link from "next/link"
 import Image from 'next/image';
 import styles from './Footer.module.scss'
 
-export default function Footer() 
-{
+
+export default function Footer() {
+    const router = useRouter();
     const { t } = useTranslation();
+
 
     return (    
         <div className={styles.footerWrapper}>
-
             <div className={styles.rowItemsWrapper}>
                 <div className={styles.logoWrapper}>
 
-                <Link href="/">
-                    <Image src="\logov.positiva.png" alt="logo" width="300" height="74" /> 
-                </Link>
-                    <p>{t('meta_description')}</p>
+            <div className={styles.logo} onClick={() => router.push("/")}>
+                <Image src="\logov.positiva.png" alt="logo" layout="fill" /> 
+            </div>
+                <p>{t('meta_description')}</p>
 
-                </div>
+          
                 <div className={styles.menùWrapper}>
                     <h3>{t('footer_menu')}</h3>
                     <ul>

@@ -13,8 +13,19 @@
             @include mixins.flexContainer(row, space-between, flex-start);
             flex-wrap: wrap;
             .logoWrapper{
+                @include mixins.flexContainer(column,flex-start,flex-start,0px);
                 flex-grow:2;
-
+                .logo{
+                    position: relative;
+                    cursor: pointer;                    
+                    height: 75px;
+                    width: 300px;           
+                    img{    
+                        object-fit: contain;
+                        display: block;
+                        align-self: flex-start;               
+                    }
+                }
                 p { 
                     margin-left: 85px;
                     max-width: 300px;

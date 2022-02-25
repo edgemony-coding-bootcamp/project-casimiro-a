@@ -1,88 +1,91 @@
+
+import { useTranslation } from 'react-i18next'
+import '../../translations/i18n';
 import { faPhoneAlt, faAngleRight, faHeart} from '@fortawesome/free-solid-svg-icons'
-import {  faEnvelope } from '@fortawesome/free-regular-svg-icons'
-import {  faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import { faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from "next/link"
 import Image from 'next/image';
 import styles from './Footer.module.scss'
 
-export default function Footer() {
-  return (   
+export default function Footer() 
+{
+    const { t } = useTranslation();
+
+    return (    
+        <div className={styles.footerWrapper}>
+
+            <div className={styles.rowItemsWrapper}>
+                <div className={styles.logoWrapper}>
+
+                <Link href="/">
+                    <Image src="\logov.positiva.png" alt="logo" width="300" height="74" /> 
+                </Link>
+                    <p>{t('meta_description')}</p>
+
+                </div>
+                <div className={styles.menùWrapper}>
+                    <h3>{t('footer_menu')}</h3>
+                    <ul>
+                        <li>
+                            <Link href="/citta">   
+                                <a><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> {t('ulNavBar_city')}</a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/esperienze"> 
+                                <a><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> {t('ulNavBar_experience')}</a>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/about">
+                                <a><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> About</a>
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+                <div className={styles.contattiWrapper}>
+                    <h3>{t('footer_contacts')}</h3>
+                    <ul>
+                        <li>
+                            <FontAwesomeIcon className={styles.icons} icon={faEnvelope} /> info@travelhub.com
+                        </li>
+                        <li>
+                            <FontAwesomeIcon className={styles.icons} icon={faPhoneAlt} /> +39 123 456 7890
+                        </li>
+                        <li>
+                            <div className={styles.brandsIcons}>
+                            <FontAwesomeIcon className={styles.icons} icon={faInstagram}/>
+                            <FontAwesomeIcon className={styles.icons} icon={faFacebook}/>
+                            <FontAwesomeIcon className={styles.icons} icon={faTwitter}/>
+                            </div>   
+                        </li>            
+                    </ul>
+                </div>
+            </div>
             
-    <div className={styles.footerWrapper}>
-
-        <div className={styles.rowItemsWrapper}>
-            <div className={styles.logoWrapper}>
-
-            <Link href="/">
-                <Image src="\logov.positiva.png" alt="logo" width="300" height="74" /> 
-            </Link>
-                <p>La web app per pianificare i tuoi viaggi 
-                ed esplorare il mondo</p>
-
+            <div className={styles.AuthorsWrapper}>
+                <h3>Made with <FontAwesomeIcon className={styles.heart} icon={faHeart} /> & Next.JS by</h3>
+                <div>
+                <Link href="https://www.linkedin.com/in/agnese-spinella/">
+                    <a target="_blank">Agnese</a>
+                </Link>
+                <Link href="https://www.linkedin.com/in/dario-castiglione/">
+                    <a target="_blank">Dario</a>
+                </Link>
+                <Link href="https://www.linkedin.com/in/davide-missiato/">
+                    <a target="_blank">Davide</a>
+                </Link>
+                <Link href="https://www.linkedin.com/in/federica-santoro-/">
+                    <a target="_blank">Federica</a>
+                </Link>
+                <Link href="https://www.linkedin.com/in/roberta-pennisi/">
+                    <a target="_blank">Roberta</a>
+                </Link>
+                </div>
             </div>
-            <div className={styles.menùWrapper}>
-                <h3>Menù</h3>
-                <ul>
-                    <li>
-                        <Link href="/citta">   
-                            <a><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Città</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/esperienze"> 
-                            <a><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> Esperienze</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/about">
-                            <a><FontAwesomeIcon className={styles.angleIcons} icon={faAngleRight} /> About</a>
-                        </Link>
-                    </li>
-                </ul>
-            </div>
-            <div className={styles.contattiWrapper}>
-                <h3>Contatti</h3>
-                <ul>
-                    <li>
-                        <FontAwesomeIcon className={styles.icons} icon={faEnvelope} /> info@travelhub.com
-                    </li>
-                    <li>
-                        <FontAwesomeIcon className={styles.icons} icon={faPhoneAlt} /> +39 123 456 7890
-                    </li>
-                    <li>
-                        <div className={styles.brandsIcons}>
-                        <FontAwesomeIcon className={styles.icons} icon={faInstagram}/>
-                        <FontAwesomeIcon className={styles.icons} icon={faFacebook}/>
-                        <FontAwesomeIcon className={styles.icons} icon={faTwitter}/>
-                        </div>   
-                    </li>            
-                </ul>
-            </div>
-        </div>
-       
-        <div className={styles.AuthorsWrapper}>
-            <h3>Made with <FontAwesomeIcon className={styles.heart} icon={faHeart} /> & Next.JS by</h3>
-            <div>
-            <Link href="https://www.linkedin.com/in/agnese-spinella/">
-                <a target="_blank">Agnese</a>
-            </Link>
-            <Link href="https://www.linkedin.com/in/dario-castiglione/">
-                <a target="_blank">Dario</a>
-            </Link>
-            <Link href="https://www.linkedin.com/in/davide-missiato/">
-                <a target="_blank">Davide</a>
-            </Link>
-            <Link href="https://www.linkedin.com/in/federica-santoro-/">
-                <a target="_blank">Federica</a>
-            </Link>
-            <Link href="https://www.linkedin.com/in/roberta-pennisi/">
-                <a target="_blank">Roberta</a>
-            </Link>
-            </div>
-        </div>
-     
-    </div>    
 
-  );
+        </div>    
+    );
 }

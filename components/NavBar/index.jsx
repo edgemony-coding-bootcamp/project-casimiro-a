@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { useSession } from 'next-auth/react';
+import { useTranslation } from "react-i18next";
+import '../../translations/i18n';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { toggleSideMenu } from "../../store/actions";
@@ -24,6 +26,7 @@ export default function NavBar()
   const router = useRouter();
   const dispatch = useDispatch();
   const { data: session } = useSession();
+  const { t } = useTranslation();
 
   const isShow = useSelector((state) => state.showResult);
 
@@ -51,8 +54,8 @@ export default function NavBar()
         <title>TravelHub</title>
         <link rel="icon" type="image/png" href="/favicon.png/"/>
         <meta charSet="utf-8" />
-        <meta name="description" content="La web app per pianificare i tuoi viaggi ed esplorare il mondo" />
-        <meta name="keywords" content="viaggi, attività, esperienze, città, turismo, travelhub, viaggiare, esplorare" />
+        <meta name="description" content={t('meta_description')} />
+        <meta name="keywords" content={t('meta_keywords')} />
         <meta name="author" content="TravelHub" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>

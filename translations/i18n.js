@@ -8,7 +8,6 @@ import EN_TRANSLATION from './en/translation';
 
 
 i18n
-    .use(LanguageDetector)
     .use(initReactI18next)
     .init(
     {

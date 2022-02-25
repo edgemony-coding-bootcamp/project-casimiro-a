@@ -15,8 +15,10 @@ const bg = [
 ];
 
 
-export default function Hero({ data }) {
+export default function Hero({ data }) 
+{
   const state = useSelector(state => state.carouselIndex);
+  
   return (
     <>
       <div 

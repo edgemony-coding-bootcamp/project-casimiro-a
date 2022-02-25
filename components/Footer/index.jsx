@@ -19,13 +19,13 @@ export default function Footer() {
     return (    
         <div className={styles.footerWrapper}>
             <div className={styles.rowItemsWrapper}>
+
                 <div className={styles.logoWrapper}>
-
-            <div className={styles.logo} onClick={() => router.push("/")}>
-                <Image src="\logov.positiva.png" alt="logo" layout="fill" /> 
-            </div>
-                <p>{t('meta_description')}</p>
-
+                    <div className={styles.logo} onClick={() => router.push("/")}>
+                        <Image src="\logov.positiva.png" alt="logo" layout="fill" /> 
+                    </div>
+                    <p>{t('meta_description')}</p>
+                </div>
           
                 <div className={styles.menùWrapper}>
                     <h3>{t('footer_menu')}</h3>
@@ -58,9 +58,9 @@ export default function Footer() {
                         </li>
                         <li>
                             <div className={styles.brandsIcons}>
-                            <FontAwesomeIcon className={styles.icons} icon={faInstagram}/>
-                            <FontAwesomeIcon className={styles.icons} icon={faFacebook}/>
-                            <FontAwesomeIcon className={styles.icons} icon={faTwitter}/>
+                                <FontAwesomeIcon className={styles.icons} icon={faInstagram}/>
+                                <FontAwesomeIcon className={styles.icons} icon={faFacebook}/>
+                                <FontAwesomeIcon className={styles.icons} icon={faTwitter}/>
                             </div>   
                         </li>            
                     </ul>
@@ -70,25 +70,24 @@ export default function Footer() {
             <div className={styles.AuthorsWrapper}>
                 <h3>Made with <FontAwesomeIcon className={styles.heart} icon={faHeart} /> & Next.JS by</h3>
                 <div>
-                <Link href="https://www.linkedin.com/in/agnese-spinella/">
-                    <a target="_blank">Agnese</a>
-                </Link>
-                <Link href="https://www.linkedin.com/in/dario-castiglione/">
-                    <a target="_blank">Dario</a>
-                </Link>
-                <Link href="https://www.linkedin.com/in/davide-missiato/">
-                    <a target="_blank">Davide</a>
-                </Link>
-                <Link href="https://www.linkedin.com/in/federica-santoro-/">
-                    <a target="_blank">Federica</a>
-                </Link>
-                <Link href="https://www.linkedin.com/in/roberta-pennisi/">
-                    <a target="_blank">Roberta</a>
-                </Link>
+                    <Link href="https://www.linkedin.com/in/agnese-spinella/">
+                        <a target="_blank">Agnese</a>
+                    </Link>
+                    <Link href="https://www.linkedin.com/in/dario-castiglione/">
+                        <a target="_blank">Dario</a>
+                    </Link>
+                    <Link href="https://www.linkedin.com/in/davide-missiato/">
+                        <a target="_blank">Davide</a>
+                    </Link>
+                    <Link href="https://www.linkedin.com/in/federica-santoro-/">
+                        <a target="_blank">Federica</a>
+                    </Link>
+                    <Link href="https://www.linkedin.com/in/roberta-pennisi/">
+                        <a target="_blank">Roberta</a>
+                    </Link>
                 </div>
             </div>
 
-        </div>    
         </div>
     );
 }

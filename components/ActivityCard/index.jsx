@@ -9,10 +9,10 @@ const colorByCategoryId = {
     1: '#011627',
     2: '#E71D36',
     3: '#FF9F1C',
-    4: "#FF0000",
-    5: '#21005D',
+    4: "#EF482D",
+    5: '#186D6F',
     6: '#2EC4B6',
-    7: '#410E0B'
+    7: '#08333F'
 }
 
 const ActivityCard = (props) =>

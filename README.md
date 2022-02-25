@@ -29,6 +29,8 @@
         <li>Redux per lo state management</li>
         <li>Middleware thunk</li>
         <li>Lazy loading</li>
+        <li>Auth con Firebase</li>
+        <li>Carrello con Firestore</li>
         <li>Implementazione multilingua (i18n)</li>
     </ul>
  <br>

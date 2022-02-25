@@ -1,31 +1,37 @@
+
+import { useTranslation } from "react-i18next";
+import '../../translations/i18n';
 import InfoIconBox from "../InfoIconBox";
 import SectionTitle from "../SectionTitle";
 import styles from './Advantages.module.scss'
 
-export default function Advantages(){
+export default function Advantages()
+{
+    const { t } = useTranslation();
+
     return(
         <section className={styles.wrapper_advantages}>
             <SectionTitle 
                 showBtn={false} 
-                title='Vantaggi offerti da TravelHub' 
-                description='Scopri perchè ti conviene scegliere TravelHub per programmare il tuo prossimo viaggio'
+                title={t('advantages_section_title')}
+                description={t('advantages_section_description')}
             />
             <div className={styles.wrapper_advantages_iconbox}>
                 <InfoIconBox 
                     icon={1} 
-                    title='Puoi scegliere se prenotare solo per te o se regalare una favolosa esperienza a chi vuoi tu'                        
+                    title={t('advantages_title1')}
                 />
                 <InfoIconBox 
                     icon={2} 
-                    title='Resta sempre aggiornato con noi: aggiungiamo migliaia di nuove offerte imperdibili ogni giorno.'                        
+                    title={t('advantages_title2')}
                 />
                 <InfoIconBox 
                     icon={3} 
-                    title='Sappiamo quanto gli imprevisti siano fastidiosi, per questo ti offriamo la cancellazione gratuita'                        
+                    title={t('advantages_title3')}
                 />
                 <InfoIconBox 
                     icon={4} 
-                    title='Tra le nostre esperienze troverai anche attività giornaliere da vivere con chi vuoi, prenota subito!'                        
+                    title={t('advantages_title4')}
                 />
             </div>
         </section>

@@ -1,10 +1,13 @@
-import style from "./SearchBar.module.scss";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
+import '../../translations/i18n';
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import style from "./SearchBar.module.scss";
+
 import {
   SearchBarAppear,
   SearchBarDisappear,
@@ -20,6 +23,7 @@ export default function SearchBar() {
   const data = useSelector((state) => state.searchData);
   const isShow = useSelector((state) => state.showResult);
   const sideMenu = useSelector((state) => state.showSideMenu);
+  const { t } = useTranslation();
 
   function hide() {
     dispatch(hideResult);
@@ -72,7 +76,7 @@ export default function SearchBar() {
             type="text"
             onChange={handleInput}
             className={`${style.inputText} ${isActive && style.open}`}
-            placeholder="Cerca..."
+            placeholder={t('searchBar_placeholder')}
             onMouseLeave={handleLeave}
           />
         </button>

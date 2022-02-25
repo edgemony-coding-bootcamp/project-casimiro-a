@@ -14,9 +14,12 @@ function MyApp({ Component, pageProps: {session, ...pageProps} })
 {
   const { t } = useTranslation();
 
-  axios.defaults.headers.common = {...axios.defaults.headers.common, ...FETCH_HEADERS, 'Accept-Language': t('Accept-Language')};
-
-  console.log(axios.defaults.headers.common);
+  axios.defaults.headers.common = 
+  {
+    ...axios.defaults.headers.common, 
+    ...FETCH_HEADERS, 
+    'Accept-Language': t('Accept-Language')
+  };
 
   return (
     <SessionProvider session={session}>

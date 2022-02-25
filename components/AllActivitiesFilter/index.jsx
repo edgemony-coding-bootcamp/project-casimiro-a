@@ -1,59 +1,66 @@
-import style from "./AllActivitiesFilter.module.scss";
 
 import { useState } from "react";
-import ButtonHero from "../ButtonHero";
 import { filterActivities } from "../../store/actions";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import ActivityCard from "../ActivityCard";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
+import '../../translations/i18n';
 import { FilterCity } from "./FilterCity";
+import ButtonHero from "../ButtonHero";
+import ActivityCard from "../ActivityCard";
+import style from "./AllActivitiesFilter.module.scss";
 
-const category = [
-  {
-    name: "Tutto",
-    color: "#27172A",
-    category: "",
-  },
-  {
-    name: "Arte e musei",
-    color: "#011627",
-    category: "arts-culture",
-  },
-  {
-    name: "Tour e attrazioni",
-    color: "#E71D36",
-    category: "sightseeing",
-  },
-  {
-    name: "Spettacoli e concerti",
-    color: "#EF482D",
-    category: "entertainment",
-  },
-  {
-    name: "Food & wine",
-    color: "#FF9F1C",
-    category: "food-wine",
-  },
-  {
-    name: "Sport e avventura",
-    color: "#2EC4B6",
-    category: "adventure",
-  },
-  {
-    name: "Eventi sportivi",
-    color: "#186D6F",
-    category: "sports",
-  },
-  {
-    name: "Nightlife",
-    color: "#08333F",
-    category: "nightlife",
-  },
-];
 
-export default function ActivitiesFilter() {
+
+export default function ActivitiesFilter() 
+{
+  const { t } = useTranslation();
+
+  const category = [
+    {
+      name: t('category_all'),
+      color: "#27172A",
+      category: "",
+    },
+    {
+      name: t('category_arts'),
+      color: "#011627",
+      category: "arts-culture",
+    },
+    {
+      name: t('category_sightseeing'),
+      color: "#E71D36",
+      category: "sightseeing",
+    },
+    {
+      name: t('category_entertainment'),
+      color: "#EF482D",
+      category: "entertainment",
+    },
+    {
+      name: "Food & wine",
+      color: "#FF9F1C",
+      category: "food-wine",
+    },
+    {
+      name: t('category_adventure'),
+      color: "#2EC4B6",
+      category: "adventure",
+    },
+    {
+      name: t('category_sports'),
+      color: "#186D6F",
+      category: "sports",
+    },
+    {
+      name: "Nightlife",
+      color: "#08333F",
+      category: "nightlife",
+    },
+  ];
+
   const dispatch = useDispatch();
   const router = useRouter();
   const data = useSelector((state) => state.allActivities);
@@ -142,9 +149,9 @@ export default function ActivitiesFilter() {
     <>
       <div id="up" className={style.container}>
         <div className={style.inputDiv}>
-          <p>€ 0</p>
+          <p>{t('currency')} 0</p>
           <p className={style.price}>
-            € <span>{input}</span>
+            {t('currency')} <span>{input}</span>
           </p>
           <input
             type="range"

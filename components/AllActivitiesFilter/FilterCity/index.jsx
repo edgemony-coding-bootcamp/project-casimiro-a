@@ -3,9 +3,12 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { searchCity } from "../../../store/actions";
 import { useSelector } from "react-redux";
+import { useTranslation } from 'react-i18next';
+import '../../../translations/i18n';
 
 let counter = 0;
-export function FilterCity({ setter }) {
+export function FilterCity({ setter }) 
+{
   useEffect(() => {
     setCloseSearch(true)
   }, []);
@@ -16,6 +19,8 @@ export function FilterCity({ setter }) {
   const data = useSelector((state) => state.searchCity);
 
   const [state, setState] = useState("");
+
+  const { t } = useTranslation();
 
 
   function handleChange(e) {
@@ -41,7 +46,7 @@ export function FilterCity({ setter }) {
 
   return (
     <div className={style.searchCity}>
-      <p>Città:</p>
+      <p>{t('ulNavBar_city')}:</p>
       <div className={style.searchbarCity}>
         <input
           type="text"

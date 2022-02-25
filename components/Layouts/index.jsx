@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import i18n from 'i18next';
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import SideMenu from "../SideMenu";
@@ -8,6 +10,7 @@ import BackToTop from "../BackToTop";
 export default function Layout({ children }) {
   
   const [consent, setConsent] = useState(true);
+  const lng = useSelector((state) => state.lang);
 
 
   useEffect(()=>{
@@ -19,8 +22,9 @@ export default function Layout({ children }) {
    setConsent(true)
    localStorage.setItem("consent", true)
   }
-  
-  //console.log(isOpen)
+
+  i18n.changeLanguage(lng);
+
     return (
       <>
         {!consent && <CookiesModal changeShowModal={handleConsent} />} 

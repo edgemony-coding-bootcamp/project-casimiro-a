@@ -122,3 +122,5 @@ export const SearchMapData = (coor) => {
         
     }
 }
+
+export const setLang = (value) => ({ type: "setLang", payload: value })

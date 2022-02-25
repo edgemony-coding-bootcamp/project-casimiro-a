@@ -14,7 +14,6 @@ import '../../translations/i18n';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { toggleSideMenu } from "../../store/actions";
-import ToggleLang from "../ToggleLang";
 
 export default function NavBar() 
 {
@@ -74,7 +73,6 @@ export default function NavBar()
         <UlNavBar />
       </nav>
       <div className={`${styles.searchbar} ${styles.flexed}`}>
-        <ToggleLang/>
         <SearchBar />
         {
           session &&

@@ -43,7 +43,7 @@ const FilterActivities = ({ callback }) =>
                 <button 
                     value="entertainment"  
                     onClick={(e) => setCategory(e.target.value)}
-                    style={{ backgroundColor: '#FF0000'}}
+                    style={{ backgroundColor: '#EF482D'}}
                 >Spettacoli e Concerti</button>
             </div>
         </div>

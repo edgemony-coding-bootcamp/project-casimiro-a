@@ -1,30 +1,26 @@
-@import "../../libs/variables.scss";
+@use "../../libs/variables.scss";
 $paddingSide : 70px;
 .container{
     
-    margin: 50px 0px;
-    //padding: 30px 0 30px $paddingSide;
-    display: flex;;
-    background-color: #eee;
+    margin-bottom: 100px;
+    padding: 30px 0 40px;
+    display: flex;
+    background-color: variables.$quaternary;
     flex-wrap: wrap;
     justify-content: center;
-    
-    div{
         
-       // border: 1px solid red;
-    }
+    
     .citySearch{
         display: flex;
-        padding: 20px;
-
+        margin-left: 50px;
     }
 
     .inputDiv{
         display: flex;
         align-items: center;
-        padding: 20px;
+        
         flex-wrap: wrap;
-        width: 250px;
+        width: 300px;
 
             input[type=range]
             {
@@ -44,12 +40,12 @@ $paddingSide : 70px;
                 {
                     -webkit-appearance: none;
                     appearance: none;
-                    width: 25px;
-                    height: 25px;
+                    width: 20px;
+                    height: 20px;
                     border-radius: 50%;
-                    background-color: $alternative;
+                    background-color: variables.$primary;
                     cursor: pointer;
-                    box-shadow: $shadow;
+                    box-shadow: variables.$shadow;
                 }
             }
             p{
@@ -70,22 +66,22 @@ $paddingSide : 70px;
         align-items: center;
         transition: all 5s;
         width: 100%;
-        padding: 40px;
+        padding-top: 30px;
         flex-wrap: wrap;
         
         .buttonDiv{
             position: relative;
             button{
-                width: 120px;
-                height: 55px;
+                width: 180px;
+                height: 33px;
                 margin: 5px 10px;
                 border: none;
                 cursor: pointer;
-                color: $white;
-                border-radius: 15px;
-                padding: 5px 5px;
-                font-weight: normal;
-                font-size: 18px;
+                color: variables.$white;
+                border-radius: 5px;
+                padding: 5px 15px;
+                font-weight: 400;
+                font-size: 15px;
                 transition: all 0.5s ;
             }
             &.buttonDivOpen::after{
@@ -94,10 +90,10 @@ $paddingSide : 70px;
             }
             &::after{
                 content: "";
-                height: 5px;
-                width: 15px;
-                border-radius: 174px;
-                background: #000;
+                height: 3px;
+                width: 50px;
+                border-radius: 50px;
+                background: variables.$black;
                 position: absolute;
                 left: 50%;
                 bottom: 0;
@@ -126,6 +122,7 @@ $paddingSide : 70px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    row-gap: 30px;
     .noResult{
         display: flex;
         flex-direction: column;
@@ -138,7 +135,7 @@ $paddingSide : 70px;
 
     }
     .singleActivity{
-        margin: 10px 15px;
+        margin: 0 15px;
         cursor: pointer;
     }
 }

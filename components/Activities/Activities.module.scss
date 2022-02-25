@@ -10,7 +10,7 @@
     {
         width: 100%;
         padding: 50px 0;
-        @include mixins.flexContainer(row, space-between, flex-start,);
+        @include mixins.flexContainer(row, space-between, flex-start);
         flex-wrap: wrap;
     }
 }

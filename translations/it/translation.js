@@ -94,6 +94,12 @@ const IT_TRANSLATION =
     cityDescription_button: 'Visita la città',
     experience_title: 'Esperienze',
     experience_description: 'Hai deciso di girare il mondo in cerca di nuove emozionanti avventure? Sfoglia il catalogo completo delle esperienze offerte da TravelHub!',
+    category_all: 'Tutto',
+    category_arts: 'Arte e musei',
+    category_sightseeing: 'Tour e attrazioni',
+    category_entertainment: 'Spettacoli e concerti',
+    category_adventure: 'Sport e avventura',
+    category_sports: 'Eventi sportivi',
 };
 
 export default IT_TRANSLATION;

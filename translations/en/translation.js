@@ -94,6 +94,12 @@ const EN_TRANSLATION =
     cityDescription_button: 'Visit the city',
     experience_title: 'Experiences',
     experience_description: 'Have you decided to travel the world in search of new exciting adventures? Browse the complete catalog of experiences offered by TravelHub!',
+    category_all: 'All',
+    category_arts: 'Museums & art',
+    category_sightseeing: 'Tours & attractions',
+    category_entertainment: 'Performances',
+    category_adventure: 'Active & adventure',
+    category_sports: 'Sports',
 };
 
 export default EN_TRANSLATION;

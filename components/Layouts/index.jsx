@@ -10,7 +10,7 @@ import BackToTop from "../BackToTop";
 export default function Layout({ children }) {
   
   const [consent, setConsent] = useState(true);
-  const lng = useSelector((state) => state.lang);
+  //const lng = useSelector((state) => state.lang);
 
 
   useEffect(()=>{
@@ -23,7 +23,7 @@ export default function Layout({ children }) {
    localStorage.setItem("consent", true)
   }
 
-  i18n.changeLanguage(lng);
+  //i18n.changeLanguage(lng);
 
     return (
       <>

@@ -1,13 +1,16 @@
 
+import { useTranslation } from 'react-i18next';
+import '../../translations/i18n';
 import SectionTitle from '../SectionTitle';
 import SimpleCard from '../SimpleCard';
-import styles from './Cities.module.scss';
 import Link from 'next/link';
+import styles from './Cities.module.scss';
 
 
 const Cities = ({ data, showTitle = false, newTitle = false, showBtn = true, exceptId = 0, maxCities = 10 }) =>
 {
     let cities = data || [];
+    const { t } = useTranslation();
 
     if(exceptId)
     {
@@ -25,10 +28,10 @@ const Cities = ({ data, showTitle = false, newTitle = false, showBtn = true, exc
             {
                 showTitle &&
                     <SectionTitle
-                        title = {newTitle ? newTitle : "Città più visitate"}
-                        description = "Scopri le mete più ambite su TravelHub"
+                        title = {newTitle ? newTitle : t('cities_section_title')}
+                        description = {t('cities_section_description')}
                         path = '/citta'
-                        btntext = 'Visualizza tutte le città →'
+                        btntext = {t('cities_section_button')}
                         btncolor = '#FF9F1C'
                         showBtn = {showBtn}
                     />            

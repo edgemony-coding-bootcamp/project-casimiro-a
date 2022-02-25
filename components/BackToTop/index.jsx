@@ -1,9 +1,11 @@
-import styles from './BackToTop.module.scss';
+
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleDoubleUp} from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import styles from './BackToTop.module.scss';
 
-export default function BackToTop() {
+export default function BackToTop() 
+{
     const [showBtn, setShowBtn] = useState(false);
 
     const handleShowBtn = () => {

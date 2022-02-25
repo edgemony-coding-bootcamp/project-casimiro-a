@@ -1,7 +1,7 @@
 
 import { getProviders, signIn, useSession } from "next-auth/react"
 import Layout from "../../components/Layouts";
-import styles from "./SignIn.module.scss"
+import styles from "./signin.module.scss"
 import Image from 'next/image';
 
 export default function SignIn({ providers }) 

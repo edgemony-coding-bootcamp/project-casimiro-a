@@ -1,15 +1,21 @@
+
 import { useSession, signOut } from "next-auth/react";
-import Link from "next/link";
 import { useRouter } from 'next/router';
 import { useDispatch } from "react-redux";
-import SearchBar from "../SearchBar";
+import { useTranslation } from "react-i18next";
+import '../../translations/i18n';
 import { toggleSideMenu } from "../../store/actions";
+import SearchBar from "../SearchBar";
+import Link from "next/link";
 import styles from './UlNavBar.module.scss'
 
-export default function UlNavBar({ mobile = false }) {
+export default function UlNavBar({ mobile = false }) 
+{
   const router = useRouter();
   const session = useSession();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
+
   function hide(){
     mobile && 
     setTimeout(() => {
@@ -30,12 +36,12 @@ export default function UlNavBar({ mobile = false }) {
       </li>
       <li onClick={hide}>
         <Link href={"/citta"}>
-          <a className={router.pathname.startsWith("/citta") ? styles.active : ""}>Città</a>
+          <a className={router.pathname.startsWith("/citta") ? styles.active : ""}>{t('ulNavBar_city')}</a>
         </Link>
       </li>
       <li onClick={hide}>
         <Link href={"/esperienze"}>
-          <a className={router.pathname.startsWith("/esperienze") ? styles.active : ""}>Esperienze</a>
+          <a className={router.pathname.startsWith("/esperienze") ? styles.active : ""}>{t('ulNavBar_experience')}</a>
         </Link>
       </li>
       <li onClick={hide}>
@@ -46,7 +52,7 @@ export default function UlNavBar({ mobile = false }) {
       {mobile && session.data && (
         <li onClick={hide}>
           <Link href={"/cart"}>
-            <a>Carrello</a>
+            <a>{t('ulNavBar_cart')}</a>
           </Link>
         </li>
       )}

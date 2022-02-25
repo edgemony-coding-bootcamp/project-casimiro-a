@@ -1,12 +1,15 @@
 
-import styles from './Activities.module.scss'
+import { useTranslation } from 'react-i18next';
+import '../../translations/i18n';
 import ActivityCard from '../ActivityCard'
 import Link from 'next/link'
 import SectionTitle from '../SectionTitle';
+import styles from './Activities.module.scss'
 
 const Activities = ({ data, showTitle = true }) => 
 {
     let activities = [];
+    const { t } = useTranslation();
     
     if(data)
     {
@@ -17,10 +20,10 @@ const Activities = ({ data, showTitle = true }) =>
         <section className={styles.wrapper_activities}>
             {showTitle &&
                 <SectionTitle 
-                    title = "Scopri le esperienze popolari su TravelHub" 
-                    description = "Hai deciso di girare il mondo in cerca di nuove emozionanti avventure? Sfoglia il catalogo completo delle esperienze offerte da TravelHub!"
+                    title = {t('activities_section_title')} 
+                    description = {t('activities_section_description')}
                     path = '/esperienze'
-                    btntext = 'Visualizza tutte le esperienze →'
+                    btntext = {t('activities_section_button')}
                     btncolor = '#E71D36'
                 />
             }

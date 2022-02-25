@@ -1,4 +1,6 @@
 
+import { useTranslation } from 'react-i18next';
+import '../../translations/i18n';
 import styles from './Activitycard.module.scss'
 import Link from 'next/link'
 
@@ -7,18 +9,20 @@ const colorByCategoryId = {
     1: '#011627',
     2: '#E71D36',
     3: '#FF9F1C',
-    6: '#2EC4B6',
+    4: "#FF0000",
     5: '#21005D',
-    7: '#410E0B',
-    4: "#FF0000"
+    6: '#2EC4B6',
+    7: '#410E0B'
 }
 
 const ActivityCard = (props) =>
 {
+    const { t } = useTranslation();
+
     const image = props.image || 'https://images.unsplash.com/photo-1523867904486-8153c8afb94f';
-    const title = props.title || 'Attività';
-    const text = props.text || 'Descrizione attività...';
-    const price = props.price || '€ 0.00'; 
+    const title = props.title || t('activityCard_title');
+    const text = props.text || t('activityCard_description');
+    const price = props.price || `${t('currency')} 0.00`; 
     const category = (props.category ? props.category.name : '');
     const idCat = (props.category ? props.category.id : 0);
     const url = props.url || ``;
@@ -37,11 +41,12 @@ const ActivityCard = (props) =>
                             <div className={styles.single_card_info_price}>
                                 <p>{price}</p>
                                 <Link href={url}>
-                                    <a style={{ color: colorByCategoryId[idCat] }}>Scopri di più</a>
+                                    <a style={{ color: colorByCategoryId[idCat] }}>{t('activityCard_text')}</a>
                                 </Link>
                             </div>
                         </div>
                     </>;
+
     if(isSkeleton) content =    <>
                                     <div className={styles.single_card_image}>
                                         <p className={styles.single_card_category_skeleton}></p>

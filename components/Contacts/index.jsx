@@ -1,3 +1,6 @@
+
+import { useTranslation } from 'react-i18next';
+import '../../translations/i18n';
 import SectionTitle from '../SectionTitle'
 import styles from './Contacts.module.scss'
 import { faPhoneAlt} from '@fortawesome/free-solid-svg-icons'
@@ -5,17 +8,21 @@ import {  faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import {  faTwitter, faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default function Contacts({showBtn}) {
+export default function Contacts({showBtn}) 
+{
+    const { t } = useTranslation();
+
     const handleSubmit = (e) => {
         e.preventDefault();
     }
+
     return(
         <section className={styles.wrapper_container}>
             <SectionTitle 
-                title='Contattaci'
-                description='Per qualsiasi informazione siamo a tua disposizione'
+                title={t('contacts_section_title')}
+                description={t('contacts_section_description')}
                 path='/about'
-                btntext="Scopri di più su TravelHub →"
+                btntext={t('contacts_section_button')}
                 btncolor='#2EC4B6'
                 showBtn={showBtn}
             />
@@ -34,7 +41,7 @@ export default function Contacts({showBtn}) {
                         </li>   
                     </ul>
                     <h3>Newsletter</h3>
-                    <p>Iscriviti alla nostra newsletter per restare sempre aggiornato sulle stupende esperienze proposte da TravelHub</p>   
+                    <p>{t('contacts_newsletter_text')}</p>   
                     <div className={styles.newsletter}>
                         <input type="radio" name="newsletter" id="newsletter-si" value="si" />
                         <label htmlFor="newsletter-si">Voglio iscrivermi!</label>
@@ -44,15 +51,15 @@ export default function Contacts({showBtn}) {
                 </div>
                 <div className={styles.contacts_form}>
                     <form>
-                        <h3>Invia un messaggio</h3>
+                        <h3>{t('contacts_newsletter_input_title')}</h3>
                         <div className={styles.input_row}>
                             <div className={styles.input_column}>
-                                <label htmlFor='name'> Nome</label>
-                                <input type='text' name='name' placeholder='Nome' required/>
+                                <label htmlFor='name'> {t('contacts_newsletter_input_name')}</label>
+                                <input type='text' name='name' placeholder={t('contacts_newsletter_input_name')} required/>
                             </div>
                             <div className={styles.input_column}>
-                                <label htmlFor='surname'> Cognome</label>
-                                <input type='text' name='surname' placeholder='Cognome' required/>
+                                <label htmlFor='surname'> {t('contacts_newsletter_input_surname')}</label>
+                                <input type='text' name='surname' placeholder={t('contacts_newsletter_input_surname')} required/>
                             </div>
                         </div>
                         <div className={styles.input_row}>
@@ -61,18 +68,17 @@ export default function Contacts({showBtn}) {
                                 <input type='email' name='email' placeholder='Email' required/>
                             </div>
                             <div className={styles.input_column}>
-                                <label htmlFor='phone'> Telefono</label>
-                                <input type='tel' name='phone' placeholder='Telefono'/>
+                                <label htmlFor='phone'> {t('contacts_newsletter_input_telephone')}</label>
+                                <input type='tel' name='phone' placeholder={t('contacts_newsletter_input_telephone')}/>
                             </div>
                         </div>
-                        <label htmlFor="testoForm">Scrivi qui il tuo commento</label>
-                        <textarea name="testoForm" id="testoForm" placeholder="Scrivi qui il tuo commento" required></textarea>
+                        <label htmlFor="testoForm">{t('contacts_newsletter_input_comment')}</label>
+                        <textarea name="testoForm" id="testoForm" placeholder={t('contacts_newsletter_input_comment')} required></textarea>
                         <div>
                             <input type='checkbox' name='privacy' id='privacy' required/>
-                            <label htmlFor='privacy'> Autorizzo il trattamento dei miei dati personali in base all’art. 13 del D. Lgs. 196/2003
-                            e all’art. 13 GDPR 679/16.*</label>
+                            <label htmlFor='privacy'> {t('contacts_newsletter_input_privacy')}</label>
                         </div>
-                        <button onClick={handleSubmit}>Invia</button>
+                        <button onClick={handleSubmit}>{t('contacts_newsletter_input_send')}</button>
                     </form>
                 </div>
             </div>

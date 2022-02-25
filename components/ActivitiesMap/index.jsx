@@ -1,14 +1,19 @@
-import SectionTitle from "../SectionTitle";
-import Image from 'next/image';
-import style from "./ActivitiesMap.module.scss";
+
 import { useState, useEffect, useRef } from "react";
 import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchMapData } from "../../store/actions";
+import { useTranslation } from "react-i18next";
+import '../../translations/i18n';
 import ActivityCard from "../ActivityCard";
+import SectionTitle from "../SectionTitle";
+import Image from 'next/image';
+import style from "./ActivitiesMap.module.scss";
 
-export default function ActivitiesMap() {
+export default function ActivitiesMap() 
+{
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.mapData);
   const [act, setAct] = useState(null);
@@ -26,12 +31,12 @@ export default function ActivitiesMap() {
 
   const getLocation = () => {
     if (!navigator.geolocation) {
-      setStatus("Geolocation is not supported by your browser");
+      setStatus(t('activitiesMap_status_notSupported'));
     } else {
-      setStatus("Locating...");
+      setStatus(t('activitiesMap_status_locating'));
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setStatus("located");
+          setStatus('located');
           setCoor({
             ...coor,
             latitude: position.coords.latitude,
@@ -39,7 +44,7 @@ export default function ActivitiesMap() {
           });
         },
         () => {
-          setStatus("Unable to retrieve your location");
+          setStatus(t('activitiesMap_status_error'));
         }
       );
     }
@@ -72,9 +77,9 @@ export default function ActivitiesMap() {
     <div className={style.container}>
       <div className={style.title}>
         <SectionTitle
-            title="Eventi nelle vicinanze"
+            title={t('activitiesMap_section_title')}
             showBtn={false}
-            description="Attiva la geolocalizzazione per scroprire gli eventi più vicini a te"
+            description={t('activitiesMap_section_description')}
           />
       </div>
 
@@ -131,7 +136,7 @@ export default function ActivitiesMap() {
                     className={style.closeBtn}
                     onClick={() => setShowModale(false)}
                   >
-                    chiudi
+                    {t('activitiesMap_modal_button')}
                   </button>
                 </div>
               )}
@@ -140,7 +145,7 @@ export default function ActivitiesMap() {
         )}
         <div className={style.inputRaggio}>
           <label htmlFor="search-range">
-            raggio di ricerca: <span>{range}</span> Km{" "}
+            {t('activitiesMap_input_range')} <span>{range}</span> Km{" "}
           </label>
           <input
             type="range"

@@ -15,21 +15,37 @@
     background: linear-gradient(to right, rgba($color, $opacity), rgba($color, $opacity)), url($url);
 }
 
-@mixin buttonCart()
+@mixin buttonCart($fontSize: 0.9rem, $padding: 10px 20px, $bgColor: variables.$primary)
 {
     font-weight: 600;
-    font-size: 0.9rem;
-    padding: 10px 20px;
+    font-size: $fontSize;
+    padding: $padding;
     border-radius: 10px;
     color: variables.$white;
-    background-color: variables.$primary;
+    background-color: $bgColor;
     text-align: center;
-    border: none;
+    border: 2px solid $bgColor;
     cursor: pointer;
     transition: 0.4s ease;
 
     &:hover{
-        color:variables.$primary;
+        color: $bgColor;
         background-color: variables.$white;
     }
+}
+
+@mixin login()
+{
+    position: fixed;
+    z-index: 5;
+    top: 140px;
+    left: calc(50% - 225px);
+    padding: 35px 60px;
+    width: 450px;
+    min-height: 200px;
+    text-align: center;
+    border-radius: 10px; 
+    color: variables.$white;
+    background-color: variables.$black;     
+    
 }

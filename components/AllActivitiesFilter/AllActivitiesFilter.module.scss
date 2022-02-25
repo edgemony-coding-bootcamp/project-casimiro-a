@@ -1,0 +1,206 @@
+@use "../../libs/variables.scss";
+$paddingSide : 70px;
+.container{
+    
+    margin-bottom: 100px;
+    padding: 30px 0 40px;
+    display: flex;
+    background-color: variables.$quaternary;
+    flex-wrap: wrap;
+    justify-content: center;
+        
+    
+    .citySearch{
+        display: flex;
+        margin-left: 50px;
+    }
+
+    .inputDiv{
+        display: flex;
+        align-items: center;
+        
+        flex-wrap: wrap;
+        width: 300px;
+
+            input[type=range]
+            {
+                margin:0 10px ;
+                -webkit-appearance: none;
+                width: 100%; 
+                height: 5px;
+                border-radius: 4px;
+                background-color: #333;
+                outline: none;
+                -webkit-transition: .2s;
+                transition: opacity .2s;
+                margin: 0 auto;
+
+    
+                &::-webkit-slider-thumb
+                {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    background-color: variables.$primary;
+                    cursor: pointer;
+                    box-shadow: variables.$shadow;
+                }
+            }
+            p{
+                width: 50%;
+                font-size: 18px;
+                padding-bottom: 15px;
+                font-weight: bold;
+            }
+            .price{
+                text-align: end;
+            }   
+        
+
+    }
+    .buttons{
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        transition: all 5s;
+        width: 100%;
+        padding-top: 30px;
+        flex-wrap: wrap;
+        
+        .buttonDiv{
+            position: relative;
+            button{
+                width: 180px;
+                height: 33px;
+                margin: 5px 10px;
+                border: none;
+                cursor: pointer;
+                color: variables.$white;
+                border-radius: 5px;
+                padding: 5px 15px;
+                font-weight: 400;
+                font-size: 15px;
+                transition: all 0.5s ;
+            }
+            &.buttonDivOpen::after{
+
+                opacity: 1;
+            }
+            &::after{
+                content: "";
+                height: 3px;
+                width: 50px;
+                border-radius: 50px;
+                background: variables.$black;
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                transform: translate(-50%,50%);
+                opacity: 0;
+                transition: all 0.5s ease;
+            }
+        }
+
+    }
+    .search{
+        display: flex;
+        justify-content: flex-end;
+    }
+  
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    button{
+        margin: 20px 10px 100px 10px;
+    }
+}
+.allactivities{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    .noResult{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 50vh;
+        h3{
+            margin-bottom: 10px;
+        }
+
+    }
+    .singleActivity{
+        margin: 0 15px;
+        cursor: pointer;
+    }
+}
+
+.btn{
+   display: none;
+   
+}
+
+@media  (max-width: 855px){
+    .container{
+
+        padding: 20px 0;
+
+        .buttons{
+            padding-bottom: 10px;
+            justify-content: center;
+            
+
+            &::-webkit-scrollbar {
+                height: 5px;
+                transition: all 0.35s ease;
+            }
+        
+            /* Track */
+            &::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 5px grey;
+                border-radius: 10px;
+            }
+        
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: #000000;
+                border-radius: 10px;
+            }
+        
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: #8f8f8f;
+            }
+        
+            button{
+                
+                font-size: 12px;
+                padding: 0;
+                width: 60px;
+            }
+
+        }
+    }
+    .pagination{
+    
+        button{
+            font-size: 15px;
+            margin: 10px 5px;
+            height: 50px;
+            width: 50px;
+
+            
+
+        }
+        .none{
+            display: none;
+        }
+    }
+    
+
+}

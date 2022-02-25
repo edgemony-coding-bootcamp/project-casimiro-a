@@ -1,16 +1,66 @@
 .container{
     overflow: hidden;
-    width:fit-content;
     padding: 20px;
-    padding: 15px 10px;
+    max-width: 100%;
+    
+    
     .carousel{
-    width: 800px;
+    max-width: 800px;
     padding: 15px 10px;
+    
     }
+    
     .button{
         margin-top: 50px;
         display: flex;
         width: 150px;
         justify-content: space-between;
+    }
+};
+
+@media screen and (max-width: 1250px){
+    .container{
+        .carousel{
+            max-width: 700px;
+        }
+        .button{
+            margin-top: 30px;
+        }
+    }
+};
+
+@media screen and (max-width: 1050px){
+    .container{
+        
+        .carousel{
+            max-width: 430px;
+            
+        }
+        .button{
+            
+            width: 100%;
+            justify-content: center;
+            gap: 50px;
+            
+        }
+        
+    }
+}
+
+@media screen and (max-width: 550px){
+    .container{
+        
+        .carousel{
+            max-width: 230px;
+            
+        }
+        .button{
+            
+            width: 100%;
+            justify-content: center;
+            gap: 50px;
+            
+        }
+        
     }
 }

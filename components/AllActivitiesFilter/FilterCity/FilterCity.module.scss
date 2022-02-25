@@ -1,0 +1,65 @@
+@use "../../../libs/variables.scss";
+
+$height : 40px;
+$width : 180px;
+.searchCity{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    p{
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+
+    .searchbarCity{
+        width: fit-content;
+        margin: 0 10px;
+        
+        input{
+            padding: 5px 15px;
+            height: $height;
+            width: $width;
+            background: variables.$white;
+            border: none;
+            font-weight: 600;
+            border-radius: 4px;
+            color: #000;
+            box-shadow: variables.$shadow;
+        }
+        .searchbar{
+            width: $width;
+            position: absolute;
+            z-index: 9;
+            background: #011627;
+            transition: all 0.05s ease;
+            border-radius: 4px;
+            overflow: hidden;
+            
+            p{
+
+                padding: 2px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.05s ease;
+                color:  variables.$white;
+                font-size: 0.8rem;
+
+                &:hover{
+                    background: darken(#011627, 20%);
+                }
+                
+            }
+        }
+        .searchbarOpen{
+            border: 1px solid #1b1b1b;
+        }
+        .searchbarClosed{
+            height: 0px;
+            overflow: hidden;
+            border: 0;
+        }
+    }
+
+}

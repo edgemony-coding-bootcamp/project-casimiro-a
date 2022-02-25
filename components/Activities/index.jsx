@@ -1,12 +1,15 @@
 
-import styles from './Activities.module.scss'
+import { useTranslation } from 'react-i18next';
+import '../../translations/i18n';
 import ActivityCard from '../ActivityCard'
 import Link from 'next/link'
 import SectionTitle from '../SectionTitle';
+import styles from './Activities.module.scss'
 
 const Activities = ({ data, showTitle = true }) => 
 {
     let activities = [];
+    const { t } = useTranslation();
     
     if(data)
     {
@@ -17,10 +20,10 @@ const Activities = ({ data, showTitle = true }) =>
         <section className={styles.wrapper_activities}>
             {showTitle &&
                 <SectionTitle 
-                    title = "Esperienze popolari:" 
-                    description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                    title = {t('activities_section_title')} 
+                    description = {t('activities_section_description')}
                     path = '/esperienze'
-                    btntext = 'Visualizza tutte le esperienze'
+                    btntext = {t('activities_section_button')}
                     btncolor = '#E71D36'
                 />
             }
@@ -35,7 +38,7 @@ const Activities = ({ data, showTitle = true }) =>
                                     text={activity.description}
                                     price={activity.retail_price.formatted_value}
                                     category={activity.verticals[0]}
-                                    url={`esperienze/${activity.uuid}`}
+                                    url={`/esperienze/${activity.uuid}`}
                                 />
                             </a>
                         </Link>    

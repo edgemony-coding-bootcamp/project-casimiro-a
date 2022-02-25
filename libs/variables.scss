@@ -7,10 +7,11 @@ $secondary: #FF9F1C;
 $quaternary: #F1F1F1;
 $alternative: #2EC4B6;
 $shadow: 0 0 10px #01162713;
-$overlay: #000000be;
+$overlay: #0000009c;
+$skeleton: #ddd;
 
 //Margin - Padding - Radius
-$sectionsPadding: 100px;
+$sectionsPadding: 100px 100px 50px;
 $cardBorderRadius: 20px;
 $cardsColumnGap: 30px;
 
@@ -19,3 +20,7 @@ $textFont: 'Raleway', sans-serif;
 
 //height modali navbar
 $modaliheight : 400px;
+
+//Text description 
+$descFontSize: 16px;
+$descLineHeight: 1.6;

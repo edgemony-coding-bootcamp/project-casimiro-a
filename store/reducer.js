@@ -1,4 +1,6 @@
-const initState = {
+
+const initState = 
+{
     data: [],
     carouselFirstInst: {},
     carouselSecondInst: {},
@@ -6,9 +8,15 @@ const initState = {
     searchBarActive: false,
     searchData: [],
     showResult: false,
-    showSideMenu: false
+    showSideMenu: false,
+    allActivities: [],
+    searchCity: "",
+    mapData:"",
+    lang:"it",
 }
-const reducer = (state = initState, action) => {
+
+const reducer = (state = initState, action) => 
+{
     switch (action.type) {
         case "setCarouselFirstInst":
             return{
@@ -40,6 +48,11 @@ const reducer = (state = initState, action) => {
                 ...state,
                 searchData: action.payload,
             }
+        case "setSearchCity":
+            return{
+                ...state,
+                searchCity: action.payload,
+            }
         case "showResult":
             return{
                 ...state,
@@ -54,6 +67,26 @@ const reducer = (state = initState, action) => {
             return{
                 ...state,
                 showSideMenu: !state.showSideMenu,
+            }
+        case "setAllActivities":
+            return{
+                ...state,
+                allActivities: action.payload,
+            }
+        case "setCart":
+            return {
+                ...state,
+                cart: action.payload,
+            }
+        case "SetMapData":
+            return{
+                ...state,
+                mapData: action.payload,
+            }
+        case "setLang":
+            return {
+                ...state,
+                lang: action.payload,
             }
         default :
             return state;   

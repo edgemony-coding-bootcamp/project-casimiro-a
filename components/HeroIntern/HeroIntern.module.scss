@@ -9,7 +9,7 @@
     padding: 150px 100px;
     color: variables.$white;
    
-    
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -17,24 +17,38 @@
 
     h1{
       text-transform: uppercase;
-      
-      
+      max-width: 50%;
     }
 
     p{
       max-width: 700px;
-      
     }
 
   }
 
-  @media only screen and (max-width: 675px){
+@media only screen and (max-width: 1400px){
     
     .wrapper_hero_intern{
-
-      padding: 100px 10px 20px 10px;
       h1{
-        font-size: 40px;
-      }
+        max-width: 100%;
+      } 
     } 
+}
+@media only screen and (max-width: 768px){
+    
+  .wrapper_hero_intern{
+    @include mixins.flexContainer(column, center, center);
+    text-align: center;
+    padding: 130px 30px 50px 30px;
+    h1{
+      font-size: 40px;
+      max-width: 100%;
+    }
+    p{      
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical; 
+      overflow: hidden;
+    }
+  } 
 }

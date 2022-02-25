@@ -1,17 +1,19 @@
-
-@import "./libs/variables.scss";
+@use "../../libs/mixins.scss";
+@use "./libs/variables.scss";
 
 .container{
-    //border: 1px solid red;
     color: aliceblue;
     width: 80px;
     .sidebar{
      height: 750px;
-     border-left: 1px solid $white;
-     display: flex;
-     flex-direction: column;
-     justify-content: space-around;
+     border-left: 1px solid variables.$white;
+     @include mixins.flexContainer(column, space-around, flex-start, 0px);
      opacity: 0.5;
-     //border: 1px solid red;
+    }
+}
+
+@media screen and (max-width: 1050px){
+    .container{
+        display: none;
     }
 }

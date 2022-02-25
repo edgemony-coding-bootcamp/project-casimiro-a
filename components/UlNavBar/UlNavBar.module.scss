@@ -1,0 +1,6 @@
+@use "../../libs/variables.scss";
+                    
+.active{
+        color: variables.$alternative;
+        font-weight: 700;
+}

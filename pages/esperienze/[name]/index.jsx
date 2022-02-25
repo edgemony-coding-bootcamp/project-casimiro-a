@@ -1,17 +1,80 @@
-import styles from './SingleExperience.module.scss';
-import HeroIntern from "../../../components/HeroIntern";
-import Cities from '../../../components/Cities';
-import Layout from '../../../components/Layouts';
 import { useRouter } from "next/router";
-import ActivityDescription from '../../../components/ActivityDescription';
-import CityDescription from '../../../components/CityDescription';
+import { API_URL } from "../../../libs/variables";
+import { useSession } from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { addCartItem, getCartItems } from "../../../store/actions";
+import axios from 'axios';
+import dynamic from "next/dynamic";
+import { useTranslation } from "react-i18next";
+import '../../../translations/i18n';
+import Layout from '../../../components/Layouts';
+import HeroIntern from "../../../components/HeroIntern";
+import Reviews from '../../../components/Reviews';
+import CitiesSkeleton from "../../../components/CitiesSkeleton";
+import DescriptionSkeleton from "../../../components/DescriptionSkeleton";
+import LottieLoader from "../../../components/LottieLoader";
+
+const ActivityDescription = dynamic(
+    () => import('../../../components/ActivityDescription'),
+    { ssr: false, loading: () => <DescriptionSkeleton /> }
+);
+
+const CityDescription = dynamic(
+    () => import('../../../components/CityDescription'),
+    { ssr: false, loading: () => <DescriptionSkeleton imageRight={true} /> }
+);
+
+const Cities = dynamic(
+    () => import('../../../components/Cities'),
+    { ssr: false, loading: () => <CitiesSkeleton /> }
+);
 
 
-export default function Activity({activity}) {
+export default function Activity({ activity, cities })
+{
+    const { t } = useTranslation();
+    const { data: session } = useSession();
+    const dispatch = useDispatch();
+    const cartState = useSelector(state => state.cart);
+
+    const [isAdded, setIsAdded] = useState(false);
+
+    useEffect(() => 
+    {
+        if(session)
+            dispatch(getCartItems(session.user.email));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [session]);
+
+    useEffect(() => 
+    {
+        if(session && activity && cartState)
+        {
+            if(cartState.filter((item) => item.id == activity.uuid).length)
+                setIsAdded(true);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [activity, cartState]);
+
     const router = useRouter();
 
     if(router.isFallback) {
-        return <h1>loading</h1>;
+        return <LottieLoader />
+    }
+    
+
+    const handleAddToCart = (data) =>
+    {
+        if(session)
+        {
+            dispatch(addCartItem(session.user.email, data.uuid, data.title, data.cover_image_url, data.retail_price.value));
+        } 
+        else
+        {
+            alert(t('experiences__addCart_noLogin'));
+        }
     }
 
     return (
@@ -27,7 +90,14 @@ export default function Activity({activity}) {
                     title={activity.title}
                     description={activity.about}
                     price={activity.retail_price.formatted_value}
+                    showService1 = {activity.giftable}
+                    showService2 = {activity.special_offer}
+                    showService3 = {activity.free_cancellation}
+                    showService4 = {activity.is_available_today}
+                    btnActive={isAdded}
+                    btnAction={() => handleAddToCart(activity)}
                 />
+                <Reviews />
                 <CityDescription 
                     image={activity.city.cover_image_url}
                     title={activity.city.name}
@@ -35,44 +105,39 @@ export default function Activity({activity}) {
                     more={activity.city.more}
                     id={activity.city.id}
                 />
-                <Cities />
+                <Cities data={cities} exceptId={activity.city.id} showTitle={true} maxCities={5}/>
             </Layout>
         </>
     );
 }
 
-export async function getStaticProps({params}) {
-    const res = await fetch(
-        `https://sandbox.musement.com/api/v3/activities/${params.name}`,
-        {
-            headers: {
-              Accept: "application/json",
-              "X-Musement-Version": "3.4.0",
-              "Accept-Language": "it-IT",
-            },
-        }
-    );
-    const data = await res.json();
 
-    if(!data) {
+
+export async function getStaticProps({params}) 
+{
+    const activity = await axios(`${API_URL}activities/${params.name}`);
+
+    const cities = await axios(`${API_URL}cities?limit=6&without_events=yes`);
+
+    if(!activity) {
         return {
             notFound: true,
         };
     }
 
     return {
-        props:{
-            activity: data,
-        },
-        revalidate: 10,
+        props: {
+            activity: activity.data,
+            cities: cities.data,
+        }
     };
 }
 
-export async function getStaticPaths() {
-    const res = await fetch("https://sandbox.musement.com/api/v3/activities");
-    const data = await res.json();
+export async function getStaticPaths() 
+{
+    const activities = await axios(`${API_URL}activities`); 
 
-    const paths = data.data.map((activity) => {
+    const paths = activities.data.data.map((activity) => {
         return {
             params: {
                 name: `${activity.uuid}`,

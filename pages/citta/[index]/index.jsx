@@ -1,63 +1,91 @@
-import HeroIntern from "../../../components/HeroIntern";
-import Activities from "../../../components/Activities";
-import Cities from "../../../components/Cities";
 import { useRouter } from "next/router";
-import Layout from "../../../components/Layouts";
-import { API_URL, FETCH_HEADERS } from "../../../libs/variables";
+import { API_URL } from "../../../libs/variables";
 import axios from 'axios';
-import stylesTitle from "../../../components/SectionTitle/SectionTitle.module.scss";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { filterActivities } from "../../../store/actions";
+import { useSelector } from "react-redux";
+import dynamic from 'next/dynamic';
+import { useTranslation } from "react-i18next";
+import '../../../translations/i18n';
+import Layout from "../../../components/Layouts";
+import HeroIntern from "../../../components/HeroIntern";
+import styles from "./SingleCity.module.scss";
 import FilterActivities from '../../../components/FilterActivities';
+import SectionTitleSkeleton from "../../../components/SectionTitle";
+import ActivitiesSkeleton from "../../../components/ActivitiesSkeleton";
+import CitiesSkeleton from "../../../components/CitiesSkeleton";
+import LottieLoader from "../../../components/LottieLoader";
+
+
+const SectionTitle = dynamic(
+  import("../../../components/SectionTitle"),
+  { ssr: false, loading: () => <SectionTitleSkeleton skeleton />}
+);
+
+const Activities = dynamic(
+  () => import('../../../components/Activities'), 
+  { ssr: false, loading: () => <ActivitiesSkeleton />}
+);
+
+const Cities = dynamic(
+  () => import('../../../components/Cities'), 
+  { ssr: false, loading: () => <CitiesSkeleton />}
+);
+
 
 const initialFilterState = {
+  city: 0,
   maxPrice: 100,
-  category: 0
+  category: '',
+  pagination: 0,
+  up: false
 };
 
-export default function City({ city, activities, cities }) 
+export default function City({ city, cities }) 
 {
+
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const filterActivitiesState = useSelector((state) => {
+    if(Object.keys(state.allActivities).length !== 0)
+    {
+      return state.allActivities;
+    }
+  }); 
+  
+  
   // State
-  const [filterActivitiesState, setFilterActivitiesState] = useState({data: []});
-  const [filterState, setFilterState] = useState(initialFilterState);
+  const [filterState, setFilterState] = useState(city ? { ...initialFilterState, city: city.id } : initialFilterState);
   
   useEffect(() =>
   {
-    console.log(activities);
-    setFilterActivitiesState({ data: activities.slice(0, 8) });
-  }, [activities]);
+    setFilterState( (value) => ({...value, city: city.id}));
+  }, [city]);
+
+  useEffect(() =>
+  {
+    dispatch(filterActivities(filterState));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterState]);
   
+
   // Router
   const router = useRouter();
-
+  
   if (router.isFallback) 
   {
-    return <h1>loading</h1>;
+    return <LottieLoader />;
   }
 
   // Events
   const handleFilter = (filters) =>
   {
       if(filters &&
-          (filterState.maxPrice != filters.maxPrice ||
-          filterState.category != filters.category))
+        (filterState.maxPrice != filters.maxPrice ||
+        filterState.category != filters.category))
       {
-          setFilterState(filters);
-
-          setFilterActivitiesState({ data: activities.filter((value) =>
-          {
-              if(filters.category > 0)
-              {
-                return (
-                  value.verticals.length && value.verticals[0].id === filters.category &&
-                  value.retail_price.value <= filters.maxPrice
-                );
-              }
-              return (
-                value.verticals.length && value.verticals[0].id !== filters.category &&
-                value.retail_price.value <= filters.maxPrice 
-              );
-
-          }).slice(0, 8)}); 
+          setFilterState({...filterState, ...filters});
       }
   }; 
   
@@ -70,18 +98,16 @@ export default function City({ city, activities, cities })
           description={city.content}
           bgImage={city.cover_image_url}
         />
-        <div 
-          className={stylesTitle.wrapper_title_button}
-          style={{ padding: '100px 100px 0' }}
-        >
-          <div className={stylesTitle.wrapper_title}>
-            <h2>Scopri cosa puoi fare a {city.name}</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          </div>
+        <div className={styles.wrapper_title}>
+          <SectionTitle 
+            title={`${t('city_city_section_title')} ${city.name}`} 
+            description={''}
+            showBtn={false}
+        />
         </div>
         <FilterActivities callback={handleFilter} />
         <Activities data={filterActivitiesState} showTitle={false} />
-        <Cities data={cities} exceptId={city.id} />
+        <Cities data={cities} exceptId={city.id} showTitle={true} maxCities={5}/>
       </Layout>
     </>
   );
@@ -90,26 +116,9 @@ export default function City({ city, activities, cities })
 
 export async function getStaticProps({ params }) 
 {
-  const city = await axios(
-    `${API_URL}cities/${params.index}`,
-    {
-      headers: FETCH_HEADERS
-    }
-  );
+  const city = await axios(`${API_URL}cities/${params.index}`);
 
-  const activities = await axios(
-    `${API_URL}cities/${params.index}/activities?sort_by=city-relevance&limit=20`,
-    {
-      headers: FETCH_HEADERS
-    }
-  );
-
-  const cities = await axios(
-    `${API_URL}cities?limit=6&without_events=yes`,
-    {
-      headers: FETCH_HEADERS
-    }
-  );
+  const cities = await axios(`${API_URL}cities?limit=6&without_events=yes`);
 
   if (!city) {
     return {
@@ -120,7 +129,6 @@ export async function getStaticProps({ params })
   return {
     props: {
       city: city.data,
-      activities: activities.data,
       cities: cities.data,
     }
   };
@@ -129,12 +137,7 @@ export async function getStaticProps({ params })
 
 export async function getStaticPaths() 
 {
-  const cities = await axios(
-    `${API_URL}cities`,
-    {
-      headers: FETCH_HEADERS
-    }
-  );
+  const cities = await axios(`${API_URL}cities`);
 
   const paths = cities.data.map((city) => {
     return {

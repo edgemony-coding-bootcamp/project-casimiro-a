@@ -1,5 +1,5 @@
 
-@import "./libs/variables.scss";
+@use "./libs/variables.scss";
 
 .btnHero{
     border: none;
@@ -7,11 +7,21 @@
     height: 50px;
     border-radius: 50%;
     font-size: larger;
-    background-color: #fdfffc69;
+    color: variables.$white;
+    background: #fdfffc69;
     cursor: pointer;
     display: block;
-    transition: all 0.2s ease;
+    transition: transform 0.2s ease, background 0s ease;
+    
     &:hover{
         transform: scale(1.10);
     }
+}
+.forActivities{
+    background: #011627;
+    box-shadow: variables.$shadow;
+    color: variables.$white;
+}
+.active{
+    background: #e71d36;
 }

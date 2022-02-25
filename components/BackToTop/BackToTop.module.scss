@@ -1,0 +1,21 @@
+@use "../../libs/variables.scss";
+
+.backToTopBtn{
+    padding: 10px 13px;
+    background-color: variables.$black;
+    color: variables.$white;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    position: fixed;
+    bottom: 10%;
+    left: 95%;
+}
+
+@media only screen and (max-width:800px){
+    .backToTopBtn{
+        bottom: 10%;
+        left: 85%;
+    } 
+}

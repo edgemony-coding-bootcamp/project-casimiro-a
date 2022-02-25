@@ -1,11 +1,56 @@
 QA: https://ancient-sands-73880.herokuapp.com/
 
+<p align="center">
+  <img src="./public/logov.positiva.png#gh-light-mode-only" alt="logo-travelhub" width=350/>
+    <img src="./public/logo.png#gh-dark-mode-only" alt="logo-travelhub" width=350/>
+</p>
+<h2 align="center" >La web app per pianificare i tuoi viaggi ed esplorare il mondo</h2>
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center"><img src="./readme/TravelHub-DPR.png" alt="mockup" height=auto width=100%/></p>
+<br>
+ 
+ <h3>Descrizione del progetto</h3>
+ <hr height:"2"/>
+ <p >Il progetto, sviluppato nell'arco di tre settimane, consiste nella creazione di una piattaforma che permetta all'utente di scegliere una città da visitare e sfogliare il catalogo di tutte le esperienze e le attività correlate a quella città.
+ Il progetto è stato svolto da un team di 5 sviluppatori junior coordinati da uno sviluppatore senior. Il team, che ha utilizzato Next.JS per la costruzione della web app, ha organizzato il lavoro seguendo i principi della metodologia Agile e adottando il framework Kanban.</p>
+ <br>
 
-## Getting Started
+ <h3 >Tecnologie</h3>
+ <hr height:"2"/>
+   <p><img src="./readme/Btn_dm.svg#gh-dark-mode-only" alt="tag" width=100%/></p>
+   <p><img src="./readme/Btn_lm.svg#gh-light-mode-only" alt="tag" width=100%/></p>
+ <br>
 
-First, run the development server:
+ <h3>Funzionalità</h3>
+ <hr height:"2"/>
+      <ul>
+        <li>UI/UX responsive design</li>
+        <li>Musement API</li>
+        <li>Routing</li>
+        <li>Redux per lo state management</li>
+        <li>Middleware thunk</li>
+        <li>Lazy loading</li>
+        <li>Auth con Firebase</li>
+        <li>Carrello con Firestore</li>
+        <li>Implementazione multilingua (i18n)</li>
+    </ul>
+ <br>
+ 
+ <h3>Performance</h3>
+ <hr height:"2"/>
+ 
+ Ottimizzazione tramite **Lighthouse**
+
+<p><img src="./readme/LHD.svg#gh-dark-mode-only" alt="lighthouse" width=400 height=auto/></p>
+<p><img src="./readme/LHL.svg#gh-light-mode-only" alt="lighthouse" width=400/></p>
+<br>
+ 
+ <h3>Come avviare il progetto</h3>
+ <hr height:"2"/>
+
+Questo progetto [Next.js](https://nextjs.org/) è stato avviato con [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+Avvia il server di sviluppo:
 
 ```bash
 npm run dev
@@ -13,25 +58,26 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Apri [http://localhost:3000](http://localhost:3000) nel tuo browser per vedere il risultato.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Puoi modificare direttamente `pages/index.js` e la pagina si aggiornerà automaticamente.
+<br>
+ 
+ <h3>Team</h3>
+ <hr height:"2"/>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+   -[**Agnese Spinella**](https://github.com/AgneseSpinella)
+   <br>
+   -[**Dario Castiglione**](https://github.com/Dario-Castiglione)
+   <br>
+   -[**Davide Missiato**](https://github.com/DMissiato)
+   <br>
+   -[**Federica Santoro**](https://github.com/federicasantoro93)
+   <br>
+   -[**Roberta Pennisi**](https://github.com/RobertaPennisi)
 
-## Learn More
+  Team guidato da [**Casimiro P. Ciancimino**](https://github.com/casiimir)
+  
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Si ringrazia tutto il team di [**Edgemony**](https://github.com/edgemony-coding-bootcamp) e le aziende per averci permesso di prendere parte a questo percorso!

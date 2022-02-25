@@ -3,24 +3,35 @@
 @use "../../libs/mixins.scss";
 
 .wrapper_hero{
-    @include mixins.flexContainer(row, space-evenly, center);
-    // margin-top: -120px;
+    @include mixins.flexContainer(row, space-between, center);
     width: 100%;
     max-height: 120vh;
     padding: 150px 50px;
-    
-    
-    @include mixins.bg-overlay('https://images.unsplash.com/photo-1537956965359-7573183d1f57?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80', #000, 0.6);
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    box-shadow:inset 0 0 0 2000px variables.$overlay;
+    transition: 0.5s ease;
+
+    .wrapper_text_hero{
+      max-width: 100%;
+    }
     
-    overflow-x: hidden;
 
     .wrapper_carousel_hero{
       margin-right: -300px;
-      margin-left: 300px;
+    }
+}
+
+@media screen and (max-width: 1050px){
+  .wrapper_hero{
+    @include mixins.flexContainer(column, space-between, center,0px);
+    max-height: 130vh;
+    
+    .wrapper_carousel_hero{
+      margin: 0px;
     }
   }
-
+}
   

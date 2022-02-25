@@ -1,7 +1,8 @@
-import style from "./SideMenu.module.scss"
-import Link from "next/link";
+
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSideMenu, hideResult } from "../../store/actions";
+import UlNavBar from "../UlNavBar";
+import style from "./SideMenu.module.scss"
 
 export default function SideMenu(){
     
@@ -13,34 +14,13 @@ export default function SideMenu(){
       }, 200);
     }
     
-  const openMenu = useSelector(state => state.showSideMenu)
+    const openMenu = useSelector(state => state.showSideMenu)
 
-  openMenu && dispatch(hideResult)
+    openMenu && dispatch(hideResult)
 
     return(
         <div className={`${style.container} ${ openMenu && style.open}`}>
-             <ul>
-          <li onClick={handleMenu}>
-            <Link href={"/"}>
-              <a>Home</a>
-            </Link>
-          </li>
-          <li onClick={handleMenu}>
-            <Link href={"/citta"}>
-              <a>Città</a>
-            </Link>
-          </li>
-          <li onClick={handleMenu}>
-            <Link href={"/esperienze"}>
-              <a>Esperienze</a>
-            </Link>
-          </li>
-          <li onClick={handleMenu}>
-            <Link href={"/about"}>
-              <a>About</a>
-            </Link>
-          </li>
-        </ul>
+          <UlNavBar mobile />
         </div>
     );
 }

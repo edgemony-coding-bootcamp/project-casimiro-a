@@ -5,8 +5,7 @@
     
     box-shadow: variables.$shadow;
     border-radius: variables.$cardBorderRadius;
-    width: 400px;
-
+    max-width: 380px;
     transition: 0.4s;
     
     &:hover
@@ -15,13 +14,15 @@
         transition: 0.4s;
     }
 
-    .single_card_image{
+    .single_card_image
+    {
         height: 200px;
         background-size: cover;
         border-radius: 20px 20px 0 0;
 
 
-        p{
+        p
+        {
             display: inline-block;
             margin: 15px;
             padding: 5px 10px;
@@ -30,27 +31,56 @@
             color: variables.$white;
             font-weight: 600;
             font-size: 10px;
+
+        }
+
+        .single_card_category_skeleton
+        {
+            height: 20px;
+            width: 100px;
+            background-color: variables.$skeleton;
         }
     }
 
-    .single_card_info{
+    .single_card_info
+    {
         padding: 30px;
         box-shadow: variables.$shadow;
         border-radius: variables.$cardBorderRadius;
         margin-top: -30px;
         z-index: 1;
         background-color: variables.$white;
-        @include mixins.flexContainer(column, space-between, flex-start);
-        min-height: 320px;
+        @include mixins.flexContainer(column, space-between, flex-start,20px);
+        min-height: 390px;
 
-        h3{
-            margin-bottom: 10px;
-        }
-        p{
+        h3
+        {
             margin-bottom: 10px;
         }
 
-        .single_card_info_price{
+        p
+        {
+            margin-bottom: 10px;
+        }
+
+        .single_card_info_title_skeleton
+        {
+            height: 30px;
+            width: 100%;
+            background-color: variables.$skeleton;
+            margin-bottom: 30px;
+        }
+
+        .single_card_info_text_skeleton
+        {
+            height: 10px;
+            width: 90%;
+            margin: 0 auto;
+            background-color: variables.$skeleton;
+        }
+        
+        .single_card_info_price
+        {
             width: 100%;
             @include mixins.flexContainer(row, space-between);
 
@@ -67,25 +97,42 @@
                 font-weight: 600;
                 
 
-                &::after{
+                &::after
+                {
                     content: '→';
                     display: none;
                 }
 
-                &:hover{
+                &:hover
+                {
                     text-decoration: underline;
-                    &::after{
+                    &::after
+                    {
                         display: inline-block;
                     }
                 }
             }
+
+            .single_card_info_price_skeleton
+            {
+                height: 20px;
+                width: 30%;
+                background-color: variables.$skeleton;
+                margin-top: 30px;
+            }
+
         }
     }
 }
 
-@media only screen and (max-width: 675px){
+@media only screen and (max-width: 1810px){
     
     .single_card{
        width: 300px;
+
+       .single_card_info{
+           min-height: 350px;
+       }
     } 
+
 }

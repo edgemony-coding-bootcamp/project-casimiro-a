@@ -1,34 +1,127 @@
+
 @use "../../libs/mixins.scss";
 @use "../../libs/variables.scss";
 
-.wrapper_activity_description{
+.wrapper_activity_description
+{
     @include mixins.flexContainer(row, space-between, center, 100px);
     padding: variables.$sectionsPadding;
     
     
-    .wrapper_activity_image{
-        
-        img {
+    .wrapper_activity_image
+    {
+        border-radius: variables.$cardBorderRadius;
+
+        img 
+        {
             border-radius: variables.$cardBorderRadius;
             object-fit: cover;
         }
     }
 
-    .wrapper_activity_info{
+    .wrapper_activity_image_skeleton
+    {
+        height: 400px;
+        width: 600px;
+        background-color: variables.$skeleton;
+        border-radius: variables.$cardBorderRadius;
+    }
+
+    .wrapper_activity_info
+    {
         @include mixins.flexContainer(column, flex-start, flex-start, 30px);
         max-width: 50%;
+        p {
+            font-size: variables.$descFontSize;
+            line-height: variables.$descLineHeight;
+        }
+        .wrapper_activity_info_title_skeleton
+        {
+            height: 50px;
+            width: 30vw;
+            background-color: variables.$skeleton;
+        }
+        
+        .wrapper_activity_info_text_skeleton
+        {
+            height: 10px;
+            width: 45vw;
+            background-color: variables.$skeleton;
+        }
 
-        .wrapper_activity_shop{
+        .wrapper_activity_shop
+        {
             @include mixins.flexContainer(row, flex-start, center, 20px);
 
-                .price{
-                        font-size: 1.4em;
-                        margin: 0;
-                        font-weight: 600;
-                    }
-                button{
-                    @include mixins.buttonCart();
+                .price
+                {
+                    font-size: 1.4em;
+                    margin: 0;
+                    font-weight: 600;
                 }
+
+                button
+                {
+                    @include mixins.buttonCart();
+
+                }
+                
+                button.active
+                {
+                    color: variables.$primary;
+                    background-color: variables.$white;
+                    cursor: auto;
+                }
+
+                .wrapper_activity_shop_skeleton
+                {
+                    height: 30px;
+                    width: 5vw;
+                    background-color: variables.$skeleton;
+                }
+        }
+
+        .wrapper_activity_services{
+            @include mixins.flexContainer(row, flex-start, center, 20px);
+            flex-wrap: wrap;
+        }
+    }
+}
+
+@media screen and (max-width:1400px){
+    .wrapper_activity_description{
+        @include mixins.flexContainer(row, space-between, flex-start, 50px);
+        padding: 50px;
+    }
+}
+
+@media screen and (max-width:768px){
+    .wrapper_activity_description{
+        @include mixins.flexContainer(column-reverse, space-between, center, 50px);
+        padding: 50px;
+        .wrapper_activity_info{
+            max-width: 100%;
+
+            .wrapper_activity_services{
+                @include mixins.flexContainer(row, center, center, 20px);
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:400px){
+    .wrapper_activity_description{
+        padding: 50px 20px;
+        .wrapper_activity_info{
+            h2{
+                font-size: 40px;
+            }
+
+            .wrapper_activity_shop{
+                @include mixins.flexContainer(column, center, center, 20px);
+                width: 100%;
+            }
         }
     }
 }

@@ -1,0 +1,32 @@
+@use "../../libs/mixins.scss";
+@use "../../libs/variables.scss";
+
+.wrapper_reviews{
+    @include mixins.flexContainer(row, space-between, center);
+    margin: 30px 100px;
+    padding: 30px 50px;
+    background-color: variables.$quaternary;
+    border-radius: variables.$cardBorderRadius;
+
+    .wrapper_reviews_info{
+        @include mixins.flexContainer(column, center, flex-start,10px);
+        p{
+            font-size: 1.4em;
+            margin: 0;
+            font-weight: 600;
+        }
+    }    
+}
+
+@media screen and (max-width:768px){
+    .wrapper_reviews{
+        margin: 30px 50px;
+    }
+}
+
+@media screen and (max-width:400px){
+    .wrapper_reviews{
+        @include mixins.flexContainer(column, space-between, center);
+        margin: 0px 20px;
+    }
+}

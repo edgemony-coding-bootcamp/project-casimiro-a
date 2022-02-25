@@ -6,19 +6,24 @@ import CookiesModal from '../CookiesModal';
 import BackToTop from "../BackToTop";
 
 export default function Layout({ children }) {
+  
+  const [consent, setConsent] = useState(true);
 
-  const [isOpen, setIsOpen] = useState(true);
 
   useEffect(()=>{
-    const isRead = localStorage.getItem("value");
-    if (isRead){
-  setIsOpen(false)
-    }
-  },[])
+  localStorage.getItem("consent") ? setConsent(JSON.parse(localStorage.getItem("consent")))
+  : localStorage.setItem("consent", false) & setConsent(false)
+},[])
+
+  function handleConsent(){
+   setConsent(true)
+   localStorage.setItem("consent", true)
+  }
   
+  //console.log(isOpen)
     return (
       <>
-        {isOpen && <CookiesModal changeShowModal={()=>{ setIsOpen(false) || localStorage.setItem("value", true)}} />} 
+        {!consent && <CookiesModal changeShowModal={handleConsent} />} 
         <NavBar />
         <SideMenu />
         {children}

@@ -13,7 +13,7 @@ import { FilterCity } from "./FilterCity";
 const category = [
   {
     name: "Tutto",
-    color: "#000",
+    color: "#27172A",
     category: "",
   },
   {
@@ -28,7 +28,7 @@ const category = [
   },
   {
     name: "Spettacoli e concerti",
-    color: "red",
+    color: "#EF482D",
     category: "entertainment",
   },
   {
@@ -43,12 +43,12 @@ const category = [
   },
   {
     name: "Eventi sportivi",
-    color: "#21005D",
+    color: "#186D6F",
     category: "sports",
   },
   {
     name: "Nightlife",
-    color: "#410E0B",
+    color: "#08333F",
     category: "nightlife",
   },
 ];

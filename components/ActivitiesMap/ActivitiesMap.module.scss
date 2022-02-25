@@ -8,7 +8,7 @@
     .wrapper{
         margin-top: 50px;
         position: relative;
-        height: 550px;
+        height: 600px;
         @include mixins.flexContainer(row,center,center);
         
         width: 100%;

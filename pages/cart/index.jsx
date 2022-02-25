@@ -5,17 +5,17 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getCartItems, editCartItem, deleteCartItem } from "../../store/actions";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
+import '../../translations/i18n';
 import Layout from "../../components/Layouts";
 import SectionTitle from "../../components/SectionTitle";
 import Image from 'next/image';
 import Link from "next/link";
 import styles from './Cart.module.scss';
-import {onSnapshot, collection, deleteDoc,doc, setDoc } from 'firebase/firestore';
-import { database as db } from "../../firebase"
 
-const Cart = () =>{
-
-    const [dataCart, setDataCart] = useState({})
+const Cart = () =>
+{
+    const { t } = useTranslation();
     const { data: session } = useSession();
     const dispatch = useDispatch();
     const cartState = useSelector((state) => state.cart);
@@ -41,7 +41,7 @@ const Cart = () =>{
                         {
                             cartState && cartState.length ?
                                 <>
-                                    <SectionTitle title="Riepilogo dell'ordine" description="" showBtn={false} />
+                                    <SectionTitle title={t('cart_title')} description="" showBtn={false} />
                                     <ul>
                                         {cartState.map((item) => 
                                         {
@@ -82,12 +82,12 @@ const Cart = () =>{
                                                                     className={styles.delete}
                                                                     onClick={() => dispatch(deleteCartItem(session.user.email, item.id))}
                                                                 >
-                                                                    Elimina
+                                                                    {t('cart_delete')}
                                                                 </button>
                                                             </span>
                                                             <div className={styles.price}>
-                                                                <p>€ {parseFloat(item.price).toFixed(2)}</p>
-                                                                a persona
+                                                                <p>{t('currency')} {parseFloat(item.price).toFixed(2)}</p>
+                                                                {t('cart_person')}
                                                             </div>
                                                         </div>
                                                     </li>
@@ -97,17 +97,17 @@ const Cart = () =>{
                                         })}
                                     </ul>
                                     <div className={styles.totalCart}>
-                                            <h2>Totale</h2>
-                                            <p className={styles.totalPrice}>€ {parseFloat(totalCart).toFixed(2)}</p>
+                                            <h2>{t('cart_total')}</h2>
+                                            <p className={styles.totalPrice}>{t('currency')} {parseFloat(totalCart).toFixed(2)}</p>
                                     </div>
                                     <Link href="/cart/checkout">
                                         <a>
-                                            <button className={styles.checkoutBtn}>Vai al checkout</button>
+                                            <button className={styles.checkoutBtn}>{t('cart_checkout')}</button>
                                         </a>
                                     </Link>
                                 </>
                             :
-                                <SectionTitle title="Riepilogo dell'ordine" description="Il carrello è vuoto." showBtn={false} />
+                                <SectionTitle title={t('cart_title')} description={t('cart_empty')} showBtn={false} />
                         }
                     </section>
                 </div>

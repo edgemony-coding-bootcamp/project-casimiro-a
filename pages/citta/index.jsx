@@ -1,8 +1,9 @@
 
 import dynamic from 'next/dynamic';
+import { useTranslation } from 'react-i18next';
+import '../../translations/i18n';
 import Layout from "../../components/Layouts";
 import HeroIntern from "../../components/HeroIntern";
-import stylesTitle from "../../components/SectionTitle/SectionTitle.module.scss";
 import CitiesSkeleton from "../../components/CitiesSkeleton";
 
 const Cities = dynamic(
@@ -21,14 +22,17 @@ export async function getStaticProps() {
   };
 }
 
-export default function CitiesArchive({ cities }) {
+export default function CitiesArchive({ cities }) 
+{
+  const { t } = useTranslation();
+
   return (
     <Layout>
       <HeroIntern
-        title="città"
-        description="Sei indeciso sulla tua prossima destinazione? Sfoglia il catalogo completo delle città e lasciati ispirare da TravelHub!"
+        title={t('city_hero_title')}
+        description={t('city_hero_description')}
       />
-      <Cities newTitle="Scopri le città popolari" showBtn={false} data={cities} />
+      <Cities showBtn={false} data={cities} />
     </Layout>
   );
 }

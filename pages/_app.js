@@ -18,7 +18,8 @@ function MyApp({ Component, pageProps: {session, ...pageProps} })
   {
     ...axios.defaults.headers.common, 
     ...FETCH_HEADERS, 
-    'Accept-Language': t('Accept-Language')
+    'Accept-Language': t('Accept-Language'),
+    'X-Musement-Currency': t('X-Musement-Currency'),
   };
 
   return (

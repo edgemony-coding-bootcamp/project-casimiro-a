@@ -23,4 +23,4 @@ i18n
         }
     });
  
-i18n.changeLanguage('it');
+i18n.changeLanguage('en');

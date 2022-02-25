@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { filterActivities } from "../../../store/actions";
 import { useSelector } from "react-redux";
 import dynamic from 'next/dynamic';
+import { useTranslation } from "react-i18next";
+import '../../../translations/i18n';
 import Layout from "../../../components/Layouts";
 import HeroIntern from "../../../components/HeroIntern";
 import styles from "./SingleCity.module.scss";
@@ -42,6 +44,8 @@ const initialFilterState = {
 
 export default function City({ city, cities }) 
 {
+
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const filterActivitiesState = useSelector((state) => {
     if(Object.keys(state.allActivities).length !== 0)
@@ -96,7 +100,7 @@ export default function City({ city, cities })
         />
         <div className={styles.wrapper_title}>
           <SectionTitle 
-            title={`Scopri cosa puoi fare a ${city.name}`} 
+            title={`${t('city_city_section_title')} ${city.name}`} 
             description={''}
             showBtn={false}
         />

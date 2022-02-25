@@ -5,12 +5,15 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getCartItems } from '../../../store/actions';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
+import '../../../translations/i18n';
 import Layout from '../../../components/Layouts';
 import SectionTitle from '../../../components/SectionTitle';
 import styles from './Checkout.module.scss';
 
 const Checkout = () =>
 {
+    const { t } = useTranslation();
     const { data: session } = useSession();
     const dispatch = useDispatch();
     const cartState = useSelector((state) => state.cart);
@@ -35,10 +38,16 @@ const Checkout = () =>
                         {
                             cartState && cartState.length ?
                                 <>
-                                    <SectionTitle title={`Ordine N. ${Math.round((Math.random() + 1) * 723652)}`} description="" path="/cart" btntext="Torna al carrello" btncolor="#FF9F1C" />
+                                    <SectionTitle 
+                                        title={`${t('checkout_title')} ${Math.round((Math.random() + 1) * 723652)}`} 
+                                        description="" 
+                                        path="/cart" 
+                                        btntext={t('checkout_button')} 
+                                        btncolor="#FF9F1C" 
+                                    />
                                     <div className={styles.summary}>
                                         <div className={styles.details}>
-                                            <h3>Riepilogo dell&apos;ordine</h3>
+                                            <h3>{t('cart_title')}</h3>
                                             <ul>
                                             {
                                                 cartState.map((item) => 
@@ -49,8 +58,8 @@ const Checkout = () =>
                                                             <span>
                                                                 <h4>x{item.quantity} {item.title}</h4>
                                                                 <div className={styles.price}>
-                                                                    <p>€ {parseFloat(item.price).toFixed(2)}</p>
-                                                                    a persona
+                                                                    <p>{t('currency')} {parseFloat(item.price).toFixed(2)}</p>
+                                                                    {t('cart_person')}
                                                                 </div>
                                                             </span>
                                                             <hr className={styles.hr} />
@@ -60,23 +69,23 @@ const Checkout = () =>
                                             }
                                             </ul>
                                             <div className={styles.totalCart}>
-                                                <h3>Totale</h3>
-                                                <p className={styles.totalPrice}>€ {parseFloat(totalCart).toFixed(2)}</p>
+                                                <h3>{t('cart_total')}</h3>
+                                                <p className={styles.totalPrice}>{t('currency')} {parseFloat(totalCart).toFixed(2)}</p>
                                             </div>
                                         </div>
                                         <div className={styles.payment}>
-                                            <h3>Dettagli pagamento</h3>
+                                            <h3>{t('checkout_payment_title')}</h3>
                                             <ul>
                                                 <li>
-                                                    <label htmlFor="name">Nome sulla carta</label>
+                                                    <label htmlFor="name">{t('checkout_payment_name')}</label>
                                                     <input id="name" placeholder="Nome e cognome" autoComplete="off" />
                                                 </li>
                                                 <li>
-                                                    <label htmlFor="pan">Numero carta</label>
+                                                    <label htmlFor="pan">{t('checkout_payment_pan')}</label>
                                                     <input id="pan" type="number" placeholder="●●●● ●●●● ●●●● ●●●●" autoComplete="off" />
                                                 </li>
                                                 <li>
-                                                    <label htmlFor="expiration">Scadenza</label>
+                                                    <label htmlFor="expiration">{t('checkout_payment_expiration')}</label>
                                                     <input id="expiration" type="date" autoComplete="off" />
                                                 </li>
                                                 <li>
@@ -86,10 +95,10 @@ const Checkout = () =>
                                             </ul>
                                         </div>
                                     </div>
-                                    <button className={styles.payBtn}>Paga ora</button>
+                                    <button className={styles.payBtn}>{t('checkout_payment_button')}</button>
                                 </>
                             :
-                                <SectionTitle title="Ordine non valido" description=" Assicurati di aver aggiunto qualcosa al carrello." path="/" btntext="Torna alla home" btncolor="#FF9F1C" />
+                                <SectionTitle title={t('checkout_invalid_title')} description={t('checkout_invalid_description')} path="/" btntext={t('checkout_invalid_button')} btncolor="#FF9F1C" />
                         }
                     </section>
                 </div>
